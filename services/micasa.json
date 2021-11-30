@@ -1,0 +1,83 @@
+{
+    "stay": [{
+        "_id": "907978797",
+        "name": "Charming Cottage",
+        "imgUrls": [],
+        "price": 80,
+        "summary": "Charming cottage with three bedrooms",
+        "capacity": 8,
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Kitchen",
+            "Smoking Allowed",
+            "Pets Allowed"
+        ],
+        "host": {
+            "_id": "u101",
+            "fullname": "Arik Biton",
+            "imgUrl": ""
+        },
+        "loc": {
+            "country": "Portugal",
+            "countryCode": "PT",
+            "address": "Porto, Portugal",
+            "lat": -8.61308,
+            "lng": 41.1413
+        },
+        "reviews": [{
+            "id": "madeId",
+            "txt": "Very helpful hosts. Cooked traditional...",
+            "rate": 4,
+            "by": {
+                "_id": "u102",
+                "fullname": "Bentz Margalit",
+                "imgUrl": "/img/img2.jpg"
+            }
+        }],
+        "likedByUsers": ["mini-user"]
+    }],
+    "order": [{
+        "_id": "o1225",
+        "hostId": "u102",
+        "createdAt": 9898989,
+        "buyer": {
+            "_id": "u101",
+            "fullname": "User 1"
+        },
+        "totalPrice": 160,
+        "startDate": "2025/10/15",
+        "endDate": "2025/10/17",
+        "guests": {
+            "adults": 2,
+            "kids": 1
+        },
+        "stay": {
+            "_id": "h102",
+            "name": "House Of Uncle My",
+            "price": 80.00
+        },
+        "status": "pending"
+    }],
+    "user": [{
+            "_id": "u101",
+            "fullname": "Arik Biton",
+            "imgUrl": "/img/img1.jpg",
+            "isAdmin": false,
+            "username": "user1",
+            "password": "secret",
+            "email": "arik@mr-bit.com",
+            "isHost": true
+        },
+        {
+            "_id": "u102",
+            "fullname": "Bentz Margalit",
+            "imgUrl": "/img/img2.jpg",
+            "isAdmin": false,
+            "username": "user2",
+            "password": "secret",
+            "email": "bentz@mr-bit.com",
+            "isHost": true
+        }
+    ]
+}
