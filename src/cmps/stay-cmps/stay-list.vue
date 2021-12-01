@@ -1,5 +1,5 @@
 <template>
-  <ul class="stay-list">
+  <ul class="stay-list clean-list">
     <li v-for="stay in stays" :key="stay._id" class="stay-preview-container">
       <stay-preview :stay="stay" />
     </li>
