@@ -1,4 +1,4 @@
-import { utilService } from "./utils.service.js"
+import { utilService } from "../services/utils.service.js"
 
 
 export const storageService = {
@@ -22,6 +22,7 @@ function get(entityType, entityId) {
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }
+
 function post(entityType, newEntity) {
     newEntity._id = utilService.makeId()
     return query(entityType)
