@@ -10,7 +10,6 @@ export const stayService = {
     save
 }
 
-
 const gStays = [{
     "_id": "907978797",
     "name": "Charming House",
@@ -177,12 +176,7 @@ const gStays = [{
 ]
 
 function query() {
-    var stays = JSON.parse(localStorage.getItem(KEY))
-    if (!stays || !stays.length) {
-        stays = gStays
-    }
-    localStorage.setItem(KEY, JSON.stringify(stays))
-    return stays
+    return storageService.query(KEY)
 }
 
 function getById(id) {
@@ -199,4 +193,13 @@ function save(stay) {
         ? storageService.put(KEY, stay)
         : storageService.post(KEY, stay)
     return savedStay
+}
+
+function _createStays() {
+    var stays = JSON.parse(localStorage.getItem(KEY))
+    if (!stays || !stays.length) {
+        stays = gStays
+    }
+    localStorage.setItem(KEY, JSON.stringify(stays))
+    return stays
 }
