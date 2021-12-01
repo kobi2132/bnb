@@ -1,0 +1,11 @@
+.stay-list-conainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);;
+    column-gap: 17px;
+}
+
+
+.stay-preview-info img {
+    border-radius: 12px;
+}
+
