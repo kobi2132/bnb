@@ -12,7 +12,7 @@ export const stayService = {
 
 
 const gStays = [{
-    "_id": "907978797",
+    "_id": "907978791",
     "name": "Charming House",
     "imgUrls": ["https://res.cloudinary.com/home-to-go/image/upload/v1622706975/ukus3nea6he6tezdwimp.jpg",
         "https://res.cloudinary.com/home-to-go/image/upload/v1622706966/bc57trhwlnpv8vjfqdej.jpg",
