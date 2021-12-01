@@ -20,6 +20,7 @@
     > * {
         grid-column: 2;
     }
+    margin: 20px 0;
 }
 
 .user-menu-btn {
@@ -30,7 +31,9 @@
     font-size: 16px;
     border: 1px solid  #DDDDDD;
     line-height: 20px;
-
+    &:hover {
+        box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+    }
     &::before {
         font-family: fas;
         content: '\f0c9';
@@ -39,4 +42,29 @@
     img {
         margin-left: 12px;
     }
+}
+
+.user-nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 75px;
+    right: 80px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow:rgb(0 0 0 / 18%) 0px 2px 4px;
+
+    a {
+        padding: 15px 20px;
+        &:first-child{
+            margin-top:10px;
+        }
+        &:last-child {
+            margin-bottom: 10px;
+        }
+        &:hover {
+            background-color: #ececec;
+        }
+    }
+   
 }
