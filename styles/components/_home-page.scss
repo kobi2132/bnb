@@ -1,5 +1,46 @@
 .home-page {
-    max-width: 1190px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+
+    > * {
+        grid-column: 2;
+    }
+
+    .main-hero {
+        background-image: url(~@/assets/images/hero.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 13px;
+        height: 750px;
+        text-align: center;
+        background-position: right center;
+
+        h1 {
+            color: #FFF;
+            font-size: 38px;
+        }
+    }
+}
+
+.dest-container {
+    h1 {
+        font-size: 33px;
+    }
+}
+
+.dest-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: #222222;
+        
+        img {
+            border-radius: 13px;
+            object-fit: scale-down;
+
+        }
+    }
 }
