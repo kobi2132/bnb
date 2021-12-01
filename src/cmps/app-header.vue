@@ -8,17 +8,31 @@
       <div class="nav flex align-center">
         <router-link to="/explore">Explore</router-link>
         <router-link to="/">Become a Host</router-link>
-        <button class="user-menu-btn clickable flex align-center clickable">
+        <button
+          class="user-menu-btn clickable flex align-center clickable"
+          @click="shouldShow = !shouldShow"
+        >
           <img class="avatar" src="~@/assets/images/avatar1.png" />
         </button>
       </div>
     </section>
+    <div class="user-nav" v-if="shouldShow">
+      <a href="#">Log in</a>
+      <a href="#">Host your home</a>
+      <a href="#">About</a>
+      <a href="#">Help</a>
+    </div>
   </section>
 </template>
 
 <script>
 import stayFilter from "../cmps/stay-cmps/stay-filter.vue";
 export default {
+  data() {
+    return {
+      shouldShow: false,
+    };
+  },
   methods: {
     goHome() {
       this.$router.push("/").catch(() => {});
