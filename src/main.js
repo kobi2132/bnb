@@ -4,12 +4,14 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import "../styles/styles.scss"
-import VueCarousel from 'vue-carousel';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 
 
 Vue.config.productionTip = false
-Vue.use(VueCarousel);
+Vue.use(ElementUI);
+
 
 
 new Vue({

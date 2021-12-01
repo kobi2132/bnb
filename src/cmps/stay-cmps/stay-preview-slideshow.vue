@@ -1,15 +1,14 @@
 <template>
   <section class="preview-slideshow">
-    <carousel
-    :per-page="1"
-    :navigationEnabled="true"
-    navigationNextLabel="▶"
-    navigationPrevLabel="◀"
-    >
-      <slide v-for="image in imgs" :key="image">
+  <div class="block">
+    <el-carousel trigger="click"  height="200px" :autoplay=false>
+      <el-carousel-item v-for="image in imgs" :key="image">
         <img :src="image" />
-      </slide>
-    </carousel>
+      </el-carousel-item>
+    </el-carousel>
+  </div>
+
+
   </section>
 </template>
 
@@ -23,7 +22,8 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+    };
   },
   methods: {},
 };
