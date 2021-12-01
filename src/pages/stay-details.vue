@@ -11,7 +11,10 @@
     <button>❤</button>
     <button>📤</button>
     <div>stay gallery</div>
+    <h4>{{stay.summery}}</h4>
+    <h5>{{stay.capacity}} guests | bedrooms | beds | bath </h5>
     
+
     <h4>
       Reviews:
       <span v-for="(review, idx) in stay.reviews" :key="idx">
