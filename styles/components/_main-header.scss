@@ -14,6 +14,14 @@
     }
 }
 
+.main-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    > * {
+        grid-column: 2;
+    }
+}
+
 .user-menu-btn {
     color: #222222;
     padding: 5px 5px 5px 15px;
