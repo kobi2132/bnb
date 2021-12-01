@@ -10,6 +10,7 @@ export const stayService = {
     save
 }
 
+
 const gStays = [{
     "_id": "907978797",
     "name": "Charming House",
@@ -90,7 +91,7 @@ const gStays = [{
     }]
 },
 {
-    "_id": "907978797",
+    "_id": "907978799",
     "name": "Dream House",
     "imgUrls": ["https://res.cloudinary.com/home-to-go/image/upload/v1622707080/spk8pdojdzlkcnoonbff.jpg",
     "https://res.cloudinary.com/home-to-go/image/upload/v1622707071/qih5gap0k4ote3lp7te9.jpg",
@@ -132,7 +133,7 @@ const gStays = [{
     }]
 },
 {
-    "_id": "907978797",
+    "_id": "907978795",
     "name": "Modern House",
     "imgUrls": ["https://res.cloudinary.com/home-to-go/image/upload/v1622706832/ebtmysskiuu16b21a6bd.jpg",
     "https://res.cloudinary.com/home-to-go/image/upload/v1622706837/svky7mv5kyfndqsaa8rh.jpg",
@@ -174,6 +175,8 @@ const gStays = [{
     }]
 },
 ]
+
+_createStays()
 
 function query() {
     return storageService.query(KEY)

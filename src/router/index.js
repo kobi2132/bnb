@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import homePage from '../pages/home-page.vue'
 import about from '../pages/about.vue'
 import stayApp from '../pages/stay-app.vue'
+import stayDetails from '../pages/stay-details.vue'
+
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,11 @@ const routes = [
     path: '/explore',
     name: 'Explore',
     component: stayApp
+  },
+  {
+    path: '/stay/:stayId',
+    name: 'stay',
+    component: stayDetails
   }
 ]
 
