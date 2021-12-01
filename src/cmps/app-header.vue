@@ -1,9 +1,10 @@
 <template>
-  <section class="main-header">
+  <section class="main-header flex">
     <section class="main-header-container flex space-between">
       <div class="logo clickable" @click="goHome">
         <img class="logo-img" src="~@/assets/images/logo.png" />
       </div>
+      <stay-filter />
       <div class="nav flex align-center">
         <router-link to="/explore">Explore</router-link>
         <router-link to="/">Become a Host</router-link>
@@ -16,11 +17,15 @@
 </template>
 
 <script>
+import stayFilter from "../cmps/stay-cmps/stay-filter.vue";
 export default {
   methods: {
     goHome() {
       this.$router.push("/").catch(() => {});
     },
+  },
+  components: {
+    stayFilter,
   },
 };
 </script>
