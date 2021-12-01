@@ -1,14 +1,12 @@
 <template>
   <section class="preview-slideshow">
-  <div class="block">
-    <el-carousel trigger="click"  height="200px" :autoplay=false>
-      <el-carousel-item v-for="image in imgs" :key="image">
-        <img :src="image" />
-      </el-carousel-item>
-    </el-carousel>
-  </div>
-
-
+    <div class="block">
+      <el-carousel trigger="click" height="200px" :autoplay="false">
+        <el-carousel-item v-for="image in imgs" :key="image">
+          <img :src="image" />
+        </el-carousel-item>
+      </el-carousel>
+    </div>
   </section>
 </template>
 
@@ -21,11 +19,15 @@ export default {
       default: {},
     },
   },
+  components: {},
+
   data() {
     return {
     };
   },
   methods: {},
+  computed: {
+  },
 };
 </script>
 

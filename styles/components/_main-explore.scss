@@ -7,7 +7,16 @@
 
 .preview-slideshow img {
     border-radius: 12px;
-    // width: 300px;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
 
+}
+
+
+.el-carousel__button{
+    height: 10px !important;
+    width: 10px !important;
+    border-radius: 50% !important;
 }
 
