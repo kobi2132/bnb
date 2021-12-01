@@ -17,11 +17,9 @@ export const stayStore = {
     },
     actions: {
         loadStays({ commit }) {
-            const stays = stayService.query()
-            commit({ type: 'setStays', stays })
-            // stayService.query().then(stays => {
-            //     commit({ type: 'setStays', stays })
-            // })
+            stayService.query().then(stays => {
+                commit({ type: 'setStays', stays })
+            })
         }
     }
 
