@@ -1,5 +1,7 @@
 <template>
-  <h1>Home page</h1>
+  <section class="home-page">
+    <h1>Mi casa es su casa</h1>
+  </section>
 </template>
 
 <script>

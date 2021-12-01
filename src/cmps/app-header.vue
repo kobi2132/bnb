@@ -1,12 +1,12 @@
 <template>
   <section class="main-header flex space-between">
-    <div class="logo" @click="goHome">
+    <div class="logo clickable" @click="goHome">
       <img class="logo-img" src="~@/assets/images/logo.png" />
     </div>
-    <div id="nav">
+    <div class="nav flex align-center">
       <router-link to="/explore">Explore</router-link>
       <router-link to="/">Become a Host</router-link>
-      <button class="user-menu-btn">
+      <button class="user-menu-btn clickable flex align-center">
         <img class="avatar" src="~@/assets/images/avatar1.png" />
       </button>
     </div>
