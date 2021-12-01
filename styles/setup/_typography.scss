@@ -1,9 +1,25 @@
 @font-face {
-    font-family: Opensans;
-    src: url(~@/assets/fonts/Open_Sans/static/OpenSans/OpenSans-Regular.ttf);
+    font-family: airbnb-regular;
+    src: url(~@/assets/fonts/Airbnb_Cereal-Book.woff2);
 }
 
 @font-face {
-    font-family:  Bangers;
-    src: url(~@/assets/fonts/Bangers/Bangers-Regular.ttf);
+    font-family:  airbnb-medium;
+    src: url(~@/assets/fonts/Airbnb_Cereal-Medium.woff2);
 }
+
+@font-face {
+    font-family:  airbnb-bold;
+    src: url(~@/assets/fonts/Airbnb_Cereal-Bold.woff2);
+}
+
+@font-face {
+    font-family: fa;
+    src: url(~@/assets/vendor/fontawesome/webfonts/fa-regular-400.ttf);
+}
+
+@font-face {
+    font-family: fas;
+    src: url(~@/assets/vendor/fontawesome/webfonts/fa-solid-900.ttf);
+}
+

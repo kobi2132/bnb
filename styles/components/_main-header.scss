@@ -1,0 +1,21 @@
+.logo {
+    width: 150px;
+}
+
+.avatar {
+    width: 30px;
+}
+
+.user-menu-btn {
+    padding: 5px 5px 5px 15px;
+    border-radius: 200px;
+    background-color: #fff;
+    font-size: 16px;
+    border: 1px solid rgba(0,0,0,.1450980392156863);
+    line-height: 20px;
+
+    &::before {
+        font-family: fas;
+        content: '\f0c9';
+    }
+}
