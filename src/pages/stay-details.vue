@@ -4,7 +4,7 @@
     <h2>{{ stay.name }}</h2>
     <section class="short-info flex space-between align-center">
       <section class="flex">
-        <h4 class="spacer">⭐ {{ this.reviewsAvg }}</h4>
+        <h4 class="spacer"> <span class="material-icons-outlined"> star </span> {{ this.reviewsAvg }}</h4>
         <h4>{{ this.reviewsCount }}</h4>
         <span class="spacer">•</span>
         <h4>{{ stay.loc.address }}</h4>
@@ -71,7 +71,9 @@
           <span class="material-icons-outlined"> event </span>
         </div>
         <section class="feature-text-area">
-          <div class="feature-header"><h4>Free cancellation up to 24 hours before check-in</h4></div>
+          <div class="feature-header">
+            <h4>Free cancellation up to 24 hours before check-in</h4>
+          </div>
           <div class="feature-text">
             <h5>feel free to be flexible</h5>
           </div>
@@ -91,10 +93,23 @@
           :key="idx"
           class="amenity-container clean-list"
         >
-          <h5><span class="material-icons-outlined"> {{amenity.logo}} </span> {{ amenity.name }}</h5>
+          <h5>
+            <span class="material-icons-outlined"> {{ amenity.logo }} </span>
+            {{ amenity.name }}
+          </h5>
         </li>
       </ul>
     </section>
+    <section class="stay-reviews-container">
+      <div class="stay-reviews-header">
+        <h2>
+          <span class="material-icons-outlined"> star </span>
+          {{ this.reviewsAvg }} {{ this.reviewsCount }}
+        </h2>
+      </div>
+      <div class="stay-reviews-stats"></div>
+    </section>
+
     <h4>
       Reviews:
       <span v-for="(review, idx) in stay.reviews" :key="idx" class="clean-list">
@@ -121,7 +136,9 @@ export default {
       return avg;
     },
     reviewsCount() {
+      // problem with count
       let count = this.stay.reviews.length;
+      console.log(count , 'reviews')
       if ((count = 1)) {
         var str = `(${count} review)`;
       } else {
