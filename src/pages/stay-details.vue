@@ -32,14 +32,14 @@
             <div class="feature-logo"></div>
             <div class="feature-text"></div>
         </div>
-        <!-- <h4><i class="fas fa-home"></i> features with icon and details</h4>
+        <h4 class="stay-feature-home"> features with icon and details</h4>
         <h4>features with icon and details</h4>
         <h4>features with icon and details</h4>
-        <h4>features with icon and details</h4> -->
+        <h4>features with icon and details</h4>
     </section>
     <section class="stay-description">
         <h4>description</h4>
-        <h3>add description to stay obj</h3>
+        <h3>{{stay.description}}</h3>
     </section>
     <section class="stay-amenities">
         <h4>amenities</h4>
