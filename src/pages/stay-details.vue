@@ -4,8 +4,8 @@
     <h2>{{ stay.name }}</h2>
     <section class="short-info flex space-between align-center">
       <section class="flex">
-        <h4 class="spacer"> <span class="material-icons-outlined"> star </span> {{ this.reviewsAvg }}</h4>
-        <h4>{{ this.reviewsCount }}</h4>
+        <!-- <h4 class="spacer"> <span class="material-icons-outlined"> star </span> {{ this.reviewsAvg }}</h4>
+        <h4>{{ this.reviewsCount }}</h4> -->
         <span class="spacer">•</span>
         <h4>{{ stay.loc.address }}</h4>
       </section>
@@ -104,7 +104,7 @@
       <div class="stay-reviews-header">
         <h2>
           <span class="material-icons-outlined"> star </span>
-          {{ this.reviewsAvg }} {{ this.reviewsCount }}
+          <!-- {{ this.reviewsAvg }} {{ this.reviewsCount }} -->
           <!-- problem with count -->
           
         </h2>
@@ -114,8 +114,10 @@
 
     <h4>
       Reviews:
+      {{reviewRateAvg}}
       <span v-for="(review, idx) in stay.reviews" :key="idx" class="clean-list">
-        {{ review }}
+        {{ review }} 
+        
       </span>
     </h4>
   </section>
@@ -124,6 +126,9 @@
 <script>
 export default {
   name: "stayDetails",
+  // created(){
+  //   this.reviewRateTotal()
+  // },
   computed: {
     stay() {
       return this.$store.getters.getCurrStay;
@@ -148,6 +153,22 @@ export default {
       }
       return str;
     },
+    // reviewRateTotal(){
+    //    const sum = this.stay.reviews.rate.reduce(
+    //     (sum, rate) => sum + rate.score,{});
+    //   console.log('sum', sum)
+    //   return sum
+    // }
+    reviewRateAvg(){
+      console.log(this.stay.reviews.rate)
+      const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+      const sum = sumValues(this.stay.reviews.rate)
+      //  const sum = this.stay.reviews.rate.reduce(
+      //   (sum, rate) => sum + rate.score,{});
+      console.log('sum', sum)
+      return sum/6
+    },
+    // reviewsRateAvg
   },
   methods: {},
   watch: {
