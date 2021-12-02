@@ -3,7 +3,7 @@
 
 
 <template>
-  <section v-if="stay" class="stay-details app-main main-layout">
+  <section v-if="stay" class="stay-details app-main">
     <h2>{{ stay.name }}</h2>
     <section class="short-info flex space-between align-center">
       <section class="flex">
@@ -30,19 +30,58 @@
 
     <section>
       <h4>{{ stay.summery }}</h4>
-      <h5>{{ stay.capacity }} guests | bedrooms | beds | bath</h5>
+      <h5>{{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths</h5>
       <img class="host-img" :src="stay.host.imgUrl" />
     </section>
     <section class="stay-feature-container">
-      <div class="feature-block">
-        <div class="feature-logo"></div>
-        <div class="feature-text"></div>
+      <div class="feature-block flex">
+        <div class="feature-logo">
+          <span class="material-icons-outlined"> home </span>
+        </div>
+        <section class="feature-text-area">
+          <div class="feature-header"><h4>Entire home</h4></div>
+          <div class="feature-text">
+            <h5>You’ll have the apartment to yourself.</h5>
+          </div>
+        </section>
       </div>
-      <h4 class="stay-feature-home">features with icon and details</h4>
-      <h4>features with icon and details</h4>
-      <h4>features with icon and details</h4>
-      <h4>features with icon and details</h4>
+      <div class="feature-block flex">
+        <div class="feature-logo">
+          <span class="material-icons-outlined"> location_on </span>
+        </div>
+        <section class="feature-text-area">
+          <div class="feature-header"><h4>Great location</h4></div>
+          <div class="feature-text">
+            <h5>Recent guests gave the location a 5-star rating.</h5>
+          </div>
+        </section>
+      </div>
+      <div class="feature-block flex">
+        <div class="feature-logo">
+          <span class="material-icons-outlined"> auto_awesome </span>
+        </div>
+        <section class="feature-text-area">
+          <div class="feature-header"><h4>Enhanced Clean</h4></div>
+          <div class="feature-text">
+            <h5>
+              This host has committed to our 5-step enhanced cleaning process.
+            </h5>
+          </div>
+        </section>
+      </div>
+      <div class="feature-block flex">
+        <div class="feature-logo">
+          <span class="material-icons-outlined"> event </span>
+        </div>
+        <section class="feature-text-area">
+          <div class="feature-header"><h4>Free cancellation up to 24 hours before check-in</h4></div>
+          <div class="feature-text">
+            <h5>feel free to be flexible</h5>
+          </div>
+        </section>
+      </div>
     </section>
+
     <section class="stay-description">
       <h4>description</h4>
       <h3>{{ stay.description }}</h3>
