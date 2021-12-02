@@ -105,6 +105,8 @@
         <h2>
           <span class="material-icons-outlined"> star </span>
           {{ this.reviewsAvg }} {{ this.reviewsCount }}
+          <!-- problem with count -->
+          
         </h2>
       </div>
       <div class="stay-reviews-stats"></div>
