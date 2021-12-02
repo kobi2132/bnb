@@ -1,7 +1,12 @@
 <template>
   <section class="preview-slideshow">
     <div class="block">
-      <el-carousel trigger="click" height="200px" :autoplay="false">
+      <el-carousel
+        trigger="click"
+        height="200px"
+        width="300px"
+        :autoplay="false"
+      >
         <el-carousel-item v-for="image in imgs" :key="image">
           <img :src="image" />
         </el-carousel-item>
@@ -22,12 +27,10 @@ export default {
   components: {},
 
   data() {
-    return {
-    };
+    return {};
   },
   methods: {},
-  computed: {
-  },
+  computed: {},
 };
 </script>
 
