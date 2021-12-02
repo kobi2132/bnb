@@ -1,9 +1,6 @@
-  <!-- <pre>{{ stays }} </pre> -->
-  <!-- change rate to rates avg -->
-
 
 <template>
-  <section v-if="stay" class="stay-details app-main">
+  <section v-if="stay" class="stay-details main-layout">
     <h2>{{ stay.name }}</h2>
     <section class="short-info flex space-between align-center">
       <section class="flex">
@@ -94,7 +91,7 @@
           :key="idx"
           class="amenity-container clean-list"
         >
-          <h5>{{ amenity }}</h5>
+          <h5><span class="material-icons-outlined"> {{amenity.logo}} </span> {{ amenity.name }}</h5>
         </li>
       </ul>
     </section>

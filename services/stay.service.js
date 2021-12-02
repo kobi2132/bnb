@@ -25,13 +25,30 @@ const gStays = [{
     "summary": "Charming appartment with two bedrooms",
     "description": "Beautiful 2 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Portogal",
     "capacity": 4,
-    "amenities": [
-        "TV",
-        "Wifi",
-        "Kitchen",
-        "Air conditioning",
-        "Smoking Allowed",
-        "Pets Allowed"
+    "amenities": [{
+        name: "TV",
+        logo: "live_tv"
+    },
+    {
+        name: "Wifi",
+        logo: "wifi"
+    },
+    {
+        name: "Kitchen",
+        logo: "restaurant"
+    },
+    {
+        name: "Air conditioning",
+        logo: "ac_unit"
+    },
+    {
+        name: "Smoking Allowed",
+        logo: "smoking_rooms"
+    },
+    {
+        name: "Pets Allowed",
+        logo: "pets"
+    },
     ],
     "host": {
         "_id": "u101",
@@ -126,12 +143,30 @@ const gStays = [{
     "summary": "Amazing house with four bedrooms",
     "description": "Beautiful 4 bedroom architecturally designed house, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Greece",
     "capacity": 6,
-    "amenities": [
-        "TV",
-        "Wifi",
-        "Kitchen",
-        "Air conditioning",
-        "Smoking Allowed"
+    "amenities": [{
+        name: "TV",
+        logo: "live_tv"
+    },
+    {
+        name: "Wifi",
+        logo: "wifi"
+    },
+    {
+        name: "Kitchen",
+        logo: "restaurant"
+    },
+    {
+        name: "Air conditioning",
+        logo: "ac_unit"
+    },
+    {
+        name: "Smoking Allowed",
+        logo: "smoking_rooms"
+    },
+    {
+        name: "Pets Allowed",
+        logo: "pets"
+    },
     ],
     "host": {
         "_id": "u101",
@@ -251,13 +286,30 @@ const gStays = [{
     "summary": "Charming villa with three bedrooms",
     "description": "Beautiful 3 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern USA",
     "capacity": 6,
-    "amenities": [
-        "TV",
-        "Wifi",
-        "Kitchen",
-        "Air conditioning",
-        "Smoking Allowed",
-        "Pets Allowed"
+    "amenities": [{
+        name: "TV",
+        logo: "live_tv"
+    },
+    {
+        name: "Wifi",
+        logo: "wifi"
+    },
+    {
+        name: "Kitchen",
+        logo: "restaurant"
+    },
+    {
+        name: "Air conditioning",
+        logo: "ac_unit"
+    },
+    {
+        name: "Smoking Allowed",
+        logo: "smoking_rooms"
+    },
+    {
+        name: "Pets Allowed",
+        logo: "pets"
+    },
     ],
     "host": {
         "_id": "u102",
@@ -367,13 +419,22 @@ const gStays = [{
     "summary": "Charming loft with two bedrooms",
     "description": "Beautiful 2 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Tel Aviv",
     "capacity": 4,
-    "amenities": [
-        "TV",
-        "Wifi",
-        "Kitchen",
-        "Air conditioning",
-        "Smoking Allowed",
-        "Pets Allowed"
+    "amenities": [{
+        name: "TV",
+        logo: "live_tv"
+    },
+    {
+        name: "Wifi",
+        logo: "wifi"
+    },
+    {
+        name: "Kitchen",
+        logo: "restaurant"
+    },
+    {
+        name: "Air conditioning",
+        logo: "ac_unit"
+    },
     ],
     "host": {
         "_id": "u102",
@@ -434,8 +495,18 @@ const gStays = [{
     "description": "Beautiful 1 bedroom architecturally designed loft, in beautiful working fishing village in Northern Tel Aviv",
     "capacity": 2,
     "amenities": [
-        "TV",
-        "Wifi",
+        {
+            name: "Wifi",
+            logo: "wifi"
+        },
+        {
+            name: "Smoking Allowed",
+            logo: "smoking_rooms"
+        },
+        {
+            name: "Pets Allowed",
+            logo: "pets"
+        },
     ],
     "host": {
         "_id": "u102",
@@ -495,11 +566,30 @@ const gStays = [{
     "summary": "This authentic loft on the 1st floor in a 60's style is located right in the center of Jerusalem. The building itself was built in 1895 where the city's first movie theater has been established. The loft owns a balcony which has a beautiful view right on to Jaffa street, Restaurants and coffee places are all around.",
     "description": "Beautiful 1 bedroom architecturally designed loft, in beautiful working fishing village in Northern Tel Aviv",
     "capacity": 4,
-    "amenities": [
-        "Kitchen",
-        "Air conditioning",
-        "TV",
-        "Wifi",
+    "amenities": [{
+        name: "TV",
+        logo: "live_tv"
+    },
+    {
+        name: "Wifi",
+        logo: "wifi"
+    },
+    {
+        name: "Kitchen",
+        logo: "restaurant"
+    },
+    {
+        name: "Air conditioning",
+        logo: "ac_unit"
+    },
+    {
+        name: "Smoking Allowed",
+        logo: "smoking_rooms"
+    },
+    {
+        name: "Pets Allowed",
+        logo: "pets"
+    },
     ],
     "host": {
         "_id": "u102",
@@ -510,6 +600,172 @@ const gStays = [{
         "country": "Israel",
         "countryCode": "IL",
         "city": "Jerusalem",
+        "lat": -8.61308,
+        "lng": 41.1413
+    },
+    "reviews": [{
+        "id": "madeId",
+        "txt": "Very helpful hosts. Cooked traditional...",
+        "rate": 3,
+        "by": {
+            "_id": "u101",
+            "fullname": "Arik Biton",
+            "imgUrl": "/img/img1.jpg"
+        }
+    },
+    {
+        "id": "madeId",
+        "txt": "not good wont come again...",
+        "rate": 9,
+        "by": {
+            "_id": "u101",
+            "fullname": "Arik Biton",
+            "imgUrl": "/img/img1.jpg"
+        }
+    },
+    {
+        "id": "madeId",
+        "txt": "Very helpful hosts. Cooked traditional...",
+        "rate": 6,
+        "by": {
+            "_id": "u102",
+            "fullname": "Bentz Margalit",
+            "imgUrl": "/img/img2.jpg"
+        }
+    },
+    ]
+},
+{
+    "_id": "917931790",
+    "name": "Sunny and Spacious West Village Gem",
+    "imgUrls": ["https://a0.muscache.com/im/pictures/4532251c-e647-4334-a425-55a583bcba56.jpg?im_w=1200",
+        "https://a0.muscache.com/im/pictures/ffe8d8da-41e2-4e7d-bf2e-d35a8acd76dd.jpg?im_w=1440",
+        "https://a0.muscache.com/im/pictures/c8217ed0-aea4-41dd-b83d-23c9073fc482.jpg?im_w=1440",
+        "https://a0.muscache.com/im/pictures/262cdd83-7067-446a-ad91-d42e68a4fb3b.jpg?im_w=1440",
+        "https://a0.muscache.com/im/pictures/a9fa76d9-ef11-482b-986d-c28559b13473.jpg?im_w=1440"
+    ],
+    "price": 325,
+    "propertyType": "loft",
+    "summary": "This authentic loft on the 1st floor in a 60's style is located right in the center of Jerusalem. The building itself was built in 1895 where the city's first movie theater has been established. The loft owns a balcony which has a beautiful view right on to Jaffa street, Restaurants and coffee places are all around.",
+    "description": "Hello, welcome to our sunny and spacious West Village gem! Our apartment has been designed with elegance and comfort in mind. Previously featured on Apartment Therapy, we've redone the interior but kept the layout readers loved.",
+    "capacity": 2,
+    "amenities": [{
+        name: "TV",
+        logo: "live_tv"
+    },
+    {
+        name: "Wifi",
+        logo: "wifi"
+    },
+    {
+        name: "Kitchen",
+        logo: "restaurant"
+    },
+    {
+        name: "Air conditioning",
+        logo: "ac_unit"
+    },
+    {
+        name: "Smoking Allowed",
+        logo: "smoking_rooms"
+    },
+    {
+        name: "Pets Allowed",
+        logo: "pets"
+    },
+    ],
+    "host": {
+        "_id": "u102",
+        "fullname": "Bentz Margalit",
+        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+    },
+    "loc": {
+        "country": "USA",
+        "countryCode": "USA",
+        "city": "New York",
+        "lat": -8.61308,
+        "lng": 41.1413
+    },
+    "reviews": [{
+        "id": "madeId",
+        "txt": "Very helpful hosts. Cooked traditional...",
+        "rate": 3,
+        "by": {
+            "_id": "u101",
+            "fullname": "Arik Biton",
+            "imgUrl": "/img/img1.jpg"
+        }
+    },
+    {
+        "id": "madeId",
+        "txt": "not good wont come again...",
+        "rate": 9,
+        "by": {
+            "_id": "u101",
+            "fullname": "Arik Biton",
+            "imgUrl": "/img/img1.jpg"
+        }
+    },
+    {
+        "id": "madeId",
+        "txt": "Very helpful hosts. Cooked traditional...",
+        "rate": 6,
+        "by": {
+            "_id": "u102",
+            "fullname": "Bentz Margalit",
+            "imgUrl": "/img/img2.jpg"
+        }
+    },
+    ]
+},
+{
+    "_id": "907931790",
+    "name": "Santorini Sky The Lodge",
+    "imgUrls": ["https://a0.muscache.com/im/pictures/miso/Hosting-51719483/original/deaca075-eb5e-4252-bb29-5badc7ccb9d1.jpeg?im_w=1200",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-51719483/original/08712ef1-b066-4aad-a896-e62aa54a462a.jpeg?im_w=1440",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-51719483/original/43b8f692-7a18-40d0-b380-181927656033.jpeg?im_w=1440",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-51719483/original/46da18e1-b672-4368-9610-17e8e889986e.jpeg?im_w=1440",
+        "https://a0.muscache.com/im/pictures/miso/Hosting-51719483/original/23b9b64d-b62f-444c-83d9-7882fd8fd659.jpeg?im_w=1440"
+    ],
+    "price": 142,
+    "propertyType": "loft",
+    "summary": "This authentic loft on the 1st floor in a 60's style is located right in the center of Jerusalem. The building itself was built in 1895 where the city's first movie theater has been established. The loft owns a balcony which has a beautiful view right on to Jaffa street, Restaurants and coffee places are all around.",
+    "description": "Heaven has a new address! In this sensational villa, rustic design is blended with modern comfort and luxury. From the private infinity jacuzzi, to marble counters, pillow-top king-size bed, and satellite TV – Every detail has been considered to make The Lodge is as stunning inside as the views are outside.",
+    "capacity": 2,
+    "amenities": [{
+        name: "TV",
+        logo: "live_tv"
+    },
+    {
+        name: "Wifi",
+        logo: "wifi"
+    },
+    {
+        name: "Kitchen",
+        logo: "restaurant"
+    },
+    {
+        name: "Air conditioning",
+        logo: "ac_unit"
+    },
+    {
+        name: "Smoking Allowed",
+        logo: "smoking_rooms"
+    },
+    {
+        name: "Pets Allowed",
+        logo: "pets"
+    },
+    ],
+    "host": {
+        "_id": "u102",
+        "fullname": "Bentz Margalit",
+        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+    },
+    "loc": {
+        "country": "Greece",
+        "countryCode": "GRC",
+        "city": "Santorini",
         "lat": -8.61308,
         "lng": 41.1413
     },
