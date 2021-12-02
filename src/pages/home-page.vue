@@ -1,5 +1,5 @@
 <template>
-  <section class="home-page">
+  <section class="home-page main-layout2">
     <section class="main-hero">
       <h1>Mi casa es su casa.</h1>
     </section>
