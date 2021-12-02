@@ -1,1 +1,17 @@
         "likedByUsers": ["mini-user"] - why in stay? it should be in user
+
+
+         "amenities": [
+            {name:"TV",
+        logo:"live_tv"},
+            {name:"Wifi",
+        logo:"wifi"},
+            {name:"Kitchen",
+        logo:"restaurant"},
+            {name:"Air conditioning",
+        logo:"ac_unit"},
+            {name:"Smoking Allowed",
+        logo:"smoking_rooms"},
+            {name:"Pets Allowed",
+        logo:"pets"},
+        ],

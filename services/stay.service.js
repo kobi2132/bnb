@@ -25,13 +25,30 @@ const gStays = [{
         "summary": "Charming appartment with two bedrooms",
         "description": "Beautiful 2 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Portogal",
         "capacity": 4,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Air conditioning",
-            "Smoking Allowed",
-            "Pets Allowed"
+        "amenities": [{
+                name: "TV",
+                logo: "live_tv"
+            },
+            {
+                name: "Wifi",
+                logo: "wifi"
+            },
+            {
+                name: "Kitchen",
+                logo: "restaurant"
+            },
+            {
+                name: "Air conditioning",
+                logo: "ac_unit"
+            },
+            {
+                name: "Smoking Allowed",
+                logo: "smoking_rooms"
+            },
+            {
+                name: "Pets Allowed",
+                logo: "pets"
+            },
         ],
         "host": {
             "_id": "u101",
@@ -126,12 +143,22 @@ const gStays = [{
         "summary": "Amazing house with four bedrooms",
         "description": "Beautiful 4 bedroom architecturally designed house, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Greece",
         "capacity": 6,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Air conditioning",
-            "Smoking Allowed"
+        "amenities": [{
+                name: "TV",
+                logo: "live_tv"
+            },
+            {
+                name: "Wifi",
+                logo: "wifi"
+            },
+            {
+                name: "Kitchen",
+                logo: "restaurant"
+            },
+            {
+                name: "Air conditioning",
+                logo: "ac_unit"
+            },
         ],
         "host": {
             "_id": "u101",
@@ -251,13 +278,30 @@ const gStays = [{
         "summary": "Charming villa with three bedrooms",
         "description": "Beautiful 3 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern USA",
         "capacity": 6,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Air conditioning",
-            "Smoking Allowed",
-            "Pets Allowed"
+        "amenities": [{
+                name: "TV",
+                logo: "live_tv"
+            },
+            {
+                name: "Wifi",
+                logo: "wifi"
+            },
+            {
+                name: "Kitchen",
+                logo: "restaurant"
+            },
+            {
+                name: "Air conditioning",
+                logo: "ac_unit"
+            },
+            {
+                name: "Smoking Allowed",
+                logo: "smoking_rooms"
+            },
+            {
+                name: "Pets Allowed",
+                logo: "pets"
+            },
         ],
         "host": {
             "_id": "u102",
@@ -367,13 +411,30 @@ const gStays = [{
         "summary": "Charming loft with two bedrooms",
         "description": "Beautiful 2 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Tel Aviv",
         "capacity": 4,
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Air conditioning",
-            "Smoking Allowed",
-            "Pets Allowed"
+        "amenities": [{
+                name: "TV",
+                logo: "live_tv"
+            },
+            {
+                name: "Wifi",
+                logo: "wifi"
+            },
+            {
+                name: "Kitchen",
+                logo: "restaurant"
+            },
+            {
+                name: "Air conditioning",
+                logo: "ac_unit"
+            },
+            {
+                name: "Smoking Allowed",
+                logo: "smoking_rooms"
+            },
+            {
+                name: "Pets Allowed",
+                logo: "pets"
+            },
         ],
         "host": {
             "_id": "u102",
