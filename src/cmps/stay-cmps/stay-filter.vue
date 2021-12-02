@@ -2,9 +2,9 @@
   <section class="filter-container flex align-center justify-center">
     <button
       class="mini-filter flex space-between align-center clickable"
-      v-if="miniFilter"
+      v-if="!miniFilter"
     >
-      Start your search <span></span>
+      {{ currDest }} <span></span>
     </button>
     <form
       @submit.prevent="updateTrip"
@@ -106,6 +106,13 @@ export default {
     Calendar,
     DatePicker,
   },
+  computed: {
+    currDest() {
+      var dest = this.$store.getters.getDest;
+      if (!dest) return "Start your search";
+      else return dest;
+    },
+  },
   methods: {
     updateGuests(type, number) {
       if (this.trip.guests[type] === 0 && number === -1) return;
@@ -114,7 +121,7 @@ export default {
     updateTrip() {
       console.log("updating trip", this.trip);
       const trip = this.trip;
-      this.$store.mutations({ type: "setTrip", trip });
+      this.$store.commit({ type: "setTrip", trip });
     },
     updateDates(dates) {
       this.trip.dates = dates;
