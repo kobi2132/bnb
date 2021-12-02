@@ -20,7 +20,6 @@ export const stayStore = {
             state.stays = stays
         },
         setCurrStay(state, { stay }) {
-            console.log('currStay', state.currstay)
             state.currStay = stay
             console.log('currStay', state.currStay)
         },

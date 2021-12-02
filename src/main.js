@@ -6,7 +6,10 @@ import store from './store'
 import "../styles/styles.scss"
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-
+import locale from 'element-ui/lib/locale'
+import en from 'element-ui/lib/locale/lang/en'
+import VCalendar from 'v-calendar';
+import DatePicker from 'vue2-datepicker';
 
 
 
@@ -15,6 +18,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
+Vue.use(VCalendar);
+Vue.use(DatePicker);
+locale.use(en);
 
 new Vue({
     router,
