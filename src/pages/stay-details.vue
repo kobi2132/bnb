@@ -106,7 +106,6 @@
           <span class="material-icons-outlined"> star </span>
           <!-- {{ this.reviewsAvg }} {{ this.reviewsCount }} -->
           <!-- problem with count -->
-          
         </h2>
       </div>
       <div class="stay-reviews-stats"></div>
@@ -114,10 +113,8 @@
 
     <h4>
       Reviews:
-      {{reviewRateAvg}}
+      {{ reviewRateAvg }}
       <span v-for="(review, idx) in stay.reviews" :key="idx" class="clean-list">
-        {{ review }} 
-        
       </span>
     </h4>
   </section>
@@ -145,7 +142,7 @@ export default {
     reviewsCount() {
       // problem with count
       let count = this.stay.reviews.length;
-      console.log(count , 'reviews')
+      console.log(count, "reviews");
       if ((count = 1)) {
         var str = `(${count} review)`;
       } else {
@@ -159,14 +156,14 @@ export default {
     //   console.log('sum', sum)
     //   return sum
     // }
-    reviewRateAvg(){
-      console.log(this.stay.reviews.rate)
-      const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
-      const sum = sumValues(this.stay.reviews.rate)
+    reviewRateAvg() {
+      console.log(this.stay.reviews.rate);
+      const sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b);
+      const sum = sumValues(this.stay.reviews.rate);
       //  const sum = this.stay.reviews.rate.reduce(
       //   (sum, rate) => sum + rate.score,{});
-      console.log('sum', sum)
-      return sum/6
+      console.log("sum", sum);
+      return sum / 6;
     },
     // reviewsRateAvg
   },
