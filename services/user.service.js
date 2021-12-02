@@ -2,14 +2,32 @@ import { storageService } from '../services/async-storage.service.js'
 import { utilService } from "../services/utils.service.js"
 const KEY = 'userDB'
 
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
     query,
     getById,
     remove,
-    save
+    save,
+    getLoggedinUser,
+    update
 }
 
+
+
+var gUser = {
+    "_id": "u103",
+    "fullname": "Yami Kobin",
+    "imgUrl": "/img/img3.jpg",
+    "isAdmin": false,
+    "username": "user3",
+    "password": "secret",
+    "email": "YamiK@bt-mir.com",
+    "isHost": false,
+    "wishList": []
+}
+
+_saveLocalUser(gUser)
 
 const gUsers = [{
     "_id": "u101",
@@ -125,8 +143,6 @@ const gUsers = [{
 
 ]
 
-_createUsers()
-
 function query() {
     return storageService.query(KEY)
 }
@@ -146,11 +162,20 @@ function save(user) {
     return savedUser
 }
 
-function _createUsers() {
-    var users = JSON.parse(localStorage.getItem(KEY))
-    if (!users || !users.length) {
-        users = gUsers
-    }
-    localStorage.setItem(KEY, JSON.stringify(users))
-    return users
+
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
+}
+
+function update(user) {
+    // await storageService.put('user', user)
+    // user = await httpService.put(`user/${user._id}`, user)
+    // Handle case in which admin updates other user's details
+    if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
+    return user;
+}
+
+function _saveLocalUser(user) {
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
 }
