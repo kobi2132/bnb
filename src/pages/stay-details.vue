@@ -4,8 +4,8 @@
     <h2>{{ stay.name }}</h2>
     <section class="short-info flex space-between align-center">
       <section class="flex">
-        <h4 class="spacer">⭐ {{ this.reviewsAvg }}</h4>
-        <h4>{{ this.reviewsCount }}</h4>
+        <!-- <h4 class="spacer"> <span class="material-icons-outlined"> star </span> {{ this.reviewsAvg }}</h4>
+        <h4>{{ this.reviewsCount }}</h4> -->
         <span class="spacer">•</span>
         <h4>{{ stay.loc.address }}</h4>
       </section>
@@ -71,7 +71,9 @@
           <span class="material-icons-outlined"> event </span>
         </div>
         <section class="feature-text-area">
-          <div class="feature-header"><h4>Free cancellation up to 24 hours before check-in</h4></div>
+          <div class="feature-header">
+            <h4>Free cancellation up to 24 hours before check-in</h4>
+          </div>
           <div class="feature-text">
             <h5>feel free to be flexible</h5>
           </div>
@@ -91,14 +93,31 @@
           :key="idx"
           class="amenity-container clean-list"
         >
-          <h5><span class="material-icons-outlined"> {{amenity.logo}} </span> {{ amenity.name }}</h5>
+          <h5>
+            <span class="material-icons-outlined"> {{ amenity.logo }} </span>
+            {{ amenity.name }}
+          </h5>
         </li>
       </ul>
     </section>
+    <section class="stay-reviews-container">
+      <div class="stay-reviews-header">
+        <h2>
+          <span class="material-icons-outlined"> star </span>
+          <!-- {{ this.reviewsAvg }} {{ this.reviewsCount }} -->
+          <!-- problem with count -->
+          
+        </h2>
+      </div>
+      <div class="stay-reviews-stats"></div>
+    </section>
+
     <h4>
       Reviews:
+      {{reviewRateAvg}}
       <span v-for="(review, idx) in stay.reviews" :key="idx" class="clean-list">
-        {{ review }}
+        {{ review }} 
+        
       </span>
     </h4>
   </section>
@@ -107,6 +126,9 @@
 <script>
 export default {
   name: "stayDetails",
+  // created(){
+  //   this.reviewRateTotal()
+  // },
   computed: {
     stay() {
       return this.$store.getters.getCurrStay;
@@ -121,7 +143,9 @@ export default {
       return avg;
     },
     reviewsCount() {
+      // problem with count
       let count = this.stay.reviews.length;
+      console.log(count , 'reviews')
       if ((count = 1)) {
         var str = `(${count} review)`;
       } else {
@@ -129,6 +153,22 @@ export default {
       }
       return str;
     },
+    // reviewRateTotal(){
+    //    const sum = this.stay.reviews.rate.reduce(
+    //     (sum, rate) => sum + rate.score,{});
+    //   console.log('sum', sum)
+    //   return sum
+    // }
+    reviewRateAvg(){
+      console.log(this.stay.reviews.rate)
+      const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+      const sum = sumValues(this.stay.reviews.rate)
+      //  const sum = this.stay.reviews.rate.reduce(
+      //   (sum, rate) => sum + rate.score,{});
+      console.log('sum', sum)
+      return sum/6
+    },
+    // reviewsRateAvg
   },
   methods: {},
   watch: {
