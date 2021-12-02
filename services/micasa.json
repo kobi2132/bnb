@@ -67,7 +67,8 @@
             "username": "user1",
             "password": "secret",
             "email": "arik@mr-bit.com",
-            "isHost": true
+            "isHost": true,
+            "wishList": []
         },
         {
             "_id": "u102",
@@ -77,7 +78,8 @@
             "username": "user2",
             "password": "secret",
             "email": "bentz@mr-bit.com",
-            "isHost": true
+            "isHost": true,
+            "wishList": []
         },
         {
             "_id": "u103",
@@ -87,7 +89,8 @@
             "username": "user3",
             "password": "secret",
             "email": "YamiK@bt-mir.com",
-            "isHost": true
+            "isHost": false,
+            "wishList": []
         },
         {
             "_id": "u104",
@@ -97,7 +100,8 @@
             "username": "user4",
             "password": "secret",
             "email": "aadof@lili.com",
-            "isHost": true
+            "isHost": false,
+            "wishList": []
         },
         {
             "_id": "u105",
@@ -107,7 +111,8 @@
             "username": "user5",
             "password": "secret",
             "email": "Mshapira@aol.com",
-            "isHost": true
+            "isHost": false,
+            "wishList": []
         },
         {
             "_id": "u106",
@@ -117,7 +122,8 @@
             "username": "user6",
             "password": "secret",
             "email": "BobbyB@mr-bit.com",
-            "isHost": true
+            "isHost": false,
+            "wishList": []
         },
         {
             "_id": "u107",
@@ -127,7 +133,8 @@
             "username": "user7",
             "password": "secret",
             "email": "BobbyB@mr-bit.com",
-            "isHost": true
+            "isHost": false,
+            "wishList": []
         },
         {
             "_id": "u108",
@@ -137,7 +144,8 @@
             "username": "user8",
             "password": "secret",
             "email": "ohMy@mr-bit.com",
-            "isHost": true
+            "isHost": false,
+            "wishList": []
         },
         {
             "_id": "u109",
@@ -147,7 +155,8 @@
             "username": "user9",
             "password": "secret",
             "email": "BarBar@mr-bit.com",
-            "isHost": true
+            "isHost": false,
+            "wishList": []
         },
         {
             "_id": "u110",
@@ -157,7 +166,8 @@
             "username": "user10",
             "password": "secret",
             "email": "MRlovalova@mr-bit.com",
-            "isHost": true
+            "isHost": false,
+            "wishList": []
         }
 
 
