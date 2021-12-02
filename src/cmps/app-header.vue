@@ -12,7 +12,8 @@
           class="user-menu-btn clickable flex align-center clickable"
           @click="shouldShow = !shouldShow"
         >
-          <img class="avatar" src="~@/assets/images/avatar1.png" />
+          <span class="material-icons-round"> account_circle </span>
+          <!-- <img class="avatar" src="~@/assets/images/avatar1.png" /> -->
         </button>
       </div>
     </section>
