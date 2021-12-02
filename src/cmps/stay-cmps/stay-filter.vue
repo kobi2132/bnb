@@ -1,59 +1,75 @@
 <template>
-  <section class="filter-container flex align-center">
+  <section class="filter-container flex align-center justify-center">
     <button
       class="mini-filter flex space-between align-center clickable"
       v-if="miniFilter"
     >
       Start your search <span></span>
     </button>
-    <form @submit.prevent="updateTrip" class="max-filter">
-      <div class="input-container">
-        <label
-          >Location
-          <select name="location">
-            <option value="">Where are you going?</option>
-            <option value="tel-aviv">Tel Aviv</option>
-            <option value="paris">Paris</option>
-            <option value="santorini">Santorini</option>
-            <option value="nyc">New York</option>
-          </select>
+    <form
+      @submit.prevent="updateTrip"
+      class="max-filter flex space-between align-center"
+    >
+      <div class="input-container" @click="shouldShow = false">
+        <label>
+          Location
+          <input
+            v-model="trip.destination"
+            type="search"
+            list="destination"
+            class="dropdown"
+            placeholder="Where are you going?"
+          />
+          <datalist id="destination">
+            <option value="Tel Aviv"></option>
+            <option value="Paris"></option>
+            <option value="Santorini"></option>
+            <option value="New York"></option>
+          </datalist>
         </label>
       </div>
-      <!-- <trip-calendar-2 /> -->
-      <div class="input-container">
-        <trip-calendar-3 />
+      <div class="input-container" @click="shouldShow = false">
+        <trip-calendar-3 @updated="updateDates" />
       </div>
-      <div class="input-container">
+      <div class="input-container" @click="shouldShow = !shouldShow">
         <label>
           Guests
-          <input class="guests" placeholder="Add guests" />
+          <input class="guests" placeholder="Add guests" disabled />
         </label>
-        <button class="search-btn">
-          <span class="material-icons-outlined"> search </span> Search
-        </button>
       </div>
+      <button class="search-btn">
+        <span class="material-icons-outlined"> search </span>
+      </button>
     </form>
-    <div class="guests-modal">
-      <div class="guest-type-label">
-        <div class="guest-label">
+    <div class="guests-modal flex column" v-if="shouldShow">
+      <div class="guest-type-label flex space-between align-center">
+        <div class="guest-label flex column">
           <span>Adults</span>
           <span>Ages 13 or above</span>
         </div>
-        <div class="guest-btns">
-          <button type="button" @click="updateGuests('adults', -1)">-</button>
-          <span>{{ guests.adults }}</span>
-          <button type="button" @click="updateGuests('adults', 1)">+</button>
+        <div class="guest-btns flex align-center space-between">
+          <button type="button" @click="updateGuests('adults', -1)">
+            <span class="material-icons-sharp"> remove </span>
+          </button>
+          <span class="guests-num">{{ trip.guests.adults }}</span>
+          <button type="button" @click="updateGuests('adults', 1)">
+            <span class="material-icons-sharp"> add </span>
+          </button>
         </div>
       </div>
-      <div class="guest-type-label">
-        <div class="guest-label">
+      <div class="guest-type-label flex space-between align-center">
+        <div class="guest-label flex column">
           <span>Children</span>
           <span>Ages 2-12</span>
         </div>
-        <div class="guest-btns">
-          <button type="button" @click="updateGuests('children', -1)">-</button>
-          <span>{{ guests.children }}</span>
-          <button type="button" @click="updateGuests('children', 1)">+</button>
+        <div class="guest-btns flex align-center space-between">
+          <button type="button" @click="updateGuests('children', -1)">
+            <span class="material-icons-sharp"> remove </span>
+          </button>
+          <span class="guests-num">{{ trip.guests.children }}</span>
+          <button type="button" @click="updateGuests('children', 1)">
+            <span class="material-icons-sharp"> add </span>
+          </button>
         </div>
       </div>
     </div>
@@ -71,10 +87,16 @@ export default {
     return {
       miniFilter: false,
       range: null,
-      guests: {
-        adults: 0,
-        children: 0,
+      trip: {
+        guests: {
+          adults: 0,
+          children: 0,
+        },
+        destination: null,
+        dates: [],
       },
+
+      shouldShow: false,
     };
   },
   components: {
@@ -86,10 +108,16 @@ export default {
   },
   methods: {
     updateGuests(type, number) {
-      this.guests[type] += number;
+      if (this.trip.guests[type] === 0 && number === -1) return;
+      this.trip.guests[type] += number;
     },
     updateTrip() {
-      console.log("updating trip");
+      console.log("updating trip", this.trip);
+      const trip = this.trip;
+      this.$store.mutations({ type: "setTrip", trip });
+    },
+    updateDates(dates) {
+      this.trip.dates = dates;
     },
   },
 };
