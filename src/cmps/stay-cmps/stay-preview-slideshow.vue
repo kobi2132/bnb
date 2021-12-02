@@ -3,9 +3,10 @@
     <div class="block">
       <el-carousel
         trigger="click"
-        height="200px"
-        width="300px"
+        height="262.250px"
+        width="362px"
         :autoplay="false"
+        :loop="false"
       >
         <el-carousel-item v-for="image in imgs" :key="image">
           <img :src="image" />
