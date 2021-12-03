@@ -5,7 +5,6 @@ export const stayStore = {
         stays: [],
         currStay: null,
         filterBy: {
-            name: "",
             labels: [],
         },
     },
@@ -16,6 +15,13 @@ export const stayStore = {
             console.log(destination)
             const regex = new RegExp(destination, 'i')
             var filteredStays = state.stays.filter(stay => regex.test(stay.loc.city))
+
+            const {labels} = state.filterBy
+            if (labels.length) {
+                console.log(labels);
+                filteredStays = filteredStays.filter((stay) => stay.amenities.some((label) => labels.includes(label.name)))
+                }
+
             return filteredStays
         },
         getCurrStay(state) {
@@ -30,6 +36,9 @@ export const stayStore = {
             state.currStay = stay
             console.log('currStay', state.currStay)
         },
+        setFilter(state, {filterBy}){
+            state.filterBy = filterBy
+        }
     },
     actions: {
         loadStays({ commit }) {
