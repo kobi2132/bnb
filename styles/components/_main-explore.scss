@@ -1,8 +1,48 @@
 .stay-list-conainer {
     display: grid;
-    grid-template-columns: repeat(4, minmax(300px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(326px, auto));
     column-gap: 17px;
     row-gap: 17px;
+}
+.explore-btns {
+    display: flex;
+    align-items: center;
+
+    .explore-btn {
+        height: 38px;
+        cursor: pointer !important;
+        border: 1px solid rgb(221, 221, 221) !important;
+        background-color: rgb(255, 255, 255) !important;
+        outline: none !important;
+        margin: 0px !important;
+        border-radius: 30px !important;
+        color: rgb(34, 34, 34) !important;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+        padding: 10px 16px !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        line-height: 18px !important;
+        margin-right: 8px !important;
+        margin-top: 4px !important;
+        margin-bottom: 4px !important;
+
+        &:hover {
+            border-color: #222222 !important;
+        }
+    }
+
+    .buffer {
+        margin-right: 8px !important;
+        margin-top: 4px !important;
+        margin-bottom: 4px !important;
+        font-size: 20px;
+        color: #dddddd;
+    }
+    .btn-expend {
+        display: flex;
+        place-content: center !important ;
+        font-size: 14px !important;
+    }
 }
 
 .stay-preview {
@@ -39,14 +79,13 @@
                     font-size: 18px;
                 }
             }
-           .review-avg {
-               color: #222222;
-           }
-           .reviews-total{
-               color: #717171;
-           }
+            .review-avg {
+                color: #222222;
+            }
+            .reviews-total {
+                color: #717171;
+            }
         }
-
     }
 }
 
@@ -60,13 +99,12 @@
     }
 }
 
-.el-carousel__container{
+.el-carousel__container {
     .el-carousel--horizontal {
         display: block !important;
         width: 362px;
-        height: 262.250px;
+        height: 262.25px;
     }
-
 }
 
 .el-carousel__button {

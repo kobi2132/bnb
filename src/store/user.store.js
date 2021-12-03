@@ -15,14 +15,6 @@ export const userStore = {
             state.loggedinUser = user
             console.log(state.loggedinUser)
         },
-        // setToggleWishList(state, { stayId }) {
-        //     console.log(stayId);
-        //     const idx = state.loggedinUser.wishList.findIndex((currStay) => currStay === stayId)
-        //     if (!idx) {
-        //         state.loggedinUser.wishList.push(stayId)
-        //     }
-        //     else state.loggedinUser.wishList.splice(idx, 1)
-        // }
     },
     actions: {
 

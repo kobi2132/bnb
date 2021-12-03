@@ -168,10 +168,9 @@ function getLoggedinUser() {
 }
 
 function update(user) {
-    // await storageService.put('user', user)
-    // user = await httpService.put(`user/${user._id}`, user)
-    // Handle case in which admin updates other user's details
-    if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
+    const idx = gUsers.findIndex(user => user._id === user._id)
+    gUsers.splice(idx, 1, user)
+    _saveLocalUser(user)
     return user;
 }
 
