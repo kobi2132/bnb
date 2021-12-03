@@ -6,10 +6,10 @@
     <section class="dest-container">
       <h1>Popular Destinations</h1>
       <section class="dest-gallery">
-        <a href="#">
+        <router-link to="/explore" @click="setDest('New York')">
           <img src="~@/assets/images/NY2.jpg" />
           <h3>New York</h3>
-        </a>
+        </router-link>
         <a href="#">
           <img src="~@/assets/images/SAN1.png" />
           <h3>Santorini</h3>
@@ -28,7 +28,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    setDest(dest) {
+      console.log(dest);
+      this.$store.commit({ type: "updateDest", dest });
+    },
+  },
+};
 </script>
 
 <style>

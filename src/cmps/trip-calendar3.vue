@@ -2,12 +2,13 @@
   <div>
     <label for="trip-cal">Check in Checkout</label>
     <date-picker
-      v-model="time3"
+      v-model="time"
       range-separator=" "
       :placeholder="placeholder"
       range
       format="MMM D"
       :input-attr="attributes"
+      @input="updateDates"
     ></date-picker>
   </div>
 </template>
@@ -20,10 +21,15 @@ export default {
   components: { DatePicker },
   data() {
     return {
-      time3: null,
+      time: null,
       placeholder: "Check in Checkout",
       attributes: { name: "date", id: "trip-cal" },
     };
+  },
+  methods: {
+    updateDates() {
+      this.$emit("updated", this.time);
+    },
   },
 };
 </script>
