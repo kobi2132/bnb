@@ -12,17 +12,15 @@ export const orderStore = {
         },
         getGuests(state) {
             return state.currTrip.guests
+        },
+        getCurrTrip(state) {
+            return state.currTrip
         }
     },
     mutations: {
         setTrip(state, { trip }) {
             console.log(trip)
             state.currTrip = trip
-        },
-        updateDest(state, { dest }) {
-            console.log(dest)
-            state.currTrip.destination = dest
-            console.log(state.currTrip)
         }
     },
     actions: {}

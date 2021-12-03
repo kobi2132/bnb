@@ -128,14 +128,6 @@ export default {
       this.trip.dates = dates;
     },
   },
-  watch: {
-    $route: {
-      handler() {
-        console.log($route.params);
-      },
-      immediate: true,
-    },
-  },
 };
 </script>
 

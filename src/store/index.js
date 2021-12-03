@@ -8,6 +8,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    currTrip: {
+      guests: { children: null, adults: null },
+      destination: null,
+      dates: []
+    }
   },
   mutations: {
   },

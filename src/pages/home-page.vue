@@ -6,23 +6,19 @@
     <section class="dest-container">
       <h1>Popular Destinations</h1>
       <section class="dest-gallery">
-        <a href="#" @click="setDest('New York')">
+        <router-link to="/explore?destination=New-York">
           <img src="~@/assets/images/NY2.jpg" />
           <h3>New York</h3>
-        </a>
-        <a href="#" @click="setDest('Santorini')">
+        </router-link>
+        <router-link to="/explore?destination=Santorini">
           <img src="~@/assets/images/SAN1.png" />
           <h3>Santorini</h3>
-        </a>
-        <a href="#" @click="setDest('Tel Aviv')">
+        </router-link>
+        <router-link to="/explore?destination=Tel-Aviv">
           <img src="~@/assets/images/TA1.jpg" />
           <h3>Tel Aviv</h3>
-        </a>
-        <!-- <a href="#" @click="setDest('Paris')">
-          <img src="~@/assets/images/paris.jpg" />
-          <h3>Paris</h3>
-        </a> -->
-        <router-link to="/explore?destination=Paris" @click="setDest('Paris')">
+        </router-link>
+        <router-link to="/explore?destination=Paris">
           <img src="~@/assets/images/paris.jpg" />
           <h3>Paris</h3>
         </router-link>
@@ -33,13 +29,7 @@
 
 <script>
 export default {
-  methods: {
-    setDest(dest) {
-      console.log(dest);
-      this.$store.commit({ type: "updateDest", dest });
-      this.$router.push("/explore");
-    },
-  },
+  methods: {},
 };
 </script>
 
