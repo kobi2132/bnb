@@ -8,8 +8,13 @@ export const stayStore = {
 
     },
     getters: {
-        staysToShow(state) {
-            return state.stays
+        staysToShow(state, getters) {
+            console.log(getters.getCurrTrip)
+            const { destination, guests, dates } = getters.getCurrTrip
+            console.log(destination)
+            const regex = new RegExp(destination, 'i')
+            var filteredStays = state.stays.filter(stay => regex.test(stay.loc.city))
+            return filteredStays
         },
         getCurrStay(state) {
             return JSON.parse(JSON.stringify(state.currStay))

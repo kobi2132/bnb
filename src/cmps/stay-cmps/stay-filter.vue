@@ -109,6 +109,7 @@ export default {
   computed: {
     currDest() {
       var dest = this.$store.getters.getDest;
+      console.log(dest);
       if (!dest) return "Start your search";
       else return dest;
     },
