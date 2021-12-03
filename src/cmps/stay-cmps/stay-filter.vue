@@ -1,11 +1,5 @@
 <template>
   <section class="filter-container flex align-center justify-center">
-    <button
-      class="mini-filter flex space-between align-center clickable"
-      v-if="miniFilter"
-    >
-      {{ currDest }} <span></span>
-    </button>
     <form
       @submit.prevent="updateTrip"
       class="max-filter flex space-between align-center"
@@ -86,7 +80,6 @@ import DatePicker from "v-calendar/lib/components/date-picker.umd";
 export default {
   data() {
     return {
-      miniFilter: false,
       range: null,
       trip: {
         guests: {
@@ -106,12 +99,6 @@ export default {
     tripCalendar3,
     Calendar,
     DatePicker,
-  },
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
   },
   computed: {
     currDest() {
@@ -134,10 +121,10 @@ export default {
     updateDates(dates) {
       this.trip.dates = dates;
     },
-    handleScroll(event) {
-      console.log(document.body.scrollTop);
-      console.log("scrolling...");
-    },
+  },
+  created() {
+    if (this.$store.getters.getDest)
+      this.trip.destination = this.$store.getters.getDest;
   },
 };
 </script>

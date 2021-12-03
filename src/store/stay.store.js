@@ -16,11 +16,11 @@ export const stayStore = {
             const regex = new RegExp(destination, 'i')
             var filteredStays = state.stays.filter(stay => regex.test(stay.loc.city))
 
-            const {labels} = state.filterBy
-            if (labels.length) {
-                console.log(labels);
-                filteredStays = filteredStays.filter((stay) => stay.amenities.some((label) => labels.includes(label.name)))
-                }
+            // const { labels } = state.filterBy
+            // if (labels.length) {
+            //     console.log(labels);
+            //     filteredStays = filteredStays.filter((stay) => stay.amenities.some((label) => labels.includes(label.name)))
+            // }
 
             return filteredStays
         },
@@ -36,7 +36,7 @@ export const stayStore = {
             state.currStay = stay
             console.log('currStay', state.currStay)
         },
-        setFilter(state, {filterBy}){
+        setFilter(state, { filterBy }) {
             state.filterBy = filterBy
         }
     },

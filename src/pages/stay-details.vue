@@ -4,9 +4,9 @@
     <h2>{{ stay.name }}</h2>
 
     <stay-short-info :stay="stay" />
-    
+
     <stay-gallery :stay="stay" />
-    
+
     <section>
       <h4>{{ stay.summery }}</h4>
       <h5>{{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths</h5>
@@ -14,7 +14,7 @@
     </section>
 
     <stay-features />
-    
+
     <stay-description :stay="stay" />
 
     <stay-reviews :reviews="stay.reviews" />
@@ -30,21 +30,21 @@
 </template>
 
 <script>
-import stayGallery from '@/cmps/stay-cmps/stay-gallery.vue'
-import stayShortInfo from '@/cmps/stay-cmps/stay-short-info.vue'
-import stayFeatures from '@/cmps/stay-cmps/stay-features.vue'
-import stayDescription from '@/cmps/stay-cmps/stay-description.vue'
-import stayReviews from '@/cmps/stay-cmps/stay-reviews.vue'
+import stayGallery from "@/cmps/stay-cmps/stay-gallery.vue";
+import stayShortInfo from "@/cmps/stay-cmps/stay-short-info.vue";
+import stayFeatures from "@/cmps/stay-cmps/stay-features.vue";
+import stayDescription from "@/cmps/stay-cmps/stay-description.vue";
+import stayReviews from "@/cmps/stay-cmps/stay-reviews.vue";
 
 export default {
   name: "stayDetails",
-  
-   components: {
+
+  components: {
     stayGallery,
     stayShortInfo,
     stayFeatures,
     stayDescription,
-    stayReviews
+    stayReviews,
   },
 
   computed: {
@@ -95,6 +95,8 @@ export default {
         let stayId = this.$route.params.stayId;
         console.log("Changed to", stayId);
         this.$store.dispatch({ type: "setCurrStay", stayId });
+        const page = "stayDetails";
+        this.$store.commit({ type: "setCurrPage", page });
       },
       immediate: true,
     },
@@ -103,5 +105,4 @@ export default {
 </script>
 
 <style>
-
 </style>
