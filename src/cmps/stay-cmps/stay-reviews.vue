@@ -4,17 +4,17 @@
       <div class="stay-reviews-header">
         <h2>
           <span class="material-icons-outlined"> star </span>
-         {{ reviewsRateAvg }}
-         ({{this.reviews.length}} reviews) 
+          {{ reviewsRateAvg }}
+          ({{this.reviews.length}} reviews) 
         </h2>
         <div class="stay-reviews-stats">
-          <!-- <star-rating v-model="rating"></star-rating> -->
+          
         </div>
           <!-- <template v-for="(review, idx) in reviews">
-                
+          
           </template> -->
       </div>
-
+      <add-stay-review />
 
       
     </section>
@@ -22,7 +22,7 @@
 
 <script>
 // import StarRating from 'vue-star-rating'
-
+import addStayReview from './add-stay-review.vue'
 
 export default {
 name: "stayReviews",
@@ -32,9 +32,9 @@ name: "stayReviews",
       default: [],
     },
   },
-//   components: {
-//   StarRating
-// },
+  components: {
+  addStayReview
+},
   computed: {
     reviewsRateAvg(){
       // console.log('reviews' , this.reviews);
