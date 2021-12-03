@@ -12,6 +12,7 @@
     <button class="explore-btn">Pets Allowed</button>
     </section>
 
+
     <ul class="stay-list-conainer clean-list">
       <li v-for="stay in stays" :key="stay._id" class="stay-preview-container">
         <stay-preview :stay="stay" />
