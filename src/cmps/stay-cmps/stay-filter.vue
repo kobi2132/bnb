@@ -29,7 +29,7 @@
         </label>
       </div>
       <div class="input-container" @click="shouldShow = false">
-        <trip-calendar-3 @updated="updateDates" />
+        <!-- <trip-calendar-3 @updated="updateDates" /> --><trip-calendar-2 />
       </div>
       <div class="input-container" @click="shouldShow = !shouldShow">
         <label>
@@ -131,5 +131,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>
