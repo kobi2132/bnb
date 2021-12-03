@@ -10,8 +10,7 @@ import locale from 'element-ui/lib/locale'
 import en from 'element-ui/lib/locale/lang/en'
 import VCalendar from 'v-calendar';
 import DatePicker from 'vue2-datepicker';
-import HistogramSlider from 'vue-histogram-slider';
-import 'vue-histogram-slider/dist/histogram-slider.css';
+
 
 
 

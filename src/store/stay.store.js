@@ -4,8 +4,10 @@ export const stayStore = {
     state: {
         stays: [],
         currStay: null,
-
-
+        filterBy: {
+            name: "",
+            labels: [],
+        },
     },
     getters: {
         staysToShow(state, getters) {
