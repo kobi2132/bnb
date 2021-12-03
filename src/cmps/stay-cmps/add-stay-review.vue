@@ -3,8 +3,7 @@
 
     <h2>add review</h2>
     <div class="add-review-header flex ">
-        <img src="~@/assets/images/review-avatar.png"
- alt="" class="host-img">
+        <img src="~@/assets/images/review-avatar.png" alt="" class="host-img">
         <!-- img not rendering -->
         <div class="review-date-name">
             <h3>name</h3>
