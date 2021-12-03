@@ -2,7 +2,16 @@
   <section class="trip-calendar">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8" @submit.prevent>
       <div class="mb-4">
-        <v-date-picker v-model="range" mode="date" :masks="masks" is-range>
+        <v-date-picker
+          v-model="range"
+          mode="date"
+          :masks="masks"
+          is-range
+          :columns="2"
+          is-expanded
+          :popover="{ visibility: 'click' }"
+          color="gray"
+        >
           <template v-slot="{ inputValue, inputEvents, isDragging }">
             <div class="flex flex-col sm:flex-row justify-start items-center">
               <div class="relative flex-grow">

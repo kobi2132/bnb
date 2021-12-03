@@ -51,6 +51,17 @@
         min-width: 200px;
     }
 
+    label {
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    input::placeholder {
+        font-size: 14px;
+        color: rgb(113, 113, 113);
+        font-weight: 400;
+
+    }
     button, input {
         background-color: transparent;
         border: none;

@@ -2,7 +2,7 @@
   <section class="filter-container flex align-center justify-center">
     <button
       class="mini-filter flex space-between align-center clickable"
-      v-if="!miniFilter"
+      v-if="miniFilter"
     >
       {{ currDest }} <span></span>
     </button>
@@ -29,7 +29,8 @@
         </label>
       </div>
       <div class="input-container" @click="shouldShow = false">
-        <!-- <trip-calendar-3 @updated="updateDates" /> --><trip-calendar-2 />
+        <!-- <trip-calendar-3 @updated="updateDates" /> -->
+        <trip-calendar-2 />
       </div>
       <div class="input-container" @click="shouldShow = !shouldShow">
         <label>
@@ -106,6 +107,12 @@ export default {
     Calendar,
     DatePicker,
   },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
   computed: {
     currDest() {
       var dest = this.$store.getters.getDest;
@@ -126,6 +133,10 @@ export default {
     },
     updateDates(dates) {
       this.trip.dates = dates;
+    },
+    handleScroll(event) {
+      console.log(document.body.scrollTop);
+      console.log("scrolling...");
     },
   },
 };
