@@ -11,11 +11,18 @@
       </div>
     </button>
     <span class="buffer">|</span>
-    <button class="explore-btn" @click="addLabel('wifi')" >Wifi</button>
-    <button class="explore-btn" @click="addLabel('Kitchen')" >Kitchen</button>
-    <button class="explore-btn" @click="addLabel('Air conditioning')" >AC</button>
-    <button class="explore-btn" @click="addLabel('wifi')" >Smoking Allowed</button>
-    <button class="explore-btn" @click="addLabel('wifi')" >Pets Allowed</button>
+    <button class="explore-btn" @click="toggleLabel('Wifi')">Wifi</button>
+    <button class="explore-btn" @click="toggleLabel('TV')">TV</button>
+    <button class="explore-btn" @click="toggleLabel('Kitchen')">Kitchen</button>
+    <button class="explore-btn" @click="toggleLabel('Air conditioning')">
+      AC
+    </button>
+    <button class="explore-btn" @click="toggleLabel('Smoking Allowed')">
+      Smoking Allowed
+    </button>
+    <button class="explore-btn" @click="toggleLabel('Pets Allowed')">
+      Pets Allowed
+    </button>
   </section>
 </template>
 
@@ -33,12 +40,19 @@ export default {
   components: {},
   computed: {},
   methods: {
-    addLabel(amenitie) {
+    toggleLabel(amenitie) {
       const idx = this.filterBy.labels.findIndex((label) => label === amenitie);
       if (idx === -1) this.filterBy.labels.push(amenitie);
       else this.filterBy.labels.splice(idx, 1);
       console.log(this.filterBy.labels);
+
+      this.setFilter();
     },
+    
+    setFilter(){
+      const filterBy = this.filterBy
+      this.$store.commit({type: 'setFilter', filterBy})
+    }
   },
 };
 </script>
