@@ -109,6 +109,7 @@ export default {
   computed: {
     currDest() {
       var dest = this.$store.getters.getDest;
+      console.log(dest);
       if (!dest) return "Start your search";
       else return dest;
     },
@@ -125,6 +126,14 @@ export default {
     },
     updateDates(dates) {
       this.trip.dates = dates;
+    },
+  },
+  watch: {
+    $route: {
+      handler() {
+        console.log($route.params);
+      },
+      immediate: true,
     },
   },
 };
