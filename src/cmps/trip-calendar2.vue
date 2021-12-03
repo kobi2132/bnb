@@ -24,24 +24,26 @@
                 >
                   <path
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  ></path>
-                </svg>
-                <input
-                  placeholder="Check in"
-                  class="
-                    flex-grow
-                    pl-8
-                    pr-2
-                    py-1
-                    bg-gray-100
-                    border
-                    rounded
-                    w-full
-                  "
-                  :class="isDragging ? 'text-gray-600' : 'text-gray-900'"
-                  :value="inputValue.start"
-                  v-on="inputEvents.start"
-                />
+                  ></path></svg
+                ><label
+                  >Check in
+                  <input
+                    placeholder="Add dates"
+                    class="
+                      flex-grow
+                      pl-8
+                      pr-2
+                      py-1
+                      bg-gray-100
+                      border
+                      rounded
+                      w-full
+                    "
+                    :class="isDragging ? 'text-gray-600' : 'text-gray-900'"
+                    :value="inputValue.start"
+                    v-on="inputEvents.start"
+                  />
+                </label>
               </div>
               <span class="flex-shrink-0 m-2">
                 <svg
@@ -77,22 +79,24 @@
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                   ></path>
                 </svg>
-                <input
-                  placeholder="Check out"
-                  class="
-                    flex-grow
-                    pl-8
-                    pr-2
-                    py-1
-                    bg-gray-100
-                    border
-                    rounded
-                    w-full
-                  "
-                  :class="isDragging ? 'text-gray-600' : 'text-gray-900'"
-                  :value="inputValue.end"
-                  v-on="inputEvents.end"
-                />
+                <label
+                  >Check out
+                  <input
+                    placeholder="Add dates"
+                    class="
+                      flex-grow
+                      pl-8
+                      pr-2
+                      py-1
+                      bg-gray-100
+                      border
+                      rounded
+                      w-full
+                    "
+                    :class="isDragging ? 'text-gray-600' : 'text-gray-900'"
+                    :value="inputValue.end"
+                    v-on="inputEvents.end"
+                /></label>
               </div>
             </div>
           </template>
@@ -118,7 +122,7 @@ export default {
 </script>
 
 <style scoped>
-input {
-  background-color: pink !important;
+.mx-2 {
+  display: none !important;
 }
 </style>
