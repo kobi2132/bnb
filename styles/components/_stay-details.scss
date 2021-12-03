@@ -52,3 +52,33 @@
 .stay-gallery :nth-child(5) {
     border-bottom-right-radius: 13px;
 }
+
+.checked {
+    color: $redAirbnb;
+}
+
+// add review section
+.add-review-header {
+    align-items: center;
+}
+
+.add-review-ctgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px 100px;
+    gap: 10px 100px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.add-review-text textarea {
+    margin: 20px 0;
+    padding: 20px;
+    font-size: inherit;
+    font-family: inherit;
+    width: 100%;
+    height: 150px;
+    resize: none;
+    border-radius: 13px;
+    border-color: #bdbcbc;
+}
