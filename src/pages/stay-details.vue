@@ -16,6 +16,7 @@
     <stay-features />
 
     <stay-description :stay="stay" />
+    <order-modal :stay="stay" />
 
     <stay-reviews :reviews="stay.reviews" />
 
@@ -35,6 +36,7 @@ import stayShortInfo from "@/cmps/stay-cmps/stay-short-info.vue";
 import stayFeatures from "@/cmps/stay-cmps/stay-features.vue";
 import stayDescription from "@/cmps/stay-cmps/stay-description.vue";
 import stayReviews from "@/cmps/stay-cmps/stay-reviews.vue";
+import orderModal from "@/cmps/stay-cmps/order-modal.vue";
 
 export default {
   name: "stayDetails",
@@ -45,6 +47,7 @@ export default {
     stayFeatures,
     stayDescription,
     stayReviews,
+    orderModal,
   },
 
   computed: {

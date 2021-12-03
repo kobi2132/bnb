@@ -3,6 +3,7 @@
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8" @submit.prevent>
       <div class="mb-4">
         <v-date-picker
+          @input="updateDates"
           v-model="range"
           mode="date"
           :masks="masks"
@@ -13,8 +14,16 @@
           color="gray"
         >
           <template v-slot="{ inputValue, inputEvents, isDragging }">
-            <div class="flex flex-col sm:flex-row justify-start items-center">
-              <div class="relative flex-grow">
+            <div
+              class="
+                flex flex-col
+                sm:flex-row
+                justify-start
+                items-center
+                dates-container
+              "
+            >
+              <div class="relative flex-grow checkin">
                 <svg
                   class="
                     text-gray-600
@@ -67,7 +76,7 @@
                   />
                 </svg>
               </span>
-              <div class="relative flex-grow">
+              <div class="relative flex-grow checkout">
                 <svg
                   class="
                     text-gray-600
@@ -116,6 +125,7 @@
 </template>
 <script>
 export default {
+  props: ["dates"],
   data() {
     return {
       range: {
@@ -123,9 +133,19 @@ export default {
         end: null,
       },
       masks: {
-        input: "DD-MMM",
+        input: "DD MMM",
       },
     };
+  },
+  methods: {
+    updateDates() {
+      console.log(this.range);
+      this.$emit("updated", this.range);
+    },
+  },
+  created() {
+    this.range = this.$store.getters.getDates;
+    console.log(this.range);
   },
 };
 </script>
