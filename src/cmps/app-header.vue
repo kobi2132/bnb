@@ -48,8 +48,8 @@ export default {
       this.$router.push("/").catch(() => {});
     },
     handleScroll(event) {
-      console.log(window.scrollY);
-      console.log("scrolling...");
+      // console.log(window.scrollY);
+      // console.log("scrolling...");
       if (window.scrollY > 50) this.miniFilter = true;
       if (window.scrollY < 50) this.miniFilter = false;
     },

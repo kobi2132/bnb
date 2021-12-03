@@ -1,0 +1,80 @@
+.order-modal {
+    background-color: whitesmoke;
+    width: 315px;
+    padding: 24px;
+
+    input {
+        border: none;
+        box-shadow: none !important;
+        font-family: inherit;
+
+        &:focus-visible {
+            outline: none;
+        }
+
+        &::placeholder {
+            font-size: 14px;
+            color: rgb(113, 113, 113);
+            font-weight: 400;
+        }
+    }
+
+    label {
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .reserve-btn {
+        background-color: $redAirbnb;
+        border:none;
+        color: white;
+        text-align: center;
+        width: 100%;
+        height: 48px;
+        min-width: 200px;
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 8px;
+
+        // background-image: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;
+        // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+        //   --mouse-x: 53.625;
+        //   --mouse-y: 66.6667;
+    }
+    .input-container {
+        display: flex;
+        flex-direction: column;
+
+        label,input {
+            display: block;
+        }
+        border: 1px solid rgb(34,34,34);
+        padding: 10px 12px;
+        border-radius: 0px 0px 13px 13px;
+
+    }
+    .dates-container {
+
+        .checkout {
+            border: 1px solid rgb(34,34,34);
+            border-bottom-color: hsla(0,0%,100%,0);
+            border-top-right-radius: 13px;
+            padding: 10px 12px;
+
+        }
+        .checkin {
+            border: 1px solid rgb(34,34,34);
+            border-bottom-color: hsla(0,0%,100%,0);
+            border-right-color: hsla(0,0%,100%,0);
+            border-top-left-radius: 13px;
+            padding: 10px 12px;
+        }
+    }
+}
+
+.order-form-header {
+    width: 100%;
+    margin-bottom: 24px;
+}

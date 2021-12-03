@@ -30,6 +30,10 @@
 <script>
 export default {
   methods: {},
+  created() {
+    const page = "homePage";
+    this.$store.commit({ type: "setCurrPage", page });
+  },
 };
 </script>
 

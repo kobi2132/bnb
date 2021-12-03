@@ -3,7 +3,7 @@ export const orderStore = {
         currTrip: {
             guests: { children: null, adults: null },
             destination: null,
-            dates: []
+            dates: {}
         }
     },
     getters: {
@@ -12,6 +12,9 @@ export const orderStore = {
         },
         getGuests(state) {
             return state.currTrip.guests
+        },
+        getDates(state) {
+            return state.currTrip.dates
         },
         getCurrTrip(state) {
             return state.currTrip

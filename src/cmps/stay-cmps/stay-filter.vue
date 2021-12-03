@@ -24,9 +24,12 @@
       </div>
       <div class="input-container" @click="shouldShow = false">
         <!-- <trip-calendar-3 @updated="updateDates" /> -->
-        <trip-calendar-2 />
+        <trip-calendar-2 @updated="updateDates" />
       </div>
-      <div class="input-container" @click="shouldShow = !shouldShow">
+      <div
+        class="input-container flex column"
+        @click="shouldShow = !shouldShow"
+      >
         <label>
           Guests
           <input class="guests" placeholder="Add guests" disabled />
@@ -87,7 +90,7 @@ export default {
           children: 0,
         },
         destination: null,
-        dates: [],
+        dates: {},
       },
 
       shouldShow: false,
@@ -119,6 +122,7 @@ export default {
       this.$store.commit({ type: "setTrip", trip });
     },
     updateDates(dates) {
+      console.log(dates);
       this.trip.dates = dates;
     },
   },
