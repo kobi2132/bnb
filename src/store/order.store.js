@@ -2,7 +2,7 @@ export const orderStore = {
     state: {
         currTrip: {
             guests: { children: null, adults: null },
-            destination: null,
+            destination: '',
             dates: {}
         }
     },
