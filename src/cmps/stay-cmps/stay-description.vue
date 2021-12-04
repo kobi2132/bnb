@@ -6,8 +6,8 @@
     </div>
     
     <section class="stay-amenities">
-      <h2>Amenities</h2>
-      <ul class="amenities-list">
+      <h2 class="amenities-header">Amenities</h2>
+      <ul class="amenities-list clean-list">
         <li
           v-for="(amenity, idx) in stay.amenities"
           :key="idx"
