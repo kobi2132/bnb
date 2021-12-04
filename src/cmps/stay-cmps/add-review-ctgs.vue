@@ -21,8 +21,8 @@
                 <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Location}" class="fa fa-star" @click="changeColor(num, 'Location')"></span>
         </div>
         <div class="add-review-ctg">
-            <label for="Value">Value</label>
-                <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Value}" class="fa fa-star" @click="changeColor(num, 'Value')"></span>
+            <label for="Accessibility">Accessibility</label>
+                <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Accessibility}" class="fa fa-star" @click="changeColor(num, 'Accessibility')"></span>
         </div>
     </div>
 </template>
@@ -38,7 +38,7 @@ export default {
             CheckIn:5,
             Accuracy:1,
             Location:2,
-            Value:4
+            Accessibility:4
         }   
     },
     methods: {
