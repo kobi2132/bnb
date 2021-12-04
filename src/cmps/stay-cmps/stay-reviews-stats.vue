@@ -2,79 +2,81 @@
   <section>
     <h2>stats</h2>
     <!-- todos -->
-    <!-- functionality -->
+    <!-- fix the funcs it looks like crap -->
+    <!-- functionality done-->
     <!-- color -->
+
     <div class="review-stats">
       <div class="review-ctg flex space-between">
         <label for="Cleanliness">Cleanliness</label>
         <div>
-            <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= Cleanliness }"
-          class="fa fa-star"
-          @click="setColor(num, 'Cleanliness')"
-        ></span>
-            </div>
+          <span
+            v-for="(num, idx) in 5"
+            :key="idx"
+            :class="{ checked: num <= Cleanliness }"
+            class="fa fa-star"
+            
+          ></span>
+        </div>
       </div>
       <div class="review-ctg flex space-between">
         <label for="Communication">Communication</label>
         <div>
-        <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= Communication }"
-          class="fa fa-star"
-          @click="setColor(num, 'Communication')"
-        ></span>
+          <span
+            v-for="(num, idx) in 5"
+            :key="idx"
+            :class="{ checked: num <= Communication }"
+            class="fa fa-star"
+        
+          ></span>
         </div>
       </div>
       <div class="review-ctg flex space-between">
         <label for="CheckIn">Check-in</label>
         <div>
-            <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= CheckIn }"
-          class="fa fa-star"
-          @click="setColor(num, 'CheckIn')"
-        ></span>
+          <span
+            v-for="(num, idx) in 5"
+            :key="idx"
+            :class="{ checked: num <= CheckIn }"
+            class="fa fa-star"
+            
+          ></span>
         </div>
       </div>
       <div class="review-ctg flex space-between">
         <label for="Accuracy">Accuracy</label>
         <div>
-            <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= Accuracy }"
-          class="fa fa-star"
-          @click="setColor(num, 'Accuracy')"
-        ></span>
+          <span
+            v-for="(num, idx) in 5"
+            :key="idx"
+            :class="{ checked: num <= Accuracy }"
+            class="fa fa-star"
+        
+          ></span>
         </div>
       </div>
       <div class="review-ctg flex space-between">
         <label for="Location">Location</label>
         <div>
-        <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= Location }"
-          class="fa fa-star"
-          @click="setColor(num, 'Location')"
-        ></span>
+          <span
+            v-for="(num, idx) in 5"
+            :key="idx"
+            :class="{ checked: num <= Location }"
+            class="fa fa-star"
+            
+          ></span>
         </div>
       </div>
       <div class="review-ctg flex space-between">
-        <label for="Value">Value</label>
+        <label for="Accessibility">Accessibility</label>
         <div>
-        <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= Value }"
-          class="fa fa-star"
-          @click="setColor(num, 'Value')"
-        ></span>
+          <span
+            v-for="(num, idx) in 5"
+            :key="idx"
+            :class="{ checked: num <= Accessibility }"
+            class="fa fa-star"
+            
+          ></span>
         </div>
       </div>
     </div>
@@ -90,24 +92,80 @@ export default {
       default: [],
     },
   },
-    data() {
-      return {
-        rate: 3,
-        Cleanliness: 1,
-        Communication: 3,
-        CheckIn: 5,
-        Accuracy: 1,
-        Location: 2,
-        Value: 4,
-      };
+  data() {
+    return {
+      rate: 0,
+      Cleanliness: 0,
+      Communication: 0,
+      CheckIn: 0,
+      Accuracy: 0,
+      Location: 0,
+      Accessibility: 0,
+    };
+  },
+  created(){
+      this.reviewsRateScoreAvg()
+  },
+  methods: {
+    reviewsRateScoreAvg() {
+        
+        var ratingsScores = {
+          cleanlinessScore : [],
+          checkInScore : [],
+          locationScore : [],
+          communicationScore : [],
+          accuracyScore : [],
+          accessibilityScore : [],
+        }
+        this.reviews.forEach((review) => {
+          console.log(review.rate)
+          const {cleanliness} = review.rate
+          ratingsScores.cleanlinessScore.push(cleanliness)
+          const {checkIn} = review.rate
+          ratingsScores.checkInScore.push(checkIn)
+          const {location} = review.rate
+          ratingsScores.locationScore.push(location)
+          const {communication} = review.rate
+          ratingsScores.communicationScore.push(communication)
+          const {accuracy} = review.rate
+          ratingsScores.accuracyScore.push(accuracy)
+          const {accessibility} = review.rate
+          ratingsScores.accessibilityScore.push(accessibility)
+        
+        });
+        console.log(ratingsScores)
+
+          ratingsScores.cleanlinessScore = (ratingsScores.cleanlinessScore.reduce(this.add)/this.reviews.length).toFixed(0)
+          ratingsScores.checkInScore = (ratingsScores.checkInScore.reduce(this.add)/this.reviews.length).toFixed(0)
+          ratingsScores.locationScore = (ratingsScores.locationScore.reduce(this.add)/this.reviews.length).toFixed(0)
+          ratingsScores.communicationScore = (ratingsScores.communicationScore.reduce(this.add)/this.reviews.length).toFixed(0) 
+          ratingsScores.accuracyScore = (ratingsScores.accuracyScore.reduce(this.add)/this.reviews.length).toFixed(0)
+          ratingsScores.accessibilityScore = (ratingsScores.accessibilityScore.reduce(this.add)/this.reviews.length).toFixed(0)
+
+          console.log(ratingsScores)
+        
+        
+          this.Cleanliness =  ratingsScores.cleanlinessScore
+          this.CheckIn= ratingsScores.checkInScore
+          this.Location= ratingsScores.locationScore
+          this.Communication= ratingsScores.communicationScore
+          this.Accuracy= ratingsScores.accuracyScore
+          this.Accessibility= ratingsScores.accessibilityScore
+        
+        
+        return ratingsScores
     },
-    methods: {
-      setColor(num, type) {
-        this[type] = num;
-      },
+    setColor(num, type) {
+      this[type] = num;
     },
-  
-};
+      add(accumulator, a) {
+  return accumulator + a;
+  }
+  },
+  computed: {
+    
+  },
+}
 </script>
 
 <style>
