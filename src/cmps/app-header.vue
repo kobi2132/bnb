@@ -58,11 +58,11 @@ export default {
   computed: {
     currDest() {
       var dest = this.$store.getters.getDest;
-      console.log(dest);
       if (!dest) return "Start your search";
       else return dest;
     },
     stayDetails() {
+      console.log(this.currPage);
       if (this.currPage === "stayDetails") return true;
       else return false;
     },
@@ -81,12 +81,13 @@ export default {
     stayFilter,
   },
   watch: {
-    "this.$store.getters.currPage": {
+    "$store.state.currPage": {
       handler() {
         this.currPage = this.$store.getters.currPage;
         console.log(this.currPage);
       },
       immediate: true,
+      deep: true,
     },
   },
 };

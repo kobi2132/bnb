@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currPage: null
+    currPage: 'homePage'
   },
   getters: {
     currPage(state) {
