@@ -27,6 +27,35 @@
         </router-link>
       </section>
     </section>
+    <section class="toprated-container">
+      <h1>Top Rated</h1>
+      <section class="top-rated-gallery">
+        <router-link to="/explore">
+          <img src="~@/assets/images/TBA.jpg" />
+          <h3>To be Added</h3>
+        </router-link>
+        <router-link to="/explore">
+          <img src="~@/assets/images/TBA.jpg" />
+          <h3>To be Added</h3>
+        </router-link>
+        <router-link to="/explore">
+          <img src="~@/assets/images/TBA.jpg" />
+          <h3>To be Added</h3>
+        </router-link>
+        <router-link to="/explore">
+          <img src="~@/assets/images/TBA.jpg" />
+          <h3>To be Added</h3>
+        </router-link>
+      </section>
+    </section>
+    <section class="host-container full">
+      <section class="host">
+        <h1>Become a host!</h1>
+        <button class="clickable">
+          <h3>Learn more</h3>
+        </button>
+      </section>
+    </section>
   </section>
 </template>
 

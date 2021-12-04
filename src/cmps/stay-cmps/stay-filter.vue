@@ -35,7 +35,7 @@
           <input class="guests" :placeholder="numOfGuests" disabled />
         </label>
       </div>
-      <button class="search-btn">
+      <button class="search-btn clickable" @click.stop="goExplore">
         <span class="material-icons-outlined"> search </span>
       </button>
     </form>
@@ -112,6 +112,12 @@ export default {
     },
   },
   methods: {
+    goExplore() {
+      this.updateTrip();
+      this.$router
+        .push(`/explore?destination=${this.trip.destination}`)
+        .catch(() => {});
+    },
     updateGuests(type, number) {
       if (this.trip.guests[type] === 0 && number === -1) return;
       this.trip.guests[type] += number;
@@ -147,6 +153,16 @@ export default {
     adults() {
       if (this.trip.guests.adults === null) return 0;
       else return this.trip.guests.adults;
+    },
+  },
+  watch: {
+    "$store.state.currTrip": {
+      handler() {
+        this.trip = this.$store.getters.getCurrTrip;
+        console.log(this.trip);
+      },
+      immediate: true,
+      deep: true,
     },
   },
 };
