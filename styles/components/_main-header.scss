@@ -16,6 +16,8 @@
     }
 }
 
+
+
 .main-header {
     position: fixed;
     top: 0;
@@ -50,6 +52,14 @@
 
     span {
         margin-left: 12px;
+    }
+
+}
+
+.main-header.details {
+        grid-template-columns: 115px 1fr 115px;
+        > * {
+            grid-column: 2;
     }
 }
 
