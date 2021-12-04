@@ -1,5 +1,5 @@
 <template>
-  <section class="main-header" :class="{ details: currPage === 'stayDetails' }">
+  <section class="main-header" :class="{ details: stayDetails }">
     <section class="main-header-container flex space-between">
       <div class="logo clickable" @click="goHome">
         <img class="logo-img" src="~@/assets/images/logo.png" />
@@ -58,21 +58,37 @@ export default {
   computed: {
     currDest() {
       var dest = this.$store.getters.getDest;
-      console.log(dest);
       if (!dest) return "Start your search";
       else return dest;
+    },
+    stayDetails() {
+      console.log(this.currPage);
+      if (this.currPage === "stayDetails") return true;
+      else return false;
     },
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
+  },
+  mounted() {
     this.currPage = this.$store.getters.currPage;
-    console.log(this.currPage);
+    console.log("header created", this.currPage);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
   },
   components: {
     stayFilter,
+  },
+  watch: {
+    "$store.state.currPage": {
+      handler() {
+        this.currPage = this.$store.getters.currPage;
+        console.log(this.currPage);
+      },
+      immediate: true,
+      deep: true,
+    },
   },
 };
 </script>

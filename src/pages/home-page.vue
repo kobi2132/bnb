@@ -1,7 +1,10 @@
 <template>
   <section class="home-page main-layout2">
     <section class="main-hero">
-      <h1>Mi casa es su casa.</h1>
+      <h1>Not sure where to go? Perfect.</h1>
+      <button class="clickable" @click="goExplore">
+        <h3>I'm flexible</h3>
+      </button>
     </section>
     <section class="dest-container">
       <h1>Popular Destinations</h1>
@@ -33,6 +36,11 @@ export default {
   created() {
     const page = "homePage";
     this.$store.commit({ type: "setCurrPage", page });
+  },
+  methods: {
+    goExplore() {
+      this.$router.push("/explore").catch(() => {});
+    },
   },
 };
 </script>

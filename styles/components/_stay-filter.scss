@@ -1,6 +1,6 @@
 
 .max-filter {
-    transition: 1s;
+    margin:20px;
     line-height: 20px;
     box-shadow: rgb(0 0 0 / 8%) 0px 1px 2px, rgb(0 0 0 / 5%) 0px 4px 12px;
     background-color: #FFF;
@@ -88,7 +88,7 @@
     display: none !important;
 }
 
-.filter-container{
+.filter-container {
     .guests-modal {
         display: flex;
         position: absolute;
@@ -138,5 +138,5 @@
         }
         
     }
-
+    transition: 1s;
 }

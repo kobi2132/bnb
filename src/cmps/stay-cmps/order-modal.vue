@@ -9,7 +9,7 @@
           <div class="star-preview">
             <span class="material-icons">star</span>
           </div>
-          <!-- <span class="review-avg">{{ this.reviewsAvg }}&nbsp;</span> -->
+          <span class="review-avg">{{ reviewsRateAvg }}&nbsp;</span>
           <span class="reviews-total">( {{ this.stay.reviews.length }} )</span>
         </div>
       </div>
@@ -64,13 +64,13 @@
             </div>
           </div>
         </div>
-        <button class="reserve-btn">Reserve</button>
+        <button class="reserve-btn">{{ buttonText }}</button>
       </form>
       <p>You won't be charged yet</p>
       <div class="pricing">
-        <p>Price</p>
-        <p>Service fee</p>
-        <p>Total</p>
+        <p>Price {{ calculateTotalPrice }}</p>
+        <p>Service fee {{ fees }}</p>
+        <p>Total {{ totalPay }}</p>
       </div>
     </div>
   </div>
@@ -116,6 +116,11 @@ export default {
       this.trip.dates = dates;
       this.updateTrip();
     },
+    getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+    },
   },
   computed: {
     numOfGuests() {
@@ -123,6 +128,38 @@ export default {
       if (guestsCount > 1) return guestsCount + " guests";
       else if (guestsCount === 1) return guestsCount + " guest";
       else return "Add guests";
+    },
+    buttonText() {
+      var size = Object.keys(this.trip.dates).length;
+      if ((this.trip.guests.adults || this.trip.guests.children) && size > 1) {
+        return "Reserve";
+      } else return "Check availability";
+    },
+    reviewsRateAvg() {
+      var avgsSum = 0;
+      this.stay.reviews.forEach((review) => {
+        const sumRates = (obj) => Object.values(obj).reduce((a, b) => a + b);
+        const currSum = sumRates(review.rate);
+        const currSumAvg = currSum / 6;
+        avgsSum += currSumAvg;
+      });
+      avgsSum = avgsSum / this.stay.reviews.length;
+      return avgsSum.toFixed(1);
+    },
+    calculateTotalPrice() {
+      var size = Object.keys(this.trip.dates).length;
+      if (size > 1) {
+        const { start, end } = this.trip.dates;
+        const timeDiff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
+        console.log(timeDiff);
+        return this.stay.price * timeDiff;
+      }
+    },
+    fees() {
+      return this.getRandomInt(15, 80);
+    },
+    totalPay() {
+      this.fees * this.calculateTotalPrice;
     },
   },
   components: {
