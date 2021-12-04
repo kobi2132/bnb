@@ -8,10 +8,36 @@
     background-color: rgb(245, 245, 245);
 }
 
+.short-info .material-icons-outlined {
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.short-info-txt {
+    font-size: 0.875rem;
+}
+
+.short-info-gray {
+    color: rgb(113, 113, 113);
+}
+
+.under-line {
+    text-decoration: underline;
+}
+
 .host-img {
-    height: 100px;
-    width: 100px;
+    height: 56px;
+    width: 56px;
     border-radius: 50%;
+}
+
+.stay-summery-container {
+    padding: 48px 0px 24px 0px
+}
+
+.stay-summery {
+    margin: 0;
+    margin-bottom: 8px;
 }
 
 // stay-short info
@@ -24,12 +50,17 @@
     margin-inline: 2px;
 }
 
-.kobi-heart {
-    color: #ff385c;
-    -webkit-text-stroke: white;
+.short-heart {
+    color: #ffffff;
+    -webkit-text-stroke: rgb(32, 32, 32);
     -webkit-text-stroke-width: 1px;
-    height: 24px;
-    width: 24px;
+}
+
+.short-save:hover {
+    .short-heart {
+        -webkit-text-stroke: #ff385c;
+        -webkit-text-stroke-width: 1px;
+    }
 }
 
 //stay gallery
