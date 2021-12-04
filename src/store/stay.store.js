@@ -16,11 +16,16 @@ export const stayStore = {
             const regex = new RegExp(destination, 'i')
             var filteredStays = state.stays.filter(stay => regex.test(stay.loc.city))
 
-            // const { labels } = state.filterBy
-            // if (labels.length) {
-            //     console.log(labels);
-            //     filteredStays = filteredStays.filter((stay) => stay.amenities.some((label) => labels.includes(label.name)))
-            // }
+            const {labels} = state.filterBy
+            if (labels.length) {
+                console.log(labels);
+                filteredStays = filteredStays.filter((stay) => stay.amenities.every((label) => labels.includes(label.name)))
+
+
+                // filteredStays = filteredStays.filter((stay) => state.filterBy.labels.every((filterLabel) => stay.amenities.name.includes(filterLabel)))
+    
+            }
+
 
             return filteredStays
         },

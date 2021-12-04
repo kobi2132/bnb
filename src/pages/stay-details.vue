@@ -8,10 +8,10 @@
     <stay-gallery :stay="stay" />
     <section class="stay-display-divider flex">
 <div class="stay-display-info">
-<section class="flex space-between" >
+<section class="stay-summery-container flex space-between align-center " >
   <div>
-      <h4>{{ stay.summary }}</h4>
-      <h5>{{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths</h5>
+      <h4 class="stay-summery">{{ stay.summary }}</h4>
+      <h5 class="stay-capacity">{{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths</h5>
   </div>
       <img class="host-img" :src="stay.host.imgUrl" />
     </section>

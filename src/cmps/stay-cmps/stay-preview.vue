@@ -2,8 +2,10 @@
   <section class="stay-preview clickable" @click="goToStay">
     <div class="stay-preview-slideshow">
       <stay-preview-slideshow :imgs="stay.imgUrls" />
-      <div class="like-stay">
-        <span class="material-icons" @click.stop="toggleWishList"> favorite </span>
+      <div class="like-stay" >
+        <span class="material-icons" :class="isLiked" @click.stop="toggleWishList">
+          favorite
+        </span>
       </div>
     </div>
     <div class="stay-preview-info">
@@ -38,7 +40,12 @@ export default {
     stayPreviewSlideshow,
   },
   data() {
-    return {};
+    return {
+      isWishList: {
+        wishList: false,
+        unWishList: true
+      },
+    };
   },
   computed: {
     reviewsAvg() {
@@ -55,11 +62,13 @@ export default {
     goToStay() {
       this.$router.push("/stay/" + this.stay._id);
     },
-    toggleWishList(){
-      var stayId= this.stay._id
+    toggleWishList() {
+      var stayId = this.stay._id;
       console.log(stayId);
-      this.$store.dispatch({type:"toggleWishList", stayId})
-    }
-  }
+      this.$store.dispatch({ type: "toggleWishList", stayId });
+      this.isWishList.wishList=!this.isWishList.wishList
+      this.isWishList.unWishList=!this.isWishList.unWishList
+    },
+  },
 };
 </script>
