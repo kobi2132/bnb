@@ -10,7 +10,7 @@
 <div class="stay-display-info">
 <section class="stay-summery-container flex space-between align-center " >
   <div>
-      <h4 class="stay-summery">{{ stay.summary }}</h4>
+      <h2 class="stay-summery">{{ stay.summary }} hosted by {{stay.host.fullname}}</h2>
       <h5 class="stay-capacity">{{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths</h5>
   </div>
       <img class="host-img" :src="stay.host.imgUrl" />
