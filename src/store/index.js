@@ -10,6 +10,11 @@ export default new Vuex.Store({
   state: {
     currPage: null
   },
+  getters: {
+    currPage(state) {
+      return state.currPage
+    }
+  },
   mutations: {
     setCurrPage(state, { page }) {
       state.currPage = page

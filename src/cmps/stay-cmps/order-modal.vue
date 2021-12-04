@@ -14,42 +14,53 @@
         </div>
       </div>
       <form @submit.prevent="placeOrder" class="order-form">
-        <trip-calendar-2 :dates="trip.dates" />
-        <div class="input-container" @click="shouldShow = !shouldShow">
+        <trip-calendar-2 :dates="trip.dates" @updated="updateDates" />
+        <div
+          class="input-container guests-input"
+          @click="shouldShow = !shouldShow"
+        >
           <label>
             Guests
-            <input class="guests" placeholder="Add guests" disabled />
+            <div class="expand-btn">
+              <span
+                class="material-icons-outlined"
+                :class="{ flip: shouldShow }"
+              >
+                expand_more
+              </span>
+            </div>
+            <input class="guests" :placeholder="numOfGuests" disabled />
           </label>
-        </div>
-        <div class="guests-modal flex column" v-if="shouldShow">
-          <div class="guest-type-label flex space-between align-center">
-            <div class="guest-label flex column">
-              <span>Adults</span>
-              <span>Ages 13 or above</span>
+          <div class="guests-modal flex column" v-if="shouldShow">
+            <div class="guest-type-label flex space-between align-center">
+              <div class="guest-label flex column">
+                <span>Adults</span>
+                <span>Ages 13+</span>
+              </div>
+              <div class="guest-btns flex align-center space-between">
+                <button type="button" @click="updateGuests('adults', -1)">
+                  <span class="material-icons-sharp"> remove </span>
+                </button>
+                <span class="guests-num">{{ trip.guests.adults }}</span>
+                <button type="button" @click="updateGuests('adults', 1)">
+                  <span class="material-icons-sharp"> add </span>
+                </button>
+              </div>
             </div>
-            <div class="guest-btns flex align-center space-between">
-              <button type="button" @click="updateGuests('adults', -1)">
-                <span class="material-icons-sharp"> remove </span>
-              </button>
-              <span class="guests-num">{{ trip.guests.adults }}</span>
-              <button type="button" @click="updateGuests('adults', 1)">
-                <span class="material-icons-sharp"> add </span>
-              </button>
-            </div>
-          </div>
-          <div class="guest-type-label flex space-between align-center">
-            <div class="guest-label flex column">
-              <span>Children</span>
-              <span>Ages 2-12</span>
-            </div>
-            <div class="guest-btns flex align-center space-between">
-              <button type="button" @click="updateGuests('children', -1)">
-                <span class="material-icons-sharp"> remove </span>
-              </button>
-              <span class="guests-num">{{ trip.guests.children }}</span>
-              <button type="button" @click="updateGuests('children', 1)">
-                <span class="material-icons-sharp"> add </span>
-              </button>
+            <div class="guest-type-label flex space-between align-center">
+              <div class="guest-label flex column">
+                <span>Children</span>
+                <span>Ages 2-12</span>
+              </div>
+              <div class="guest-btns flex align-center space-between">
+                <button type="button" @click="updateGuests('children', -1)">
+                  <span class="material-icons-sharp"> remove </span>
+                </button>
+                <span class="guests-num">{{ trip.guests.children }}</span>
+                <button type="button" @click="updateGuests('children', 1)">
+                  <span class="material-icons-sharp"> add </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -84,7 +95,7 @@ export default {
     };
   },
   created() {
-    console.log("order form created");
+    console.log("order form created", this.trip);
     this.trip = this.$store.getters.getCurrTrip;
   },
   methods: {
@@ -94,6 +105,7 @@ export default {
     updateGuests(type, number) {
       if (this.trip.guests[type] === 0 && number === -1) return;
       this.trip.guests[type] += number;
+      this.updateTrip();
     },
     updateTrip() {
       console.log("updating trip", this.trip);
@@ -102,6 +114,15 @@ export default {
     },
     updateDates(dates) {
       this.trip.dates = dates;
+      this.updateTrip();
+    },
+  },
+  computed: {
+    numOfGuests() {
+      const guestsCount = this.trip.guests.children + this.trip.guests.adults;
+      if (guestsCount > 1) return guestsCount + " guests";
+      else if (guestsCount === 1) return guestsCount + " guest";
+      else return "Add guests";
     },
   },
   components: {
