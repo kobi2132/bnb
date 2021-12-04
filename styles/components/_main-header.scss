@@ -30,13 +30,13 @@
     width: 100%;
     z-index: 8000;
     background-color: white;
-    // transition: background-color .5s ease-out,height .4s ease-out,box-shadow .3s ease-out;
-    transition: -ms-transform 150ms ease 0s, -webkit-transform 150ms ease 0s, transform 150ms ease 0s, opacity 50ms ease 20ms, visibility 0ms ease 25ms !important;
+    transition: background-color .5s ease-out,height .4s ease-out,box-shadow .3s ease-out;
+    // transition: -ms-transform 150ms ease 0s, -webkit-transform background-color .5s ease-out, 150ms ease 0s, transform 150ms ease 0s, opacity 50ms ease 20ms, visibility 0ms ease 25ms !important;
 
 }
 
 .main-header.fullheader {
-    background: linear-gradient(180deg,rgba(0,0,0,0.1) 30%,rgba(0,0,0,.05) 85%,transparent 90%);
+    background: linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,.05) 15%,transparent 90%);
     box-shadow: unset;
 }
 
