@@ -1,7 +1,7 @@
 <template>
   <section class="main-header" :class="{ details: stayDetails }">
     <section class="main-header-container flex space-between">
-      <div class="logo clickable" @click="goHome">
+      <div class="logo clickable" @click.stop="goHome">
         <img class="logo-img" src="~@/assets/images/logo.png" />
       </div>
       <button
