@@ -803,7 +803,7 @@ const gStays = [{
         ],
         "price": 106,
         "propertyType": "loft",
-        "summary": "This authentic loft on the 1st floor in a 60's style is located right in the center of Jerusalem. The building itself was built in 1895 where the city's first movie theater has been established. The loft owns a balcony which has a beautiful view right on to Jaffa street, Restaurants and coffee places are all around.",
+        "summary": "Amazing loft with great views",
         "description": "Beautiful 1 bedroom architecturally designed loft, in beautiful working fishing village in Northern Tel Aviv",
         "capacity": 4,
         "amenities": [{
@@ -910,7 +910,7 @@ const gStays = [{
         ],
         "price": 325,
         "propertyType": "loft",
-        "summary": "This authentic loft on the 1st floor in a 60's style is located right in the center of Jerusalem. The building itself was built in 1895 where the city's first movie theater has been established. The loft owns a balcony which has a beautiful view right on to Jaffa street, Restaurants and coffee places are all around.",
+        "summary": "wonderfull loft near to all the sites",
         "description": "Hello, welcome to our sunny and spacious West Village gem! Our apartment has been designed with elegance and comfort in mind. Previously featured on Apartment Therapy, we've redone the interior but kept the layout readers loved.",
         "capacity": 2,
         "amenities": [{
@@ -1017,7 +1017,7 @@ const gStays = [{
         ],
         "price": 142,
         "propertyType": "loft",
-        "summary": "This authentic loft on the 1st floor in a 60's style is located right in the center of Jerusalem. The building itself was built in 1895 where the city's first movie theater has been established. The loft owns a balcony which has a beautiful view right on to Jaffa street, Restaurants and coffee places are all around.",
+        "summary": "Enjoy loft life in our small paradise",
         "description": "Heaven has a new address! In this sensational villa, rustic design is blended with modern comfort and luxury. From the private infinity jacuzzi, to marble counters, pillow-top king-size bed, and satellite TV – Every detail has been considered to make The Lodge is as stunning inside as the views are outside.",
         "capacity": 2,
         "amenities": [{
