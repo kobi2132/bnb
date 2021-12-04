@@ -85,7 +85,7 @@
  
 }
 
-.input-container, .checkin, .checkout {
+.input-container, .max-filter .checkin, .max-filter .checkout {
     display: flex;
     flex-direction: column;
     border-radius: 40px;
@@ -93,7 +93,7 @@
 
 }
 
-.input-container:first-child:hover, .input-container:last-child:hover, .checkin:hover, .checkout:hover{  
+.input-container:first-child:hover, .input-container:last-child:hover, .max-filter .checkin:hover, .max-filter .checkout:hover{  
     height: 100%;     
     background-color: #ebebeb; 
 
