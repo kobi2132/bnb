@@ -38,11 +38,11 @@
                 <span>Ages 13+</span>
               </div>
               <div class="guest-btns flex align-center space-between">
-                <button type="button" @click="updateGuests('adults', -1)">
+                <button type="button" @click.stop="updateGuests('adults', -1)">
                   <span class="material-icons-sharp"> remove </span>
                 </button>
                 <span class="guests-num">{{ trip.guests.adults }}</span>
-                <button type="button" @click="updateGuests('adults', 1)">
+                <button type="button" @click.stop="updateGuests('adults', 1)">
                   <span class="material-icons-sharp"> add </span>
                 </button>
               </div>
@@ -53,11 +53,14 @@
                 <span>Ages 2-12</span>
               </div>
               <div class="guest-btns flex align-center space-between">
-                <button type="button" @click="updateGuests('children', -1)">
+                <button
+                  type="button"
+                  @click.stop="updateGuests('children', -1)"
+                >
                   <span class="material-icons-sharp"> remove </span>
                 </button>
                 <span class="guests-num">{{ trip.guests.children }}</span>
-                <button type="button" @click="updateGuests('children', 1)">
+                <button type="button" @click.stop="updateGuests('children', 1)">
                   <span class="material-icons-sharp"> add </span>
                 </button>
               </div>
@@ -66,11 +69,17 @@
         </div>
         <button class="reserve-btn">{{ buttonText }}</button>
       </form>
-      <p>You won't be charged yet</p>
-      <div class="pricing">
-        <p>Price {{ calculateTotalPrice }}</p>
-        <p>Service fee {{ fees }}</p>
-        <p>Total {{ totalPay }}</p>
+      <div class="pricing" v-if="readyToReserve">
+        <p>You won't be charged yet</p>
+        <p>
+          <span>Price</span><span> ${{ calculateTotalPrice }}</span>
+        </p>
+        <p>
+          <span>Service fee</span> <span>${{ fees }}</span>
+        </p>
+        <p>
+          <span>Total</span><span> ${{ calculateTotalPrice + fees }}</span>
+        </p>
       </div>
     </div>
   </div>
@@ -92,6 +101,7 @@ export default {
         destination: null,
         dates: {},
       },
+      readyToReserve: false,
     };
   },
   created() {
@@ -132,8 +142,12 @@ export default {
     buttonText() {
       var size = Object.keys(this.trip.dates).length;
       if ((this.trip.guests.adults || this.trip.guests.children) && size > 1) {
+        this.readyToReserve = true;
         return "Reserve";
-      } else return "Check availability";
+      } else {
+        this.readyToReserve = false;
+        return "Check availability";
+      }
     },
     reviewsRateAvg() {
       var avgsSum = 0;
@@ -152,14 +166,12 @@ export default {
         const { start, end } = this.trip.dates;
         const timeDiff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
         console.log(timeDiff);
-        return this.stay.price * timeDiff;
+        return parseInt(this.stay.price * timeDiff);
       }
     },
     fees() {
-      return this.getRandomInt(15, 80);
-    },
-    totalPay() {
-      this.fees * this.calculateTotalPrice;
+      return 25;
+      // return this.getRandomInt(15, 80);
     },
   },
   components: {

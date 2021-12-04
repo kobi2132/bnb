@@ -10,34 +10,36 @@ import logIn from '../pages/log-in.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-        path: '/',
-        name: 'home',
-        component: homePage
-    },
-    {
-        path: '/about',
-        name: 'About',
-        component: about
-    },
-    {
-        path: '/explore',
-        name: 'Explore',
-        component: stayApp
-    },
-    {
-        path: '/stay/:stayId',
-        name: 'stay',
-        component: stayDetails
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: logIn
-    }
+    path: '/',
+    name: 'home',
+    component: homePage
+},
+{
+    path: '/about',
+    name: 'About',
+    component: about
+},
+{
+    path: '/explore',
+    name: 'Explore',
+    component: stayApp
+},
+{
+    path: '/stay/:stayId',
+    name: 'stay',
+    component: stayDetails
+},
+{
+    path: '/login',
+    name: 'Login',
+    component: logIn
+}
 ]
 
 const router = new VueRouter({
-    routes
+    routes, scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 })
 
 export default router
