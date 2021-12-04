@@ -24,7 +24,7 @@
       </div>
     </section>
     <div class="user-nav" v-if="shouldShow">
-      <a href="#">Log in</a>
+      <a href="#/login">Log in</a>
       <a href="#">Host your home</a>
       <a href="#">About</a>
       <a href="#">Help</a>
