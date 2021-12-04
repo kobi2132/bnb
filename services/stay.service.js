@@ -64,7 +64,8 @@ const gStays = [{
         },
         "reviews": [{
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "04.3.2020",
+                "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built. Also, as per other reviews, agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
                 "rate": {
 
                     cleanliness: 3,
@@ -82,7 +83,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "not good, wont come again..",
+                "date": "07.1.2015",
+                "txt": "This villa is absolutely stunning with an incredible view. Check in and check out was very smooth and the host/agency are very well organized. Would absolutely recommend the place to anyone looking to have a relaxing time in costa brava amongst a very spectacular view directly from the house. The beach and town near the village are also very accessible to go during the day.",
                 "rate": {
                     cleanliness: 1,
                     communication: 3,
@@ -99,7 +101,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "had a blast! but missed mt cats..",
+                "date": "24.8.2013",
+                "txt": "A stunning property in a beautiful location. The local village is a short walk away and has some wonderful food shops and restaurants. The house has a lot of glass and in the middle of summer would benefit from air conditioning (something mentioned in previous reviews), but has large windows which can be opened. The coast line is incredible, and this property is perfectly located to maximise the views. Would recommend a visit to the local monastery if nothing else for the amazing drive from the property.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -116,6 +119,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "04.3.2020",
                 "txt": "Wonderfull house, great views, lovly neighbors, i love my life, thank you so much",
                 "rate": {
                     cleanliness: 1,
@@ -133,7 +137,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "great house, not clean enough, had a problem with hot water, but enjoyed over all, lovley host",
+                "date": "07.1.2015",
+                "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built. Also, as per other reviews, agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -150,6 +155,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "04.3.2020",
                 "txt": "Our house is a very, very, very fine house With two cats in the yard Life used to be so hard Now everything is easy 'cause of you",
                 "rate": {
                     cleanliness: 3,
@@ -167,6 +173,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "24.8.2013",
                 "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built.",
                 "rate": {
                     cleanliness: 5,
@@ -232,7 +239,8 @@ const gStays = [{
         },
         "reviews": [{
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "12.5.2012",
+                "txt": "A stunning property in a beautiful location. The local village is a short walk away and has some wonderful food shops and restaurants. The house has a lot of glass and in the middle of summer would benefit from air conditioning (something mentioned in previous reviews), but has large windows which can be opened. The coast line is incredible, and this property is perfectly located to maximise the views. Would recommend a visit to the local monastery if nothing else for the amazing drive from the property.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -249,7 +257,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "not good, wont come again..",
+                "date": "07.1.2015",
+                "txt": "This villa is absolutely stunning with an incredible view. Check in and check out was very smooth and the host/agency are very well organized. Would absolutely recommend the place to anyone looking to have a relaxing time in costa brava amongst a very spectacular view directly from the house. The beach and town near the village are also very accessible to go during the day.",
                 "rate": {
                     cleanliness: 1,
                     communication: 3,
@@ -266,7 +275,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "had a blast! but missed mt cats..",
+                "date": "04.3.2020",
+                "txt": "had a blast! but missed my cats..",
                 "rate": {
                     cleanliness: 5,
                     communication: 5,
@@ -283,6 +293,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "24.8.2013",
                 "txt": "Wonderfull house, great views, lovly neighbors, i love my life, thank you so much",
                 "rate": {
                     cleanliness: 3,
@@ -300,7 +311,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "no cats to chase, shame.. make sure to bring cats with you",
+                "date": "04.3.2020",
+                "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built. Also, as per other reviews, agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -317,6 +329,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "12.5.2012",
                 "txt": "great house, not clean enough, had a problem with hot water, but enjoyed over all, lovley host",
                 "rate": {
                     cleanliness: 1,
@@ -334,6 +347,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "04.3.2020",
                 "txt": "all good, great host, cosy bed, warm toilet, arrived with no underwear and the host lend me his.. oh i forgot to return it... sorry!",
                 "rate": {
                     cleanliness: 5,
@@ -351,7 +365,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "Our house is a very, very, very fine house With two cats in the yard Life used to be so hard Now everything is easy 'cause of you",
+                "date": "07.1.2015",
+                "txt": "A stunning property in a beautiful location. The local village is a short walk away and has some wonderful food shops and restaurants. The house has a lot of glass and in the middle of summer would benefit from air conditioning (something mentioned in previous reviews), but has large windows which can be opened. The coast line is incredible, and this property is perfectly located to maximise the views. Would recommend a visit to the local monastery if nothing else for the amazing drive from the property.",
                 "rate": {
                     cleanliness: 2,
                     communication: 4,
@@ -368,6 +383,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "04.3.2020",
                 "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built.",
                 "rate": {
                     cleanliness: 3,
@@ -438,7 +454,8 @@ const gStays = [{
         },
         "reviews": [{
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "24.8.2013",
+                "txt": "This villa is absolutely stunning with an incredible view. Check in and check out was very smooth and the host/agency are very well organized. Would absolutely recommend the place to anyone looking to have a relaxing time in costa brava amongst a very spectacular view directly from the house. The beach and town near the village are also very accessible to go during the day.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -455,7 +472,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "not good, wont come again..",
+                "date": "04.3.2020",
+                "txt": "What a house! So bright, airy and beautifully designed. Beds are good, as sheets and towels. Outside area for nice meals overlooking the sea. 5 min walking from a beautiful secluded beach and 10 min from the charming Port de la Selva, where you can find the freshest sea food. For a dream stay!",
                 "rate": {
                     cleanliness: 5,
                     communication: 5,
@@ -472,7 +490,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "Wonderfull house, great views, lovly neighbors, i love my life, thank you so much",
+                "date": "12.5.2012",
+                "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built. Also, as per other reviews, agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
                 "rate": {
                     cleanliness: 2,
                     communication: 4,
@@ -489,7 +508,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "no cats to chase, shame.. make sure to bring cats with you",
+                "date": "04.3.2020",
+                "txt": "Absolutely incredible house. Truly amazing. The views are just mind-blowing, there is not one single moment where you don't think wow this house is incredible. From the inside and from the outside.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -506,6 +526,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "07.1.2015",
                 "txt": "great house, not clean enough, had a problem with hot water, but enjoyed over all, lovley host",
                 "rate": {
                     cleanliness: 1,
@@ -523,6 +544,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "04.3.2020",
                 "txt": "all good, great host, cosy bed, warm toilet, arrived with no underwear and the host lend me his.. oh i forgot to return it... sorry!",
                 "rate": {
                     cleanliness: 3,
@@ -540,6 +562,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "24.8.2013",
                 "txt": "Our house is a very, very, very fine house With two cats in the yard Life used to be so hard Now everything is easy 'cause of you",
                 "rate": {
                     cleanliness: 3,
@@ -557,6 +580,7 @@ const gStays = [{
             },
             {
                 "id": "madeId",
+                "date": "04.3.2020",
                 "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built.",
                 "rate": {
                     cleanliness: 5,
@@ -619,7 +643,8 @@ const gStays = [{
         },
         "reviews": [{
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "24.8.2013",
+                "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built. Also, as per other reviews, agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -636,7 +661,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "not good wont come again...",
+                "date": "12.5.2012",
+                "txt": "A stunning property in a beautiful location. The local village is a short walk away and has some wonderful food shops and restaurants. The house has a lot of glass and in the middle of summer would benefit from air conditioning (something mentioned in previous reviews), but has large windows which can be opened. The coast line is incredible, and this property is perfectly located to maximise the views. Would recommend a visit to the local monastery if nothing else for the amazing drive from the property.",
                 "rate": {
                     cleanliness: 5,
                     communication: 5,
@@ -653,7 +679,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "07.1.2015",
+                "txt": "Absolutely incredible house. Truly amazing. The views are just mind-blowing, there is not one single moment where you don't think wow this house is incredible. From the inside and from the outside.",
                 "rate": {
                     cleanliness: 2,
                     communication: 4,
@@ -711,7 +738,8 @@ const gStays = [{
         },
         "reviews": [{
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "04.3.2020",
+                "txt": "Geoff’s house is beautiful. Being in the house, you feel you are directly on top of the ocean. The views are incredible. The photos are a bit misleading though, since the house is surrounded by other houses which is something not noticeable in the pictures. This was not an issue though, specially these days since there was not lot of people in the area. And the house is 5 minutes walking from a beautiful little beach and many others close by. Great place. Geoff is also very helpful and communicative, quickly responding and trying to help. Thanks for everything!",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -728,7 +756,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "not good wont come again...",
+                "date": "24.8.2013",
+                "txt": "The location and accommodation was superb. Spectacular scenery from both nice and rough weather. Cosy village nearby with all necessary services at hand. Perfect with a garage for our car, easy to park. With great experience from other top-AirBnB Villas, this house is definitely on our top-1 position.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -745,7 +774,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "04.3.2020",
+                "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built. Also, as per other reviews, agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
                 "rate": {
                     cleanliness: 5,
                     communication: 5,
@@ -815,7 +845,8 @@ const gStays = [{
         },
         "reviews": [{
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "07.1.2015",
+                "txt": "The Sunflower House if beautiful! Views of the Sea from everywhere in the house, large common area and open kitchen, wonderful pool to swim, walking distance to a beautiful cove to swim in the Sea, and walking distance to the town. We will be back!",
                 "rate": {
                     cleanliness: 1,
                     communication: 3,
@@ -832,7 +863,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "not good wont come again...",
+                "date": "04.3.2020",
+                "txt": "A stunning property in a beautiful location. The local village is a short walk away and has some wonderful food shops and restaurants. The house has a lot of glass and in the middle of summer would benefit from air conditioning (something mentioned in previous reviews), but has large windows which can be opened. The coast line is incredible, and this property is perfectly located to maximise the views. Would recommend a visit to the local monastery if nothing else for the amazing drive from the property.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -849,7 +881,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "24.8.2013",
+                "txt": "We had a very nice stay at the Villa. It was very quiet around it, but still possible to (carefully!) walk to the village. We had a couple of small problems (light went off) and Geoff's agency took care of them promptly and nicely -- they even turned on the heating before we arrived, which was highly appreciated.The villa is as cool as it looks, yet really functional  highly recommended!",
                 "rate": {
                     cleanliness: 5,
                     communication: 5,
@@ -919,7 +952,8 @@ const gStays = [{
         },
         "reviews": [{
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "12.5.2012",
+                "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built. Also, as per other reviews, agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
                 "rate": {
                     cleanliness: 2,
                     communication: 4,
@@ -936,7 +970,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "not good wont come again...",
+                "date": "04.3.2020",
+                "txt": "We had a very nice stay at the Villa. It was very quiet around it, but still possible to (carefully!) walk to the village. We had a couple of small problems (light went off) and Geoff's agency took care of them promptly and nicely -- they even turned on the heating before we arrived, which was highly appreciated.The villa is as cool as it looks, yet really functional  highly recommended!",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -953,7 +988,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "07.1.2015",
+                "txt": "A great house in fantastic surroundings with a stunning sea view! The house is not located as private as it looks in the pictures, but the road nearby wasn’t busy at all. The pool is quite small, but a nice stone beach with crystal clear water is located only a couple minutes walking from the house. We also enjoyed trail-walking in the beautiful nature nearby and nice meals in the calm village. If you would like a highly relaxing holiday, the sunflower house is the place for you!",
                 "rate": {
                     cleanliness: 5,
                     communication: 5,
@@ -1023,7 +1059,8 @@ const gStays = [{
         },
         "reviews": [{
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "04.3.2020",
+                "txt": "This was a wonderful place to stay. It is a very large and comfortable space. The best part of the house are the spectacular ocean views. It is a stunning all-day treat. The view from most of the rooms really raised the bar of our stay. There were many interesting ocean trails nearby and the short walk into town was scenic. Our stay here was one of the highlights of the vacation. It was well worth the two-hour drive from Barcelona!",
                 "rate": {
                     cleanliness: 2,
                     communication: 4,
@@ -1041,7 +1078,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "not good wont come again...",
+                "date": "07.1.2015",
+                "txt": "A stunning property in a beautiful location. The local village is a short walk away and has some wonderful food shops and restaurants. The house has a lot of glass and in the middle of summer would benefit from air conditioning (something mentioned in previous reviews), but has large windows which can be opened. The coast line is incredible, and this property is perfectly located to maximise the views. Would recommend a visit to the local monastery if nothing else for the amazing drive from the property.",
                 "rate": {
                     cleanliness: 3,
                     communication: 3,
@@ -1058,7 +1096,8 @@ const gStays = [{
             },
             {
                 "id": "madeId",
-                "txt": "Very helpful hosts. Cooked traditional...",
+                "date": "12.5.2012",
+                "txt": "We had a very nice stay at the Villa. It was very quiet around it, but still possible to (carefully!) walk to the village. We had a couple of small problems (light went off) and Geoff's agency took care of them promptly and nicely -- they even turned on the heating before we arrived, which was highly appreciated.The villa is as cool as it looks, yet really functional  highly recommended!",
                 "rate": {
                     cleanliness: 5,
                     communication: 5,

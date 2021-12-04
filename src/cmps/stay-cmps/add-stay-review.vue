@@ -1,20 +1,22 @@
 <template>
+<!-- todo -->
+<!-- addreview functionality -->
+<!-- name & date -->
 <section class="add-review flex column">
 
     <h2>add review</h2>
     <div class="add-review-header flex ">
         <img src="~@/assets/images/review-avatar.png" alt="" class="host-img">
-        <!-- img not rendering -->
         <div class="review-date-name">
-            <h3>name</h3>
-            <h4>date</h4>
+            <h3>demo name</h3>
+            <h4>demo date</h4>
         </div>
     </div>
     <add-review-ctgs />
     
     <div class="add-review-text">   
         <textarea type="text" name="txt" autocomplete="off" placeholder="Write your opinion about this stay..."></textarea>
-        <button> send </button>
+        <button class="add-review-btn clean-btn" @click="addReview()"> send </button>
     </div>
     
 </section>
@@ -32,10 +34,9 @@ export default {
     },
 
     methods: {
-        // changeColor(num){
-        //     console.log('hello change color', num)
-        //     this.rate = num
-        // }
+       addReview(){
+           console.log('review added')
+       }
     }
 }
 </script>

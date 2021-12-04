@@ -4,8 +4,15 @@
     padding: 0
 }
 
+.clean-btn {
+    border: none !important;
+    font-size: 1rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 .flex {
-    display: flex;    
+    display: flex;
 }
 
 .flex.column {
@@ -28,6 +35,13 @@
     cursor: pointer;
 }
 
-.bold{
+.bold {
     font-weight: bold;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 88px;
 }
