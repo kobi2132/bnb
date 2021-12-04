@@ -1,5 +1,5 @@
 <template>
-  <section class="main-header">
+  <section class="main-header" :class="{ details: currPage === 'stayDetails' }">
     <section class="main-header-container flex space-between">
       <div class="logo clickable" @click="goHome">
         <img class="logo-img" src="~@/assets/images/logo.png" />
@@ -40,6 +40,7 @@ export default {
     return {
       miniFilter: false,
       shouldShow: false,
+      currPage: null,
     };
   },
 
@@ -64,6 +65,8 @@ export default {
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
+    this.currPage = this.$store.getters.currPage;
+    console.log(this.currPage);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
