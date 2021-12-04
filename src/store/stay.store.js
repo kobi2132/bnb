@@ -19,8 +19,13 @@ export const stayStore = {
             const {labels} = state.filterBy
             if (labels.length) {
                 console.log(labels);
-                filteredStays = filteredStays.filter((stay) => stay.amenities.some((label) => labels.includes(label.name)))
-                }
+                filteredStays = filteredStays.filter((stay) => stay.amenities.every((label) => labels.includes(label.name)))
+
+
+                // filteredStays = filteredStays.filter((stay) => state.filterBy.labels.every((filterLabel) => stay.amenities.name.includes(filterLabel)))
+    
+            }
+
 
             return filteredStays
         },
