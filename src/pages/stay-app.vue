@@ -38,6 +38,10 @@ export default {
   components: {
     stayList,
   },
+  created() {
+    const page = "explore";
+    this.$store.commit({ type: "setCurrPage", page });
+  },
 };
 </script>
 

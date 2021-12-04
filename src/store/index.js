@@ -8,13 +8,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currTrip: {
-      guests: { children: null, adults: null },
-      destination: null,
-      dates: []
+    currPage: 'homePage'
+  },
+  getters: {
+    currPage(state) {
+      return state.currPage
     }
   },
   mutations: {
+    setCurrPage(state, { page }) {
+      state.currPage = page
+      console.log(state.currPage)
+    }
   },
   actions: {
   },

@@ -41,7 +41,7 @@ export const stayStore = {
             state.currStay = stay
             console.log('currStay', state.currStay)
         },
-        setFilter(state, {filterBy}){
+        setFilter(state, { filterBy }) {
             state.filterBy = filterBy
         }
     },

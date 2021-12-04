@@ -1,5 +1,6 @@
 .logo {
     width: 150px;
+    align-self: flex-start;
 }
 
 .avatar {
@@ -11,19 +12,29 @@
 
     a {
         padding: 10px 15px;
+        font-size: 14px;
     }
 }
 
+
+
 .main-header {
+    position: fixed;
+    top: 0;
     display: grid;
     grid-template-columns: 80px 1fr 80px;
     > * {
         grid-column: 2;
     }
-    margin: 20px 0;
+    padding: 20px 0;
+    background-color: white;
+    width: 100%;
+    transition: 1s;
+    z-index: 8000;
 }
 
 .user-menu-btn {
+    align-self: flex-end;
     color: #222222;
     padding: 5px 5px 5px 15px;
     border-radius: 200px;
@@ -41,6 +52,14 @@
 
     span {
         margin-left: 12px;
+    }
+
+}
+
+.main-header.details {
+        grid-template-columns: 115px 1fr 115px;
+        > * {
+            grid-column: 2;
     }
 }
 
@@ -67,4 +86,38 @@
         }
     }
    
+}
+
+.mini-filter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 20px;
+    box-shadow: rgb(0 0 0 / 8%) 0px 1px 2px, rgb(0 0 0 / 5%) 0px 4px 12px;
+    background-color: #FFF;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 40px;
+    height: 48px;
+    padding: 0 7px 0 16px;
+    width: 300px;
+    font-size: 14px;
+    // transition: -ms-transform 150ms ease 0s, -webkit-transform 150ms ease 0s, transform 150ms ease 0s, opacity 50ms ease 20ms, visibility 0ms ease 25ms !important;
+    
+    
+    &:hover {
+        box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+        transition: box-shadow 0.2s ease 0s;
+    }    
+    span {
+        &:before {
+            font-family: fas;
+            content: '\f002';
+            color: #fff;
+            background-color: $redAirbnb;
+            border-radius: 50%;
+            height: 32px;
+            padding: 10px;
+        }
+    }
 }

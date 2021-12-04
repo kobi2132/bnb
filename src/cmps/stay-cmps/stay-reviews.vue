@@ -1,28 +1,30 @@
 <template>
+<!-- todos -->
+<!-- show more TXT func -->
+
   <section class="stay-reviews-container">
 
       <div class="stay-reviews-header">
         <h2>
           <span class="material-icons-outlined"> star </span>
-         {{ reviewsRateAvg }}
-         ({{this.reviews.length}} reviews) 
+          {{ reviewsRateAvg }}
+          ({{this.reviews.length}} reviews) 
         </h2>
         <div class="stay-reviews-stats">
-          <!-- <star-rating v-model="rating"></star-rating> -->
+          <stay-reviews-stats :reviews="reviews" />
         </div>
-          <!-- <template v-for="(review, idx) in reviews">
-                
-          </template> -->
+        <stay-reviews-list :reviews="reviews" />
       </div>
-
+      <add-stay-review />
 
       
     </section>
 </template>
 
 <script>
-// import StarRating from 'vue-star-rating'
-
+import addStayReview from './add-stay-review.vue'
+import stayReviewsStats from './stay-reviews-stats.vue'
+import stayReviewsList from './stay-reviews-list.vue'
 
 export default {
 name: "stayReviews",
@@ -32,9 +34,11 @@ name: "stayReviews",
       default: [],
     },
   },
-//   components: {
-//   StarRating
-// },
+  components: {
+  addStayReview,
+  stayReviewsStats,
+  stayReviewsList
+},
   computed: {
     reviewsRateAvg(){
       // console.log('reviews' , this.reviews);

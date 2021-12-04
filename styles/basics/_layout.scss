@@ -1,4 +1,5 @@
 .main-layout {
+    margin-top: 200px;
     display: grid;
     grid-template-columns: 115px 1fr 115px;
 
@@ -6,13 +7,22 @@
         grid-column: 2;
     }
 
+    > *.full {
+        grid-column: 1 / -1;
+    }
+
 }
 
 .main-layout2 {
+    margin-top: 200px;
     display: grid;
     grid-template-columns: 80px 1fr 80px;
 
     > * {
         grid-column: 2;
+    }
+
+    > *.full {
+        grid-column: 1 / -1;
     }
 }

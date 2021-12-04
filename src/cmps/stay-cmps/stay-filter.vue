@@ -1,11 +1,5 @@
 <template>
   <section class="filter-container flex align-center justify-center">
-    <button
-      class="mini-filter flex space-between align-center clickable"
-      v-if="!miniFilter"
-    >
-      {{ currDest }} <span></span>
-    </button>
     <form
       @submit.prevent="updateTrip"
       class="max-filter flex space-between align-center"
@@ -29,15 +23,19 @@
         </label>
       </div>
       <div class="input-container" @click="shouldShow = false">
-        <!-- <trip-calendar-3 @updated="updateDates" /> --><trip-calendar-2 />
+        <!-- <trip-calendar-3 @updated="updateDates" /> -->
+        <trip-calendar-2 @updated="updateDates" />
       </div>
-      <div class="input-container" @click="shouldShow = !shouldShow">
+      <div
+        class="input-container flex column"
+        @click="shouldShow = !shouldShow"
+      >
         <label>
           Guests
-          <input class="guests" placeholder="Add guests" disabled />
+          <input class="guests" :placeholder="numOfGuests" disabled />
         </label>
       </div>
-      <button class="search-btn">
+      <button class="search-btn clickable" @click.stop="goExplore">
         <span class="material-icons-outlined"> search </span>
       </button>
     </form>
@@ -51,7 +49,7 @@
           <button type="button" @click="updateGuests('adults', -1)">
             <span class="material-icons-sharp"> remove </span>
           </button>
-          <span class="guests-num">{{ trip.guests.adults }}</span>
+          <span class="guests-num">{{ adults }}</span>
           <button type="button" @click="updateGuests('adults', 1)">
             <span class="material-icons-sharp"> add </span>
           </button>
@@ -66,7 +64,7 @@
           <button type="button" @click="updateGuests('children', -1)">
             <span class="material-icons-sharp"> remove </span>
           </button>
-          <span class="guests-num">{{ trip.guests.children }}</span>
+          <span class="guests-num">{{ children }}</span>
           <button type="button" @click="updateGuests('children', 1)">
             <span class="material-icons-sharp"> add </span>
           </button>
@@ -85,7 +83,6 @@ import DatePicker from "v-calendar/lib/components/date-picker.umd";
 export default {
   data() {
     return {
-      miniFilter: false,
       range: null,
       trip: {
         guests: {
@@ -93,7 +90,7 @@ export default {
           children: 0,
         },
         destination: null,
-        dates: [],
+        dates: {},
       },
 
       shouldShow: false,
@@ -115,9 +112,16 @@ export default {
     },
   },
   methods: {
+    goExplore() {
+      this.updateTrip();
+      this.$router
+        .push(`/explore?destination=${this.trip.destination}`)
+        .catch(() => {});
+    },
     updateGuests(type, number) {
       if (this.trip.guests[type] === 0 && number === -1) return;
       this.trip.guests[type] += number;
+      this.updateTrip();
     },
     updateTrip() {
       console.log("updating trip", this.trip);
@@ -125,7 +129,40 @@ export default {
       this.$store.commit({ type: "setTrip", trip });
     },
     updateDates(dates) {
+      console.log(dates);
       this.trip.dates = dates;
+      this.updateTrip();
+    },
+  },
+  created() {
+    console.log("created");
+    this.trip = this.$store.getters.getCurrTrip;
+    console.log(this.trip);
+  },
+  computed: {
+    numOfGuests() {
+      const guestsCount = this.trip.guests.children + this.trip.guests.adults;
+      if (guestsCount > 1) return guestsCount + " guests";
+      else if (guestsCount === 1) return guestsCount + " guest";
+      else return "Add guests";
+    },
+    children() {
+      if (this.trip.guests.children === null) return 0;
+      else return this.trip.guests.children;
+    },
+    adults() {
+      if (this.trip.guests.adults === null) return 0;
+      else return this.trip.guests.adults;
+    },
+  },
+  watch: {
+    "$store.state.currTrip": {
+      handler() {
+        this.trip = this.$store.getters.getCurrTrip;
+        console.log(this.trip);
+      },
+      immediate: true,
+      deep: true,
     },
   },
 };

@@ -4,47 +4,50 @@
     <h2>{{ stay.name }}</h2>
 
     <stay-short-info :stay="stay" />
-    
+
     <stay-gallery :stay="stay" />
-    
-    <section>
-      <h4>{{ stay.summery }}</h4>
-      <h5>{{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths</h5>
+    <section class="stay-display-divider flex">
+<div class="stay-display-info">
+<section class="stay-summery-container flex space-between align-center " >
+  <div>
+      <h4 class="stay-summery">{{ stay.summary }}</h4>
+      <h5 class="stay-capacity">{{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths</h5>
+  </div>
       <img class="host-img" :src="stay.host.imgUrl" />
     </section>
 
     <stay-features />
-    
-    <stay-description :stay="stay" />
 
+    <stay-description :stay="stay" />
+</div>
+<div class="stay-display-order">
+  <order-modal :stay="stay" class="sticky"/>
+</div>
+    </section>
+    
     <stay-reviews :reviews="stay.reviews" />
 
-    <h4>
-      Reviews:
-      {{ reviewRateAvg }}
-      <span v-for="(review, idx) in stay.reviews" :key="idx" class="clean-list">
-        {{ review }}
-      </span>
-    </h4>
   </section>
 </template>
 
 <script>
-import stayGallery from '@/cmps/stay-cmps/stay-gallery.vue'
-import stayShortInfo from '@/cmps/stay-cmps/stay-short-info.vue'
-import stayFeatures from '@/cmps/stay-cmps/stay-features.vue'
-import stayDescription from '@/cmps/stay-cmps/stay-description.vue'
-import stayReviews from '@/cmps/stay-cmps/stay-reviews.vue'
+import stayGallery from "@/cmps/stay-cmps/stay-gallery.vue";
+import stayShortInfo from "@/cmps/stay-cmps/stay-short-info.vue";
+import stayFeatures from "@/cmps/stay-cmps/stay-features.vue";
+import stayDescription from "@/cmps/stay-cmps/stay-description.vue";
+import stayReviews from "@/cmps/stay-cmps/stay-reviews.vue";
+import orderModal from "@/cmps/stay-cmps/order-modal.vue";
 
 export default {
   name: "stayDetails",
-  
-   components: {
+
+  components: {
     stayGallery,
     stayShortInfo,
     stayFeatures,
     stayDescription,
-    stayReviews
+    stayReviews,
+    orderModal,
   },
 
   computed: {
@@ -95,6 +98,8 @@ export default {
         let stayId = this.$route.params.stayId;
         console.log("Changed to", stayId);
         this.$store.dispatch({ type: "setCurrStay", stayId });
+        const page = "stayDetails";
+        this.$store.commit({ type: "setCurrPage", page });
       },
       immediate: true,
     },
@@ -103,5 +108,4 @@ export default {
 </script>
 
 <style>
-
 </style>

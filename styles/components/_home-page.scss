@@ -1,4 +1,5 @@
 .home-page {
+   
     .main-hero {
         background-image: url(~@/assets/images/hero.jpg);
         background-repeat: no-repeat;
@@ -7,24 +8,91 @@
         height: 750px;
         text-align: center;
         background-position: right center;
-
+        margin-bottom: 95px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: column;
+    
+ 
         h1 {
             color: #FFF;
-            font-size: 38px;
+            font-size: 32px;
+        
+        }
+
+        button {
+            margin-bottom: 150px;
+            -webkit-tap-highlight-color: transparent !important;
+            width: fit-content;
+            background: white;
+            border-radius: 1000px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px !important;
+            border:none;
+            h3 {
+                margin: 0;
+                padding: 16px 32px;
+                font-size: 18px;
+                font-family: inherit;
+                background: -webkit-linear-gradient((90deg, rgb(111, 1, 156) 0%, rgb(198, 1, 126) 135.12%));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+    .host-container {
+        background-image: url(~@/assets/images/host1.png);
+        // background-repeat: no-repeat;
+        background-size: cover;
+        height: 750px;
+        width: 100%;
+
+        .host {   
+            margin-left: 80px; 
+            margin-top: 50px;        
+            h1 {
+                color: #FFF;
+                font-size: 48px;
+                margin: 0;
+                margin-top: 50px;
+            }
+            button {  
+                margin-top: 50px;  
+                justify-self: flex-end;          
+                border: 1px solid rgb(0, 0, 0);
+                color: #222222;
+                background-color: white;
+                padding: 14px 24px;
+                border-radius: 8px;
+                max-width: 170px;
+                &:hover {
+                    background-color: rgb(235, 235, 235);
+ 
+                 }
+
+                h3 {
+                    margin: 0;
+                    font-family: inherit;
+                }
+            }
         }
     }
 }
 
-.dest-container {
+.dest-container,.toprated-container {
+    margin-bottom: 95px;
     h1 {
         font-size: 33px;
+        margin-bottom: 55px;
+        margin-top: 0;
     }
 }
 
-.dest-gallery {
+.dest-gallery, .top-rated-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
+    
     a {
         display: inline-block;
         text-decoration: none;
@@ -33,7 +101,6 @@
         img {
             border-radius: 13px;
             object-fit: scale-down;
-
         }
     }
 }
