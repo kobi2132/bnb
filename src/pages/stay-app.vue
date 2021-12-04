@@ -11,7 +11,11 @@ export default {
   name: "stay-app",
   data() {
     return {
-      currTrip: null,
+      currTrip: {
+        guests: { children: null, adults: null },
+        destination: "",
+        dates: {},
+      },
     };
   },
 

@@ -11,7 +11,7 @@
     flex-wrap: nowrap;
 
     a {
-        padding: 10px 15px;
+        padding:0 15px;
         font-size: 14px;
     }
 }
@@ -27,14 +27,20 @@
         grid-column: 2;
     }
     padding: 20px 0;
-    background-color: white;
     width: 100%;
-    transition: 1s;
     z-index: 8000;
+    background-color: white;
+    transition: background-color .5s ease-out,height .4s ease-out,box-shadow .3s ease-out;
+    transition: -ms-transform 150ms ease 0s, -webkit-transform 150ms ease 0s, transform 150ms ease 0s, opacity 50ms ease 20ms, visibility 0ms ease 25ms !important;
+
+}
+
+.main-header.fullheader {
+    background: linear-gradient(180deg,rgba(0,0,0,0.1) 30%,rgba(0,0,0,.05) 85%,transparent 90%);
+    box-shadow: unset;
 }
 
 .user-menu-btn {
-    align-self: flex-end;
     color: #222222;
     padding: 5px 5px 5px 15px;
     border-radius: 200px;
@@ -89,6 +95,7 @@
 }
 
 .mini-filter {
+    // transition: visibility 0.5s;
     position: absolute;
     top: 50%;
     left: 50%;
