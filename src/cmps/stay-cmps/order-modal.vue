@@ -21,7 +21,7 @@
             <input class="guests" placeholder="Add guests" disabled />
           </label>
         </div>
-        <div class="guests-modal flex column" v-if="!shouldShow">
+        <div class="guests-modal flex column" v-if="shouldShow">
           <div class="guest-type-label flex space-between align-center">
             <div class="guest-label flex column">
               <span>Adults</span>
@@ -55,6 +55,12 @@
         </div>
         <button class="reserve-btn">Reserve</button>
       </form>
+      <p>You won't be charged yet</p>
+      <div class="pricing">
+        <p>Price</p>
+        <p>Service fee</p>
+        <p>Total</p>
+      </div>
     </div>
   </div>
 </template>
