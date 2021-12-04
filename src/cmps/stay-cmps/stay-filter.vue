@@ -34,10 +34,10 @@
           Guests
           <input class="guests" :placeholder="numOfGuests" disabled />
         </label>
+        <button class="search-btn clickable" @click.stop="goExplore">
+          <span class="material-icons-outlined"> search </span>
+        </button>
       </div>
-      <button class="search-btn clickable" @click.stop="goExplore">
-        <span class="material-icons-outlined"> search </span>
-      </button>
     </form>
     <div class="guests-modal flex column" v-if="shouldShow">
       <div class="guest-type-label flex space-between align-center">
