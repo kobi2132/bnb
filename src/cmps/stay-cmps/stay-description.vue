@@ -1,11 +1,13 @@
 <template>
-  <section class="stay-description">
-    <h4>description</h4>
-    <h3>{{ stay.description }}</h3>
+  <section>
+    <div class="stay-description gray-box-shadow">
+    <h2 class="description-header">Stay description</h2>
+    <h4 class="stay-description-text">{{ stay.description }}</h4>
+    </div>
     
     <section class="stay-amenities">
-      <h4>amenities</h4>
-      <ul class="amenities-list">
+      <h2 class="amenities-header">Amenities</h2>
+      <ul class="amenities-list clean-list">
         <li
           v-for="(amenity, idx) in stay.amenities"
           :key="idx"

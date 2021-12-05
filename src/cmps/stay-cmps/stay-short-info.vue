@@ -3,15 +3,16 @@
 <!-- star rating section -->
    <section class="short-info flex space-between align-center">
       <section class="flex">
-        <h4 class="spacer short-info-txt"> <span class="material-icons-outlined "> star </span> {{ this.reviewsRateAvg }}</h4>
+        <span class="material-icons-outlined red-star"> star </span>
+        <h4 class="spacer short-info-txt">  {{ this.reviewsRateAvg }}</h4>
         <h4 class="short-info-txt short-info-gray under-line">({{this.stay.reviews.length}} reviews)</h4>
-        <span class="spacer short-info-gray ">•</span>
+        <span class="spacer short-info-gray wide ">•</span>
         <h4 class="short-info-txt short-info-gray under-line">{{ stay.loc.city }} , {{ stay.loc.country }}</h4>
       </section>
 
       <section class="flex">
         <button class="short-info-btn clean-btn flex align-center ">
-          <span class="material-icons-outlined"> ios_share </span ><span class="under-line">Share</span> 
+          <span class="material-icons-outlined short-info-logo"> ios_share </span ><span class="under-line">Share</span> 
         </button>
         <button class="short-info-btn short-save clean-btn flex align-center ">
           <span class="material-icons-outlined short-heart"> favorite </span>

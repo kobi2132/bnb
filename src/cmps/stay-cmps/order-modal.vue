@@ -41,7 +41,7 @@
                 <button type="button" @click.stop="updateGuests('adults', -1)">
                   <span class="material-icons-sharp"> remove </span>
                 </button>
-                <span class="guests-num">{{ trip.guests.adults }}</span>
+                <span class="guests-num">{{ adults }}</span>
                 <button type="button" @click.stop="updateGuests('adults', 1)">
                   <span class="material-icons-sharp"> add </span>
                 </button>
@@ -59,7 +59,7 @@
                 >
                   <span class="material-icons-sharp"> remove </span>
                 </button>
-                <span class="guests-num">{{ trip.guests.children }}</span>
+                <span class="guests-num">{{ children }}</span>
                 <button type="button" @click.stop="updateGuests('children', 1)">
                   <span class="material-icons-sharp"> add </span>
                 </button>
@@ -132,7 +132,16 @@ export default {
       return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
     },
   },
+
   computed: {
+    children() {
+      if (this.trip.guests.children === null) return 0;
+      else return this.trip.guests.children;
+    },
+    adults() {
+      if (this.trip.guests.adults === null) return 0;
+      else return this.trip.guests.adults;
+    },
     numOfGuests() {
       const guestsCount = this.trip.guests.children + this.trip.guests.adults;
       if (guestsCount > 1) return guestsCount + " guests";

@@ -1,13 +1,13 @@
 .home-page {
    
     .main-hero {
-        background-image: url(~@/assets/images/hero.jpg);
+        background-image: url(~@/assets/images/hero/wp11.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 13px;
         height: 750px;
         text-align: center;
-        background-position: right center;
+        background-position: right bottom;
         margin-bottom: 95px;
         display: flex;
         justify-content: flex-end;
@@ -47,6 +47,7 @@
         height: 750px;
         width: 100%;
 
+
         .host {   
             margin-left: 80px; 
             margin-top: 50px;        
@@ -54,7 +55,7 @@
                 color: #FFF;
                 font-size: 48px;
                 margin: 0;
-                margin-top: 50px;
+                margin-top: 142px;
             }
             button {  
                 margin-top: 50px;  

@@ -1,20 +1,38 @@
 // stay-details
 //short info
+.stay-name {
+    font-family: airbnb-regular, sans-serif;
+    font-size: 1.46875rem;
+    line-height: 1.6875rem;
+}
+
 .short-info {
     margin-bottom: 24px;
 }
 
 .short-info-btn:hover {
-    background-color: rgb(245, 245, 245);
+    background-color: rgba(248, 248, 248, 0.952);
+    // background-color: rgb(75, 75, 75);
+    border-radius: 15px;
 }
 
 .short-info .material-icons-outlined {
-    font-size: 1rem;
+    font-size: 1.25rem;
     text-decoration: none;
 }
 
 .short-info-txt {
     font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.red-star {
+    color: rgb(255, 56, 92);
+    font-size: 1rem !important;
+}
+
+.wide {
+    margin-inline: 5px !important;
 }
 
 .short-info-gray {
@@ -38,6 +56,14 @@
 .stay-summery {
     margin: 0;
     margin-bottom: 8px;
+}
+
+.stay-capacity {
+    font-size: 1rem;
+    font-weight: 400;
+    line-break: strict;
+    line-height: 1.25rem;
+    margin: 0;
 }
 
 // stay-short info
@@ -95,6 +121,65 @@
 
 .checked {
     color: $redAirbnb;
+}
+
+// stay features
+.stay-feature-container {
+    padding-block: 32px;
+}
+
+.feature-block {
+    font-size: 1rem;
+    font-weight: 400;
+    line-break: strict;
+    line-height: 1.25rem;
+    margin-bottom: 24px;
+}
+
+.feature-block:last-child {
+    margin-bottom: 0;
+}
+
+.feature-header-text {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    margin: 0 0 4px 20px;
+    line-break: strict;
+}
+
+.feature-text {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    margin: 0 0 4px 20px;
+    padding: 0;
+    line-break: strict;
+}
+
+// stay description
+.stay-description {
+    padding-block: 48px;
+    line-height: 1.5625rem;
+}
+
+.description-header {
+    margin: 0;
+    margin-bottom: 32px;
+}
+
+.stay-description-text {
+    margin: 0
+}
+
+//amenities
+.stay-amenities {
+    padding-block: 48px;
+}
+
+.amenities-header {
+    margin: 0;
+    padding-bottom: 24px;
 }
 
 //review section

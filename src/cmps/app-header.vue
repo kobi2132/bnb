@@ -1,17 +1,20 @@
 <template>
-  <section class="main-header" :class="{ details: stayDetails }">
+  <section
+    class="main-header"
+    :class="{ details: stayDetails, fullheader: !miniFilter }"
+  >
     <section class="main-header-container flex space-between">
-      <div class="logo clickable" @click="goHome">
+      <div class="logo clickable" @click.stop="goHome">
         <img class="logo-img" src="~@/assets/images/logo.png" />
       </div>
       <button
         @click="miniFilter = !miniFilter"
         class="mini-filter flex space-between align-center clickable"
-        v-if="miniFilter"
+        :class="{ hide: !miniFilter }"
       >
         {{ currDest }} <span></span>
       </button>
-      <div class="nav flex align-center">
+      <div class="nav flex align-center justify-center">
         <router-link to="/explore">Explore</router-link>
         <router-link to="/">Become a Host</router-link>
         <button
@@ -29,7 +32,7 @@
       <a href="#">About</a>
       <a href="#">Help</a>
     </div>
-    <stay-filter v-if="!miniFilter" />
+    <stay-filter :class="{ hide: miniFilter }" />
   </section>
 </template>
 
