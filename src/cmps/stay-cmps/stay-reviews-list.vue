@@ -1,6 +1,5 @@
 <template>
   <section class="stay-review-list">
-    <h2>reviews list</h2>
       <ul class="reviews-list-container clean-list">
       <li v-for="(review, idx) in reviews" :key="idx" class="review-preview-container">
         <review-preview :review="review" />
