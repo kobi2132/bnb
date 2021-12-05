@@ -5,18 +5,19 @@
     <h4 class="stay-description-text">{{ stay.description }}</h4>
     </div>
     
-    <section class="stay-amenities">
+    <section class="stay-amenities gray-box-shadow">
       <h2 class="amenities-header">Amenities</h2>
-      <ul class="amenities-list clean-list">
+      <ul class="amenities-list clean-list flex space-between">
         <li
           v-for="(amenity, idx) in stay.amenities"
           :key="idx"
-          class="amenity-container clean-list"
-        >
-          <h5>
-            <span class="material-icons-outlined"> {{ amenity.logo }} </span>
+          class="amenity-list clean-list">
+          <div class="amenity-container flex">
+          <span class="material-icons-outlined"> {{ amenity.logo }} </span>
+          <h5 >
             {{ amenity.name }}
           </h5>
+          </div>
         </li>
       </ul>
     </section>

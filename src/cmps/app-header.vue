@@ -15,7 +15,7 @@
         {{ currDest }} <span></span>
       </button>
       <div class="nav flex align-center justify-center">
-        <router-link to="/explore">Explore</router-link>
+        <!-- <router-link to="/explore">Explore</router-link> -->
         <router-link to="/">Become a Host</router-link>
         <button
           class="user-menu-btn clickable flex align-center clickable"

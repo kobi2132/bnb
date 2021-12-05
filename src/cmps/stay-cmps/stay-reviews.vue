@@ -4,11 +4,11 @@
 
   <section class="stay-reviews-container">
 
-      <div class="stay-reviews-header">
-        <h2>
+      <div class="stay-reviews-header gray-box-shadow">
           <span class="material-icons-outlined"> star </span>
+        <h2>
           {{ reviewsRateAvg }}
-          ({{this.reviews.length}} reviews) 
+           · {{this.reviews.length}} reviews 
         </h2>
         <div class="stay-reviews-stats">
           <stay-reviews-stats :reviews="reviews" />

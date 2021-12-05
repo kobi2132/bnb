@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2>stats</h2>
+    
     <!-- todos -->
     <!-- fix the funcs it looks like crap -->
     <!-- functionality done-->
@@ -14,9 +14,10 @@
             v-for="(num, idx) in 5"
             :key="idx"
             :class="{ checked: num <= Cleanliness }"
-            class="fa fa-star"
+            class="material-icons-outlined"
             
-          ></span>
+          >star</span>
+          <!-- <span class="material-icons-outlined"> star </span> -->
         </div>
       </div>
       <div class="review-ctg flex space-between">
@@ -26,9 +27,9 @@
             v-for="(num, idx) in 5"
             :key="idx"
             :class="{ checked: num <= Communication }"
-            class="fa fa-star"
-        
-          ></span>
+             class="material-icons-outlined"
+            
+          >star</span>
         </div>
       </div>
       <div class="review-ctg flex space-between">
@@ -38,9 +39,9 @@
             v-for="(num, idx) in 5"
             :key="idx"
             :class="{ checked: num <= CheckIn }"
-            class="fa fa-star"
+            class="material-icons-outlined"
             
-          ></span>
+          >star</span>
         </div>
       </div>
       <div class="review-ctg flex space-between">
@@ -50,9 +51,9 @@
             v-for="(num, idx) in 5"
             :key="idx"
             :class="{ checked: num <= Accuracy }"
-            class="fa fa-star"
-        
-          ></span>
+            class="material-icons-outlined"
+            
+          >star</span>
         </div>
       </div>
       <div class="review-ctg flex space-between">
@@ -62,9 +63,9 @@
             v-for="(num, idx) in 5"
             :key="idx"
             :class="{ checked: num <= Location }"
-            class="fa fa-star"
+            class="material-icons-outlined"
             
-          ></span>
+          >star</span>
         </div>
       </div>
       <div class="review-ctg flex space-between">
@@ -74,9 +75,9 @@
             v-for="(num, idx) in 5"
             :key="idx"
             :class="{ checked: num <= Accessibility }"
-            class="fa fa-star"
+            class="material-icons-outlined"
             
-          ></span>
+          >star</span>
         </div>
       </div>
     </div>
