@@ -9,7 +9,7 @@
     <section class="dest-container">
       <h1>Popular Destinations</h1>
       <section class="dest-gallery">
-        <router-link to="/explore?destination=New-York">
+        <router-link to="/explore?destination=New York">
           <img src="~@/assets/images/NY2.jpg" />
           <h3>New York</h3>
         </router-link>
@@ -17,7 +17,7 @@
           <img src="~@/assets/images/SAN1.png" />
           <h3>Santorini</h3>
         </router-link>
-        <router-link to="/explore?destination=Tel-Aviv">
+        <router-link to="/explore?destination=Tel Aviv">
           <img src="~@/assets/images/TA1.jpg" />
           <h3>Tel Aviv</h3>
         </router-link>
