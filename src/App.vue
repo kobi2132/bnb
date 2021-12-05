@@ -9,6 +9,14 @@
 import appHeader from "./cmps/app-header.vue";
 
 export default {
+  head: {
+    link: [
+      {
+        rel: "icon",
+        href: require("./assets/icon.png"),
+      },
+    ],
+  },
   created() {
     this.$store.dispatch({ type: "loadStays" });
   },

@@ -24,7 +24,7 @@
       </div>
       <div class="input-container" @click="shouldShow = false">
         <!-- <trip-calendar-3 @updated="updateDates" /> -->
-        <trip-calendar-2 @updated="updateDates" />
+        <trip-calendar-2 @updated="updateDates" :masks="this.masks" />
       </div>
       <div
         class="input-container flex column"
@@ -94,6 +94,9 @@ export default {
       },
 
       shouldShow: false,
+      masks: {
+        input: "DD MMM",
+      },
     };
   },
   components: {

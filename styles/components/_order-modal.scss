@@ -71,11 +71,11 @@
         //   --mouse-x: 53.625;
         //   --mouse-y: 66.6667;
         transition: opacity 1.25s ease 0s !important;
-        background-image: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;
-        background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
-        &:hover {
-            opacity: 1;
-        }
+        // background-image: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;
+        // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+        // &:hover {
+        //     opacity: 1;
+        // }
     }
     .input-container {
         display: flex;
@@ -88,7 +88,7 @@
         label,input {
             display: block;
         }
-        border: 1px solid rgb(34,34,34);
+        border: 1px solid rgb(176, 176, 176);
         padding: 10px 12px;
         border-radius: 0px 0px 13px 13px;
         width: 100%;
@@ -97,14 +97,14 @@
     .dates-container {
 
         .checkout {
-            border: 1px solid rgb(34,34,34);
+            border: 1px solid rgb(176, 176, 176);
             border-bottom-color: hsla(0,0%,100%,0);
             border-top-right-radius: 13px;
             padding: 10px 12px;
 
         }
         .checkin {
-            border: 1px solid rgb(34,34,34);
+            border: 1px solid rgb(176, 176, 176);
             border-bottom-color: hsla(0,0%,100%,0);
             border-right-color: hsla(0,0%,100%,0);
             border-top-left-radius: 13px;

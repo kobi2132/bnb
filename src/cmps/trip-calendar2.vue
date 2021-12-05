@@ -125,16 +125,16 @@
 </template>
 <script>
 export default {
-  props: ["dates"],
+  props: ["dates", "masks"],
   data() {
     return {
       range: {
         start: null,
         end: null,
       },
-      masks: {
-        input: "DD MMM",
-      },
+      // masks: {
+      //   input: "DD MMM",
+      // },
     };
   },
   methods: {

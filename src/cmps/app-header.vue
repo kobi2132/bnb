@@ -15,7 +15,7 @@
         {{ currDest }} <span></span>
       </button>
       <div class="nav flex align-center justify-center">
-        <!-- <router-link to="/explore">Explore</router-link> -->
+        <router-link to="/explore">Explore</router-link>
         <router-link to="/">Become a Host</router-link>
         <button
           class="user-menu-btn clickable flex align-center clickable"
@@ -31,6 +31,7 @@
       <a href="#">Host your home</a>
       <a href="#">About</a>
       <a href="#">Help</a>
+      <a href="#">Host your home</a>
     </div>
     <stay-filter :class="{ hide: miniFilter }" />
   </section>
@@ -55,7 +56,7 @@ export default {
       // console.log(window.scrollY);
       // console.log("scrolling...");
       if (window.scrollY > 50) this.miniFilter = true;
-      if (window.scrollY < 50) this.miniFilter = false;
+      if (window.scrollY < 50 && !this.miniFilter) this.miniFilter = false;
     },
   },
   computed: {
@@ -87,7 +88,8 @@ export default {
     "$store.state.currPage": {
       handler() {
         this.currPage = this.$store.getters.currPage;
-        console.log(this.currPage);
+        if (this.currPage === "stayDetails") this.miniFilter = true;
+        else this.miniFilter = false;
       },
       immediate: true,
       deep: true,
