@@ -9,7 +9,7 @@
     <section class="dest-container">
       <h1>Popular Destinations</h1>
       <section class="dest-gallery">
-        <router-link to="/explore?destination=New_York">
+        <router-link to="/explore?destination=New York">
           <img src="~@/assets/images/NY2.jpg" />
           <h3>New York</h3>
         </router-link>

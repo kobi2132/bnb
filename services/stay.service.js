@@ -637,7 +637,7 @@ const gStays = [{
     "loc": {
         "country": "Israel",
         "countryCode": "IL",
-        "city": "Tel-Aviv",
+        "city": "Tel Aviv",
         "lat": -8.61308,
         "lng": 41.1413
     },
@@ -732,7 +732,7 @@ const gStays = [{
     "loc": {
         "country": "Israel",
         "countryCode": "IL",
-        "city": "Tel-Aviv",
+        "city": "Tel Aviv",
         "lat": -8.61308,
         "lng": 41.1413
     },
