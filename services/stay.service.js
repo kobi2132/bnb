@@ -10,7 +10,6 @@ export const stayService = {
     save
 }
 
-
 const gStays = [{
     "_id": "907978791",
     "name": "Charming House",
@@ -52,8 +51,9 @@ const gStays = [{
     ],
     "host": {
         "_id": "u101",
-        "fullname": "Erik Biton",
-        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+        "fullname": "Baner Aiton",
+        // "imgUrl": "2"
+        "imgUrl": "2"
     },
     "loc": {
         "country": "Portugal",
@@ -64,7 +64,7 @@ const gStays = [{
     },
     "reviews": [{
         "id": "madeId",
-        "date": "04.3.2020",
+        "date": "04.3.2013",
         "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built. Also, as per other reviews, agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
         "rate": {
 
@@ -77,8 +77,8 @@ const gStays = [{
         },
         "by": {
             "_id": "u102",
-            "fullname": "Bentz Margalit",
-            "imgUrl": "/img/img2.jpg"
+            "fullname": "Ross Geller",
+            "imgUrl": "~@/assets/images/avatars/12.jpg"
         }
     },
     {
@@ -96,12 +96,12 @@ const gStays = [{
         "by": {
             "_id": "u103",
             "fullname": "Yami Kobin",
-            "imgUrl": "/img/img3.jpg"
+            "imgUrl": "~@/assets/images/avatars/2.jpg"
         }
     },
     {
         "id": "madeId",
-        "date": "24.8.2013",
+        "date": "24.8.2017",
         "txt": "A stunning property in a beautiful location. The local village is a short walk away and has some wonderful food shops and restaurants. The house has a lot of glass and in the middle of summer would benefit from air conditioning (something mentioned in previous reviews), but has large windows which can be opened. The coast line is incredible, and this property is perfectly located to maximise the views. Would recommend a visit to the local monastery if nothing else for the amazing drive from the property.",
         "rate": {
             cleanliness: 3,
@@ -113,13 +113,13 @@ const gStays = [{
         },
         "by": {
             "_id": "u104",
-            "fullname": "Bentz Margalit",
-            "imgUrl": "/img/img4.jpg"
+            "fullname": "Ido Margalit",
+            "imgUrl": "~@/assets/images/avatars/16.jpg"
         }
     },
     {
         "id": "madeId",
-        "date": "04.3.2020",
+        "date": "04.3.2018",
         "txt": "Wonderfull house, great views, lovly neighbors, i love my life, thank you so much",
         "rate": {
             cleanliness: 1,
@@ -132,13 +132,13 @@ const gStays = [{
         "by": {
             "_id": "u105",
             "fullname": "Mongo Shapira",
-            "imgUrl": "/img/img5.jpg"
+            "imgUrl": "~@/assets/images/avatars/20.jpg"
         }
     },
     {
         "id": "madeId",
-        "date": "07.1.2015",
-        "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built. Also, as per other reviews, agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
+        "date": "07.1.2020",
+        "txt": "Lovely house, but as per other reviews, I agree that cleanliness was an issue. Although, once we complained to the agency, they quickly sent someone to clean areas we thought required more cleaning.",
         "rate": {
             cleanliness: 3,
             communication: 3,
@@ -156,7 +156,7 @@ const gStays = [{
     {
         "id": "madeId",
         "date": "04.3.2020",
-        "txt": "Our house is a very, very, very fine house With two cats in the yard Life used to be so hard Now everything is easy 'cause of you",
+        "txt": "Great location but the communication with the host was problematic and the cleanliness was not up to par with my standarts.",
         "rate": {
             cleanliness: 3,
             communication: 3,
@@ -167,14 +167,14 @@ const gStays = [{
         },
         "by": {
             "_id": "u109",
-            "fullname": "Symon maymon",
-            "imgUrl": "/img/img9.jpg"
+            "fullname": "Monica Geller",
+            "imgUrl": "~@/assets/images/avatars/1.png"
         }
     },
     {
         "id": "madeId",
-        "date": "24.8.2013",
-        "txt": "Lovely house, but not as good as the pictures were. The house has not aged well or been maintained to bring it back to how it was originally built.",
+        "date": "24.8.2020",
+        "txt": "We loved our stay! Perfect location, everything was clean and tidy, was great to have the outdoor garden as well. The host was such a pleasure to communicate with and the apartment was so charming.",
         "rate": {
             cleanliness: 5,
             communication: 5,
@@ -186,7 +186,7 @@ const gStays = [{
         "by": {
             "_id": "110",
             "fullname": "Jhon McLOVIN",
-            "imgUrl": "/img/img10.jpg"
+            "imgUrl": "~@/assets/images/avatars/17.png"
         }
     },
     ]
@@ -228,7 +228,7 @@ const gStays = [{
     "host": {
         "_id": "u101",
         "fullname": "Erik Biton",
-        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+        "imgUrl": "2"
     },
     "loc": {
         "country": "Greece",
@@ -443,7 +443,7 @@ const gStays = [{
     "host": {
         "_id": "u102",
         "fullname": "Bentz Margalit",
-        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+        "imgUrl": "2"
     },
     "loc": {
         "country": "USA",
@@ -632,7 +632,7 @@ const gStays = [{
     "host": {
         "_id": "u102",
         "fullname": "Bentz Margalit",
-        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+        "imgUrl": "2"
     },
     "loc": {
         "country": "Israel",
@@ -727,7 +727,7 @@ const gStays = [{
     "host": {
         "_id": "u102",
         "fullname": "Bentz Margalit",
-        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+        "imgUrl": "2"
     },
     "loc": {
         "country": "Israel",
@@ -834,7 +834,7 @@ const gStays = [{
     "host": {
         "_id": "u102",
         "fullname": "Bentz Margalit",
-        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+        "imgUrl": "2"
     },
     "loc": {
         "country": "Israel",
@@ -941,7 +941,7 @@ const gStays = [{
     "host": {
         "_id": "u102",
         "fullname": "Bentz Margalit",
-        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+        "imgUrl": "2"
     },
     "loc": {
         "country": "USA",
@@ -1048,7 +1048,7 @@ const gStays = [{
     "host": {
         "_id": "u102",
         "fullname": "Bentz Margalit",
-        "imgUrl": "https://res.cloudinary.com/practicaldev/image/fetch/s--Te1hHaXC--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/31984/be96b195-0fb5-47ea-a298-b1fc4b20c02f.jpg"
+        "imgUrl": "2"
     },
     "loc": {
         "country": "Greece",

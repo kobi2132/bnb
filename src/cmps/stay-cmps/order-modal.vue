@@ -67,7 +67,12 @@
             </div>
           </div>
         </div>
-        <button class="reserve-btn">{{ buttonText }}</button>
+        <button
+          class="reserve-btn"
+          :style="{ '--mouse-x': this.mouse.x, '--mouse-y': this.mouse.y }"
+        >
+          {{ buttonText }}
+        </button>
       </form>
       <div class="pricing" v-if="readyToReserve">
         <p>You won't be charged yet</p>
@@ -88,6 +93,7 @@
 <script>
 import tripCalendar2 from "../trip-calendar2.vue";
 export default {
+  el: ".reserve-btn",
   name: "order-modal",
   props: ["stay"],
   data() {
@@ -102,11 +108,29 @@ export default {
         dates: {},
       },
       readyToReserve: false,
+      mouse: {
+        x: null,
+        y: null,
+      },
     };
   },
   created() {
     console.log("order form created", this.trip);
     this.trip = this.$store.getters.getCurrTrip;
+  },
+  mounted() {
+    this.$el.addEventListener("mousemove", (evt) => {
+      let x = evt.clientX / innerWidth;
+      this.mouse.x = x;
+      let y = evt.clientY / innerHeight;
+      this.mouse.y = y;
+      // console.log(x, y);
+      // this.$el.style.setProperty("--mouse-x", x);
+      // this.$el.style.setProperty("--mouse-y", y);
+    });
+  },
+  destroyed() {
+    this.$el.removeEventListener("mousemove", this.handleScroll);
   },
   methods: {
     placeOrder() {
