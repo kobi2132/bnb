@@ -119,18 +119,18 @@ export default {
     this.trip = this.$store.getters.getCurrTrip;
   },
   mounted() {
-    this.$el.addEventListener("mousemove", (evt) => {
-      let x = evt.clientX / innerWidth;
-      this.mouse.x = x;
-      let y = evt.clientY / innerHeight;
-      this.mouse.y = y;
-      // console.log(x, y);
-      // this.$el.style.setProperty("--mouse-x", x);
-      // this.$el.style.setProperty("--mouse-y", y);
-    });
+    // this.$el.addEventListener("mousemove", (evt) => {
+    //   let x = evt.clientX / innerWidth;
+    //   this.mouse.x = x;
+    //   let y = evt.clientY / innerHeight;
+    //   this.mouse.y = y;
+    //   // console.log(x, y);
+    //   // this.$el.style.setProperty("--mouse-x", x);
+    //   // this.$el.style.setProperty("--mouse-y", y);
+    // });
   },
   destroyed() {
-    this.$el.removeEventListener("mousemove", this.handleScroll);
+    // this.$el.removeEventListener("mousemove", this.handleScroll);
   },
   methods: {
     placeOrder() {
