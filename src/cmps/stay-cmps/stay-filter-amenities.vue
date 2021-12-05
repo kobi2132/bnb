@@ -11,16 +11,16 @@
       </div>
     </button>
     <span class="buffer">|</span>
-    <button class="explore-btn" @click="toggleLabel('Wifi')">Wifi</button>
-    <button class="explore-btn" @click="toggleLabel('TV')">TV</button>
-    <button class="explore-btn" @click="toggleLabel('Kitchen')">Kitchen</button>
-    <button class="explore-btn" @click="toggleLabel('Air conditioning')">
+    <button class="explore-btn" @click="toggleLabel('Wifi'), activeBtn = 'wifi'" :class="{active: activeBtn === 'wifi' }">Wifi</button>
+    <button class="explore-btn" @click="toggleLabel('TV'), activeBtn = 'TV'" :class="{active: activeBtn === 'TV' }">TV</button>
+    <button class="explore-btn" @click="toggleLabel('Kitchen'), activeBtn = 'Kitchen'" :class="{active: activeBtn === 'Kitchen' }">Kitchen</button>
+    <button class="explore-btn" @click="toggleLabel('Air conditioning'), activeBtn = 'Air conditioning'" :class="{active: activeBtn === 'Air conditioning' }">
       AC
     </button>
-    <button class="explore-btn" @click="toggleLabel('Smoking Allowed')">
+    <button class="explore-btn" @click="toggleLabel('Smoking Allowed'), activeBtn = 'Smoking Allowed'" :class="{active: activeBtn === 'Smoking Allowed' }">
       Smoking Allowed
     </button>
-    <button class="explore-btn" @click="toggleLabel('Pets Allowed')">
+    <button class="explore-btn" @click="toggleLabel('Pets Allowed'), activeBtn = 'Pets Allowed'" :class="{active: activeBtn === 'Pets Allowed' }">
       Pets Allowed
     </button>
   </section>
@@ -35,6 +35,7 @@ export default {
         typeOfPlace: null,
         labels: [],
       },
+      activeBtn: ''
     };
   },
   components: {},

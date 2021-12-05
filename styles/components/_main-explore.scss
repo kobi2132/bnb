@@ -1,6 +1,6 @@
 .stay-list-conainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(326px, auto));
+    grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
     column-gap: 17px;
     row-gap: 17px;
     padding-top: 16px;
@@ -29,6 +29,10 @@
 
         &:hover {
             border-color: #222222 !important;
+        }
+        .active{
+            border: 1px solid #222222 !important;
+
         }
     }
 

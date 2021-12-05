@@ -24,9 +24,7 @@ export const stayStore = {
                     console.log(amns)
                     if (labels.every(label => amns.includes(label))) return true
                 })
-
             }
-
 
             return filteredStays
         },
