@@ -81,6 +81,11 @@
     -webkit-text-stroke: rgb(32, 32, 32);
     -webkit-text-stroke-width: 1px;
 }
+.active{
+    color: $redAirbnb;
+    -webkit-text-stroke: rgba(158, 130, 130, 0);
+
+}
 
 .short-save:hover {
     .short-heart {

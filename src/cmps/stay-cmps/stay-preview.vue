@@ -2,10 +2,11 @@
   <section class="stay-preview clickable" @click="goToStay">
     <div class="stay-preview-slideshow">
       <stay-preview-slideshow :imgs="stay.imgUrls" />
-      <div class="like-stay" >
-        <span class="material-icons" :class="isLiked" @click.stop="toggleWishList">
-          favorite
-        </span>
+      <div class="like-stay">
+        <span
+          class="material-icons"
+          :class="{ active: isLiked }"
+          @click.stop="toggleWishList">favorite</span>
       </div>
     </div>
     <div class="stay-preview-info">
@@ -13,7 +14,7 @@
         <div class="star-preview">
           <span class="material-icons">star</span>
         </div>
-        <span class="review-avg">{{ this.reviewsAvg }}&nbsp;</span
+        <span class="review-avg">{{ this.reviewsRateAvg }}&nbsp;</span
         ><span class="reviews-total">( {{ this.stay.reviews.length }} )</span>
       </div>
       <div>{{ this.stay.propertyType }} • {{ this.stay.loc.country }}</div>
@@ -27,6 +28,7 @@
 
 <script>
 import stayPreviewSlideshow from "@/cmps/stay-cmps/stay-preview-slideshow.vue";
+import { userService } from "../../../services/user.service.js";
 
 export default {
   name: "stayPreview",
@@ -41,21 +43,25 @@ export default {
   },
   data() {
     return {
-      isWishList: {
-        wishList: false,
-        unWishList: true
-      },
+      isLiked: false,
     };
   },
+  created() {
+    const user = userService.getLoggedinUser();
+    var isWish = user.wishList.filter((wish) => wish === this.stay._id);
+    if (isWish.length > 0) this.isLiked = true
+  },
   computed: {
-    reviewsAvg() {
-      const sum = this.stay.reviews.reduce(
-        (sum, review) => sum + review.rate,
-        0
-      );
-      var avg = sum / this.stay.reviews.length || 0;
-      avg = (Math.round(avg * 100) / 100).toFixed(1);
-      return avg;
+    reviewsRateAvg() {
+      var avgsSum = 0;
+      this.stay.reviews.forEach((review) => {
+        const sumRates = (obj) => Object.values(obj).reduce((a, b) => a + b);
+        const currSum = sumRates(review.rate);
+        const currSumAvg = currSum / 6;
+        avgsSum += currSumAvg;
+      });
+      avgsSum = avgsSum / this.stay.reviews.length;
+      return avgsSum.toFixed(1);
     },
   },
   methods: {
@@ -66,8 +72,7 @@ export default {
       var stayId = this.stay._id;
       console.log(stayId);
       this.$store.dispatch({ type: "toggleWishList", stayId });
-      this.isWishList.wishList=!this.isWishList.wishList
-      this.isWishList.unWishList=!this.isWishList.unWishList
+      this.isLiked = !this.isLiked;
     },
   },
 };

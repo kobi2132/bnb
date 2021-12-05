@@ -4,6 +4,7 @@
     column-gap: 17px;
     row-gap: 17px;
     padding-top: 16px;
+    padding-bottom: 250px;
 }
 .explore-btns {
     display: flex;
@@ -60,21 +61,15 @@
             top: 12px;
             right: 12px;
             z-index: 9;
+            color: #00000080;
+            -webkit-text-stroke: white;
+            -webkit-text-stroke-width: 1px;
+            height: 24px;
+            width: 24px;
+        }
+        .active {
+            color: $redAirbnb;
 
-            .wishList {
-                color: $redAirbnb;
-                -webkit-text-stroke: white;
-                -webkit-text-stroke-width: 1px;
-                height: 24px;
-                width: 24px;
-            }
-            .unWishList {
-                color: #00000080;
-                -webkit-text-stroke: white;
-                -webkit-text-stroke-width: 1px;
-                height: 24px;
-                width: 24px;
-            }
         }
     }
     .stay-preview-info {
@@ -101,6 +96,7 @@
         }
     }
 }
+
 
 // -----SLIDESHOW - CARUOSEL-----
 .preview-slideshow {

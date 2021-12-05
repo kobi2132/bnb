@@ -24,7 +24,7 @@ var gUser = {
     "password": "secret",
     "email": "YamiK@bt-mir.com",
     "isHost": false,
-    "wishList": []
+    "wishList": ['907978798', '907978795']
 }
 
 _saveLocalUser(gUser)
