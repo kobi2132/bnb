@@ -19,22 +19,11 @@ export const stayStore = {
             const { labels } = state.filterBy
             if (labels.length) {
                 console.log(labels);
-                // var newFilter = filteredStays.filter((stay) => {
-                //     if (stay.amenities.every((label) => labels.includes(label.name)) && stay)
-                //         return stay
-                // })
-                // console.log(newFilter);
-                labels.forEach(label => {
-                    filteredStays.forEach(stay => {
-                        var popo = stay.amenities.map(amenity => {
-                            console.log('amenity:', amenity);
-                            console.log('label', label);
-                            if (amenity.name === label) return 
-                        })
-                        console.log(popo);
-                    })
+                filteredStays = filteredStays.filter((stay) => {
+                    const amns = stay.amenities.map(am => am.name)
+                    console.log(amns)
+                    if (labels.every(label => amns.includes(label))) return true
                 })
-                // filteredStays = filteredStays.filter((stay) => state.filterBy.labels.every((filterLabel) => stay.amenities.name.includes(filterLabel)))
 
             }
 
