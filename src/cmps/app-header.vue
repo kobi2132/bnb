@@ -55,7 +55,7 @@ export default {
       // console.log(window.scrollY);
       // console.log("scrolling...");
       if (window.scrollY > 50) this.miniFilter = true;
-      if (window.scrollY < 50) this.miniFilter = false;
+      if (window.scrollY < 50 && !this.miniFilter) this.miniFilter = false;
     },
   },
   computed: {
@@ -87,7 +87,7 @@ export default {
     "$store.state.currPage": {
       handler() {
         this.currPage = this.$store.getters.currPage;
-        console.log(this.currPage);
+        if (this.currPage === "stayDetails") this.miniFilter = true;
       },
       immediate: true,
       deep: true,
