@@ -21,7 +21,6 @@ export const stayStore = {
                 console.log(labels);
                 filteredStays = filteredStays.filter((stay) => {
                     const amns = stay.amenities.map(am => am.name)
-                    console.log(amns)
                     if (labels.every(label => amns.includes(label))) return true
                 })
             }

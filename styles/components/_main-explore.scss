@@ -30,10 +30,11 @@
         &:hover {
             border-color: #222222 !important;
         }
-        .active{
-            border: 1px solid #222222 !important;
+    }
+    .active{
+        border: 2px solid #222222 !important;
+        background-color: #f7f7f7 !important;
 
-        }
     }
 
     .buffer {
