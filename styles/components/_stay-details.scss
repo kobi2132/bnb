@@ -81,10 +81,10 @@
     -webkit-text-stroke: rgb(32, 32, 32);
     -webkit-text-stroke-width: 1px;
 }
-.active{
+
+.active {
     color: $redAirbnb;
     -webkit-text-stroke: rgba(158, 130, 130, 0);
-
 }
 
 .short-save:hover {
@@ -174,7 +174,11 @@
 }
 
 .stay-description-text {
-    margin: 0
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-break: strict;
+    line-height: 1.5rem;
 }
 
 //amenities
