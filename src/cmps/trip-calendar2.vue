@@ -3,6 +3,7 @@
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8" @submit.prevent>
       <div class="mb-4">
         <v-date-picker
+          :locale="en"
           @input="updateDates"
           v-model="range"
           mode="date"
