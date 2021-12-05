@@ -8,13 +8,11 @@
         </div>
 
     </div>
-            <span>{{review.txt}}</span>
-
-</section>
+    <span>{{ review.txt }}</span>
+  </section>
 </template>
 
 <script>
-
 export default {
   name: "reviewPreview",
   props: {
@@ -23,9 +21,8 @@ export default {
       default: {},
     },
   },
-}
+};
 </script>
 
 <style>
-
 </style>

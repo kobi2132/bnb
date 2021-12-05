@@ -7,26 +7,40 @@
 
     <stay-gallery :stay="stay" />
     <section class="stay-display-divider flex">
-<div class="stay-display-info">
-<section class="stay-summery-container gray-box-shadow flex space-between align-center " >
-  <div>
-      <h2 class="stay-summery">{{ stay.summary }} hosted by {{stay.host.fullname}}</h2>
-      <h5 class="stay-capacity">{{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths</h5>
-  </div>
-      <img class="host-img" :src="stay.host.imgUrl" />
+      <div class="stay-display-info">
+        <section
+          class="
+            stay-summery-container
+            gray-box-shadow
+            flex
+            space-between
+            align-center
+          "
+        >
+          <div>
+            <h2 class="stay-summery">
+              {{ stay.summary }} hosted by {{ stay.host.fullname }}
+            </h2>
+            <h5 class="stay-capacity">
+              {{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths
+            </h5>
+          </div>
+          <img
+            class="host-img"
+            :src="require(`@/assets/images/avatars/${stay.host.imgUrl}.jpg`)"
+          />
+        </section>
+
+        <stay-features />
+
+        <stay-description :stay="stay" />
+      </div>
+      <div class="stay-display-order">
+        <order-modal :stay="stay" class="sticky" />
+      </div>
     </section>
 
-    <stay-features />
-
-    <stay-description :stay="stay" />
-</div>
-<div class="stay-display-order">
-  <order-modal :stay="stay" class="sticky"/>
-</div>
-    </section>
-    
     <stay-reviews :reviews="stay.reviews" />
-
   </section>
 </template>
 
