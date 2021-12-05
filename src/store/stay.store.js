@@ -12,9 +12,11 @@ export const stayStore = {
         staysToShow(state, getters) {
             console.log(getters.getCurrTrip)
             const { destination, guests, dates } = getters.getCurrTrip
-            console.log(destination)
-            const regex = new RegExp(destination, 'i')
-            var filteredStays = state.stays.filter(stay => regex.test(stay.loc.city))
+            var filteredStays = state.stays
+            if (destination) {
+                const regex = new RegExp(destination, 'i')
+                filteredStays = filteredStays.filter(stay => regex.test(stay.loc.city))
+            }
 
             const { labels } = state.filterBy
             if (labels.length) {

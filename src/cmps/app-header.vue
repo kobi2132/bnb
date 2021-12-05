@@ -31,6 +31,7 @@
       <a href="#">Host your home</a>
       <a href="#">About</a>
       <a href="#">Help</a>
+      <a href="#">Host your home</a>
     </div>
     <stay-filter :class="{ hide: miniFilter }" />
   </section>
@@ -88,6 +89,7 @@ export default {
       handler() {
         this.currPage = this.$store.getters.currPage;
         if (this.currPage === "stayDetails") this.miniFilter = true;
+        else this.miniFilter = false;
       },
       immediate: true,
       deep: true,
