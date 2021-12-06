@@ -12,7 +12,7 @@
     <div class="stay-preview-info">
       <div class="reviews-preview">
         <div class="star-preview">
-          <span class="material-icons">star</span>
+          <span class="material-icons-outlined">star</span>
         </div>
         <span class="review-avg">{{ this.reviewsRateAvg }}&nbsp;</span
         ><span class="reviews-total">( {{ this.stay.reviews.length }} )</span>

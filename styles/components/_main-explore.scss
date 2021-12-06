@@ -32,10 +32,9 @@
             border-color: #222222 !important;
         }
     }
-    .active{
+    .active {
         border: 2px solid #222222 !important;
         background-color: #f7f7f7 !important;
-
     }
 
     .buffer {
@@ -50,6 +49,100 @@
         place-content: center !important ;
         font-size: 14px !important;
     }
+}
+
+// ----------price-filter---------
+
+.price-filter-container {
+    position: sticky;
+    height: 353px;
+    width: 440px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    border: 0.5px solid rgba(118, 118, 118, 0.28);
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 10px 37px;
+    padding: 20px;
+    .avg {
+        text-align: start;
+        font-size: 16px !important;
+        line-height: 20px !important;
+        font-weight: 400 !important;
+        color: rgb(34, 34, 34) !important;
+        padding-bottom: 40px !important;
+    }
+
+    .price-filter {
+        padding: 20px;
+    }
+
+    .price-select-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        .price-select {
+            height: 56px;
+            width: 168px;
+            background: rgb(255, 255, 255) !important;
+            border: 0.5px solid rgba(118, 118, 118, 0.28) !important;
+            border-radius: 12px !important;
+        }
+    }
+
+    .price-save {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 12px 14px;
+        border-top: 1px solid rgb(235, 235, 235);
+
+        .clear {
+            cursor: pointer;
+            border: none;
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 600;
+            color: #222222;
+            text-decoration: underline;
+        }
+        .save {
+            cursor: pointer;
+            margin: 0px;
+            text-align: center;
+            text-decoration: none;
+            width: auto;
+            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            outline: none;
+            padding: 8px 16px;
+            border: none;
+            background: rgb(34, 34, 34);
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+.irs--round .irs-bar {
+    background-color: #b0b0b0 !important;
+}
+
+.vue-histogram-slider-wrapper {
+    width: 360px !important;
+    --holder-color: #ddd !important;
+    --handle-color: #ffffff !important;
+    --grid-text-color: silver;
+    --line-height: 6px;
+    --font-family: Arial, sans-serif;
+    --font-size: 12;
+    --hist-slider-gap: -30px;
+    --handle-size: 26px;
 }
 
 .stay-preview {
@@ -69,7 +162,6 @@
         }
         .active {
             color: $redAirbnb;
-
         }
     }
     .stay-preview-info {
@@ -82,7 +174,7 @@
             font-size: 14px !important;
             .star-preview {
                 margin-right: 4px !important;
-                .material-icons {
+                .material-icons-outlined {
                     color: $redAirbnb;
                     font-size: 18px;
                 }
@@ -96,7 +188,6 @@
         }
     }
 }
-
 
 // -----SLIDESHOW - CARUOSEL-----
 .preview-slideshow {
