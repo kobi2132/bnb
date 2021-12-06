@@ -5,11 +5,11 @@
 <section class="add-review flex column">
 
     <h2>add review</h2>
-    <div class="add-review-header flex ">
+    <div class="review-preview-header flex ">
         <img src="~@/assets/images/review-avatar.png" alt="" class="host-img">
-        <div class="review-date-name">
-            <h3>demo name</h3>
-            <h4>demo date</h4>
+        <div class="review-preview-text-container">
+            <h4>demo name</h4>
+            <h5>demo date</h5>
         </div>
     </div>
     <add-review-ctgs />
