@@ -1,12 +1,14 @@
 <template>
   <section class="explore-btns">
     <button class="explore-btn">
-      <div class="btn-expend" @click="isPriceShown">
-        Price <span class="material-icons">expand_more</span>
+      <div class="btn-expend" @click="setPriceShown">
+        Price
+        <span class="material-icons" v-if="!this.isPriceShown">expand_more</span>
+        <span class="material-icons" v-if="this.isPriceShown">expand_less</span>
       </div>
-      <div class="price-filter-container" v-if="this.isShown">
-        <div class="price-filter">
+      <div class="price-filter-container" v-if="this.isPriceShown">
           <h3 class="avg">The average nightly price is $196</h3>
+        <div class="price-filter">
           <HistogramSlider
             :width="360"
             :bar-height="100"
@@ -18,39 +20,77 @@
             :barGap="5"
             :barRadius="2"
             :lineHeight="2"
+            :clip="false"
+            :holderColor="setColor"
             @finish="sliderChanged"
             @change="sliderChanged"
           />
           <div class="price-select-container">
             <div class="price-select" @click="shouldShow = false">
-              <label>
-                min price
+              <div class="label">min price</div>
+              <div class="price-change">
+                <div class="dollar">$</div>
                 <input v-model="filterBy.price.min" placeholder="curr" />
-              </label>
+              </div>
             </div>
-            <h3>-</h3>
+            <h3>–</h3>
             <div class="price-select" @click="shouldShow = false">
-              <label>
-                max price
-                <input
-                  v-model="filterBy.price.max"
-                  type="search"
-                  placeholder="curr"
-                />
-              </label>
+              <div class="label">max price</div>
+              <div class="price-change">
+                <div class="dollar">$</div>
+                <input v-model="filterBy.price.max" placeholder="curr" />
+              </div>
             </div>
           </div>
         </div>
 
         <div class="price-save">
-          <button class="clear">Clear</button>
-          <button class="save">Save</button>
+          <button class="clear" @click="clearPriceRange">Clear</button>
+          <button class="save" @click="setPriceRange">Save</button>
         </div>
       </div>
     </button>
     <button class="explore-btn">
       <div class="btn-expend">
         Type of place <span class="material-icons">expand_more</span>
+      </div>
+      <div class="type-filter-container" v-if="this.isTypeShown">
+        <div class="type-filter">
+          <div class="type-of-place">
+            <input type="checkbox" name="" id="">
+            <div class="type">
+              <div class="type-header">Entire place</div>
+              <div class="type-title">Have a place to yourself</div>
+            </div>
+          </div>
+          <div class="type-of-place">
+            <input type="checkbox" name="" id="">
+            <div class="type">
+              <div class="type-header">Private room</div>
+              <div class="type-title">Have your own room and share some common spaces</div>
+            </div>
+          </div>
+          <div class="type-of-place">
+            <input type="checkbox" name="" id="">
+            <div class="type">
+              <div class="type-header">Hotel room</div>
+              <div class="type-title">Have a private or shared room in a boutique hotel, hostel, and more</div>
+            </div>
+          </div>
+          <div class="type-of-place">
+            <input type="checkbox" name="" id="">
+            <div class="type">
+              <div class="type-header">Shared room</div>
+              <div class="type-title">Stay in a shared space, like a common room</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="type-save">
+          <button class="clear" @click="clearPriceRange">Clear</button>
+          <button class="save" @click="setPriceRange">Save</button>
+        </div>
       </div>
     </button>
     <span class="buffer">|</span>
@@ -123,27 +163,27 @@ export default {
     return {
       filterBy: {
         price: {
-          min: 158,
-          max: 200,
+          min: 0,
+          max: 1000,
         },
         typeOfPlace: null,
         labels: [],
-        prices: [],
       },
+      prices: [],
       stays: null,
       activeBtn: "",
-      isShown: false
+      isPriceShown: false,
+      isTypeShown: false,
     };
   },
   created() {
-          this.getStaysPrices();
+    this.getStaysPrices();
   },
   components: {},
-  computed: {
-  },
+  computed: {},
   methods: {
-    isPriceShown(){
-      this.isShown=!this.isShown
+    setPriceShown() {
+      this.isPriceShown = !this.isPriceShown;
     },
     toggleLabel(amenitie) {
       const idx = this.filterBy.labels.findIndex((label) => label === amenitie);
@@ -156,20 +196,27 @@ export default {
       const filterBy = this.filterBy;
       this.$store.commit({ type: "setFilter", filterBy });
       this.getStaysPrices();
-
-    },
-    sliderChanged(values) {
-      const valueMin = values.from;
-      const valueMax = values.to;
-      this.filterBy.price.min = valueMin;
-      this.filterBy.price.max = valueMax;
-      this.setFilter();
     },
     getStaysPrices() {
       const stays = this.$store.getters.staysToShow;
       const staysPrices = stays.map((stay) => stay.price);
       this.filterBy.prices = staysPrices;
-      console.log(staysPrices);
+      // console.log(staysPrices);
+    },
+
+    sliderChanged(values) {
+      const valueMin = values.from;
+      const valueMax = values.to;
+      this.filterBy.price.min = valueMin;
+      this.filterBy.price.max = valueMax;
+    },
+    clearPriceRange() {
+      this.filterBy.price.min = 0;
+      this.filterBy.price.max = 1000;
+    },
+    setPriceRange() {
+      this.isPriceShown = false;
+      this.setFilter();
     },
 
     // setVal(values) {

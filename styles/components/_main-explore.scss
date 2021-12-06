@@ -6,6 +6,9 @@
     padding-top: 16px;
     padding-bottom: 250px;
 }
+
+// ---------------------------------FILTER BTNS------------------------------
+
 .explore-btns {
     display: flex;
     align-items: center;
@@ -48,13 +51,19 @@
         display: flex;
         place-content: center !important ;
         font-size: 14px !important;
+        span{
+            font-size: 20px;
+            font-weight: bold;
+        }
     }
 }
 
-// ----------price-filter---------
+// ----------------------price-filter----------------------------------------
 
 .price-filter-container {
-    position: sticky;
+    position: absolute;
+    bottom: 285px;
+    left:80px ;
     height: 353px;
     width: 440px;
     z-index: 10;
@@ -68,11 +77,12 @@
     padding: 20px;
     .avg {
         text-align: start;
-        font-size: 16px !important;
-        line-height: 20px !important;
-        font-weight: 400 !important;
-        color: rgb(34, 34, 34) !important;
-        padding-bottom: 40px !important;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: rgb(34, 34, 34);
+        // padding-bottom: 25px;
+        padding-top: 8px;
     }
 
     .price-filter {
@@ -83,19 +93,55 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        h3 {
+            margin: 8px;
+            color: #222222;
+            font-size: 16px;
+            font-weight: lighter;
+            line-height: 20px;
+        }
+
         .price-select {
             height: 56px;
             width: 168px;
             background: rgb(255, 255, 255) !important;
             border: 0.5px solid rgba(118, 118, 118, 0.28) !important;
-            border-radius: 12px !important;
+            border-radius: 9px !important;
+            &:focus-within {
+                border: 2px solid rgb(0, 0, 0) !important;
+            }
+            .label {
+                text-align: start;
+                margin-inline-start: 12px;
+                margin-top: 8px;
+                font-size: 11px;
+                line-height: 20px;
+                color: rgb(113, 113, 113);
+                font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            }
+            .price-change {
+                display: flex;
+                align-items: flex-end;
+                margin-inline-start: 12px;
+                font-size: 15px !important;
+
+            }
+            input {
+                border: none;
+                width: 50px;
+                font-size: 15px !important;
+
+                &:focus {
+                    outline: none !important;
+                }
+            }
         }
     }
 
     .price-save {
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
         padding: 12px 14px;
         border-top: 1px solid rgb(235, 235, 235);
 
@@ -145,6 +191,67 @@
     --handle-size: 26px;
 }
 
+// ----------------------type-filter----------------------------------------
+
+.type-filter-container {
+    position: absolute;
+    bottom: 285px;
+    left:80px ;
+    height: 353px;
+    width: 440px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    border: 0.5px solid rgba(118, 118, 118, 0.28);
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 10px 37px;
+    padding: 20px;
+
+    .type-filter {
+        padding: 20px;
+    }
+
+    .type-save {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 14px;
+        border-top: 1px solid rgb(235, 235, 235);
+
+        .clear {
+            cursor: pointer;
+            border: none;
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 600;
+            color: #222222;
+            text-decoration: underline;
+        }
+        .save {
+            cursor: pointer;
+            margin: 0px;
+            text-align: center;
+            text-decoration: none;
+            width: auto;
+            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            outline: none;
+            padding: 8px 16px;
+            border: none;
+            background: rgb(34, 34, 34);
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+// ----------------------------------------STAY PREVIEW---------------------------------------
+
 .stay-preview {
     .stay-preview-slideshow {
         position: relative;
@@ -189,7 +296,7 @@
     }
 }
 
-// -----SLIDESHOW - CARUOSEL-----
+// ------------------------------SLIDESHOW - CARUOSEL---------------------------------------
 .preview-slideshow {
     img {
         border-radius: 12px;
