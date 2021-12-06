@@ -22,7 +22,7 @@
               {{ stay.summary }} hosted by {{ stay.host.fullname }}
             </h2>
             <h5 class="stay-capacity">
-              {{ stay.capacity }} guests | 4 bedrooms | 4 beds | 2 baths
+              {{ stay.capacity }} guests · 3 bedrooms · 3 beds · 2 baths
             </h5>
           </div>
           <img
