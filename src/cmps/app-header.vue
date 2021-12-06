@@ -55,8 +55,9 @@ export default {
     handleScroll(event) {
       // console.log(window.scrollY);
       // console.log("scrolling...");
+      if (window.scrollY === 0) this.miniFilter = false;
       if (window.scrollY > 50) this.miniFilter = true;
-      if (window.scrollY < 50 && !this.miniFilter) this.miniFilter = false;
+      if (this.currPage === "stayDetails") this.miniFilter = true;
     },
   },
   computed: {
