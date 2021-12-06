@@ -93,7 +93,7 @@
 <script>
 import tripCalendar2 from "../trip-calendar2.vue";
 export default {
-  el: ".reserve-btn",
+  // el: ".reserve-btn",
   name: "order-modal",
   props: ["stay"],
   data() {

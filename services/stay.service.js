@@ -2895,6 +2895,7 @@ const gStays = [{
 },
 ]
 
+
 _createStays()
 
 function query() {
