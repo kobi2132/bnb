@@ -20,6 +20,7 @@
 
 
 .main-header {
+    height: 100px;
     position: fixed;
     top: 0;
     display: grid;
@@ -38,9 +39,9 @@
 
 .main-header.fullheader {
     background-color: #fff;
-    background: linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,.05) 15%,transparent 90%);
+    // background: linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,.05) 15%,white 90%);
     box-shadow: unset;
-    height: 200px;
+    height: 160px;
     
 }
 
@@ -70,6 +71,11 @@
         grid-template-columns: 115px 1fr 115px;
         > * {
             grid-column: 2;
+    }
+    position: static;
+    .mini-filter {
+        position: relative;
+        left: 25%;
     }
 }
 

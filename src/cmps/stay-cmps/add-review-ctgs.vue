@@ -1,30 +1,59 @@
 <template>
-  <div class="add-review-ctgs">
-        <div class="add-review-ctg">
-            <label for="Cleanliness">Cleanliness</label>
-                <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Cleanliness}" class="fa fa-star" @click="changeColor(num, 'Cleanliness')"></span>
-        </div>
-        <div class="add-review-ctg">
-            <label for="Communication">Communication</label>
-                <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Communication}" class="fa fa-star" @click="changeColor(num, 'Communication')"></span>
-        </div>
-        <div class="add-review-ctg">
-            <label for="CheckIn">Check-in</label>
-                <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=CheckIn}" class="fa fa-star" @click="changeColor(num, 'CheckIn')"></span>
-        </div>
-        <div class="add-review-ctg">
-            <label for="Accuracy">Accuracy</label>
-                <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Accuracy}" class="fa fa-star" @click="changeColor(num, 'Accuracy')"></span>
-        </div>
-        <div class="add-review-ctg">
-            <label for="Location">Location</label>
-                <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Location}" class="fa fa-star" @click="changeColor(num, 'Location')"></span>
-        </div>
-        <div class="add-review-ctg">
-            <label for="Accessibility">Accessibility</label>
-                <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Accessibility}" class="fa fa-star" @click="changeColor(num, 'Accessibility')"></span>
-        </div>
+
+
+    <div class="review-stats">
+        <!-- <div class="review-ctg flex space-between"> -->
+            <!-- <label for="Cleanliness">Cleanliness</label> -->
+            <!-- <div> -->
+            <!-- <span v-for="(num, idx) in 5" :key="idx"
+                :class="{checked:num<=Cleanliness}"
+                class="material-icons-outlined clickable"
+                @click="changeColor(num, 'Cleanliness')">star</span> -->
+
+            <div class="add-review-ctg flex space-between">
+                <label for="Cleanliness">Cleanliness</label>
+                    <div class="stars-container">
+                    <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Cleanliness}" class="material-icons-outlined clickable"
+                @click="changeColor(num, 'Cleanliness')">star</span>
+                    </div>
+            </div>
+            <div class="add-review-ctg flex space-between">
+                <label for="Communication">Communication</label>
+                     <div class="stars-container">
+                        <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Communication}" class="material-icons-outlined clickable"
+                        @click="changeColor(num, 'Communication')">star</span>
+                    </div>
+            </div>
+            <div class="add-review-ctg flex space-between">
+                <label for="CheckIn">Check-in</label>
+                    <div class="stars-container">
+                        <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=CheckIn}" class="material-icons-outlined clickable"
+                        @click="changeColor(num, 'CheckIn')">star</span>
+                    </div>
+            </div>
+            <div class="add-review-ctg flex space-between ">
+                <label for="Accuracy">Accuracy</label>
+                <div class="stars-container">
+                    <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Accuracy}" class="material-icons-outlined clickable"
+                    @click="changeColor(num, 'Accuracy')">star</span>
+                </div>
+            </div>
+            <div class="add-review-ctg flex space-between">
+                <label for="Location">Location</label>
+                <div class="stars-container">
+                    <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Location}" class="material-icons-outlined clickable"
+                    @click="changeColor(num, 'Location')">star</span>
+                </div>
+            </div>
+            <div class="add-review-ctg flex space-between">
+                <label for="Accessibility">Accessibility</label>
+                <div class="stars-container">
+                    <span v-for="(num, idx) in 5" :key="idx" :class="{checked:num<=Accessibility}" class="material-icons-outlined clickable"
+                    @click="changeColor(num, 'Accessibility')">star</span>
+                </div>
+            </div>
     </div>
+    
 </template>
 
 <script>
