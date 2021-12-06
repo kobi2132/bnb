@@ -7,7 +7,7 @@
         </div>
         <div class="reviews-preview flex">
           <div class="star-preview">
-            <span class="material-icons">star</span>
+            <span class="material-icons-outlined">star</span>
           </div>
           <span class="review-avg">{{ reviewsRateAvg }}&nbsp;</span>
           <span class="reviews-total">( {{ this.stay.reviews.length }} )</span>

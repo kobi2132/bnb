@@ -17,8 +17,10 @@
     }
     
     .short-info .material-icons-outlined {
-        font-size: 1.25rem;
+        font-size: 1rem;
         text-decoration: none;
+        vertical-align: middle;
+        line-height: 20px;
     }
     
     .short-info-txt {
@@ -28,7 +30,6 @@
     
     .red-star {
         color: rgb(255, 56, 92);
-        font-size: 1rem !important;
     }
     
     .wide {

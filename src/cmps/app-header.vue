@@ -27,11 +27,22 @@
       </div>
     </section>
     <div class="user-nav" v-if="shouldShow">
+      <div class="user-nav2">
       <a href="#/login">Log in</a>
-      <a href="#">Host your home</a>
-      <a href="#">About</a>
-      <a href="#">Help</a>
-      <a href="#">Host your home</a>
+      <a href="#/host">Host your home</a>
+      <a href="#/about">About</a>
+      <a href="#/help">Help</a>
+      </div>
+      <div class="user-nav2">
+      <a href="#/messages">Messages</a>
+      <a href="#/notifications">Notifications</a>
+      <a href="#/trips">Trips</a>
+      <a href="#/wishList">Wish List</a>
+      <a href="#/dashboard" class="gray-box-shadow">Dashboard</a>
+      <a href="#/account">Account</a>
+      <a href="#/help">Help</a>
+      <a href="#/logout">Logout</a>
+      </div>
     </div>
     <stay-filter :class="{ hide: miniFilter }" />
   </section>
