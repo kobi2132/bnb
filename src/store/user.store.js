@@ -17,7 +17,10 @@ export const userStore = {
         },
     },
     actions: {
-
+        setUser({ commit }) {
+            const user = userService.getLoggedinUser()
+            commit({ type: 'setUser', user })
+        },
         async toggleWishList({ commit }, { stayId }) {
             try {
                 console.log(stayId)

@@ -1,6 +1,5 @@
 <template>
   <section>
-    
     <!-- todos -->
     <!-- fix the funcs it looks like crap -->
     <!-- functionality done-->
@@ -14,7 +13,9 @@
             v-for="(num, idx) in 5"
             :key="idx"
             :class="{ checked: num <= Cleanliness }"
-            class="material-icons-outlined">star</span>
+            class="material-icons-outlined"
+            >star</span
+          >
           <!-- <span class="material-icons-outlined"> star </span> -->
         </div>
       </div>
@@ -25,9 +26,9 @@
             v-for="(num, idx) in 5"
             :key="idx"
             :class="{ checked: num <= Communication }"
-             class="material-icons-outlined"
-            
-          >star</span>
+            class="material-icons-outlined"
+            >star</span
+          >
         </div>
       </div>
       <div class="review-ctg flex space-between">
@@ -38,8 +39,8 @@
             :key="idx"
             :class="{ checked: num <= CheckIn }"
             class="material-icons-outlined"
-            
-          >star</span>
+            >star</span
+          >
         </div>
       </div>
       <div class="review-ctg flex space-between">
@@ -50,8 +51,8 @@
             :key="idx"
             :class="{ checked: num <= Accuracy }"
             class="material-icons-outlined"
-            
-          >star</span>
+            >star</span
+          >
         </div>
       </div>
       <div class="review-ctg flex space-between">
@@ -62,8 +63,8 @@
             :key="idx"
             :class="{ checked: num <= Location }"
             class="material-icons-outlined"
-            
-          >star</span>
+            >star</span
+          >
         </div>
       </div>
       <div class="review-ctg flex space-between">
@@ -74,8 +75,8 @@
             :key="idx"
             :class="{ checked: num <= Accessibility }"
             class="material-icons-outlined"
-            
-          >star</span>
+            >star</span
+          >
         </div>
       </div>
     </div>
@@ -102,69 +103,75 @@ export default {
       Accessibility: 0,
     };
   },
-  created(){
-      this.reviewsRateScoreAvg()
+  created() {
+    this.reviewsRateScoreAvg();
   },
   methods: {
     reviewsRateScoreAvg() {
-        
-        var ratingsScores = {
-          cleanlinessScore : [],
-          checkInScore : [],
-          locationScore : [],
-          communicationScore : [],
-          accuracyScore : [],
-          accessibilityScore : [],
-        }
-        this.reviews.forEach((review) => {
-          console.log(review.rate)
-          const {cleanliness} = review.rate
-          ratingsScores.cleanlinessScore.push(cleanliness)
-          const {checkIn} = review.rate
-          ratingsScores.checkInScore.push(checkIn)
-          const {location} = review.rate
-          ratingsScores.locationScore.push(location)
-          const {communication} = review.rate
-          ratingsScores.communicationScore.push(communication)
-          const {accuracy} = review.rate
-          ratingsScores.accuracyScore.push(accuracy)
-          const {accessibility} = review.rate
-          ratingsScores.accessibilityScore.push(accessibility)
-        
-        });
-        console.log(ratingsScores)
+      var ratingsScores = {
+        cleanlinessScore: [],
+        checkInScore: [],
+        locationScore: [],
+        communicationScore: [],
+        accuracyScore: [],
+        accessibilityScore: [],
+      };
+      this.reviews.forEach((review) => {
+        // console.log(review.rate)
+        const { cleanliness } = review.rate;
+        ratingsScores.cleanlinessScore.push(cleanliness);
+        const { checkIn } = review.rate;
+        ratingsScores.checkInScore.push(checkIn);
+        const { location } = review.rate;
+        ratingsScores.locationScore.push(location);
+        const { communication } = review.rate;
+        ratingsScores.communicationScore.push(communication);
+        const { accuracy } = review.rate;
+        ratingsScores.accuracyScore.push(accuracy);
+        const { accessibility } = review.rate;
+        ratingsScores.accessibilityScore.push(accessibility);
+      });
+      // console.log(ratingsScores)
 
-          ratingsScores.cleanlinessScore = (ratingsScores.cleanlinessScore.reduce(this.add)/this.reviews.length).toFixed(0)
-          ratingsScores.checkInScore = (ratingsScores.checkInScore.reduce(this.add)/this.reviews.length).toFixed(0)
-          ratingsScores.locationScore = (ratingsScores.locationScore.reduce(this.add)/this.reviews.length).toFixed(0)
-          ratingsScores.communicationScore = (ratingsScores.communicationScore.reduce(this.add)/this.reviews.length).toFixed(0) 
-          ratingsScores.accuracyScore = (ratingsScores.accuracyScore.reduce(this.add)/this.reviews.length).toFixed(0)
-          ratingsScores.accessibilityScore = (ratingsScores.accessibilityScore.reduce(this.add)/this.reviews.length).toFixed(0)
+      ratingsScores.cleanlinessScore = (
+        ratingsScores.cleanlinessScore.reduce(this.add) / this.reviews.length
+      ).toFixed(0);
+      ratingsScores.checkInScore = (
+        ratingsScores.checkInScore.reduce(this.add) / this.reviews.length
+      ).toFixed(0);
+      ratingsScores.locationScore = (
+        ratingsScores.locationScore.reduce(this.add) / this.reviews.length
+      ).toFixed(0);
+      ratingsScores.communicationScore = (
+        ratingsScores.communicationScore.reduce(this.add) / this.reviews.length
+      ).toFixed(0);
+      ratingsScores.accuracyScore = (
+        ratingsScores.accuracyScore.reduce(this.add) / this.reviews.length
+      ).toFixed(0);
+      ratingsScores.accessibilityScore = (
+        ratingsScores.accessibilityScore.reduce(this.add) / this.reviews.length
+      ).toFixed(0);
 
-          console.log(ratingsScores)
-        
-        
-          this.Cleanliness =  ratingsScores.cleanlinessScore
-          this.CheckIn= ratingsScores.checkInScore
-          this.Location= ratingsScores.locationScore
-          this.Communication= ratingsScores.communicationScore
-          this.Accuracy= ratingsScores.accuracyScore
-          this.Accessibility= ratingsScores.accessibilityScore
-        
-        
-        return ratingsScores
+      // console.log(ratingsScores)
+
+      this.Cleanliness = ratingsScores.cleanlinessScore;
+      this.CheckIn = ratingsScores.checkInScore;
+      this.Location = ratingsScores.locationScore;
+      this.Communication = ratingsScores.communicationScore;
+      this.Accuracy = ratingsScores.accuracyScore;
+      this.Accessibility = ratingsScores.accessibilityScore;
+
+      return ratingsScores;
     },
     setColor(num, type) {
       this[type] = num;
     },
-      add(accumulator, a) {
-  return accumulator + a;
-  }
+    add(accumulator, a) {
+      return accumulator + a;
+    },
   },
-  computed: {
-    
-  },
-}
+  computed: {},
+};
 </script>
 
 <style>

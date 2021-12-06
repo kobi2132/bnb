@@ -145,7 +145,7 @@ export default {
   },
   created() {
     this.range = this.$store.getters.getDates;
-    console.log(this.range);
+    // console.log(this.range);
   },
 };
 </script>
