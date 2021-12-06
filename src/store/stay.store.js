@@ -2,6 +2,7 @@ import { stayService } from '../../services/stay.service.js'
 
 export const stayStore = {
     state: {
+        isLoading: false,
         stays: [],
         currStay: null,
         filterBy: {
@@ -32,6 +33,9 @@ export const stayStore = {
         getCurrStay(state) {
             return JSON.parse(JSON.stringify(state.currStay))
         },
+        isLoading({ isLoading }) {
+            return isLoading
+        },
     },
     mutations: {
         setStays(state, { stays }) {
@@ -43,14 +47,45 @@ export const stayStore = {
         },
         setFilter(state, { filterBy }) {
             state.filterBy = filterBy
-        }
+        },
+        setLoading(state, { isLoading }) {
+            state.isLoading = isLoading
+        },
     },
     actions: {
-        loadStays({ commit }) {
+        loadStays({ commit, state }) {
+            const { filterBy } = state
+            commit({ type: 'setLoading', isLoading: true })
             stayService.query().then(stays => {
                 commit({ type: 'setStays', stays })
             })
         },
+        // async loadStays({ commit, state }) {
+        //     // const { filterBy } = state
+        //     commit({ type: 'setLoading', isLoading: true })
+        //     try {
+        //         const stays = await stayService.query()
+        //         commit({ type: 'setStays', stays })
+        //     } catch (err) {
+        //         console.log('Error in query stays (store)', err)
+        //         throw err
+        //     } finally {
+        //         commit({ type: 'setLoading', isLoading: false });
+        //     }
+
+
+        // },
+
+        // async setCurrStay({ commit }, { stayId }) {
+        //     try {
+        //         const stay = await stayService.getById(stayId);
+        //         commit({ type: 'setCurrStay', stay })
+        //         return stay
+        //     } catch (err) {
+        //         console.log(`Error in getting stay ${stayId}`, err)
+        //         throw err
+        //     }
+        // }
         setCurrStay({ commit, getters }, { stayId }) {
             return stayService.getById(stayId).then((stay) => {
                 console.log(stay)

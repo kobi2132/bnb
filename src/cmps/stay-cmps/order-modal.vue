@@ -1,17 +1,37 @@
 <template>
   <div class="order-modal-container">
-    <div class="order-modal flex column align-center justify-center">
-      <div class="order-form-header flex space-between align-center">
-        <div>
-          <span class="bold">${{ this.stay.price }}</span> / night
+    <div
+      class="order-modal flex column align-center justify-center"
+      :class="{ miniModal: miniModal }"
+    >
+      <div class="mini-modal-container">
+        <div class="details-mini-nav" v-if="miniModal">
+          <a href="#">Photos</a>
+          <a href="#">Ameneties</a>
+          <a href="#">Reviews</a>
         </div>
-        <div class="reviews-preview flex">
-          <div class="star-preview">
-            <span class="material-icons-outlined">star</span>
+        <div class="order-form-header flex space-between align-center">
+          <div>
+            <span class="bold">${{ this.stay.price }}</span> / night
           </div>
-          <span class="review-avg">{{ reviewsRateAvg }}&nbsp;</span>
-          <span class="reviews-total">( {{ this.stay.reviews.length }} )</span>
+          <div class="reviews-preview flex">
+            <div class="star-preview">
+              <span class="material-icons-outlined">star</span>
+            </div>
+            <span class="review-avg">{{ reviewsRateAvg }}&nbsp;</span>
+            <span class="reviews-total"
+              >({{ this.stay.reviews.length
+              }}<span class="mini-total"></span>)</span
+            >
+          </div>
         </div>
+        <button
+          v-if="miniModal"
+          class="reserve-btn clickable"
+          :style="{ '--mouse-x': this.mouse.x, '--mouse-y': this.mouse.y }"
+        >
+          {{ buttonText }}
+        </button>
       </div>
       <form @submit.prevent="placeOrder" class="order-form">
         <trip-calendar-2 :dates="trip.dates" @updated="updateDates" />
@@ -68,7 +88,7 @@
           </div>
         </div>
         <button
-          class="reserve-btn"
+          class="reserve-btn clickable"
           :style="{ '--mouse-x': this.mouse.x, '--mouse-y': this.mouse.y }"
         >
           {{ buttonText }}
@@ -112,11 +132,36 @@ export default {
         x: null,
         y: null,
       },
+
+      order: {
+        _id: null,
+        dates: {},
+        guests: {
+          adults: 0,
+          children: 0,
+        },
+        createdAt: null,
+        buyer: {
+          _id: null,
+          fullname: null,
+        },
+        stay: {
+          _id: null,
+          name: null,
+          price: null,
+        },
+        hostId: null,
+        status: "pending",
+      },
+      loggedinUser: null,
+      miniModal: false,
     };
   },
   created() {
     console.log("order form created", this.trip);
     this.trip = this.$store.getters.getCurrTrip;
+    this.loggedinUser = this.$store.getters.getUser;
+    window.addEventListener("scroll", this.handleScroll);
   },
   mounted() {
     // this.$el.addEventListener("mousemove", (evt) => {
@@ -130,11 +175,34 @@ export default {
     // });
   },
   destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
     // this.$el.removeEventListener("mousemove", this.handleScroll);
   },
   methods: {
     placeOrder() {
-      console.log("placing order!");
+      var size = Object.keys(this.trip.dates).length;
+      if (
+        (!this.trip.guests.children && !this.trip.guests.adults) ||
+        size < 1
+      ) {
+        console.log("Not enough data");
+        return;
+      } else {
+        this.order.dates = this.trip.dates;
+        this.order.guests = this.trip.guests;
+        this.order.stay._id = this.stay._id;
+        this.order.stay.name = this.stay.name;
+        this.order.stay.price = this.stay.price;
+        this.order.buyer._id = this.loggedinUser._id;
+        this.order.hostId = this.stay.host._id;
+        this.order.buyer.fullname = this.loggedinUser.fullname;
+        this.order.createdAt = Date.now();
+        console.log(this.trip);
+        console.log(this.loggedinUser);
+        let order = JSON.parse(JSON.stringify(this.order));
+        console.log("placing order!", order);
+        this.$store.dispatch({ type: "addOrder", order });
+      }
     },
     updateGuests(type, number) {
       if (this.trip.guests[type] === 0 && number === -1) return;
@@ -154,6 +222,13 @@ export default {
       min = Math.ceil(min);
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+    },
+    handleScroll(event) {
+      console.log(window.scrollY);
+      console.log("scrolling...");
+      // if (window.scrollY === 0) this.miniFilter = false;
+      if (window.scrollY > 1800) this.miniModal = true;
+      if (window.scrollY < 1800) this.miniModal = false;
     },
   },
 
@@ -198,7 +273,6 @@ export default {
       if (size > 1) {
         const { start, end } = this.trip.dates;
         const timeDiff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
-        console.log(timeDiff);
         return parseInt(this.stay.price * timeDiff);
       }
     },
