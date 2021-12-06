@@ -109,7 +109,7 @@ export default {
   computed: {
     currDest() {
       var dest = this.$store.getters.getDest;
-      console.log(dest);
+      // console.log(dest);
       if (!dest) return "Start your search";
       else return dest;
     },
@@ -127,20 +127,20 @@ export default {
       this.updateTrip();
     },
     updateTrip() {
-      console.log("updating trip", this.trip);
+      // console.log("updating trip", this.trip);
       const trip = this.trip;
       this.$store.commit({ type: "setTrip", trip });
     },
     updateDates(dates) {
-      console.log(dates);
+      // console.log(dates);
       this.trip.dates = dates;
       this.updateTrip();
     },
   },
   created() {
-    console.log("created");
+    // console.log("created");
     this.trip = this.$store.getters.getCurrTrip;
-    console.log(this.trip);
+    // console.log(this.trip);
   },
   computed: {
     numOfGuests() {
@@ -162,7 +162,7 @@ export default {
     "$store.state.currTrip": {
       handler() {
         this.trip = this.$store.getters.getCurrTrip;
-        console.log(this.trip);
+        // console.log(this.trip);
       },
       immediate: true,
       deep: true,

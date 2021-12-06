@@ -5,7 +5,7 @@
     <h4 class="stay-description-text">{{ stay.description }}</h4>
     </div>
     
-    <section class="stay-amenities gray-box-shadow">
+    <section class="stay-amenities">
       <h2 class="amenities-header">Amenities</h2>
       <ul class="amenities-list clean-list flex space-between">
         <li

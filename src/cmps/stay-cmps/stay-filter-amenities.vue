@@ -45,7 +45,7 @@ export default {
       const idx = this.filterBy.labels.findIndex((label) => label === amenitie);
       if (idx === -1) this.filterBy.labels.push(amenitie);
       else this.filterBy.labels.splice(idx, 1);
-      console.log(this.filterBy.labels);
+      // console.log(this.filterBy.labels);
 
       this.setFilter();
     },

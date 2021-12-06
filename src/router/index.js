@@ -5,7 +5,7 @@ import about from '../pages/about.vue'
 import stayApp from '../pages/stay-app.vue'
 import stayDetails from '../pages/stay-details.vue'
 import logIn from '../pages/log-in.vue'
-import host from '../pages/host.vue'
+import becomeHost from '../pages/host.vue'
 import help from '../pages/help.vue'
 import userMessages from '../pages/user-messages.vue'
 import userNotifications from '../pages/user-notifications.vue'
@@ -45,7 +45,7 @@ const routes = [{
     {
         path: '/host',
         name: 'Host',
-        component: host
+        component: becomeHost
     },
     {
         path: '/help',

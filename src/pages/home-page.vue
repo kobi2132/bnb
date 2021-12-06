@@ -51,7 +51,7 @@
     <section class="host-container full">
       <section class="host">
         <h1>Become a host!</h1>
-        <button class="clickable">
+        <button class="clickable" @click="goHost">
           <h3>Learn more</h3>
         </button>
       </section>
@@ -69,6 +69,9 @@ export default {
   methods: {
     goExplore() {
       this.$router.push("/explore").catch(() => {});
+    },
+    goHost() {
+      this.$router.push("/host").catch(() => {});
     },
   },
 };

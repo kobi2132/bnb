@@ -6,7 +6,7 @@
     <stay-short-info :stay="stay" />
 
     <stay-gallery :stay="stay" />
-    <section class="stay-display-divider flex">
+    <section class="stay-display-divider flex gray-box-shadow">
       <div class="stay-display-info">
         <section
           class="

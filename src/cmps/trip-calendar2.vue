@@ -139,13 +139,13 @@ export default {
   },
   methods: {
     updateDates() {
-      console.log(this.range);
+      // console.log(this.range);
       this.$emit("updated", this.range);
     },
   },
   created() {
     this.range = this.$store.getters.getDates;
-    console.log(this.range);
+    // console.log(this.range);
   },
 };
 </script>

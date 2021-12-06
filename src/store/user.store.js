@@ -6,6 +6,7 @@ export const userStore = {
     },
     getters: {
         getUser(state) {
+            console.log('store', state.loggedinUser)
             return state.loggedinUser
         },
     },

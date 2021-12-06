@@ -27,6 +27,8 @@ export default {
   created() {
     this.currTrip = this.$store.getters.getCurrTrip;
     console.log(this.currTrip);
+    const page = "explore";
+    this.$store.commit({ type: "setCurrPage", page });
   },
   watch: {
     $route: {
@@ -41,10 +43,6 @@ export default {
   },
   components: {
     stayList,
-  },
-  created() {
-    const page = "explore";
-    this.$store.commit({ type: "setCurrPage", page });
   },
 };
 </script>
