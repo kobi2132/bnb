@@ -1,12 +1,12 @@
 <template>
   <section class="main-layout2">
-      <h1>user-trips</h1>
+      <h1>user-account</h1>
   </section>
 </template>
 
 <script>
 export default {
-name:"user-trips"
+name:"user-account"
 }
 </script>
 

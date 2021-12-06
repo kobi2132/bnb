@@ -14,9 +14,7 @@
             v-for="(num, idx) in 5"
             :key="idx"
             :class="{ checked: num <= Cleanliness }"
-            class="material-icons-outlined"
-            
-          >star</span>
+            class="material-icons-outlined">star</span>
           <!-- <span class="material-icons-outlined"> star </span> -->
         </div>
       </div>
