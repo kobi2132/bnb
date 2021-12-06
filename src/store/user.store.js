@@ -6,6 +6,7 @@ export const userStore = {
     },
     getters: {
         getUser(state) {
+            console.log('store', state.loggedinUser)
             return state.loggedinUser
         },
     },
@@ -17,7 +18,10 @@ export const userStore = {
         },
     },
     actions: {
-
+        setUser({ commit }) {
+            const user = userService.getLoggedinUser()
+            commit({ type: 'setUser', user })
+        },
         async toggleWishList({ commit }, { stayId }) {
             try {
                 console.log(stayId)

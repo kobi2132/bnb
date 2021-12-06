@@ -1,4 +1,7 @@
 .order-modal {
+    .material-icons-outlined {
+        color: $redAirbnb;
+    }
     margin-top: 48px;
     margin-left: 80px;
     width: 315px;
@@ -169,5 +172,63 @@
     span {
         font-size: 1.25rem;
         text-decoration: none;
+    }
+}
+
+
+.order-modal.miniModal {
+    .details-mini-nav {
+        a {
+            margin-inline-end: 8px;
+        }
+    }
+
+    display: grid;
+    grid-template-columns: 115px 1fr 115px;
+    >* {
+        grid-column: 2;
+    }
+    border-radius: 0;
+    position: fixed;
+    // flex-direction: row;
+    top: 0px;
+    width: 100%;
+    height: 80px;
+    left: 0px;
+    right: 0px;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    
+    .mini-modal-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .pricing, .order-form{
+        display:none;
+    }
+    .order-form-header {
+        flex-basis: 20%;
+        margin: 0;
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+    .reviews-preview, .material-icons-outlined {
+        font-size: 12px;
+    }
+
+
+    .details-mini-nav {
+        flex-basis: 100%;
+
+    }
+    .reserve-btn {
+        width: 180px;
+    }
+    .mini-total::after {
+        content: ' reviews'
     }
 }

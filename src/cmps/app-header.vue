@@ -16,7 +16,7 @@
       </button>
       <div class="nav flex align-center justify-center">
         <router-link to="/explore">Explore</router-link>
-        <router-link to="/">Become a Host</router-link>
+        <router-link to="/host">Become a Host</router-link>
         <button
           class="user-menu-btn clickable flex align-center clickable"
           @click="shouldShow = !shouldShow"
@@ -78,7 +78,7 @@ export default {
       else return dest;
     },
     stayDetails() {
-      console.log(this.currPage);
+      // console.log(this.currPage);
       if (this.currPage === "stayDetails") return true;
       else return false;
     },
@@ -88,7 +88,7 @@ export default {
   },
   mounted() {
     this.currPage = this.$store.getters.currPage;
-    console.log("header created", this.currPage);
+    // console.log("header created", this.currPage);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);

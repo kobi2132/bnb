@@ -1,5 +1,10 @@
 import { storageService } from '../services/async-storage.service.js'
 import { utilService } from "../services/utils.service.js"
+import Axios from 'axios'
+var axios = Axios.create({ withCredentials: true, });
+
+const STAY_URL = 'http://localhost:3030/api/stay/'
+
 const KEY = 'stayDB'
 
 
@@ -2898,8 +2903,15 @@ const gStays = [{
 
 _createStays()
 
-function query() {
+async function query(filterBy) {
     return storageService.query(KEY)
+    // try {
+    //     const res = await axios.get(STAY_URL, { params: filterBy })
+    //     return res.data
+    // } catch (err) {
+    //     console.log('error getting stays', err)
+    // }
+
 }
 
 function getById(id) {
