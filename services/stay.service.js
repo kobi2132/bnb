@@ -1111,7 +1111,7 @@ const gStays = [{
             "fullname": "Bentz Margalit",
             "imgUrl": "/img/img2.jpg"
         }
-        },
+    },
     ]
 },
 {
@@ -1654,18 +1654,18 @@ const gStays = [{
     "description": "Located in the trendy and charming area of Montmartre (18th arrondissement) the apartment is perfect for couples travelling in Paris. Within walking distance you can enjoy must see touristic attractions such as Moulin Rouge and Montmartre. All other key attractions – Opera, Louvre, Eiffel Tower, Notre Dame, Le Marais – are just 20/25 minutes away by subway. You can also enjoy a more Parisian atmosphere by discovering the charming areas of Abesse, Rue des Martyrs and South Pigalle.",
     "capacity": 2,
     "amenities": [
-    {
-        name: "Wifi",
-        logo: "wifi"
-    },
-    {
-        name: "Kitchen",
-        logo: "restaurant"
-    },
-    {
-        name: "Pets Allowed",
-        logo: "pets"
-    },
+        {
+            name: "Wifi",
+            logo: "wifi"
+        },
+        {
+            name: "Kitchen",
+            logo: "restaurant"
+        },
+        {
+            name: "Pets Allowed",
+            logo: "pets"
+        },
     ],
     "host": {
         "_id": "u101",
@@ -2158,7 +2158,7 @@ const gStays = [{
     "price": 107,
     "propertyType": "Entire home",
     "summary": "Enjoy loft life in our small paradise",
-    "description": "Lovely one bedroom located in the heart of the city with an open view. Modern building with balcony, elevator, and parking only a few minutes walk to Bougrashov beach. Fully furnished and equipped to host you comfortably during your stay in TLV. The apartment has one main area, very sunny access to a balcony with an open view. The living room has a sofa, with TV ( Local and International channels) and an open-planned kitchen. In the kitchen, there are all the appliances you need to cook, make coffee and eat. The bedroom has a very comfortable double bed. The living room has an sofa bed to accommodate additionals guests. Our apartments are equipped and we make sure that there are all the necessary appliances you may need while you are away, so we provide: coffee, cleaning supplies,home appliances, cooking utensils and an iron. Fresh, clean sheets and towels are of course provided. It can accommodate up to 4 people.",    "capacity": 4,
+    "description": "Lovely one bedroom located in the heart of the city with an open view. Modern building with balcony, elevator, and parking only a few minutes walk to Bougrashov beach. Fully furnished and equipped to host you comfortably during your stay in TLV. The apartment has one main area, very sunny access to a balcony with an open view. The living room has a sofa, with TV ( Local and International channels) and an open-planned kitchen. In the kitchen, there are all the appliances you need to cook, make coffee and eat. The bedroom has a very comfortable double bed. The living room has an sofa bed to accommodate additionals guests. Our apartments are equipped and we make sure that there are all the necessary appliances you may need while you are away, so we provide: coffee, cleaning supplies,home appliances, cooking utensils and an iron. Fresh, clean sheets and towels are of course provided. It can accommodate up to 4 people.", "capacity": 4,
     "amenities": [{
         name: "TV",
         logo: "live_tv"
@@ -2473,7 +2473,7 @@ const gStays = [{
     ]
 },
 {
-    "_id": "907931113",
+    "_id": "9079311813",
     "name": "Luxurious Loft/2 Min Walk To The Beach/Netflix",
     "imgUrls": ["https://a0.muscache.com/im/pictures/ca01eeb8-3d66-456f-8fcf-94d2af9df2a2.jpg?im_w=1200",
         "https://a0.muscache.com/im/pictures/b18307d2-4732-4e3b-8184-df49ab9052f7.jpg?im_w=1440",
