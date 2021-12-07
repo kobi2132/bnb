@@ -18,6 +18,7 @@
 
 .main-header:not(.fullheader) {
     grid-template-rows: 1fr;
+    box-shadow:  rgb(0 0 0 / 8%) 0px 1px 12px !important;
 }
 
 .main-header {
@@ -34,7 +35,7 @@
     width: 100%;
     z-index: 8000;
     background-color: white;
-    box-shadow:  rgb(0 0 0 / 8%) 0px 1px 12px !important;
+    
     // transition: background-color .5s ease-out,
     // height .4s ease-out,
     // box-shadow .3s ease-out;
@@ -42,13 +43,15 @@
 }
 
 .main-header.fullheader {
+    height: 160px; 
+}
+
+.main-header.fullheader.home-page {
     .logo {
         filter: invert(100%);
     }
     background-color: transparent;
-    // background: linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,.05) 15%,white 90%);
-    box-shadow: unset;
-    height: 160px;
+    box-shadow: none;
     .nav a{
         color: #fff;
     }

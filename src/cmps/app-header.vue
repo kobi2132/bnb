@@ -1,7 +1,12 @@
 <template>
   <section
     class="main-header"
-    :class="{ details: stayDetails, fullheader: !miniFilter }"
+    :class="{
+      details: stayDetails,
+      fullheader: !miniFilter,
+      'explore-page': explore,
+      'home-page': homePage,
+    }"
   >
     <section class="main-header-container flex space-between">
       <div class="logo clickable flex align-center" @click.stop="goHome">
@@ -80,6 +85,16 @@ export default {
     stayDetails() {
       // console.log(this.currPage);
       if (this.currPage === "stayDetails") return true;
+      else return false;
+    },
+    explore() {
+      // console.log(this.currPage);
+      if (this.currPage === "explore") return true;
+      else return false;
+    },
+    homePage() {
+      // console.log(this.currPage);
+      if (this.currPage === "homePage") return true;
       else return false;
     },
   },

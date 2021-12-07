@@ -26,6 +26,7 @@
           </div>
         </div>
         <button
+          @click="placeOrder"
           v-if="miniModal"
           class="reserve-btn clickable"
           :style="{ '--mouse-x': this.mouse.x, '--mouse-y': this.mouse.y }"
