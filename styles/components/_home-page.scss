@@ -8,7 +8,7 @@
         height: 750px;
         text-align: center;
         background-position: center center;
-        margin-bottom: 95px;
+        margin-bottom: 96px;
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -41,8 +41,9 @@
         }
     }
     .host-container {
-        background-image: url(~@/assets/images/host1.png);
+        background-image: url(~@/assets/images/host.png);
         // background-repeat: no-repeat;
+        background-position: center top;
         background-size: cover;
         height: 750px;
         width: 100%;
@@ -85,7 +86,7 @@
     margin-bottom: 95px;
     h1 {
         font-size: 33px;
-        margin-bottom: 55px;
+        margin-bottom: 48px;
         margin-top: 0;
     }
 }

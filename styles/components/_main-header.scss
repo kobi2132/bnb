@@ -1,6 +1,6 @@
 .logo {
     width: 150px;
-    align-self: flex-start;
+   
 }
 
 .avatar {
@@ -16,16 +16,21 @@
     }
 }
 
+.main-header:not(.fullheader) {
+    grid-template-rows: 1fr;
+}
+
 .main-header {
-    height: 100px;
+    grid-template-rows: 1fr 1fr;
+    height: 80px;
     position: fixed;
     top: 0;
     display: grid;
     grid-template-columns: 80px 1fr 80px;
+  
     >* {
         grid-column: 2;
     }
-    padding: 20px 0;
     width: 100%;
     z-index: 8000;
     background-color: white;
@@ -38,10 +43,17 @@
 }
 
 .main-header.fullheader {
-    background-color: #fff;
+    .logo {
+        filter: invert(100%);
+    }
+    background-color: #000000;
     // background: linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,.05) 15%,white 90%);
     box-shadow: unset;
     height: 160px;
+    .nav a{
+        color: #fff;
+    }
+    
 }
 
 .user-menu-btn {
@@ -77,16 +89,21 @@
 }
 
 .user-nav {
+    color: #222222;
+    z-index: 2000;
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 75px;
+    top: 70px;
     right: 80px;
     background-color: #fff;
-    border-radius: 12px;
+    border-radius: 12px 12px;
+    width: 240px;
     box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
     a {
-        padding: 15px 20px;
+        font-size: 14px;
+        color: #222222;
+        padding: 10px 20px;
         &:first-child {
             margin-top: 10px;
         }
