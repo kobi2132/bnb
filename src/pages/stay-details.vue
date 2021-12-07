@@ -6,7 +6,7 @@
     <stay-short-info :stay="stay" />
 
     <stay-gallery :stay="stay" />
-    <section class="stay-display-divider flex gray-box-shadow">
+    <section ref="displayDiv" class="stay-display-divider flex gray-box-shadow">
       <div class="stay-display-info">
         <section
           class="
@@ -36,7 +36,7 @@
         <stay-description :stay="stay" />
       </div>
       <div class="stay-display-order">
-        <order-modal :stay="stay" class="sticky" />
+        <order-modal :stay="stay" class="sticky" :divHeight="divHeight" />
       </div>
     </section>
 
@@ -63,7 +63,11 @@ export default {
     stayReviews,
     orderModal,
   },
-
+  data() {
+    return {
+      divHeight: null,
+    };
+  },
   computed: {
     stay() {
       return this.$store.getters.getCurrStay;
@@ -105,7 +109,17 @@ export default {
     },
     // reviewsRateAvg
   },
-  methods: {},
+  methods: {
+    getDividerHeight() {
+      console.log(this.$refs.displayDiv);
+      this.divHeight = this.$refs.displayDiv.clientHeight;
+      console.log(this.divHeight);
+    },
+  },
+  updated() {
+    console.log(this.$refs.displayDiv);
+    this.getDividerHeight();
+  },
   watch: {
     "$route.params.stayId": {
       handler() {
