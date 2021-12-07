@@ -20,10 +20,12 @@
             :max="1000"
             :hideFromTo="true"
             :grid="false"
-            :barGap="5"
+            :barGap="1"
             :barRadius="2"
             :lineHeight="2"
             :clip="false"
+            :primaryColor="histogramMainColor"
+            :holderColor="histogramSecondaryColor"
             @finish="sliderChanged"
           />
           <div class="price-select-container">
@@ -208,6 +210,8 @@ export default {
         typeOfPlace: [],
         labels: [],
       },
+      histogramMainColor: "#b0b0b0",
+      histogramSecondaryColor: "#dddddd",
       prices: [],
       stays: null,
       activeBtn: "",
@@ -246,11 +250,11 @@ export default {
   methods: {
     setPriceShown() {
       this.isPriceShown = !this.isPriceShown;
-      this.isTypeShown = false
+      this.isTypeShown = false;
     },
     setTypeShown() {
       this.isTypeShown = !this.isTypeShown;
-      this.isPriceShown = false
+      this.isPriceShown = false;
     },
     toggleLabel(amenitie) {
       const idx = this.filterBy.labels.findIndex((label) => label === amenitie);

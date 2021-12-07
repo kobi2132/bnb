@@ -1,8 +1,8 @@
 .stay-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
-    column-gap: 17px;
-    row-gap: 17px;
+    column-gap: 24px;
+    row-gap: 40px;
     padding-top: 16px;
     padding-bottom: 250px;
 }
@@ -168,10 +168,6 @@
     }
 }
 
-.irs--round .irs-bar {
-    background-color: #b0b0b0 !important;
-}
-
 .vue-histogram-slider-wrapper {
     width: 360px !important;
     --holder-color: #ddd !important;
@@ -183,6 +179,11 @@
     --hist-slider-gap: -30px;
     --handle-size: 26px;
 }
+
+.irs-handle{
+    top: 22px !important;
+}
+
 
 // ----------------------type-filter----------------------------------------
 .type-filter-container {
@@ -342,13 +343,13 @@
         }
     }
     .stay-preview-info {
-        > * {
-            padding-top: 6px;
-        }
+
         .reviews-preview {
             display: flex;
             align-items: center;
             font-size: 14px !important;
+            padding-top: 10px;
+
             .star-preview {
                 margin-right: 4px !important;
                 .material-icons-outlined {
@@ -362,6 +363,16 @@
             .reviews-total {
                 color: #717171;
             }
+        }
+        .property-type{
+            padding-top: 6px;
+        }
+        .stayname{
+            padding-top: 2px;
+        }
+        .stay-price{
+            padding-top: 4px;
+
         }
     }
 }
