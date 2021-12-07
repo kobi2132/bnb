@@ -27,7 +27,7 @@ const gStays = [{
     "price": 120,
     "propertyType": "entire place",
     "summary": "Charming appartment with two bedrooms",
-    "description": "Beautiful 2 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Portogal",
+    "description": "Beautiful 2 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Portogal. Beautiful 2 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Portogal.",
     "capacity": 4,
     "amenities": [{
         name: "TV",

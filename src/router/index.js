@@ -13,6 +13,7 @@ import userTrips from '../pages/user-trips.vue'
 import userWishList from '../pages/user-wishlist.vue'
 import hostDashboard from '../pages/host-dashboard.vue'
 import userAccount from '../pages/user-account.vue'
+import confirmAndPay from '../pages/confirm-and-pay.vue'
 
 
 Vue.use(VueRouter)
@@ -81,6 +82,11 @@ const routes = [{
     path: '/account',
     name: 'User-account',
     component: userAccount
+},
+{
+    path: '/order-confirm/:orderId',
+    name: 'confirm',
+    component: confirmAndPay
 },
 
 

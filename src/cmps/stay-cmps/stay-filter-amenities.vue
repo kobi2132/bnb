@@ -55,7 +55,9 @@
     </button>
     <button class="explore-btn">
       <div class="btn-expend" @click="setTypeShown">
-        Type of place <span class="material-icons">expand_more</span>
+        <span class="btn-txt">Type of place</span>
+        <span class="material-icons" v-if="!this.isTypeShown">expand_more</span>
+        <span class="material-icons" v-if="this.isTypeShown">expand_less</span>
       </div>
       <div class="type-filter-container" v-if="this.isTypeShown">
         <div class="type-filter">
@@ -218,6 +220,8 @@ export default {
       isPriceShown: false,
       isPriceRange: false,
       isTypeShown: false,
+      isTypeSelect: false,
+
       priceRange: "",
     };
   },

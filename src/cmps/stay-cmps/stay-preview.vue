@@ -15,7 +15,7 @@
           <span class="material-icons-outlined">star</span>
         </div>
         <span class="review-avg">{{ this.reviewsRateAvg }}&nbsp;</span
-        ><span class="reviews-total">( {{ this.stay.reviews.length }} )</span>
+        ><span class="reviews-total">({{ this.stay.reviews.length }} reviews)</span>
       </div>
       <div class="property-type">{{ this.stay.propertyType }} • {{ this.stay.loc.country }}</div>
       <div class="stayname">{{ this.stay.name }}</div>

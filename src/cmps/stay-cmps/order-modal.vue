@@ -205,14 +205,15 @@ export default {
         this.focusOnInput();
         return;
       } else {
-        var { dates, guests } = this.trip;
-        var { _id, name, price } = this.stay;
-        this.order = { dates, guests, stay: { _id, name, price } };
-        // this.order.dates = dates;
-        // this.order.guests = guests;
-        // this.order.stay._id = this.stay._id;
-        // this.order.stay.name = this.stay.name;
-        // this.order.stay.price = this.stay.price;
+        // var { dates, guests } = this.trip;
+        // var { _id, name, price } = this.stay;
+        // this.order = { dates, guests, stay: { _id, name, price } };
+        this.order.dates = this.trip.dates;
+        this.order.guests = this.trip.guests;
+        this.order.stay._id = this.stay._id;
+        this.order.stay.name = this.stay.name;
+        this.order.stay.price = this.stay.price;
+
         this.order.buyer._id = this.loggedinUser._id;
         this.order.hostId = this.stay.host._id;
         this.order.buyer.fullname = this.loggedinUser.fullname;
@@ -223,6 +224,10 @@ export default {
         console.log("placing order!", order);
         this.$store.dispatch({ type: "addOrder", order });
       }
+
+      console.log("hey");
+      this.$router.push("/order-confirm/" + this.order._id);
+
     },
     updateGuests(type, number) {
       const min = type === "adults" ? 1 : 0;
