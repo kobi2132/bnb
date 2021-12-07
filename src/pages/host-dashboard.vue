@@ -96,7 +96,7 @@
               <div class="host-stay-list-table">
                 <div class="thead">
                   <div class="flex space-between">
-                    <span></span><span>Name</span><span>Address</span
+                    <span class="host-img"></span><span>Name</span><span>Address</span
                     ><span>Price</span><span class="stay-actions">Actions</span>
                   </div>
                 </div>
@@ -127,37 +127,36 @@
               </div>
             </section>
             <section class="host-order-list" v-if="shouldShow==='my orders'">
-              <h1>orders</h1>
               <section class="host-order-container">
                 <section class="host-order-list">
                   <div class="host-order-list-table">
                     <div class="thead">
-                      <div>
-                        <span></span>
-                        <span>Guest Name</span>
-                        <span>Check in</span>
-                        <span>Check out</span>
-                        <span>Status</span>
-                        <span>Price</span>
-                        <span class="stay-actions">Actions</span>
+                      <div class="flex">
+                        <span class="flex align-center host-img"></span>
+                        <span class="flex align-center">Guest Name</span>
+                        <span class="flex align-center">Check in</span>
+                        <span class="flex align-center">Check out</span>
+                        <span class="flex align-center">Status</span>
+                        <span class="flex align-center">Price</span>
+                        <span class="stay-actions flex align-center">Actions</span>
                       </div>
                     </div>
                     <div class="tbody">
-                      <div class="host-stay-preview">
+                      <div class="host-stay-preview flex">
                         <span>
-                          <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user"></span>
-                          <span>Chang Ba</span>
-                          <span>Thu Jul 08 2021</span>
-                          <span>Tue Jul 13 2021</span>
-                          <span>declined</span>
-                          <span>$ 1,500</span>
-                          <span class="stay-actions">
+                          <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"></span>
+                          <span class="flex align-center">Chang Ba</span>
+                          <span class="flex align-center">Thu Jul 08 2021</span>
+                          <span class="flex align-center">Tue Jul 13 2021</span>
+                          <span class="flex align-center">declined</span>
+                          <span class="flex align-center">$ 1,500</span>
+                          <span class="stay-actions flex align-center">
                             <button>
                             <i class="fas fa-check" aria-hidden="true"></i>Re-Approve
                             </button>
                         </span>
                       </div>
-                      <div class="host-stay-preview">
+                      <!-- <div class="host-stay-preview">
                         <span>
                         <img src="https://randomuser.me/api/portraits/women/61.jpg" alt="user">
                         </span>
@@ -171,7 +170,7 @@
                           <i class="fas fa-check" aria-hidden="true">
                           </i>Re-Approve</button>
                         </span>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </section>
