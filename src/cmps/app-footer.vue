@@ -21,11 +21,10 @@
         <span>$ US</span>
         </div>
         <div class=" icon-div flex align-center space-between">
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-instagram"></i>
+        <i class="fa fa-facebook-f"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
         </div>
-      
     </div>
   </footer>
 </template>
