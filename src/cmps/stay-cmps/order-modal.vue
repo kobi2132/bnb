@@ -6,9 +6,9 @@
     >
       <div class="mini-modal-container">
         <div class="details-mini-nav" v-if="miniModal">
-          <a href="#pictures"><span>Photos</span></a>
-          <a href="#ameneties"><span>Ameneties</span></a>
-          <a href="#">Reviews</a>
+          <a @click="goToSection('pictures')"><span>Photos</span></a>
+          <a @click="goToSection('ameneties')"><span>Ameneties</span></a>
+          <a @click="goToSection('reviews')">Reviews</a>
         </div>
         <div class="order-form-header flex space-between align-center">
           <div>
@@ -16,7 +16,7 @@
           </div>
           <div class="reviews-preview flex">
             <div class="star-preview">
-              <span class="material-icons-outlined">star</span>
+              <span class="material-icons-outlined star">star</span>
             </div>
             <span class="review-avg">{{ reviewsRateAvg }}&nbsp;</span>
             <span class="reviews-total"
@@ -34,7 +34,11 @@
         </button>
       </div>
       <form @submit.prevent="placeOrder" class="order-form">
-        <trip-calendar-2 :dates="trip.dates" @updated="updateDates" />
+        <trip-calendar-2
+          :dates="trip.dates"
+          @updated="updateDates"
+          ref="calendar"
+        />
         <div
           class="input-container guests-input"
           @click="shouldShow = !shouldShow"
@@ -113,7 +117,6 @@
 <script>
 import tripCalendar2 from "../trip-calendar2.vue";
 export default {
-  // el: ".reserve-btn",
   name: "order-modal",
   props: ["stay", "divHeight"],
   data() {
@@ -121,7 +124,7 @@ export default {
       shouldShow: false,
       trip: {
         guests: {
-          adults: 0,
+          adults: 1,
           children: 0,
         },
         destination: null,
@@ -137,7 +140,7 @@ export default {
         _id: null,
         dates: {},
         guests: {
-          adults: 0,
+          adults: 1,
           children: 0,
         },
         createdAt: null,
@@ -164,16 +167,16 @@ export default {
     this.loggedinUser = this.$store.getters.getUser;
     window.addEventListener("scroll", this.handleScroll);
   },
-  updated() {
+  mounted() {
     this.getModalHeight();
     // this.$el.addEventListener("mousemove", (evt) => {
     //   let x = evt.clientX / innerWidth;
     //   this.mouse.x = x;
     //   let y = evt.clientY / innerHeight;
     //   this.mouse.y = y;
-    //   // console.log(x, y);
-    //   // this.$el.style.setProperty("--mouse-x", x);
-    //   // this.$el.style.setProperty("--mouse-y", y);
+    //   console.log(x, y);
+    //   this.$el.style.setProperty("--mouse-x", x);
+    //   this.$el.style.setProperty("--mouse-y", y);
     // });
   },
   destroyed() {
@@ -181,6 +184,13 @@ export default {
     // this.$el.removeEventListener("mousemove", this.handleScroll);
   },
   methods: {
+    goToSection(sectionId) {
+      console.log("goinng to section ", sectionId);
+      this.$router.push(`/stay/${this.stay._id}/#${sectionId}`).catch(() => {});
+    },
+    focusOnInput() {
+      this.$refs.calendar.focusInput();
+    },
     getModalHeight() {
       this.modalHeight = this.$refs.modal.clientHeight;
       console.log(this.modalHeight);
@@ -192,13 +202,17 @@ export default {
         size < 1
       ) {
         console.log("Not enough data");
+        this.focusOnInput();
         return;
       } else {
-        this.order.dates = this.trip.dates;
-        this.order.guests = this.trip.guests;
-        this.order.stay._id = this.stay._id;
-        this.order.stay.name = this.stay.name;
-        this.order.stay.price = this.stay.price;
+        var { dates, guests } = this.trip;
+        var { _id, name, price } = this.stay;
+        this.order = { dates, guests, stay: { _id, name, price } };
+        // this.order.dates = dates;
+        // this.order.guests = guests;
+        // this.order.stay._id = this.stay._id;
+        // this.order.stay.name = this.stay.name;
+        // this.order.stay.price = this.stay.price;
         this.order.buyer._id = this.loggedinUser._id;
         this.order.hostId = this.stay.host._id;
         this.order.buyer.fullname = this.loggedinUser.fullname;
@@ -211,7 +225,8 @@ export default {
       }
     },
     updateGuests(type, number) {
-      if (this.trip.guests[type] === 0 && number === -1) return;
+      const min = type === "adults" ? 1 : 0;
+      if (this.trip.guests[type] === min && number === -1) return;
       this.trip.guests[type] += number;
       this.updateTrip();
     },

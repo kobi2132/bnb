@@ -34,6 +34,7 @@
         <stay-features />
 
         <stay-description :stay="stay" />
+        <div id="reviews"></div>
       </div>
       <div class="stay-display-order">
         <order-modal :stay="stay" class="sticky" :divHeight="divHeight" />

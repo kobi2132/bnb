@@ -18,70 +18,70 @@ import userAccount from '../pages/user-account.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-        path: '/',
-        name: 'home',
-        component: homePage
-    },
-    {
-        path: '/about',
-        name: 'About',
-        component: about
-    },
-    {
-        path: '/explore',
-        name: 'Explore',
-        component: stayApp
-    },
-    {
-        path: '/stay/:stayId',
-        name: 'stay',
-        component: stayDetails
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: logIn
-    },
-    {
-        path: '/host',
-        name: 'Host',
-        component: becomeHost
-    },
-    {
-        path: '/help',
-        name: 'help',
-        component: help
-    },
-    {
-        path: '/messages',
-        name: 'User-messages',
-        component: userMessages
-    },
-    {
-        path: '/notifications',
-        name: 'User-notifications',
-        component: userNotifications
-    },
-    {
-        path: '/trips',
-        name: 'User-trips',
-        component: userTrips
-    },
-    {
-        path: '/wishlist',
-        name: 'User-wishlist',
-        component: userWishList
-    },
-    {
-        path: '/dashboard',
-        name: 'Host-dashboard',
-        component: hostDashboard
-    },
-    {
-        path: '/account',
-        name: 'User-account',
-        component: userAccount
-    },
+    path: '/',
+    name: 'home',
+    component: homePage
+},
+{
+    path: '/about',
+    name: 'About',
+    component: about
+},
+{
+    path: '/explore',
+    name: 'Explore',
+    component: stayApp
+},
+{
+    path: '/stay/:stayId',
+    name: 'stay',
+    component: stayDetails
+},
+{
+    path: '/login',
+    name: 'Login',
+    component: logIn
+},
+{
+    path: '/host',
+    name: 'Host',
+    component: becomeHost
+},
+{
+    path: '/help',
+    name: 'help',
+    component: help
+},
+{
+    path: '/messages',
+    name: 'User-messages',
+    component: userMessages
+},
+{
+    path: '/notifications',
+    name: 'User-notifications',
+    component: userNotifications
+},
+{
+    path: '/trips',
+    name: 'User-trips',
+    component: userTrips
+},
+{
+    path: '/wishlist',
+    name: 'User-wishlist',
+    component: userWishList
+},
+{
+    path: '/dashboard',
+    name: 'Host-dashboard',
+    component: hostDashboard
+},
+{
+    path: '/account',
+    name: 'User-account',
+    component: userAccount
+},
 
 
 
@@ -89,9 +89,20 @@ const routes = [{
 
 const router = new VueRouter({
     routes,
-    scrollBehavior(to, from, savedPosition) {
-        return { x: 0, y: 0 }
-    }
+    scrollBehavior: function (to, from, savedPosition) {
+        if (to.hash) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve({ selector: to.hash })
+                }, 300)
+            })
+        }
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ x: 0, y: 0 })
+            }, 300)
+        })
+    },
 })
 
 export default router

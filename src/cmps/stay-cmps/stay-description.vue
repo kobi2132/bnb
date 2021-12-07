@@ -3,9 +3,10 @@
     <div class="stay-description gray-box-shadow">
       <h2 class="description-header">Stay description</h2>
       <h4 class="stay-description-text">{{ stay.description }}</h4>
+      <div id="ameneties"></div>
     </div>
 
-    <section class="stay-amenities" id="ameneties">
+    <section class="stay-amenities">
       <h2 class="amenities-header">Amenities</h2>
       <ul class="amenities-list clean-list flex space-between">
         <li
