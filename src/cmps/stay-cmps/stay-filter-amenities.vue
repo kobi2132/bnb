@@ -2,12 +2,15 @@
   <section class="explore-btns">
     <button class="explore-btn">
       <div class="btn-expend" @click="setPriceShown">
-        Price
-        <span class="material-icons" v-if="!this.isPriceShown">expand_more</span>
+        <span class="btn-txt" v-if="!isPriceRange">Price</span
+        ><span class="btn-txt" v-else>{{ displayPriceRange }}</span>
+        <span class="material-icons" v-if="!this.isPriceShown"
+          >expand_more</span
+        >
         <span class="material-icons" v-if="this.isPriceShown">expand_less</span>
       </div>
       <div class="price-filter-container" v-if="this.isPriceShown">
-          <h3 class="avg">The average nightly price is $196</h3>
+        <h3 class="avg">The average nightly price is $196</h3>
         <div class="price-filter">
           <HistogramSlider
             :width="360"
@@ -21,7 +24,6 @@
             :barRadius="2"
             :lineHeight="2"
             :clip="false"
-            :holderColor="setColor"
             @finish="sliderChanged"
             @change="sliderChanged"
           />
@@ -57,34 +59,40 @@
       <div class="type-filter-container" v-if="this.isTypeShown">
         <div class="type-filter">
           <div class="type-of-place">
-            <input type="checkbox" name="" id="">
+            <input type="checkbox" name="" id="" />
             <div class="type">
               <div class="type-header">Entire place</div>
               <div class="type-title">Have a place to yourself</div>
             </div>
           </div>
           <div class="type-of-place">
-            <input type="checkbox" name="" id="">
+            <input type="checkbox" name="" id="" />
             <div class="type">
               <div class="type-header">Private room</div>
-              <div class="type-title">Have your own room and share some common spaces</div>
+              <div class="type-title">
+                Have your own room and share some common spaces
+              </div>
             </div>
           </div>
           <div class="type-of-place">
-            <input type="checkbox" name="" id="">
+            <input type="checkbox" name="" id="" />
             <div class="type">
               <div class="type-header">Hotel room</div>
-              <div class="type-title">Have a private or shared room in a boutique hotel, hostel, and more</div>
+              <div class="type-title">
+                Have a private or shared room in a boutique hotel, hostel, and
+                more
+              </div>
             </div>
           </div>
           <div class="type-of-place">
-            <input type="checkbox" name="" id="">
+            <input type="checkbox" name="" id="" />
             <div class="type">
               <div class="type-header">Shared room</div>
-              <div class="type-title">Stay in a shared space, like a common room</div>
+              <div class="type-title">
+                Stay in a shared space, like a common room
+              </div>
             </div>
           </div>
-          
         </div>
 
         <div class="type-save">
@@ -174,13 +182,40 @@ export default {
       activeBtn: "",
       isPriceShown: false,
       isTypeShown: false,
+      isPriceRange: false,
+      priceRange: "",
     };
   },
   created() {
     this.getStaysPrices();
   },
   components: {},
-  computed: {},
+  computed: {
+    displayPriceRange() {
+      if (this.filterBy.price.min > 10 && this.filterBy.price.max < 1000) {
+        this.isPriceRange = true;
+        return "$" + this.filterBy.price.min + " - $" + this.filterBy.price.max;
+      } else if (
+        this.filterBy.price.min > 10 &&
+        this.filterBy.price.max > 1000
+      ) {
+        this.isPriceRange = true;
+        return "$" + this.filterBy.price.min + "+";
+      } else if (
+        this.filterBy.price.min <= 10 &&
+        this.filterBy.price.max < 1000
+      ) {
+        this.isPriceRange = true;
+        return "Up to $" + this.filterBy.price.max;
+      } else if (
+        this.filterBy.price.min <= 10 &&
+        this.filterBy.price.max === 1000
+      ) {
+        this.isPriceRange = false;
+        return "";
+      }
+    },
+  },
   methods: {
     setPriceShown() {
       this.isPriceShown = !this.isPriceShown;
@@ -216,6 +251,7 @@ export default {
     },
     setPriceRange() {
       this.isPriceShown = false;
+      this.isPriceRange = true;
       this.setFilter();
     },
 

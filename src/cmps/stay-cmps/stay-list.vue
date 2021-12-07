@@ -1,7 +1,12 @@
 <template>
   <div>
-    <h4>{{ stays.length }} stays</h4>
-    <stayFilterAmenities/>
+    <h4>
+      {{ stays.length }} stays
+      <span class="dest-filter" v-if="currDestination.destination">
+        in {{ this.currDestination.destination }}</span
+      >
+    </h4>
+    <stayFilterAmenities />
     <ul class="stay-list-container clean-list">
       <li v-for="stay in stays" :key="stay._id" class="stay-preview-container">
         <stay-preview :stay="stay" />
@@ -22,14 +27,24 @@ export default {
       default: [],
     },
   },
+  data() {
+    return {
+      currDestination: null,
+    };
+  },
+  created() {
+    this.getCurrDest;
+  },
   methods: {},
   computed: {
-    
+    getCurrDest() {
+      this.currDestination = this.$store.getters.getCurrTrip;
     },
-    components: {
-      stayPreview,
-      stayFilterAmenities,
-    },
+  },
+  components: {
+    stayPreview,
+    stayFilterAmenities,
+  },
 };
 </script>
 

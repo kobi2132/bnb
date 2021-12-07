@@ -52,13 +52,18 @@
             font-weight: bold;
         }
     }
+    .btn-txt {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        line-height: 18px !important; 
+    }
 }
 
 // ----------------------price-filter----------------------------------------
 .price-filter-container {
     position: absolute;
-    bottom: 285px;
-    left: 80px;
+    top: 285px;
+    left:80px ;
     height: 353px;
     width: 440px;
     z-index: 10;
