@@ -16,7 +16,7 @@ export const stayStore = {
     },
     getters: {
         staysToShow(state, getters) {
-            console.log(getters.getCurrTrip)
+            // console.log(getters.getCurrTrip)
             const { destination, guests, dates } = getters.getCurrTrip
             var filteredStays = state.stays
             if (destination) {
