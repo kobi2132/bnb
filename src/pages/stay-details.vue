@@ -5,7 +5,7 @@
 
     <stay-short-info :stay="stay" />
 
-    <stay-gallery :stay="stay" />
+    <stay-gallery :stay="stay" id="pictures" />
     <section ref="displayDiv" class="stay-display-divider flex gray-box-shadow">
       <div class="stay-display-info">
         <section

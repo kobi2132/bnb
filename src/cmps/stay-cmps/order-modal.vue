@@ -6,8 +6,8 @@
     >
       <div class="mini-modal-container">
         <div class="details-mini-nav" v-if="miniModal">
-          <a href="#">Photos</a>
-          <a href="#">Ameneties</a>
+          <a href="#pictures"><span>Photos</span></a>
+          <a href="#ameneties"><span>Ameneties</span></a>
           <a href="#">Reviews</a>
         </div>
         <div class="order-form-header flex space-between align-center">
@@ -230,8 +230,8 @@ export default {
       return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
     },
     handleScroll(event) {
-      console.log("scrolling...", window.scrollY);
-      console.log(this.divHeight, this.modalHeight);
+      // console.log("scrolling...", window.scrollY);
+      // console.log(this.divHeight, this.modalHeight);
       if (window.scrollY > this.divHeight + this.modalHeight)
         this.miniModal = true;
       else this.miniModal = false;
