@@ -1,5 +1,5 @@
 <template>
-  <div class="order-modal-container">
+  <div class="order-modal-container" ref="modal">
     <div
       class="order-modal flex column align-center justify-center"
       :class="{ miniModal: miniModal }"
@@ -115,7 +115,7 @@ import tripCalendar2 from "../trip-calendar2.vue";
 export default {
   // el: ".reserve-btn",
   name: "order-modal",
-  props: ["stay"],
+  props: ["stay", "divHeight"],
   data() {
     return {
       shouldShow: false,
@@ -155,6 +155,7 @@ export default {
       },
       loggedinUser: null,
       miniModal: false,
+      modalHeight: null,
     };
   },
   created() {
@@ -163,7 +164,8 @@ export default {
     this.loggedinUser = this.$store.getters.getUser;
     window.addEventListener("scroll", this.handleScroll);
   },
-  mounted() {
+  updated() {
+    this.getModalHeight();
     // this.$el.addEventListener("mousemove", (evt) => {
     //   let x = evt.clientX / innerWidth;
     //   this.mouse.x = x;
@@ -179,6 +181,10 @@ export default {
     // this.$el.removeEventListener("mousemove", this.handleScroll);
   },
   methods: {
+    getModalHeight() {
+      this.modalHeight = this.$refs.modal.clientHeight;
+      console.log(this.modalHeight);
+    },
     placeOrder() {
       var size = Object.keys(this.trip.dates).length;
       if (
@@ -224,11 +230,11 @@ export default {
       return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
     },
     handleScroll(event) {
-      console.log(window.scrollY);
-      console.log("scrolling...");
-      // if (window.scrollY === 0) this.miniFilter = false;
-      if (window.scrollY > 1800) this.miniModal = true;
-      if (window.scrollY < 1800) this.miniModal = false;
+      console.log("scrolling...", window.scrollY);
+      console.log(this.divHeight, this.modalHeight);
+      if (window.scrollY > this.divHeight + this.modalHeight)
+        this.miniModal = true;
+      else this.miniModal = false;
     },
   },
 
