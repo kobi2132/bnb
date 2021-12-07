@@ -25,7 +25,7 @@ const gStays = [{
         "https://res.cloudinary.com/home-to-go/image/upload/v1622706969/ek6dw3ujrvknufheul40.jpg"
     ],
     "price": 120,
-    "propertyType": "appartment",
+    "propertyType": "entire place",
     "summary": "Charming appartment with two bedrooms",
     "description": "Beautiful 2 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Portogal",
     "capacity": 4,
@@ -36,10 +36,6 @@ const gStays = [{
     {
         name: "Wifi",
         logo: "wifi"
-    },
-    {
-        name: "Kitchen",
-        logo: "restaurant"
     },
     {
         name: "Air conditioning",
@@ -63,7 +59,6 @@ const gStays = [{
     "loc": {
         "country": "Israel",
         "countryCode": "IL",
-        "city": "Tel Aviv",
         "lat": -8.61308,
         "lng": 41.1413
     },
@@ -201,7 +196,7 @@ const gStays = [{
     "name": "Nice House",
     "imgUrls": ["https://res.cloudinary.com/home-to-go/image/upload/v1622966649/poeo8sjxsiviipzrtpvu.jpg", "https://res.cloudinary.com/home-to-go/image/upload/v1622966634/ona0wsyqjedvtk0ozzvu.jpg", "https://res.cloudinary.com/home-to-go/image/upload/v1622966640/ewerdolnvxpnqdgvrmr5.jpg", "https://res.cloudinary.com/home-to-go/image/upload/v1622966632/b2rzokzx2vlssoqqitlt.jpg", "https://res.cloudinary.com/home-to-go/image/upload/v1622966637/ldpkwjusswysykk154n1.jpg"],
     "price": 100,
-    "propertyType": "house",
+    "propertyType": "entire place",
     "summary": "Amazing house with four bedrooms",
     "description": "Beautiful 4 bedroom architecturally designed house, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Greece",
     "capacity": 6,
@@ -416,7 +411,7 @@ const gStays = [{
         "https://res.cloudinary.com/home-to-go/image/upload/v1622707076/fkbyicglofqxc20h31r5.jpg"
     ],
     "price": 150,
-    "propertyType": "villa",
+    "propertyType": "entire place",
     "summary": "Charming villa with three bedrooms",
     "description": "Beautiful 3 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern USA",
     "capacity": 6,
@@ -613,7 +608,7 @@ const gStays = [{
         "https://res.cloudinary.com/home-to-go/image/upload/v1622706842/pxu9pjyu1kbstaw142bu.jpg"
     ],
     "price": 85,
-    "propertyType": "loft",
+    "propertyType": "entire place",
     "summary": "Charming loft with two bedrooms",
     "description": "Beautiful 2 bedroom architecturally designed villa, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Tel Aviv",
     "capacity": 4,
@@ -712,7 +707,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/miso/Hosting-50946161/original/61864421-feed-4b88-bdfb-81a67887ecf4.jpeg?im_w=1440"
     ],
     "price": 15,
-    "propertyType": "loft",
+    "propertyType": "private room",
     "summary": "Charming loft with great smell",
     "description": "Beautiful 1 bedroom architecturally designed loft, in beautiful working fishing village in Northern Tel Aviv",
     "capacity": 2,
@@ -807,7 +802,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/61071524/31bd9eae_original.jpg?im_w=1440"
     ],
     "price": 106,
-    "propertyType": "loft",
+    "propertyType": "entire place",
     "summary": "Amazing loft with great views",
     "description": "Beautiful 1 bedroom architecturally designed loft, in beautiful working fishing village in Northern Tel Aviv",
     "capacity": 4,
@@ -914,7 +909,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/a9fa76d9-ef11-482b-986d-c28559b13473.jpg?im_w=1440"
     ],
     "price": 325,
-    "propertyType": "loft",
+    "propertyType": "entire place",
     "summary": "wonderfull loft near to all the sites",
     "description": "Hello, welcome to our sunny and spacious West Village gem! Our apartment has been designed with elegance and comfort in mind. Previously featured on Apartment Therapy, we've redone the interior but kept the layout readers loved.",
     "capacity": 2,
@@ -1021,7 +1016,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/miso/Hosting-51719483/original/23b9b64d-b62f-444c-83d9-7882fd8fd659.jpeg?im_w=1440"
     ],
     "price": 142,
-    "propertyType": "loft",
+    "propertyType": "hotel room",
     "summary": "Enjoy loft life in our small paradise",
     "description": "Heaven has a new address! In this sensational villa, rustic design is blended with modern comfort and luxury. From the private infinity jacuzzi, to marble counters, pillow-top king-size bed, and satellite TV – Every detail has been considered to make The Lodge is as stunning inside as the views are outside.",
     "capacity": 2,
@@ -1129,7 +1124,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/miso/Hosting-13263102/original/6f457fc4-1bda-4a52-b11c-38e2997a43fb.jpeg?im_w=1440"
     ],
     "price": 283,
-    "propertyType": "Entire home",
+    "propertyType": "hotel room",
     "summary": "Enjoy loft life in our small paradise",
     "description": "This spacious little villa with Jacuzzi is located at the highest point of the village with stunning and unlimited views to the famous caldera and the volcano. The king size bed and and the views from two balconies will give unique moments of relaxation and enjoyment",
     "capacity": 4,
@@ -1234,7 +1229,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/81867259/94d7745d_original.jpg?im_w=1440"
     ],
     "price": 396,
-    "propertyType": "Entire home",
+    "propertyType": "hotel room",
     "summary": "Enjoy loft life in our small paradise",
     "description": "",
     "capacity": 2,
@@ -1339,7 +1334,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/7fc4a2f9-64ba-43b7-8cce-2e21f97a1f14.jpg?im_w=1440"
     ],
     "price": 163,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "A fully-equipped villa with an attic. With its wide veranda [40m²] and the irresistible combination of stone - exterior and modern - interior, it accomplishes the perfect mix & match of the local traditional architectural style with the most modern touches. It is made up of two bedrooms, the first one [14m²] being carved in the heart of a Santorinean rock, with a concrete bed, commodes and a TV set, and the second bedroom [12m²] featuring a black iron bed with commodes.",
     "capacity": 6,
@@ -1444,7 +1439,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/miso/Hosting-42117534/original/8a6ca43b-7dd4-4a76-ad6a-d55e81b684f8.jpeg?im_w=1440"
     ],
     "price": 97,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "Our Honeymoon House with Caldera View offers the perfect romantic escape in Santorini, with the graceful addition of a heated outdoor Jacuzzi (will be closed between 1/11-15/3) providing the ultimate sense of relaxation overlooking the majestic caldera and the infinite Aegean blue. In an ample space of 40m2 divided into two levels, it provides everything a couple may desire. It has been built in perfect alignment with the distinct Cycladic architecture and boasts unparalleled, absolute privacy",
     "capacity": 3,
@@ -1549,7 +1544,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/eda51788-ef0e-407f-b5c3-13925051c975.jpg?im_w=1440"
     ],
     "price": 61,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "Unwind and relax with a glass of wineadmiring the breathtaking views of the famous Santorinian sunset from this house's private veranda . Awake refreshed and ready for a day to explore the island via this clean, sunny house with impressive views to the caldera , volcano of Santorini Aegean Sea & the island of Thirassia . Head out and wander through the famous paths of Fira and explore the nearby little shops & cafe .",
     "capacity": 3,
@@ -1654,7 +1649,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/miso/Hosting-45708053/original/99d0c803-0697-4e3b-884f-8770d8da0239.jpeg?im_w=1440"
     ],
     "price": 85,
-    "propertyType": "Entire home",
+    "propertyType": "shared room",
     "summary": "Enjoy loft life in our small paradise",
     "description": "Located in the trendy and charming area of Montmartre (18th arrondissement) the apartment is perfect for couples travelling in Paris. Within walking distance you can enjoy must see touristic attractions such as Moulin Rouge and Montmartre. All other key attractions – Opera, Louvre, Eiffel Tower, Notre Dame, Le Marais – are just 20/25 minutes away by subway. You can also enjoy a more Parisian atmosphere by discovering the charming areas of Abesse, Rue des Martyrs and South Pigalle.",
     "capacity": 2,
@@ -1752,7 +1747,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/6c12e179-5367-4f63-9a03-b711cbaa8758.jpg?im_w=1440"
     ],
     "price": 209,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "",
     "capacity": 2,
@@ -1857,7 +1852,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/miso/Hosting-51501310/original/91ef0d5b-e2f8-4330-9245-466d67be9c80.jpeg?im_w=1440"
     ],
     "price": 81,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "In the heart of the hyper center of Paris in the pedestrian district Montorgueil my apartment has been completely refurbished. All Châtelet Les Halles Metro lines are a 2-minute walk away. The neighborhood of Le Marais, the Louvre, the Palais Royal and the Seine are a few cables away.",
     "capacity": 3,
@@ -1959,7 +1954,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/9faff7b1-59c7-4c43-bffe-fd37fe2847f2.jpg?im_w=1440"
     ],
     "price": 113,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "",
     "capacity": 2,
@@ -2056,7 +2051,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/miso/Hosting-43939043/original/31110573-7f50-49c1-8698-bbc68c9e6ba8.jpeg?im_w=1440"
     ],
     "price": 181,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "",
     "capacity": 4,
@@ -2161,7 +2156,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/32af070a-9113-4ee0-a1e8-29b89c9bde2b.jpg?im_w=1440"
     ],
     "price": 107,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "Lovely one bedroom located in the heart of the city with an open view. Modern building with balcony, elevator, and parking only a few minutes walk to Bougrashov beach. Fully furnished and equipped to host you comfortably during your stay in TLV. The apartment has one main area, very sunny access to a balcony with an open view. The living room has a sofa, with TV ( Local and International channels) and an open-planned kitchen. In the kitchen, there are all the appliances you need to cook, make coffee and eat. The bedroom has a very comfortable double bed. The living room has an sofa bed to accommodate additionals guests. Our apartments are equipped and we make sure that there are all the necessary appliances you may need while you are away, so we provide: coffee, cleaning supplies,home appliances, cooking utensils and an iron. Fresh, clean sheets and towels are of course provided. It can accommodate up to 4 people.", "capacity": 4,
     "amenities": [{
@@ -2269,7 +2264,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/290cb9e9-c3b9-47d5-9c50-f218aee84578.jpg?im_w=1440"
     ],
     "price": 121,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "A luxurious apartment, that contains 2 bedrooms, 1 shower room + guest toilet. large windows with lots of sunlight and full sea view. Balcony with a view to Gordon beach. all appliances are new.",
     "capacity": 4,
@@ -2378,7 +2373,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/prohost-api/Hosting-26990290/original/1cac92b4-178d-4b70-93b1-c08f0a7a3c5e.jpeg?im_w=1440"
     ],
     "price": 141,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "A cozy,well- designed luxurious apartment in the heart of New Tsedek, with a very sunny living room and a balcony offering an amazing view of the beach, Yaffo and Neve Tsedek, a trendy area of TLV. You will have access to a private carpark and for any stay of more than 2 weeks you will be able to use the pool and the gym. Situated on the 18th floor of a luxurious apartment building, in the main area you will find a living room and an open- spaced kitchen with a beautiful panoramic view and an access to the balcony. The Master bedroom has a double bed, a bathroom, and a balcony. There is a dining area and living room with international TV channels, movies and Netflix. The sofa can accommodate 2 additional guests. The kitchen is fully equipped and has all the necessary cooking appliances you may need. Your comfort is important to us so we make sure our apartments are equipped with all the necessary appliances you may need during your stay so we provide: coffee and cleaning supplies, cooking appliances and an iron. Fresh, clean sheets and towels are of course provided. Perfect for family and friends. Perfect for family and friends; The apartment can accommodate up to 4 people. We are happy to assist you with any further services you may need.",
     "capacity": 4,
@@ -2487,7 +2482,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/8d039a16-6fef-4961-8eb0-e1c29c334e54.jpg?im_w=1440"
     ],
     "price": 103,
-    "propertyType": "Entire home",
+    "propertyType": "private room",
     "summary": "Enjoy loft life in our small paradise",
     "description": "The ultimate Tel Aviv experience is just a few clicks away. Imagine yourself at the heart of Tel Aviv, close to the trendiest spots in the city. Book this place and you won’t need to imagine anymore(: It’s a brand new Apt. with an equipped kitchen, high-speed wi-fi, living room, shared garden, and an indulging shower. You’ll be staying 4 min. walk from the beach and many other great Tel Avivian places. To make a long story short- this is the place you want to stay in(:",
     "capacity": 3,
@@ -2596,7 +2591,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/b233ec8f-d3ae-4bca-a6aa-db7afe9ef519.jpg?im_w=1440"
     ],
     "price": 99,
-    "propertyType": "Entire home",
+    "propertyType": "private room",
     "summary": "Enjoy loft life in our small paradise",
     "description": "This studio-apt offers a Queen size bed, a full bathroom, and a kitchenette. It is comfortable with air conditioning, basic cable television with free Netflix, and free high speed internet! The bathroom is beautifully laid out with a tiled shower and a window. This peaceful 2nd floor walk-up apartment overlooks a scenic backyard with a table and bench for entertaining outside. A bounty of plants and flowers makes this garden a true haven of tranquility.",
     "capacity": 2,
@@ -2698,7 +2693,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/d43b88ba-8df5-4dc3-87a9-b987dec4ac26.jpg?im_w=1440"
     ],
     "price": 150,
-    "propertyType": "Entire home",
+    "propertyType": "entire place",
     "summary": "Enjoy loft life in our small paradise",
     "description": "Superb Spacious One Bedroom Apartment - located in the hart of Midtown West and a mere 2 min walk from Time Square. This character filled apartment offers high ceilings, exposed brick walls and is tastefully furnished. The apartment is on the 1st (ground) floor and has a separate lounge and open plan kitchen / dining area. The bedroom is spacious and offers a Queen bed with windows on three sides making it light and airy.",
     "capacity": 2,
@@ -2803,7 +2798,7 @@ const gStays = [{
         "https://a0.muscache.com/im/pictures/2f0f2667-9033-4243-a135-e2237a6a921b.jpg?im_w=1440"
     ],
     "price": 69,
-    "propertyType": "Entire home",
+    "propertyType": "private room",
     "summary": "Enjoy loft life in our small paradise",
     "description": "The space, located in the heart of the City, is suitable for a range of guests - solo adventurers, and business travelers alike - situated on a block shared with a school and car dealership, there are 1/2 as many people and twice the privacy. Up to date amenities, in a rustic, turn of the century walk-up, you will find solace.",
     "capacity": 2,

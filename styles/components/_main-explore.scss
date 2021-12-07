@@ -1,8 +1,8 @@
 .stay-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
-    column-gap: 17px;
-    row-gap: 17px;
+    column-gap: 24px;
+    row-gap: 40px;
     padding-top: 16px;
     padding-bottom: 250px;
 }
@@ -55,7 +55,7 @@
     .btn-txt {
         font-size: 14px !important;
         font-weight: 400 !important;
-        line-height: 18px !important; 
+        line-height: 18px !important;
     }
 }
 
@@ -63,7 +63,7 @@
 .price-filter-container {
     position: absolute;
     top: 285px;
-    left:80px ;
+    left: 80px;
     height: 353px;
     width: 440px;
     z-index: 10;
@@ -172,10 +172,6 @@
     }
 // }
 
-.irs--round .irs-bar {
-    background-color: #b0b0b0 !important;
-}
-
 .vue-histogram-slider-wrapper {
     width: 360px !important;
     --holder-color: #ddd !important;
@@ -188,24 +184,27 @@
     --handle-size: 26px;
 }
 
+.irs-handle{
+    top: 22px !important;
+}
+
+
 // ----------------------type-filter----------------------------------------
 .type-filter-container {
     position: absolute;
-    bottom: 285px;
-    left: 80px;
-    height: 353px;
-    width: 440px;
+    top: 285px;
+    left: 172px;
+    width: 340px;
     z-index: 10;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     background: rgb(255, 255, 255);
     border: 0.5px solid rgba(118, 118, 118, 0.28);
     border-radius: 12px;
     box-shadow: rgb(0 0 0 / 15%) 0px 10px 37px;
     padding: 20px;
     .type-filter {
-        padding: 20px;
     }
     .type-save {
         display: flex;
@@ -241,6 +240,91 @@
             color: rgb(255, 255, 255);
         }
     }
+    .type-of-place {
+        .container {
+            padding-top: 12px!important;
+            display: block;
+            position: relative;
+            padding-left: 19px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            text-align: start;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .type{
+            padding-left: 19px;
+            .type-header{
+                font-size: 16px;
+                line-height: 20px;
+                color: #222222
+            }
+            .type-title{
+                font-size: 14px;
+                line-height: 20px;
+                color: #717171
+            }
+        }
+
+        /* Hide the browser's default checkbox */
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            height: 24px;
+            width: 24px;
+            background-color: #ffffff;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(176, 176, 176);
+            border-radius: 4px;
+
+        }
+        .container:hover input ~ .checkmark {
+            border-color: rgb(0, 0, 0);
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: #222222;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+            left: 8px;
+            top: 4px;
+            width: 4px;
+            height: 9px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    }
 }
 
 // ----------------------------------------STAY PREVIEW---------------------------------------
@@ -263,13 +347,13 @@
         }
     }
     .stay-preview-info {
-        >* {
-            padding-top: 6px;
-        }
+
         .reviews-preview {
             display: flex;
             align-items: center;
             font-size: 14px !important;
+            padding-top: 10px;
+
             .star-preview {
                 margin-right: 4px !important;
                 .material-icons-outlined {
@@ -283,6 +367,16 @@
             .reviews-total {
                 color: #717171;
             }
+        }
+        .property-type{
+            padding-top: 6px;
+        }
+        .stayname{
+            padding-top: 2px;
+        }
+        .stay-price{
+            padding-top: 4px;
+
         }
     }
 }
