@@ -63,7 +63,12 @@
                 <div class="type-header">Entire place</div>
                 <div class="type-title">Have a place to yourself</div>
               </div>
-              <input type="checkbox" :checked="setTypeCheck" />
+              <input
+                type="checkbox"
+                id="entire place"
+                value="entire place"
+                v-model="filterBy.typeOfPlace"
+              />
               <span class="checkmark"></span>
             </label>
           </div>
@@ -75,7 +80,12 @@
                   Have your own room and share some common spaces
                 </div>
               </div>
-              <input type="checkbox" checked="checked" />
+              <input
+                type="checkbox"
+                id="private room"
+                value="private room"
+                v-model="filterBy.typeOfPlace"
+              />
               <span class="checkmark"></span>
             </label>
           </div>
@@ -88,28 +98,37 @@
                   more
                 </div>
               </div>
-              <input type="checkbox" checked="checked" />
+              <input
+                type="checkbox"
+                id="hotel room"
+                value="hotel room"
+                v-model="filterBy.typeOfPlace"
+              />
               <span class="checkmark"></span>
             </label>
           </div>
           <div class="type-of-place">
             <label class="container">
               <div class="type">
-              <div class="type-header">Shared room</div>
-              <div class="type-title">
-                Stay in a shared space, like a common room
+                <div class="type-header">Shared room</div>
+                <div class="type-title">
+                  Stay in a shared space, like a common room
+                </div>
               </div>
-            </div>
-              <input type="checkbox" checked="checked" />
+              <input
+                type="checkbox"
+                id="shared room"
+                value="shared room"
+                v-model="filterBy.typeOfPlace"
+              />
               <span class="checkmark"></span>
             </label>
-           
           </div>
         </div>
 
         <div class="type-save">
-          <button class="clear" @click="clearPriceRange">Clear</button>
-          <button class="save" @click="setPriceRange">Save</button>
+          <button class="clear" @click="clearTypeFilter">Clear</button>
+          <button class="save" @click="setTypeFilter">Save</button>
         </div>
       </div>
     </button>
@@ -193,8 +212,8 @@ export default {
       stays: null,
       activeBtn: "",
       isPriceShown: false,
-      isTypeShown: false,
       isPriceRange: false,
+      isTypeShown: false,
       priceRange: "",
     };
   },
@@ -227,9 +246,11 @@ export default {
   methods: {
     setPriceShown() {
       this.isPriceShown = !this.isPriceShown;
+      this.isTypeShown = false
     },
     setTypeShown() {
       this.isTypeShown = !this.isTypeShown;
+      this.isPriceShown = false
     },
     toggleLabel(amenitie) {
       const idx = this.filterBy.labels.findIndex((label) => label === amenitie);
@@ -262,17 +283,21 @@ export default {
     },
     setPriceRange() {
       this.isPriceShown = false;
-      // console.log(this.filterBy.price.min, this.filterBy.price.max);
-      // console.log(this.priceRange);
       if (this.filterBy.price.min <= 0 && this.filterBy.price.max === 1000) {
         this.isPriceRange = false;
       } else this.isPriceRange = true;
       this.setFilter();
     },
 
-    setTypeCheck(){
-      
-    }
+    setTypeFilter() {
+      this.isTypeShown = false;
+
+      this.setFilter();
+    },
+
+    clearTypeFilter() {
+      this.filterBy.typeOfPlace = [];
+    },
 
     // setVal(values) {
     //   values.from = this.filterBy.price.min;
