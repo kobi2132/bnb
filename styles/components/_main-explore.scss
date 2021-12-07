@@ -1,4 +1,4 @@
-.stay-list-conainer {
+.stay-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
     column-gap: 17px;
@@ -6,10 +6,10 @@
     padding-top: 16px;
     padding-bottom: 250px;
 }
+
 .explore-btns {
     display: flex;
     align-items: center;
-
     .explore-btn {
         height: 38px;
         cursor: pointer !important;
@@ -27,17 +27,14 @@
         margin-right: 8px !important;
         margin-top: 4px !important;
         margin-bottom: 4px !important;
-
         &:hover {
             border-color: #222222 !important;
         }
     }
-    .active{
+    .active {
         border: 2px solid #222222 !important;
         background-color: #f7f7f7 !important;
-
     }
-
     .buffer {
         margin-right: 8px !important;
         margin-top: 4px !important;
@@ -47,7 +44,7 @@
     }
     .btn-expend {
         display: flex;
-        place-content: center !important ;
+        place-content: center !important;
         font-size: 14px !important;
     }
 }
@@ -55,7 +52,6 @@
 .stay-preview {
     .stay-preview-slideshow {
         position: relative;
-
         .like-stay {
             position: absolute;
             top: 12px;
@@ -69,11 +65,10 @@
         }
         .active {
             color: $redAirbnb;
-
         }
     }
     .stay-preview-info {
-        > * {
+        >* {
             padding-top: 6px;
         }
         .reviews-preview {
@@ -96,7 +91,6 @@
         }
     }
 }
-
 
 // -----SLIDESHOW - CARUOSEL-----
 .preview-slideshow {
