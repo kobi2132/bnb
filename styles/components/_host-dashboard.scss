@@ -1,0 +1,151 @@
+.dashboard-container {
+    gap: 10px
+}
+
+.dash-nav-sticky-container {
+    // position: fixed;
+    width: 230px;
+    // change to vw or somthing
+    .dash-nav-container {
+        // position: sticky;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: start;
+        margin-bottom: 20px;
+        button {
+            padding-bottom: 10px;
+        }
+        .add-stay-btn {
+            padding: 10px 5px;
+            width: 100%;
+            grid-gap: 15px;
+            gap: 15px;
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+            line-height: 1.75rem;
+        }
+    }
+    .host-info-container {
+        font-size: 1.25rem;
+        img {
+            height: 40px;
+            width: 40px;
+        }
+        h2 {
+            font-size: 1.125rem;
+            line-height: 1.5rem;
+            color: #484848;
+            text-transform: capitalize;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+        p {
+            font-size: 1rem;
+            line-height: 1.25rem;
+            color: #484848;
+        }
+    }
+}
+
+.dash-main-container {
+    gap: 20px;
+    padding: 20px;
+    // margin-inline-start: 240px;
+    //fix this layout
+    border-radius: 13px;
+    .dash-header {
+        gap: 20px;
+        flex: 1 1;
+        div {
+            // min-width: 200px;
+            // max-width: 200px;
+            border-radius: 13px;
+            padding: 20px;
+            h3 {
+                font-size: 1rem;
+                line-height: 18px;
+                color: #222;
+                padding: 0;
+                margin: 0;
+                padding-bottom: 20px;
+            }
+            div {
+                padding: 0;
+                margin: 0;
+                span {
+                    // display: inline-block;
+                    font-size: 1.5rem;
+                    line-height: 1.5rem;
+                    padding: 0;
+                    margin: 0;
+                    i {
+                        font-size: 0.8rem;
+                        color: $redAirbnb;
+                        padding-inline-end: 3px;
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
+                p {
+                    padding: 0;
+                    margin: 0;
+                    font-size: 14px;
+                    line-height: 16px;
+                }
+                .circle-container {
+                    div {
+                        // display: inline-block;
+                        .circle {
+                            height: 15px;
+                            width: 15px;
+                            border-radius: 50%;
+                        }
+                        .yellow-circle {
+                            background-color: #faf87b;
+                        }
+                        .green-circle {
+                            background-color: #9df89d;
+                        }
+                        .green-red {
+                            background-color: #fa7b7b;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .dash-info-container {
+        flex: 4 1;
+        border-radius: 13px;
+        .host-stay-container {
+            .host-stay-list-table {
+                width: 100%;
+                border-spacing: 0 2px;
+                .thead {
+                    width: 100%;
+                }
+                .tbody {
+                    width: 100%;
+                    .host-stay-preview {
+                        span {
+                            text-align: start;
+                            width: 100%;
+                            padding: 10px 20px;
+                            border-top: 1px solid #dfdfdf;
+                        }
+                    }
+                }
+            }
+            .host-order-container {
+                width: 100%;
+                .host-order-list {
+                    width: 100%;
+                    .host-order-list-table {
+                        width: 100%;
+                        border-spacing: 0 2px;
+                    }
+                }
+            }
+        }
+    }
+}
