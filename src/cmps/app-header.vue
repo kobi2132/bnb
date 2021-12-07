@@ -4,7 +4,7 @@
     :class="{ details: stayDetails, fullheader: !miniFilter }"
   >
     <section class="main-header-container flex space-between">
-      <div class="logo clickable" @click.stop="goHome">
+      <div class="logo clickable flex align-center" @click.stop="goHome">
         <img class="logo-img" src="~@/assets/images/logo.png" />
       </div>
       <button
@@ -28,20 +28,20 @@
     </section>
     <div class="user-nav" v-if="shouldShow">
       <div class="user-nav2">
-      <a href="#/login">Log in</a>
-      <a href="#/host">Host your home</a>
-      <a href="#/about">About</a>
-      <a href="#/help">Help</a>
+        <a href="#/login">Log in</a>
+        <a href="#/host">Host your home</a>
+        <a href="#/about">About</a>
+        <a href="#/help">Help</a>
       </div>
       <div class="user-nav2">
-      <a href="#/messages">Messages</a>
-      <a href="#/notifications">Notifications</a>
-      <a href="#/trips">Trips</a>
-      <a href="#/wishList">Wish List</a>
-      <a href="#/dashboard" class="gray-box-shadow">Dashboard</a>
-      <a href="#/account">Account</a>
-      <a href="#/help">Help</a>
-      <a href="#/logout">Logout</a>
+        <a href="#/messages">Messages</a>
+        <a href="#/notifications">Notifications</a>
+        <a href="#/trips">Trips</a>
+        <a href="#/wishList">Wish List</a>
+        <a href="#/dashboard" class="gray-box-shadow">Dashboard</a>
+        <a href="#/account">Account</a>
+        <a href="#/help">Help</a>
+        <a href="#/logout">Logout</a>
       </div>
     </div>
     <stay-filter :class="{ hide: miniFilter }" />

@@ -3,7 +3,7 @@ import { orderService } from '../../services/order.service.js'
 export const orderStore = {
     state: {
         currTrip: {
-            guests: { children: null, adults: null },
+            guests: { children: null, adults: 1 },
             destination: '',
             dates: {}
         },

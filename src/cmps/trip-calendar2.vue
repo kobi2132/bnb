@@ -10,7 +10,7 @@
           is-range
           :columns="2"
           is-expanded
-          :popover="{ visibility: 'click' }"
+          :popover="{ visibility: 'click', visibility: 'focus' }"
           color="gray"
         >
           <template v-slot="{ inputValue, inputEvents, isDragging }">
@@ -46,6 +46,7 @@
                 ><label
                   >Check in
                   <input
+                    ref="dateInput"
                     placeholder="Add dates"
                     class="
                       flex-grow
@@ -132,6 +133,7 @@ export default {
         start: null,
         end: null,
       },
+      input: null,
       // masks: {
       //   input: "DD MMM",
       // },
@@ -142,10 +144,19 @@ export default {
       // console.log(this.range);
       this.$emit("updated", this.range);
     },
+    focusInput() {
+      this.input.focus();
+      this.$refs.dateInput.focus();
+    },
   },
   created() {
     this.range = this.$store.getters.getDates;
     // console.log(this.range);
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.input = this.$refs.dateInput;
+    });
   },
 };
 </script>

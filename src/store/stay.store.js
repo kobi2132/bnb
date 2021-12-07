@@ -10,7 +10,7 @@ export const stayStore = {
                 min: 0,
                 max: 1000,
             },
-            typeOfPlace: null,
+            typeOfPlace: [],
             labels: [],
         },
     },
@@ -36,6 +36,11 @@ export const stayStore = {
             const maxPrice = state.filterBy.price.max
             filteredStays = filteredStays.filter(stay =>
                 stay.price >= minPrice && stay.price <= maxPrice)
+
+                if(state.filterBy.typeOfPlace.length > 0){
+            const typeOfPlace = state.filterBy.typeOfPlace
+            filteredStays = filteredStays.filter(stay => typeOfPlace.includes(stay.propertyType))
+            console.log(filteredStays);}
 
             return filteredStays
         },

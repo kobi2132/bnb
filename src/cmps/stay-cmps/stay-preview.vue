@@ -17,9 +17,9 @@
         <span class="review-avg">{{ this.reviewsRateAvg }}&nbsp;</span
         ><span class="reviews-total">( {{ this.stay.reviews.length }} )</span>
       </div>
-      <div>{{ this.stay.propertyType }} • {{ this.stay.loc.country }}</div>
-      <div>{{ this.stay.name }}</div>
-      <div>
+      <div class="property-type">{{ this.stay.propertyType }} • {{ this.stay.loc.country }}</div>
+      <div class="stayname">{{ this.stay.name }}</div>
+      <div class="stay-price">
         <span class="bold">${{ this.stay.price }}</span> / night
       </div>
     </div>
