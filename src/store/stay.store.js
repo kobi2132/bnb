@@ -6,6 +6,11 @@ export const stayStore = {
         stays: [],
         currStay: null,
         filterBy: {
+            price: {
+                min: 0,
+                max: 1000,
+            },
+            typeOfPlace: null,
             labels: [],
         },
     },
@@ -27,6 +32,10 @@ export const stayStore = {
                     if (labels.every(label => amns.includes(label))) return true
                 })
             }
+            const minPrice = state.filterBy.price.min
+            const maxPrice = state.filterBy.price.max
+            filteredStays = filteredStays.filter(stay =>
+                stay.price >= minPrice && stay.price <= maxPrice)
 
             return filteredStays
         },

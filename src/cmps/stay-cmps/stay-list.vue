@@ -2,7 +2,7 @@
   <div>
     <h4>{{ stays.length }} stays</h4>
     <stayFilterAmenities/>
-    <ul class="stay-list-conainer clean-list">
+    <ul class="stay-list-container clean-list">
       <li v-for="stay in stays" :key="stay._id" class="stay-preview-container">
         <stay-preview :stay="stay" />
       </li>
