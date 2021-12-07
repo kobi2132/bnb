@@ -143,6 +143,20 @@
                     .host-order-list-table {
                         width: 100%;
                         border-spacing: 0 2px;
+                        .thead {
+                            width: 100%;
+                            div {
+                                width: 100%;
+                            }
+                        }
+                        .host-stay-preview {
+                            span {
+                                text-align: start;
+                                width: 100%;
+                                padding: 10px 20px;
+                                border-top: 1px solid #dfdfdf;
+                            }
+                        }
                     }
                 }
             }
