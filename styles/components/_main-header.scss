@@ -14,9 +14,6 @@
     }
 }
 
-.avatar {
-    width: 30px;
-}
 
 .nav {
     flex-wrap: nowrap;
@@ -81,9 +78,14 @@
         font-family: fas;
         content: '\f0c9';
     }
-    span {
+    span,.avatar {
         margin-left: 12px;
+        width: 30px;
     }
+    .avatar {
+        border-radius: 50%; 
+    }
+    
 }
 
 .main-header.details {

@@ -11,13 +11,25 @@
           >
             <i class="fa fa-plus" aria-hidden="true"> </i>Add Stay
           </button>
-          <button value="my Stays" @click="showMyStays()" class="clean-btn clickable">
+          <button
+            value="my Stays"
+            @click="showMyStays()"
+            class="clean-btn clickable"
+          >
             <i class="fa fa-house-user" aria-hidden="true"></i>My Stays
           </button>
-          <button value="orders" @click="showMyOrders()" class="clean-btn clickable">
+          <button
+            value="orders"
+            @click="showMyOrders()"
+            class="clean-btn clickable"
+          >
             <i class="fa fa-clipboard-list" aria-hidden="true"></i>Orders
           </button>
-          <button value="rate stat" @click="showMyRates()" class="clean-btn clickable">
+          <button
+            value="rate stat"
+            @click="showMyRates()"
+            class="clean-btn clickable"
+          >
             <i class="fa fa-star" aria-hidden="true"></i>Rates
           </button>
         </div>
@@ -38,7 +50,9 @@
           <div class="total-rate">
             <h3>Total Rate</h3>
             <div class="flex space-between align-center">
-              <span class="flex align center"> <i class="fa fa-star" aria-hidden="true"></i>4.5</span>
+              <span class="flex align center">
+                <i class="fa fa-star" aria-hidden="true"></i>4.5</span
+              >
               <p>
                 4%<i class="fa fa-long-arrow-alt-up" aria-hidden="true"></i>
               </p>
@@ -92,24 +106,29 @@
 
         <section class="dash-info-container">
           <section class="host-stay-container">
-            <section class="host-stay-list" v-if="shouldShow==='my stays'">
+            <section class="host-stay-list" v-if="shouldShow === 'my stays'">
               <div class="host-stay-list-table">
                 <div class="thead">
                   <div class="flex space-between">
-                    <span class="host-img"></span><span>Name</span><span>Address</span
-                    ><span>Price</span><span class="stay-actions">Actions</span>
+                    <span class="host-img"></span><span>Name</span
+                    ><span>Address</span><span>Price</span
+                    ><span class="stay-actions">Actions</span>
                   </div>
                 </div>
 
                 <div class="tbody">
                   <div class="host-stay-preview flex">
-                    <span class="flex align-center"><img
+                    <span class="flex align-center"
+                      ><img
                         src="https://res.cloudinary.com/home-to-go/image/upload/v1622623125/hnh9ajbxx6kt13gm1fnx.webp"
-                        alt="stay" class="host-img" />
-                      </span>
+                        alt="stay"
+                        class="host-img"
+                      />
+                    </span>
                     <span>
-                      <a href="#/stay/60b624e305f90634a567b2ac">Luxurious Riverside Jungle Retreat</a>
-                    </span
+                      <a href="#/stay/60b624e305f90634a567b2ac"
+                        >Luxurious Riverside Jungle Retreat</a
+                      > </span
                     ><span
                       ><a href="#/stay/60b624e305f90634a567b2ac"
                         >Porto, Portugal</a
@@ -122,11 +141,10 @@
                       </button></span
                     >
                   </div>
-
                 </div>
               </div>
             </section>
-            <section class="host-order-list" v-if="shouldShow==='my orders'">
+            <section class="host-order-list" v-if="shouldShow === 'my orders'">
               <section class="host-order-container">
                 <section class="host-order-list">
                   <div class="host-order-list-table">
@@ -138,22 +156,29 @@
                         <span class="flex align-center">Check out</span>
                         <span class="flex align-center">Status</span>
                         <span class="flex align-center">Price</span>
-                        <span class="stay-actions flex align-center">Actions</span>
+                        <span class="stay-actions flex align-center"
+                          >Actions</span
+                        >
                       </div>
                     </div>
                     <div class="tbody">
                       <div class="host-stay-preview flex">
                         <span>
-                          <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"></span>
-                          <span class="flex align-center">Chang Ba</span>
-                          <span class="flex align-center">Thu Jul 08 2021</span>
-                          <span class="flex align-center">Tue Jul 13 2021</span>
-                          <span class="flex align-center">declined</span>
-                          <span class="flex align-center">$ 1,500</span>
-                          <span class="stay-actions flex align-center">
-                            <button>
-                            <i class="fas fa-check" aria-hidden="true"></i>Re-Approve
-                            </button>
+                          <img
+                            src="https://randomuser.me/api/portraits/women/16.jpg"
+                            alt="user"
+                            class="host-img"
+                        /></span>
+                        <span class="flex align-center">Chang Ba</span>
+                        <span class="flex align-center">Thu Jul 08 2021</span>
+                        <span class="flex align-center">Tue Jul 13 2021</span>
+                        <span class="flex align-center">declined</span>
+                        <span class="flex align-center">$ 1,500</span>
+                        <span class="stay-actions flex align-center">
+                          <button>
+                            <i class="fas fa-check" aria-hidden="true"></i
+                            >Re-Approve
+                          </button>
                         </span>
                       </div>
                       <!-- <div class="host-stay-preview">
@@ -176,7 +201,7 @@
                 </section>
               </section>
             </section>
-            <section class="host-rates" v-if="shouldShow==='my rates'">
+            <section class="host-rates" v-if="shouldShow === 'my rates'">
               <h1>rates</h1>
             </section>
           </section>
@@ -213,6 +238,10 @@ export default {
       this.shouldShow = "my rates";
       console.log(this.shouldShow);
     },
+  },
+  created() {
+    const page = "hostDashboard";
+    this.$store.commit({ type: "setCurrPage", page });
   },
 };
 </script>

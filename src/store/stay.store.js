@@ -37,10 +37,11 @@ export const stayStore = {
             filteredStays = filteredStays.filter(stay =>
                 stay.price >= minPrice && stay.price <= maxPrice)
 
-                if(state.filterBy.typeOfPlace.length > 0){
-            const typeOfPlace = state.filterBy.typeOfPlace
-            filteredStays = filteredStays.filter(stay => typeOfPlace.includes(stay.propertyType))
-            console.log(filteredStays);}
+            if (state.filterBy.typeOfPlace.length > 0) {
+                const typeOfPlace = state.filterBy.typeOfPlace
+                filteredStays = filteredStays.filter(stay => typeOfPlace.includes(stay.propertyType))
+                console.log(filteredStays);
+            }
 
             return filteredStays
         },
@@ -67,44 +68,42 @@ export const stayStore = {
         },
     },
     actions: {
-        loadStays({ commit, state }) {
-            const { filterBy } = state
-            commit({ type: 'setLoading', isLoading: true })
-            stayService.query().then(stays => {
-                commit({ type: 'setStays', stays })
-            })
-        },
-        // async loadStays({ commit, state }) {
-        //     // const { filterBy } = state
+        // loadStays({ commit, state }) {
+        //     const { filterBy } = state
         //     commit({ type: 'setLoading', isLoading: true })
-        //     try {
-        //         const stays = await stayService.query()
+        //     stayService.query().then(stays => {
         //         commit({ type: 'setStays', stays })
-        //     } catch (err) {
-        //         console.log('Error in query stays (store)', err)
-        //         throw err
-        //     } finally {
-        //         commit({ type: 'setLoading', isLoading: false });
-        //     }
-
-
+        //     })
         // },
-
-        // async setCurrStay({ commit }, { stayId }) {
-        //     try {
-        //         const stay = await stayService.getById(stayId);
-        //         commit({ type: 'setCurrStay', stay })
-        //         return stay
-        //     } catch (err) {
-        //         console.log(`Error in getting stay ${stayId}`, err)
-        //         throw err
-        //     }
-        // }
-        setCurrStay({ commit, getters }, { stayId }) {
-            return stayService.getById(stayId).then((stay) => {
-                console.log(stay)
-                commit({ type: 'setCurrStay', stay })
-            })
+        async loadStays({ commit, state }) {
+            // const { filterBy } = state
+            commit({ type: 'setLoading', isLoading: true })
+            try {
+                const stays = await stayService.query()
+                commit({ type: 'setStays', stays })
+            } catch (err) {
+                console.log('Error in query stays (store)', err)
+                throw err
+            } finally {
+                commit({ type: 'setLoading', isLoading: false });
+            }
         },
+
+        async setCurrStay({ commit }, { stayId }) {
+            try {
+                const stay = await stayService.getById(stayId);
+                commit({ type: 'setCurrStay', stay })
+                return stay
+            } catch (err) {
+                console.log(`Error in getting stay ${stayId}`, err)
+                throw err
+            }
+        }
+        // setCurrStay({ commit, getters }, { stayId }) {
+        //     return stayService.getById(stayId).then((stay) => {
+        //         console.log(stay)
+        //         commit({ type: 'setCurrStay', stay })
+        //     })
+        // },
     }
 }

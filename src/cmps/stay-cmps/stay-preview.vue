@@ -6,7 +6,9 @@
         <span
           class="material-icons"
           :class="{ active: isLiked }"
-          @click.stop="toggleWishList">favorite</span>
+          @click.stop="toggleWishList"
+          >favorite</span
+        >
       </div>
     </div>
     <div class="stay-preview-info">
@@ -15,9 +17,13 @@
           <span class="material-icons-outlined">star</span>
         </div>
         <span class="review-avg">{{ this.reviewsRateAvg }}&nbsp;</span
-        ><span class="reviews-total">({{ this.stay.reviews.length }} reviews)</span>
+        ><span class="reviews-total"
+          >({{ this.stay.reviews.length }} reviews)</span
+        >
       </div>
-      <div class="property-type">{{ this.stay.propertyType }} • {{ this.stay.loc.country }}</div>
+      <div class="property-type">
+        {{ this.stay.propertyType }} • {{ this.stay.loc.country }}
+      </div>
       <div class="stayname">{{ this.stay.name }}</div>
       <div class="stay-price">
         <span class="bold">${{ this.stay.price }}</span> / night
@@ -47,9 +53,11 @@ export default {
     };
   },
   created() {
-    const user = userService.getLoggedinUser();
-    var isWish = user.wishList.filter((wish) => wish === this.stay._id);
-    if (isWish.length > 0) this.isLiked = true
+    const user = this.$store.getters.loggedinUser;
+    if (user && user.wishList && user.wishList.length > 0) {
+      var isWish = user.wishList.filter((wish) => wish === this.stay._id);
+      if (isWish.length > 0) this.isLiked = true;
+    }
   },
   computed: {
     reviewsRateAvg() {

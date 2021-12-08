@@ -2,7 +2,7 @@
   <div class="order-modal-container" ref="modal">
     <div
       class="order-modal flex column align-center justify-center"
-      :class="{ miniModal: miniModal }"
+      :class="{ miniModal }"
     >
       <div class="mini-modal-container">
         <div class="details-mini-nav" v-if="miniModal">
@@ -119,13 +119,13 @@
 import tripCalendar2 from "../trip-calendar2.vue";
 export default {
   name: "order-modal",
-  props: ["stay", "divHeight"],
+  props: { stay: Object, conHeight: Number },
   data() {
     return {
       shouldShow: false,
       trip: {
         guests: {
-          adults: 1,
+          adults: 0,
           children: 0,
         },
         destination: null,
@@ -136,12 +136,11 @@ export default {
         x: null,
         y: null,
       },
-
       order: {
         _id: null,
         dates: {},
         guests: {
-          adults: 1,
+          adults: 0,
           children: 0,
         },
         createdAt: null,
@@ -163,26 +162,16 @@ export default {
     };
   },
   created() {
-    console.log("order form created", this.trip);
     this.trip = this.$store.getters.getCurrTrip;
-    this.loggedinUser = this.$store.getters.getUser;
+    this.loggedinUser = this.$store.getters.loggedinUser;
+    console.log(this.loggedinUser);
     window.addEventListener("scroll", this.handleScroll);
   },
   mounted() {
     this.getModalHeight();
-    // this.$el.addEventListener("mousemove", (evt) => {
-    //   let x = evt.clientX / innerWidth;
-    //   this.mouse.x = x;
-    //   let y = evt.clientY / innerHeight;
-    //   this.mouse.y = y;
-    //   console.log(x, y);
-    //   this.$el.style.setProperty("--mouse-x", x);
-    //   this.$el.style.setProperty("--mouse-y", y);
-    // });
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
-    // this.$el.removeEventListener("mousemove", this.handleScroll);
   },
   methods: {
     goToSection(sectionId) {
@@ -194,7 +183,6 @@ export default {
     },
     getModalHeight() {
       this.modalHeight = this.$refs.modal.clientHeight;
-      console.log(this.modalHeight);
     },
     placeOrder() {
       var size = Object.keys(this.trip.dates).length;
@@ -214,13 +202,10 @@ export default {
         this.order.stay._id = this.stay._id;
         this.order.stay.name = this.stay.name;
         this.order.stay.price = this.stay.price;
-
         this.order.buyer._id = this.loggedinUser._id;
         this.order.hostId = this.stay.host._id;
         this.order.buyer.fullname = this.loggedinUser.fullname;
         this.order.createdAt = Date.now();
-        console.log(this.trip);
-        console.log(this.loggedinUser);
         let order = JSON.parse(JSON.stringify(this.order));
         console.log("placing order!", order);
         this.$store.dispatch({ type: "addOrder", order });
@@ -228,11 +213,10 @@ export default {
 
       console.log("hey");
       this.$router.push("/order-confirm/" + this.order._id);
-
     },
     updateGuests(type, number) {
-      const min = type === "adults" ? 1 : 0;
-      if (this.trip.guests[type] === min && number === -1) return;
+      // const min = type === "adults" ? 1 : 0;
+      if (this.trip.guests[type] === 0 && number === -1) return;
       this.trip.guests[type] += number;
       this.updateTrip();
     },
@@ -245,20 +229,10 @@ export default {
       this.trip.dates = dates;
       this.updateTrip();
     },
-    getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-    },
-    handleScroll(event) {
-      // console.log("scrolling...", window.scrollY);
-      // console.log(this.divHeight, this.modalHeight);
-      if (window.scrollY > this.divHeight + this.modalHeight)
-        this.miniModal = true;
-      else this.miniModal = false;
+    handleScroll() {
+      this.miniModal = window.scrollY >= this.conHeight + this.modalHeight;
     },
   },
-
   computed: {
     children() {
       if (this.trip.guests.children === null) return 0;

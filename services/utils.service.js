@@ -148,3 +148,13 @@ function timeSince(timeStamp) {
         return timeString;
     }
 }
+
+    // this.$el.addEventListener("mousemove", (evt) => {
+    //   let x = evt.clientX / innerWidth;
+    //   this.mouse.x = x;
+    //   let y = evt.clientY / innerHeight;
+    //   this.mouse.y = y;
+    //   console.log(x, y);
+    //   this.$el.style.setProperty("--mouse-x", x);
+    //   this.$el.style.setProperty("--mouse-y", y);
+    // });

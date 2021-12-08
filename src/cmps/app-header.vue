@@ -11,7 +11,6 @@
     <section class="main-header-container flex space-between">
       <div class="logo clickable flex align-center" @click.stop="goHome">
         <h1 class="logo-txt">Kumb</h1>
-        <!-- <img class="logo-img" src="~@/assets/images/logo-black.png" /> -->
       </div>
       <button
         @click="miniFilter = !miniFilter"
@@ -27,23 +26,29 @@
           class="user-menu-btn clickable flex align-center clickable"
           @click="shouldShow = !shouldShow"
         >
-          <span class="material-icons-round"> account_circle </span>
-          <!-- <img class="avatar" src="~@/assets/images/avatar1.png" /> -->
+          <span v-if="!currUser" class="material-icons-round">
+            account_circle
+          </span>
+          <img v-if="currUser" class="avatar" :src="loggedinUser.imgUrl" />
         </button>
       </div>
     </section>
     <div class="user-nav" v-if="shouldShow">
       <div class="user-nav2">
-        <a href="#/messages" class="a1">Messages</a>
-        <a href="#/trips" class="a1">Trips</a>
-        <a href="#/wishList" class="a1 gray-box-shadow">Wish List</a>
-        <a href="#/notifications">Notifications</a>
-        <a href="#/host">Host your home</a>
-        <a href="#/dashboard">Dashboard</a>
-        <a href="#/account" class="gray-box-shadow">Account</a>
-        <a href="#/help">Help</a>
-        <a href="#/login">Log in</a>
-        <a href="#/logout">Logout</a>
+        <a href="#/login" v-if="!currUser">Log in</a>
+        <a href="#/messages" class="a1" v-if="currUser">Messages</a>
+        <a href="#/trips" class="a1" v-if="currUser">Trips</a>
+        <a href="#/wishList" class="a1 gray-box-shadow" v-if="currUser"
+          >Wish List</a
+        >
+        <a href="#/notifications" v-if="currUser">Notifications</a>
+        <a href="#/host" v-if="!currUser || !loggedinUser.isHost"
+          >Host your home</a
+        >
+        <a href="#/dashboard" v-if="currUser">Dashboard</a>
+        <a href="#/account" class="gray-box-shadow" v-if="currUser">Account</a>
+        <!-- <a href="#/help">Help</a> -->
+        <a @click.stop="logout" class="clickable" v-if="currUser">Logout</a>
         <a href="#/about">About</a>
       </div>
     </div>
@@ -59,10 +64,18 @@ export default {
       miniFilter: false,
       shouldShow: false,
       currPage: null,
+      loggedinUser: null,
+      misc: false,
     };
   },
 
   methods: {
+    logout() {
+      this.$store.dispatch({ type: "logout" });
+      this.loggedinUser = null;
+      this.goHome();
+      this.shouldShow = false;
+    },
     goHome() {
       this.$router.push("/").catch(() => {});
     },
@@ -75,6 +88,10 @@ export default {
     },
   },
   computed: {
+    currUser() {
+      var user = this.$store.getters.loggedinUser;
+      return user ? true : false;
+    },
     currDest() {
       var dest = this.$store.getters.getDest;
       if (!dest) return "Start your search";
@@ -98,10 +115,16 @@ export default {
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
+    this.loggedinUser = this.$store.getters.loggedinUser;
+    console.log(this.loggedinUser);
   },
   mounted() {
-    this.currPage = this.$store.getters.currPage;
+    // this.currPage = this.$store.getters.currPage;
     // console.log("header created", this.currPage);
+  },
+  updated() {
+    this.loggedinUser = this.$store.getters.loggedinUser;
+    console.log(this.loggedinUser);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -112,12 +135,18 @@ export default {
   watch: {
     "$store.state.currPage": {
       handler() {
+        this.shouldShow = false;
         this.currPage = this.$store.getters.currPage;
-        if (this.currPage === "stayDetails") this.miniFilter = true;
-        else this.miniFilter = false;
+        this.miniFilter =
+          this.currPage !== "homePage" && this.currPage !== "explore";
       },
       immediate: true,
       deep: true,
+    },
+    $route: {
+      handler() {
+        this.shouldShow = false;
+      },
     },
   },
 };

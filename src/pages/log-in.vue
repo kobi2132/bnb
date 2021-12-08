@@ -14,7 +14,7 @@
             name="username"
             autocomplete="off"
             placeholder="Username"
-            value=""
+            v-model="loginCred.username"
           />
           <input
             type="password"
@@ -22,7 +22,7 @@
             name="password"
             autocomplete="off"
             placeholder="Password"
-            value=""
+            v-model="loginCred.password"
           />
           <button type="submit" class="login-btn clickable">Submit</button>
           <div class="login-actions-btns flex space-between">
@@ -41,7 +41,7 @@
       </form>
     </section>
     <section v-else class="login-form-container flex column">
-      <form class="login-form" @submit.prevent="login">
+      <form class="login-form" @submit.prevent="doLogin">
         <div class="login-form-header">
           <h2>Sign up</h2>
         </div>
@@ -52,8 +52,6 @@
             class="login-input"
             name="fullname"
             placeholder="Full name"
-            autocomplete="fullname"
-            value=""
           />
           <input
             name="password"
@@ -105,6 +103,8 @@ export default {
       loggedinUser: {
         nickname: null,
       },
+      loginCred: { username: "", password: "" },
+      signupCred: { username: "", password: "", fullname: "", email: "" },
     };
   },
   methods: {
@@ -112,9 +112,18 @@ export default {
       this.newUser = !this.newUser;
       console.log(this.newUser);
     },
-    login() {
-      userService.loginUser(this.loggedinUser);
-      this.loggedin = !this.loggedin;
+    async login() {
+      if (!this.loginCred.username || !this.loginCred.password) {
+        console.log("Please fill name/password");
+        return;
+      }
+      try {
+        await this.$store.dispatch({ type: "login", userCred: this.loginCred });
+        this.$router.push("/");
+      } catch (err) {
+        console.log(err);
+        this.msg = "Failed to login";
+      }
     },
     logout() {
       userService.logoutUser();

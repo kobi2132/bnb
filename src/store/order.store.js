@@ -3,7 +3,7 @@ import { orderService } from '../../services/order.service.js'
 export const orderStore = {
     state: {
         currTrip: {
-            guests: { children: null, adults: 1 },
+            guests: { children: null, adults: 0 },
             destination: '',
             dates: {}
         },
@@ -22,6 +22,9 @@ export const orderStore = {
         getCurrTrip(state) {
             return state.currTrip
         },
+        getOrders(state) {
+            return state.orders
+        }
 
     },
     mutations: {
@@ -43,11 +46,15 @@ export const orderStore = {
 
         },
 
-        async addOrder({ commit }, { order }) {
-            console.log('store saving order')
-            const savedOrder = await orderService.save(order)
-            commit({ type: 'addOrder', order: savedOrder })
-            return savedOrder
+        async addOrder(commit, { order }) {
+            try {
+                order = await orderService.add(order)
+                commit({ type: 'addOrder', order })
+                return order
+            } catch (err) {
+                console.log('orderStore: error in addOrder', err)
+            }
+
         },
 
         async getOrderById({ commit }, { orderId }) {
@@ -57,3 +64,9 @@ export const orderStore = {
     }
 
 }
+// async addOrder({ commit }, { order }) {
+//     console.log('store saving order')
+//     const savedOrder = await orderService.save(order)
+//     commit({ type: 'addOrder', order: savedOrder })
+//     return savedOrder
+// },

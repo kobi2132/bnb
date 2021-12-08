@@ -1,4 +1,3 @@
-
 <template>
   <section v-if="stay" class="stay-details main-layout">
     <h1 class="stay-name">{{ stay.name }}</h1>
@@ -6,7 +5,10 @@
     <stay-short-info :stay="stay" />
 
     <stay-gallery :stay="stay" id="pictures" />
-    <section ref="displayDiv" class="stay-display-divider flex gray-box-shadow">
+    <section
+      class="stay-display-divider flex gray-box-shadow"
+      ref="displayContainer"
+    >
       <div class="stay-display-info">
         <section
           class="
@@ -37,7 +39,7 @@
         <div id="reviews"></div>
       </div>
       <div class="stay-display-order">
-        <order-modal :stay="stay" class="sticky" :divHeight="divHeight" />
+        <order-modal class="sticky" :conHeight="conHeight" :stay="stay" />
       </div>
     </section>
 
@@ -66,7 +68,7 @@ export default {
   },
   data() {
     return {
-      divHeight: null,
+      conHeight: null,
     };
   },
   computed: {
@@ -111,15 +113,12 @@ export default {
     // reviewsRateAvg
   },
   methods: {
-    getDividerHeight() {
-      console.log(this.$refs.displayDiv);
-      this.divHeight = this.$refs.displayDiv.clientHeight;
-      console.log(this.divHeight);
+    getContainerHeight() {
+      this.conHeight = this.$refs.displayContainer.clientHeight;
     },
   },
   updated() {
-    console.log(this.$refs.displayDiv);
-    this.getDividerHeight();
+    this.getContainerHeight();
   },
   watch: {
     "$route.params.stayId": {

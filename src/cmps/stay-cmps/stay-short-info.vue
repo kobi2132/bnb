@@ -51,9 +51,10 @@ export default {
   },
   created() {
     const user = userService.getLoggedinUser();
-    var isWish = user.wishList.filter((wish) => wish === this.stay._id);
-    if (isWish.length > 0) this.isLiked = true;
-    console.log(isWish, this.isLiked, this.stay._id);
+    if (user && user.wishList && user.wishList.length > 0) {
+      var isWish = user.wishList.filter((wish) => wish === this.stay._id);
+      if (isWish.length > 0) this.isLiked = true;
+    }
   },
   computed: {
     reviewsRateAvg() {

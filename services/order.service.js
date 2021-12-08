@@ -1,4 +1,6 @@
 import { storageService } from "./async-storage.service";
+import { httpService } from './http.service'
+// import { socketService, SOCKET_EVENT_REVIEW_ADDED } from './socket.service'
 import { utilService } from "./utils.service";
 
 const KEY = 'ordersDB'
@@ -6,24 +8,23 @@ const KEY = 'ordersDB'
 const gOrders = []
 
 export const orderService = {
-    save,
+    add,
     query,
     getById
 }
 
 
-async function query() {
-    return storageService.query(KEY)
+async function query(filterBy) {
+    var queryStr = (!filterBy) ? '' : `?id=${filterBy._id}`
+    return httpService.get(`order${queryStr}`)
+    // return httpService.get('order')
 }
 
-function save(order) {
-    const savedOrder = order._id ?
-        storageService.put(KEY, order) :
-        storageService.post(KEY, order)
-    console.log('saving order', order)
-    return savedOrder
+async function add(order) {
+    const addedOrder = await httpService.post(`order`, order)
+    return addedOrder
 }
 
-function getById(id) {
-    return storageService.get(KEY, id)
+function getById(orderId) {
+    return httpService.get(`order/${orderId}`)
 }
