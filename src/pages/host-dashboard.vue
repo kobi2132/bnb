@@ -1,5 +1,6 @@
 
 <template>
+<!--  -->
   <section class="main-layout2">
     <h1>host-dashboard</h1>
     <section class="dashboard-container flex">
@@ -23,10 +24,10 @@
         </div>
 
         <div class="host-info-container">
-          <img src="/static/media/user-cash.e1f91298.PNG" alt="cash" />
-          <h2>Make all payments through Home &amp; go</h2>
+          <!-- <img src="/static/media/user-cash.e1f91298.PNG" alt="cash" /> -->
+          <h2>Make all payments through <span class="logo-txt logo-small">Kumb</span></h2>
           <p>
-            Always pay and communicate through Home &amp; go to ensure you're
+            Always pay and communicate through Kumba to ensure you're
             protected under our Terms of Service, Payments Terms of Service,
             cancellation, and other safeguards.
           </p>
@@ -190,7 +191,7 @@ export default {
   name: "host-dashboard",
   data() {
     return {
-      shouldShow: null,
+      shouldShow: 'my orders',
     };
   },
   computed: {
