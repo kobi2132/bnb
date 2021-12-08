@@ -6,12 +6,12 @@
     <section class="dashboard-container flex">
       <section class="dash-nav-sticky-container">
         <div class="dash-nav-container flex column">
-          <button
+          <!-- <button
             class="add-stay-btn flex align-center clean-btn clickable"
             value="add stay"
           >
             <i class="fa fa-plus" aria-hidden="true"> </i>Add Stay
-          </button>
+          </button> -->
           <button value="my Stays" @click="showMyStays()" class="clean-btn clickable">
             <i class="fa fa-house-user" aria-hidden="true"></i>My Stays
           </button>

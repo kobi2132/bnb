@@ -34,17 +34,17 @@
     </section>
     <div class="user-nav" v-if="shouldShow">
       <div class="user-nav2">
-        <a href="#/messages" class="a1">Messages</a>
-        <a href="#/trips" class="a1">Trips</a>
-        <a href="#/wishList" class="a1 gray-box-shadow">Wish List</a>
-        <a href="#/notifications">Notifications</a>
-        <a href="#/host">Host your home</a>
-        <a href="#/dashboard">Dashboard</a>
-        <a href="#/account" class="gray-box-shadow">Account</a>
-        <a href="#/help">Help</a>
-        <a href="#/login">Log in</a>
-        <a href="#/logout">Logout</a>
-        <a href="#/about">About</a>
+        <a href="#/messages" class="a1" @click="closeModal">Messages</a>
+        <a href="#/trips" class="a1" @click="closeModal">Trips</a>
+        <a href="#/wishList" class="a1 gray-box-shadow" @click="closeModal">Wish List</a>
+        <a href="#/notifications" @click="closeModal">Notifications</a>
+        <a href="#/host" @click="closeModal">Host your home</a>
+        <a href="#/dashboard" @click="closeModal">Dashboard</a>
+        <a href="#/account" class="gray-box-shadow" @click="closeModal">Account</a>
+        <a href="#/help" @click="closeModal">Help</a>
+        <a href="#/login" @click="closeModal">Log in</a>
+        <a href="#/logout" @click="closeModal">Logout</a>
+        <a href="#/about" @click="closeModal">About</a>
       </div>
     </div>
     <stay-filter :class="{ hide: miniFilter }" />
@@ -73,6 +73,10 @@ export default {
       if (window.scrollY > 50) this.miniFilter = true;
       if (this.currPage === "stayDetails") this.miniFilter = true;
     },
+    closeModal(){
+      this.shouldShow=!this.shouldShow
+      // console.log('closemodal')
+    }
   },
   computed: {
     currDest() {
