@@ -4,7 +4,7 @@
     <div class="become-host-info">
       <h1>Become a member of the Kumba host family</h1>
       <button class="clickable" @click="goHost">
-        <h3>get started</h3>
+        <h3>Get started</h3>
       </button>
     </div>
   </section>

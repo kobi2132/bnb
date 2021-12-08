@@ -10,7 +10,8 @@
   >
     <section class="main-header-container flex space-between">
       <div class="logo clickable flex align-center" @click.stop="goHome">
-        <img class="logo-img" src="~@/assets/images/logo-black.png" />
+        <h1 class="logo-txt">Kumb</h1>
+        <!-- <img class="logo-img" src="~@/assets/images/logo-black.png" /> -->
       </div>
       <button
         @click="miniFilter = !miniFilter"

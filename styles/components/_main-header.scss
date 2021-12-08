@@ -2,6 +2,18 @@
     width: 150px;
 }
 
+.logo-txt {
+    color: $redAirbnb;
+    font-family: airbnb-medium;
+    font-size: 48px;
+    margin: 0;
+    padding: 0;
+    &::after {
+        content: '\f834';
+        font-family: fab;
+    }
+}
+
 .avatar {
     width: 30px;
 }
@@ -44,8 +56,8 @@
 }
 
 .main-header.fullheader.home-page {
-    .logo {
-        filter: invert(100%);
+    .logo-txt {
+        color:white;
     }
     background-color: transparent;
     box-shadow: none;
