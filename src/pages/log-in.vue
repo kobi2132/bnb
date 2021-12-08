@@ -41,7 +41,7 @@
       </form>
     </section>
     <section v-else class="login-form-container flex column">
-      <form class="login-form" @submit.prevent="doLogin">
+      <form class="login-form" @submit.prevent="doSignup">
         <div class="login-form-header">
           <h2>Sign up</h2>
         </div>
@@ -52,6 +52,7 @@
             class="login-input"
             name="fullname"
             placeholder="Full name"
+            v-model="signupCred.fullname"
           />
           <input
             name="password"
@@ -59,7 +60,7 @@
             type="password"
             placeholder="Password"
             autocomplete="current-password"
-            value=""
+            v-model="signupCred.password"
           />
           <input
             type="text"
@@ -67,7 +68,7 @@
             name="username"
             placeholder="Username"
             autocomplete="username"
-            value=""
+            v-model="signupCred.username"
           />
           <input
             type="text"
@@ -75,7 +76,7 @@
             name="email"
             placeholder="Email"
             autocomplete="Email"
-            value=""
+            v-model="signupCred.email"
           />
           <button class="login-btn clickable" type="submit">Sign up</button>
           <div class="login-actions-btn flex space-between">
@@ -129,6 +130,19 @@ export default {
       userService.logoutUser();
       this.loggedinUser.nickname = null;
       this.loggedin = !this.loggedin;
+    },
+    async doSignup() {
+      if (
+        !this.signupCred.fullname ||
+        !this.signupCred.password ||
+        !this.signupCred.username ||
+        !this.signupCred.email
+      ) {
+        console.log("Please fill up the form");
+        return;
+      }
+      await this.$store.dispatch({ type: "signup", userCred: this.signupCred });
+      this.$router.push("/");
     },
   },
 };

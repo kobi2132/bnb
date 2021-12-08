@@ -28,7 +28,6 @@
             </h5>
           </div>
           <img class="host-img" :src="stay.host.imgUrl" />
-
         </section>
 
         <stay-features />

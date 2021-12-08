@@ -205,14 +205,14 @@ export default {
         this.order.buyer._id = this.loggedinUser._id;
         this.order.hostId = this.stay.host._id;
         this.order.buyer.fullname = this.loggedinUser.fullname;
-        this.order.createdAt = Date.now();
+        // this.order.createdAt = Date.now();
         let order = JSON.parse(JSON.stringify(this.order));
         console.log("placing order!", order);
         this.$store.dispatch({ type: "addOrder", order });
       }
 
       console.log("hey");
-      this.$router.push("/order-confirm/b2OAw");
+      // this.$router.push("/order-confirm/b2OAw");
     },
     updateGuests(type, number) {
       // const min = type === "adults" ? 1 : 0;
