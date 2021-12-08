@@ -15,7 +15,7 @@
     }
     .title4 {
         color: #222222;
-        font-size: 14px;
+        font-size: 12px;
     }
     .header {
         display: flex;
@@ -67,6 +67,21 @@
                     text-decoration: underline;
                     padding-bottom: 24px;
                     padding-top: 24px;
+                }
+                .title-container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .imgs {
+                        display: flex;
+                        justify-content: flex-end;
+                        padding-bottom: 24px;
+                        gap: 7px;
+                        img {
+                            height: 9px;
+                        }
+                    }
                 }
                 .payment-select {
                     padding-bottom: 24px;
@@ -121,7 +136,6 @@
             }
             .congrats {
                 p {
-                    font-size: 12px;
                     span {
                         text-decoration: underline;
                         font-weight: bold;
@@ -152,11 +166,63 @@
         }
         .details-modal {
             height: 381px;
-            width: 403px;
+            width: 465px;
             padding: 24px;
             border: 1px solid rgb(221, 221, 221);
             border-radius: 12px;
             margin-inline-start: 81px;
+
+            .modal-container {
+                .separator {
+                    height: 2px;
+                    width: 100%;
+                    border-bottom: 1px solid #dddddd;
+                    margin-bottom: 24px;
+                    margin-top: 24px;
+
+                }
+                .stay-details-container {
+                    display: flex;
+                    img {
+                        height: 106px;
+                        width: 124px;
+                        object-fit: cover;
+                        border-radius: 8px;
+                        margin-inline-end: 12px;
+                    }
+
+                    .details-flex {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        .stay-details {
+                            .title4 {
+                                color: #717171;
+                                margin-bottom: 4px;
+                            }
+                        }
+
+                        .reviews-preview{
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                        .star-preview span{
+                            font-size: 10px;
+                            color: $redAirbnb
+                        }
+                        .review-avg{
+                            font-size: 12px;
+                            color: #222222;
+                        }
+                        .reviews-total{
+                            font-size: 12px; 
+                            color: #717171; 
+                        }
+                        }
+                    }
+                }
+            }
         }
     }
 }
