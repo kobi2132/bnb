@@ -10,7 +10,7 @@
   >
     <section class="main-header-container flex space-between">
       <div class="logo clickable flex align-center" @click.stop="goHome">
-        <img class="logo-img" src="~@/assets/images/logo.png" />
+        <img class="logo-img" src="~@/assets/images/logo-black.png" />
       </div>
       <button
         @click="miniFilter = !miniFilter"
@@ -35,10 +35,10 @@
       <div class="user-nav2">
         <a href="#/messages" class="a1">Messages</a>
         <a href="#/trips" class="a1">Trips</a>
-        <a href="#/wishList" class=" a1 gray-box-shadow">Wish List</a>
-        <a href="#/notifications" >Notifications</a>
+        <a href="#/wishList" class="a1 gray-box-shadow">Wish List</a>
+        <a href="#/notifications">Notifications</a>
         <a href="#/host">Host your home</a>
-        <a href="#/dashboard" >Dashboard</a>
+        <a href="#/dashboard">Dashboard</a>
         <a href="#/account" class="gray-box-shadow">Account</a>
         <a href="#/help">Help</a>
         <a href="#/login">Log in</a>

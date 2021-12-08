@@ -2,7 +2,7 @@
   <section class="main-layout2 become-host">
     <img src="~@/assets/images/hero/wp25.jpg" alt="" class="become-host-img" />
     <div class="become-host-info">
-      <h1>become a member of the Mi Casa host family</h1>
+      <h1>Become a member of the Kumba host family</h1>
       <button class="clickable" @click="goHost">
         <h3>get started</h3>
       </button>
