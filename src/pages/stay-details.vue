@@ -27,10 +27,7 @@
               {{ stay.capacity }} guests · 3 bedrooms · 3 beds · 2 baths
             </h5>
           </div>
-          <img
-            class="host-img"
-            :src="require(`@/assets/images/avatars/${stay.host.imgUrl}.jpg`)"
-          />
+          <img class="host-img" :src="stay.host.imgUrl" />
         </section>
 
         <stay-features />
