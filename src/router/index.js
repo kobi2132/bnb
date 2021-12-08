@@ -14,6 +14,8 @@ import userWishList from '../pages/user-wishlist.vue'
 import hostDashboard from '../pages/host-dashboard.vue'
 import userAccount from '../pages/user-account.vue'
 import confirmAndPay from '../pages/confirm-and-pay.vue'
+import congratsPage from '../pages/congrats-page.vue'
+
 
 
 Vue.use(VueRouter)
@@ -87,6 +89,11 @@ const routes = [{
     path: '/order-confirm/:orderId',
     name: 'confirm',
     component: confirmAndPay
+},
+{
+    path: '/congrats/',
+    name: 'congratsPage',
+    component: congratsPage
 },
 
 
