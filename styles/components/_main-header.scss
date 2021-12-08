@@ -14,6 +14,9 @@
     }
 }
 
+.logo-small {
+    font-size: 18px;
+}
 
 .nav {
     flex-wrap: nowrap;
@@ -26,7 +29,7 @@
 
 .main-header:not(.fullheader) {
     grid-template-rows: 1fr;
-    box-shadow:  rgb(0 0 0 / 8%) 0px 1px 12px !important;
+    box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px !important;
 }
 
 .main-header {
@@ -49,16 +52,16 @@
 }
 
 .main-header.fullheader {
-    height: 160px; 
+    height: 160px;
 }
 
 .main-header.fullheader.home-page {
     .logo-txt {
-        color:white;
+        color: white;
     }
     background-color: transparent;
     box-shadow: none;
-    .nav a{
+    .nav a {
         color: #fff;
     }
 }

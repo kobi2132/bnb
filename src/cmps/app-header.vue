@@ -86,6 +86,10 @@ export default {
       if (window.scrollY > 50) this.miniFilter = true;
       if (this.currPage === "stayDetails") this.miniFilter = true;
     },
+    closeModal() {
+      this.shouldShow = !this.shouldShow;
+      // console.log('closemodal')
+    },
   },
   computed: {
     currUser() {

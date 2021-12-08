@@ -1,6 +1,5 @@
 <template>
-  <!-- todos -->
-  <!-- star rating section -->
+  
   <section class="short-info flex space-between align-center">
     <section class="flex">
       <span class="material-icons-outlined red-star"> star </span>
@@ -15,7 +14,7 @@
     </section>
 
     <section class="flex">
-      <button class="short-info-btn clean-btn flex align-center">
+      <button class="short-info-btn clean-btn flex align-center" @click="shareModalShow=!shareModalShow">
         <span class="material-icons-outlined short-info-logo"> ios_share </span
         ><span class="under-line">Share</span>
       </button>
@@ -30,7 +29,12 @@
         <span class="under-line">Save</span>
       </button>
     </section>
+  
+  <share-modal class="share-modal" v-if="shareModalShow">
+    <h1 @click="copyURL" class="clickable">copy link to clipboard</h1>
+  </share-modal>
   </section>
+
 </template>
 
 <script>
@@ -38,6 +42,7 @@ import { userService } from "../../../services/user.service.js";
 
 export default {
   name: "stayShortInfo",
+
   props: {
     stay: {
       type: Object,
@@ -47,6 +52,8 @@ export default {
   data() {
     return {
       isLiked: false,
+      shareModalShow: false,
+      link_name:''
     };
   },
   created() {
@@ -80,6 +87,31 @@ export default {
 
       console.log(this.isLiked);
     },
+    copyLink(){
+      console.log('copylink')
+    },
+    copyURL() {
+      Url.innerHTML = window.location.href;
+      navigator.clipboard.writeText(Url.innerHTML)
+      shareModalShow=false
+    },
+    // copyUrl() {
+    //     const el = document.createElement('textarea');  
+    //     el.value = this.link_url;                                 
+    //     el.setAttribute('readonly', '');                
+    //     el.style.position = 'absolute';                     
+    //     el.style.left = '-9999px';                      
+    //     document.body.appendChild(el);                  
+    //     const selected =  document.getSelection().rangeCount > 0  ? document.getSelection().getRangeAt(0) : false;                                    
+    //     el.select();                                    
+    //     document.execCommand('copy');                   
+    //     document.body.removeChild(el);                  
+    //     if (selected) {                                 
+    //       document.getSelection().removeAllRanges();    
+    //       document.getSelection().addRange(selected);   
+    //     }
+    // }
+
   },
 };
 </script>

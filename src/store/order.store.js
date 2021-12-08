@@ -7,6 +7,7 @@ export const orderStore = {
             destination: '',
             dates: {}
         },
+        currOrder: {},
         orders: []
     },
     getters: {
@@ -24,7 +25,11 @@ export const orderStore = {
         },
         getOrders(state) {
             return state.orders
-        }
+        },
+        getCurrOrder(state) {
+            console.log(state.currOrder);
+            return state.currOrder
+        },
 
     },
     mutations: {
@@ -37,6 +42,10 @@ export const orderStore = {
         },
         addOrder(state, { order }) {
             state.orders.push(order)
+        },
+        getOrderById(state, { order }) {
+            state.currOrder = order
+            console.log(state.currOrder);
         }
     },
     actions: {
@@ -58,8 +67,9 @@ export const orderStore = {
         },
 
         async getOrderById({ commit }, { orderId }) {
-            return await orderService.getById(orderId)
-
+            await orderService.getById(orderId).then((order) => {
+                commit({ type: 'getOrderById', order })
+            })
         }
     }
 

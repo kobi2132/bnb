@@ -8,7 +8,7 @@
     <div class="review-stats">
       <div class="review-ctg flex space-between">
         <label for="Cleanliness">Cleanliness</label>
-        <div>
+        <!-- <div>
           <span
             v-for="(num, idx) in 5"
             :key="idx"
@@ -16,70 +16,121 @@
             class="material-icons-outlined"
             >star</span
           >
-          <!-- <span class="material-icons-outlined"> star </span> -->
-        </div>
-      </div>
-      <div class="review-ctg flex space-between">
-        <label for="Communication">Communication</label>
-        <div>
-          <span
+          <span class="material-icons-outlined"> star </span>
+        </div> -->
+        <div class="gray-scale flex">
+          <div
             v-for="(num, idx) in 5"
             :key="idx"
-            :class="{ checked: num <= Communication }"
-            class="material-icons-outlined"
-            >star</span
-          >
+            :class="{ blackbgc: num <= Cleanliness }"
+            class="scale"
+          ></div>
         </div>
+        <!-- <span class="material-icons-outlined"> star </span> -->
       </div>
-      <div class="review-ctg flex space-between">
-        <label for="CheckIn">Check-in</label>
-        <div>
-          <span
-            v-for="(num, idx) in 5"
-            :key="idx"
-            :class="{ checked: num <= CheckIn }"
-            class="material-icons-outlined"
-            >star</span
-          >
-        </div>
-      </div>
-      <div class="review-ctg flex space-between">
-        <label for="Accuracy">Accuracy</label>
-        <div>
-          <span
-            v-for="(num, idx) in 5"
-            :key="idx"
-            :class="{ checked: num <= Accuracy }"
-            class="material-icons-outlined"
-            >star</span
-          >
-        </div>
-      </div>
-      <div class="review-ctg flex space-between">
-        <label for="Location">Location</label>
-        <div>
-          <span
-            v-for="(num, idx) in 5"
-            :key="idx"
-            :class="{ checked: num <= Location }"
-            class="material-icons-outlined"
-            >star</span
-          >
-        </div>
-      </div>
-      <div class="review-ctg flex space-between">
-        <label for="Accessibility">Accessibility</label>
-        <div>
-          <span
-            v-for="(num, idx) in 5"
-            :key="idx"
-            :class="{ checked: num <= Accessibility }"
-            class="material-icons-outlined"
-            >star</span
-          >
-        </div>
+    
+    <!-- problem here!!!! -->
+    <div class="review-ctg flex space-between">
+      <label for="Communication">Communication</label>
+      <!-- <div>
+        <span
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ checked: num <= Communication }"
+          class="material-icons-outlined"
+          >star</span
+        >
+      </div> -->
+      <div class="gray-scale flex">
+        <div
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ blackbgc: num <= Communication }"
+          class="scale"
+        ></div>
       </div>
     </div>
+    <div class="review-ctg flex space-between">
+      <label for="CheckIn">Check-in</label>
+      <!-- <div>
+        <span
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ checked: num <= CheckIn }"
+          class="material-icons-outlined"
+          >star</span
+        >
+      </div> -->
+      <div class="gray-scale flex">
+        <div
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ blackbgc: num <= CheckIn }"
+          class="scale"
+        ></div>
+      </div>
+    </div>
+    <div class="review-ctg flex space-between">
+      <label for="Accuracy">Accuracy</label>
+      <!-- <div>
+        <span
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ checked: num <= Accuracy }"
+          class="material-icons-outlined"
+          >star</span
+        >
+      </div> -->
+      <div class="gray-scale flex">
+        <div
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ blackbgc: num <= Accuracy }"
+          class="scale"
+        ></div>
+      </div>
+    </div>
+    <div class="review-ctg flex space-between">
+      <label for="Location">Location</label>
+      <!-- <div>
+        <span
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ checked: num <= Location }"
+          class="material-icons-outlined"
+          >star</span
+        >
+      </div> -->
+      <div class="gray-scale flex">
+        <div
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ blackbgc: num <= Location }"
+          class="scale"
+        ></div>
+      </div>
+    </div>
+    <div class="review-ctg flex space-between">
+      <label for="Accessibility">Accessibility</label>
+      <!-- <div>
+        <span
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ checked: num <= Accessibility }"
+          class="material-icons-outlined"
+          >star</span
+        >
+      </div> -->
+      <div class="gray-scale flex">
+        <div
+          v-for="(num, idx) in 5"
+          :key="idx"
+          :class="{ blackbgc: num <= Accessibility }"
+          class="scale"
+        ></div>
+      </div>
+    </div>
+  </div>
   </section>
 </template>
 

@@ -212,7 +212,7 @@ export default {
       }
 
       console.log("hey");
-      this.$router.push("/order-confirm/" + this.order._id);
+      this.$router.push("/order-confirm/b2OAw");
     },
     updateGuests(type, number) {
       // const min = type === "adults" ? 1 : 0;
