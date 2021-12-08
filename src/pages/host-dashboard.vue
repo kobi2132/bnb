@@ -3,6 +3,7 @@
   <!--  -->
   <section class="main-layout2">
     <h1>host-dashboard</h1>
+    <!-- <p>{{myOrders}}</p> -->
     <section class="dashboard-container flex">
       <section class="dash-nav-sticky-container">
         <div class="dash-nav-container flex column">
@@ -26,13 +27,13 @@
           >
             <i class="fa fa-clipboard-list" aria-hidden="true"></i>Orders
           </button>
-          <button
+          <!-- <button
             value="rate stat"
             @click="showMyRates()"
             class="clean-btn clickable"
           >
             <i class="fa fa-star" aria-hidden="true"></i>Rates
-          </button>
+          </button> -->
         </div>
 
         <div class="host-info-container">
@@ -120,8 +121,10 @@
                   </div>
                 </div>
 
-                <div class="tbody">
-                  <div class="host-stay-preview flex">
+                <!-- for in
+                      v-for="stay in myStays" :key="stay._id" > -->
+                <div class="tbody" >
+                  <div class="host-stay-preview flex" v-for="stay in myStays" :key="stay.id" >>
                     <span class="flex align-center"
                       ><img
                         src="https://res.cloudinary.com/home-to-go/image/upload/v1622623125/hnh9ajbxx6kt13gm1fnx.webp"
@@ -130,15 +133,16 @@
                       />
                     </span>
                     <span>
+                      <!-- fix hrefs -->
                       <a href="#/stay/60b624e305f90634a567b2ac"
-                        >Luxurious Riverside Jungle Retreat</a
+                        >{{stay.name}}</a
                       > </span
                     ><span
                       ><a href="#/stay/60b624e305f90634a567b2ac"
-                        >Porto, Portugal</a
+                        >{{stay.loc.country}} , {{stay.loc.city}}</a
                       ></span
                     ><span
-                      ><a href="#/stay/60b624e305f90634a567b2ac">$ 150</a></span
+                      ><a href="#/stay/60b624e305f90634a567b2ac">$ {{stay.price}}</a></span
                     ><span class="stay-actions clean-btn clickable"
                       ><button>
                         <i class="fa fa-edit" aria-hidden="true"></i>Edit
@@ -166,18 +170,21 @@
                       </div>
                     </div>
                     <div class="tbody">
-                      <div class="host-stay-preview flex">
+                      <!-- for in
+                      v-for="order in myOrders" :key="order._id" > -->
+                          
+                      <div v-for="order in myOrders" :key="order._id" class="host-stay-preview flex">
                         <span>
                           <img
                             src="https://randomuser.me/api/portraits/women/16.jpg"
                             alt="user"
                             class="host-img"
                         /></span>
-                        <span class="flex align-center">Chang Ba</span>
-                        <span class="flex align-center">Thu Jul 08 2021</span>
-                        <span class="flex align-center">Tue Jul 13 2021</span>
-                        <span class="flex align-center">declined</span>
-                        <span class="flex align-center">$ 1,500</span>
+                        <span class="flex align-center">{{order.buyer.fullname}}</span>
+                        <span class="flex align-center">{{order.dates.start}}</span>
+                        <span class="flex align-center">{{order.dates.end}}</span>
+                        <span class="flex align-center">{{order.status}}</span>
+                        <span class="flex align-center">$ {{order.stay.price}}</span>
                         <span class="stay-actions flex align-center">
                           <button>
                             <i class="fas fa-check" aria-hidden="true"></i
@@ -205,9 +212,9 @@
                 </section>
               </section>
             </section>
-            <section class="host-rates" v-if="shouldShow === 'my rates'">
-              <h1>rates</h1>
-            </section>
+            <!-- <section class="host-rates" v-if="shouldShow === 'my rates'"> -->
+              <!-- <h1>rates</h1>
+            </section> -->
           </section>
         </section>
       </section>
@@ -220,14 +227,17 @@ export default {
   data() {
     return {
       shouldShow: "my orders",
+      myOrders: [],
+      myStays:[]
     };
   },
   computed: {
-    // @click="updateGuests('adults', 1)
-    // showMyStays(){
-    //   this.shouldShow ='my stays'
-    //   console.log(this.shouldShow)
-    // }
+    demoOrders() {
+      return this.$store.getters.getDemoOrders;
+    },
+    stays() {
+      return this.$store.getters.staysToShow;
+    },
   },
   methods: {
     showMyStays() {
@@ -246,6 +256,8 @@ export default {
   created() {
     const page = "hostDashboard";
     this.$store.commit({ type: "setCurrPage", page });
+    this.myOrders = this.demoOrders
+    this.myStays = this.stays
   },
 };
 </script>

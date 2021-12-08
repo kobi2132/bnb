@@ -22,6 +22,7 @@ export default {
   created() {
     this.$store.dispatch({ type: "loadStays" });
     this.$store.dispatch({ type: "setUser" });
+    this.$store.dispatch({ type: "loadDemoOrders" });
   },
   components: {
     appHeader,

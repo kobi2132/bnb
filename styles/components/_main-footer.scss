@@ -4,7 +4,8 @@
     box-shadow: inset 0px 0.5px 0px 0px #DDDDDD;
     color: rgb(72, 72, 72);
     font-size: 0.9rem;
-    position: fixed;
+    // position: fixed;
+    z-index: 345;
     left: 0;
     bottom: 0;
     width: 100%;
