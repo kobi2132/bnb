@@ -8,6 +8,10 @@
         grid-column: 1 / -1;
     }
     margin-bottom: 74px;
+
+    // @include for-wide-layout {
+    //     @include layoutGTC($break-wide)
+    // }
 }
 
 .main-layout2.home-page {
@@ -32,7 +36,5 @@
     // @include for-normal-layout {
     //     @include layoutGTC($break-normal)
     // }
-    // @include for-wide-layout {
-    //     @include layoutGTC($break-wide)
-    // }
+
 }
