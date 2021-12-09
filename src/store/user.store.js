@@ -16,11 +16,11 @@ export const userStore = {
     mutations: {
         setUser(state, { user }) {
             state.loggedinUser = user
-            console.log(state.loggedinUser)
+                // console.log(state.loggedinUser)
         },
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
-            state.loggedinUser = (user) ? { ...user } : null;
+            state.loggedinUser = (user) ? {...user } : null;
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user;
@@ -32,21 +32,21 @@ export const userStore = {
     actions: {
         setUser({ commit }) {
             const user = userService.getLoggedinUser()
-            console.log(user)
+                // console.log(user)
             commit({ type: 'setUser', user })
         },
         async toggleWishList({ commit }, { stayId }) {
             try {
-                console.log(stayId)
+                // console.log(stayId)
                 const user = await userService.getLoggedinUser()
                 if (!user) {
-                    console.log('Please login first.')
+                    // console.log('Please login first.')
                     return
                 }
                 const idx = user.wishList.findIndex(wish => wish === stayId)
                 if (idx === -1) user.wishList.push(stayId)
                 else user.wishList.splice(idx, 1)
-                console.log(user)
+                    // console.log(user)
                 userService.update(user)
                 commit({ type: 'setUser', user })
 

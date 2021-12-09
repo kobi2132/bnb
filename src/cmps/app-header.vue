@@ -120,7 +120,7 @@ export default {
   created() {
     window.addEventListener("scroll", this.handleScroll);
     this.loggedinUser = this.$store.getters.loggedinUser;
-    console.log(this.loggedinUser);
+    // console.log(this.loggedinUser);
   },
   mounted() {
     // this.currPage = this.$store.getters.currPage;
@@ -128,7 +128,7 @@ export default {
   },
   updated() {
     this.loggedinUser = this.$store.getters.loggedinUser;
-    console.log(this.loggedinUser);
+    // console.log(this.loggedinUser);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
