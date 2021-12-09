@@ -51,7 +51,7 @@ export const orderStore = {
         addOrder(state, { order }) {
             state.orders.push(order)
         },
-        getOrderById(state, { order }) {
+    setOrderById(state, { order }) {
             state.currOrder = order
             console.log(state.currOrder);
         }
@@ -80,9 +80,9 @@ export const orderStore = {
         },
 
         async getOrderById({ commit }, { orderId }) {
-            await orderService.getById(orderId).then((order) => {
-                commit({ type: 'getOrderById', order })
-            })
+            const order = await orderService.getById(orderId)
+            console.log(order)
+            return order
         }
     }
 
