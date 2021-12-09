@@ -62,12 +62,14 @@
     background-color: transparent;
     box-shadow: none;
     .nav a {
-        color: #fff;
+      
+        color: #FFFFFF;
+    //    text-shadow: 2px 2px 1px #7A7A7A;
     }
 }
 
 .user-menu-btn {
-    color: #222222;
+    color: #484848;
     padding: 5px 5px 5px 15px;
     border-radius: 200px;
     background-color: #fff;
@@ -81,15 +83,20 @@
         font-family: fas;
         content: '\f0c9';
     }
-    span,.avatar {
+    span{
+        margin-left: 12px;
+        font-size: 30px;
+        color: #484848;
+        &.loggedin {
+            filter: invert(100%);
+        }
+    }
+    .avatar {
         margin-left: 12px;
         width: 30px;
         height: 30px;
-    }
-    .avatar {
         border-radius: 50%; 
-    }
-    
+    }   
 }
 
 .main-header.details {
@@ -123,7 +130,8 @@
     background-color: #fff;
     border-radius: 12px 12px;
     width: 240px;
-    box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+    // box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+    box-shadow: rgb(0 0 0 / 18%) 0px 0px 3px 0px;
     a {
         font-size: 14px;
         color: #222222;
@@ -148,7 +156,8 @@
     // right: 80px;
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+    // box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+    box-shadow: rgb(0 0 0 / 18%) 0px 0px 3px 0px;
     .a1 {
         font-family: airbnb-medium;
     }

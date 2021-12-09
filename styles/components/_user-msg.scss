@@ -1,0 +1,31 @@
+.alert {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition:bottom 0.5s;
+    font-family: Airbnb-medium;
+    padding: 20px;
+    margin: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #c7c7c7;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 12px; 
+    width: 40%;
+    background-color: white;
+    z-index: 9000;
+
+    .msg-btns {        
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        button {
+            font-family: Airbnb-regular;
+            background-color: white;
+            border: 1px solid #c7c7c7;
+        }
+    }
+}

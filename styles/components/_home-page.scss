@@ -1,7 +1,8 @@
 .home-page {
    
     .main-hero {
-        background-image: url(~@/assets/images/hero/wp5.jpg);
+        background-image: url(~@/assets/images/hero/wp1.jpg);
+        filter: brightness(60%);
         background-repeat: no-repeat;
         background-size: cover;
         height: 750px;
@@ -17,6 +18,7 @@
         h1 {
             color: #FFF;
             font-size: 32px;
+        
         
         }
 
