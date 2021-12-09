@@ -184,7 +184,7 @@ export default {
     getModalHeight() {
       this.modalHeight = this.$refs.modal.clientHeight;
     },
-    placeOrder() {
+    async placeOrder() {
       var size = Object.keys(this.trip.dates).length;
       if (
         (!this.trip.guests.children && !this.trip.guests.adults) ||
@@ -194,25 +194,24 @@ export default {
         this.focusOnInput();
         return;
       } else {
-        // var { dates, guests } = this.trip;
-        // var { _id, name, price } = this.stay;
-        // this.order = { dates, guests, stay: { _id, name, price } };
-        this.order.dates = this.trip.dates;
-        this.order.guests = this.trip.guests;
-        this.order.stay._id = this.stay._id;
-        this.order.stay.name = this.stay.name;
-        this.order.stay.price = this.stay.price;
-        this.order.buyer._id = this.loggedinUser._id;
+        var { dates, guests } = this.trip;
+        var { _id, name, price } = this.stay;
+        this.order = { dates, guests, stay: { _id, name, price } };
+        this.order.buyer = {
+          _id: this.loggedinUser._id,
+          fullname: this.loggedinUser.fullname,
+        };
         this.order.hostId = this.stay.host._id;
-        this.order.buyer.fullname = this.loggedinUser.fullname;
-        // this.order.createdAt = Date.now();
         let order = JSON.parse(JSON.stringify(this.order));
-        console.log("placing order!", order);
-        this.$store.dispatch({ type: "addOrder", order });
+        const savedOrder = await this.$store.dispatch({
+          type: "addOrder",
+          order,
+        });
+        console.log(savedOrder);
+        this.$router.push(`/order-confirm/${savedOrder._id}`);
       }
 
       console.log("hey");
-      // this.$router.push("/order-confirm/b2OAw");
     },
     updateGuests(type, number) {
       // const min = type === "adults" ? 1 : 0;
