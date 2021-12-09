@@ -1,9 +1,7 @@
 <template>
   <div class="main-layout confirm-page">
     <div class="header">Congrats</div>
-    <div class="title">
-      Your order is pending confirmation from the host
-    </div>
+    <div class="title">Your order is pending confirmation from the host</div>
 
     <div class="title2">While you are waiting, plan your trip:</div>
     <div class="more-todo">
@@ -38,7 +36,10 @@ export default {
   data() {
     return {};
   },
-
+  created() {
+    const page = "congrats";
+    this.$store.commit({ type: "setCurrPage", page });
+  },
   computed: {
     stays() {
       return this.$store.getters.staysToShow;

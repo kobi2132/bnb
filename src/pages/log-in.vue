@@ -108,6 +108,10 @@ export default {
       signupCred: { username: "", password: "", fullname: "", email: "" },
     };
   },
+  created() {
+    const page = "login";
+    this.$store.commit({ type: "setCurrPage", page });
+  },
   methods: {
     toggleForm() {
       this.newUser = !this.newUser;

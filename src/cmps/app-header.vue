@@ -15,7 +15,7 @@
       <button
         @click="miniFilter = !miniFilter"
         class="mini-filter flex space-between align-center clickable"
-        :class="{ hide: !miniFilter }"
+        :class="{ hide: !miniFilter, hideFilter }"
       >
         {{ currDest }} <span></span>
       </button>
@@ -61,7 +61,7 @@
         <a href="#/about">About</a>
       </div>
     </div>
-    <stay-filter :class="{ hide: miniFilter }" />
+    <stay-filter :class="{ hide: miniFilter, hideFilter }" />
   </section>
 </template>
 
@@ -74,7 +74,7 @@ export default {
       shouldShow: false,
       currPage: null,
       loggedinUser: null,
-      misc: false,
+      hideFilter: false,
     };
   },
 
@@ -156,6 +156,10 @@ export default {
         this.currPage = this.$store.getters.currPage;
         this.miniFilter =
           this.currPage !== "homePage" && this.currPage !== "explore";
+        this.hideFilter =
+          this.currPage !== "homePage" &&
+          this.currPage !== "explore" &&
+          this.currPage !== "stayDetails";
       },
       immediate: true,
       deep: true,
