@@ -16,6 +16,10 @@
     // padding: 24px
 }
 
+.stay-display-info {
+    max-width: 50%;
+}
+
 .short-info-btn:hover {
     background-color: rgba(248, 248, 248, 0.952);
     // background-color: rgb(75, 75, 75);
@@ -267,6 +271,14 @@
         .blackbgc {
             background-color: black;
         }
+    }
+    .points {
+        margin-left: 10px;
+        font-size: 0.8rem;
+        line-height: 1.5rem;
+        vertical-align: middle;
+        text-align: center;
+        font-family: airbnb-medium;
     }
 }
 
