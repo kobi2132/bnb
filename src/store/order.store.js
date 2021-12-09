@@ -80,9 +80,9 @@ export const orderStore = {
         },
 
         async getOrderById({ commit }, { orderId }) {
-            await orderService.getById(orderId).then((order) => {
-                commit({ type: 'setOrderById', order })
-            })
+            const order = await orderService.getById(orderId)
+            console.log(order)
+            return order
         }
     }
 

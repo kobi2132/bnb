@@ -265,14 +265,15 @@ export default {
       var count = 0
       var sum = 0
       this.myStays.forEach(stay => {
-        const sum = stay.reviews.reduce(
-        (sum, review) => sum + review.rate,
-        0
-      );
-      var avg = sum / this.stay.reviews.length || 0;
-      avg = (Math.round(avg * 100) / 100).toFixed(1);
-      count++
-      sum+=avg
+        console.log(count , stay.reviews)
+        stay.reviews.rate.forEach(rating => {
+            sum += rating.reduce(
+            (sum, rating) => sum + rating,0);})
+        
+        var avg = sum / this.stay.reviews.length || 0;
+        avg = (Math.round(avg * 100) / 100).toFixed(1);
+        count++
+        // sum+=avg
       })
       return (sum/count).toFixed(1)
     }
