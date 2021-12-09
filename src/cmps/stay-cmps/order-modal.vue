@@ -116,6 +116,7 @@
 </template>
 
 <script>
+import logInVue from '../../pages/log-in.vue';
 import tripCalendar2 from "../trip-calendar2.vue";
 export default {
   name: "order-modal",
@@ -152,6 +153,8 @@ export default {
           _id: null,
           name: null,
           price: null,
+          imgUrls: null,
+          propertyType: null,
         },
         hostId: null,
         status: "pending",
@@ -195,8 +198,8 @@ export default {
         return;
       } else {
         var { dates, guests } = this.trip;
-        var { _id, name, price } = this.stay;
-        this.order = { dates, guests, stay: { _id, name, price } };
+        var { _id, name, price, imgUrls, propertyType, host } = this.stay;
+        this.order = { dates, guests, stay: { _id, name, price, imgUrls, propertyType, host } };
         this.order.buyer = {
           _id: this.loggedinUser._id,
           fullname: this.loggedinUser.fullname,

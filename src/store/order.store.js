@@ -50,8 +50,9 @@ export const orderStore = {
         },
         addOrder(state, { order }) {
             state.orders.push(order)
+            console.log(state.orders);
         },
-    setOrderById(state, { order }) {
+        setOrderById(state, { order }) {
             state.currOrder = order
             console.log(state.currOrder);
         }
@@ -81,7 +82,7 @@ export const orderStore = {
 
         async getOrderById({ commit }, { orderId }) {
             const order = await orderService.getById(orderId)
-            console.log(order)
+            // console.log(order)
             return order
         }
     }

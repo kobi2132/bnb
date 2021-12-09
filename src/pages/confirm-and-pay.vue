@@ -1,13 +1,13 @@
 <template>
   <div class="confirm-and-pay main-layout">
     <div class="header">
-      <router-link to="">
-        <div class="back-btn">
-          <span class="material-icons-outlined"> chevron_left </span>
-        </div>
-      </router-link>
-      <h2>Confirm and pay</h2>
-      <pre>{{ this.order }}</pre>
+        <router-link to="">
+          <div class="back-btn">
+            <span class="material-icons-outlined"> chevron_left </span>
+          </div>
+        </router-link>
+
+        <h2 class="left">Confirm and pay</h2>
     </div>
     <div class="details-and-pay">
       <div class="trip-info">
@@ -19,7 +19,7 @@
           </div>
           <div class="guests-section">
             <div class="title2">Guests</div>
-            <div class="guests">1 guest</div>
+            <div class="guests">{{ this.getTotalGuests }} guests</div>
           </div>
         </div>
         <div class="separator"></div>
@@ -28,27 +28,27 @@
             <div class="title1">Pay with</div>
             <div class="imgs">
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_visa.0adea522bb26bd90821a8fade4911913_vuvn32.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_amex.84088b520ca1b3384cb71398095627da.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_amex.84088b520ca1b3384cb71398095627da_ed7luy.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149_nkxu5w.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_discover.7f05c82f07d62a0f8a69d54dbcd7c8be.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_discover.7f05c82f07d62a0f8a69d54dbcd7c8be_p2axcq.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_paypal.faa3042fa2daf6b4a9822cc4b43e8609.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_paypal.faa3042fa2daf6b4a9822cc4b43e8609_l0ie4i.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_googlepay.3f786bc031b59575d24f504dfb859da0.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_googlepay.3f786bc031b59575d24f504dfb859da0_nfccnv.svg"
                 alt=""
               />
             </div>
@@ -76,22 +76,19 @@
             Let the Host know why you're traveling and when you'll check in.
           </div>
           <div class="host-message">
-            <img
-              src="https://www.anatshai.co.il/wp-content/uploads/%D7%A2%D7%A0%D7%A8-%D7%90%D7%92%D7%99%D7%91-1.jpg"
-              alt=""
-            />
+            <img :src="this.order.stay.host.imgUrl" alt="" />
             <div class="host">
-              <div class="title2">Yami Kobin</div>
+              <div class="title2">{{ this.order.stay.host.fullname }}</div>
               <p class="title3">
                 Hi<br />
-                My Name is Hezi and i'm Happy that you decided to book My
-                apartment.<br />Please let me know at what time you'll check in
-                so i will wait for you with keys at the apartment.<br />Thank
-                you (:
+                My Name is {{ this.order.stay.host.fullname }} and i'm Happy
+                that you decided to book My apartment.<br />Please let me know
+                at what time you'll check in so i will wait for you with keys at
+                the apartment.<br />Thank you (:
               </p>
             </div>
           </div>
-          <textarea name="user-message" rows="4" cols="50"></textarea>
+          <textarea name="user-message"></textarea>
         </div>
         <div class="separator"></div>
         <div class="cancell-policy">
@@ -122,11 +119,11 @@
       <div class="details-modal sticky">
         <div class="modal-container">
           <div class="stay-details-container">
-            <!-- <img :src="this.currStay.imgUrls[0]" alt="" /> -->
+            <img :src="this.order.stay.imgUrls[0]" alt="" />
             <div class="details-flex">
               <div class="stay-details">
-                <!-- <div class="title4">{{ this.currStay.propertyType }}</div>
-                <div class="title3">{{ this.currStay.name }}</div> -->
+                <div class="title4">{{ this.order.stay.propertyType }}</div>
+                <div class="title3">{{ this.order.stay.name }}</div>
               </div>
               <div class="reviews-preview">
                 <div class="star-preview">
@@ -190,7 +187,7 @@ export default {
       ],
       value: "Google Pay",
       order: null,
-      currStay: null,
+      totalGuests: null,
     };
   },
 
@@ -207,7 +204,9 @@ export default {
     },
     fees() {
       return 25;
-      // return this.getRandomInt(15, 80);
+    },
+    getTotalGuests() {
+      return this.totalGuests;
     },
   },
   watch: {
@@ -218,11 +217,10 @@ export default {
           type: "getOrderById",
           orderId,
         });
-        console.log(order);
         this.order = order;
-        console.log(this.order);
-        // const order = this.$store.getters.getCurrOrder;
-        this.currStay = this.$store.getters.getCurrStay;
+        // console.log(this.order);
+        this.totalGuests =
+          this.order.guests.adults + this.order.guests.children;
       },
       immediate: true,
     },
