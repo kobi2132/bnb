@@ -1,6 +1,6 @@
 .main-layout {
     display: grid;
-    grid-template-columns: 115px 1fr 115px;
+    // grid-template-columns: 115px 1fr 115px;
     >* {
         grid-column: 2;
     }
@@ -8,9 +8,9 @@
         grid-column: 1 / -1;
     }
 
-    // @include for-wide-layout {
-    //     @include layoutGTC($break-wide)
-    // }
+    @include for-wide-layout {
+        @include layoutGTC($break-wide)
+    }
     // margin-bottom: 74px;
 }
 
