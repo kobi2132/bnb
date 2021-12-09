@@ -7,6 +7,7 @@
         </div>
       </router-link>
       <h2>Confirm and pay</h2>
+      <pre>{{ this.order }}</pre>
     </div>
     <div class="details-and-pay">
       <div class="trip-info">
@@ -121,11 +122,11 @@
       <div class="details-modal sticky">
         <div class="modal-container">
           <div class="stay-details-container">
-            <img :src="this.currStay.imgUrls[0]" alt="" />
+            <!-- <img :src="this.currStay.imgUrls[0]" alt="" /> -->
             <div class="details-flex">
               <div class="stay-details">
-                <div class="title4">{{ this.currStay.propertyType }}</div>
-                <div class="title3">{{ this.currStay.name }}</div>
+                <!-- <div class="title4">{{ this.currStay.propertyType }}</div>
+                <div class="title3">{{ this.currStay.name }}</div> -->
               </div>
               <div class="reviews-preview">
                 <div class="star-preview">
@@ -141,8 +142,11 @@
           <div class="price-details-container">
             <div class="title1">Price details</div>
             <div class="price-detail">
-              <div class="title2">${{this.order.stay.price}}.00 x {{this.calculateTotalDays}} nights</div>
-              <div class="title2">${{this.calculatePrice}}.00</div>
+              <div class="title2">
+                ${{ this.order.stay.price }}.00 x
+                {{ this.calculateTotalDays }} nights
+              </div>
+              <div class="title2">${{ this.calculatePrice }}.00</div>
             </div>
             <div class="price-detail">
               <div class="title2 underline">Cleaning fee</div>
@@ -153,8 +157,10 @@
               <div class="title2 green">$0.00</div>
             </div>
             <div class="price-detail">
-              <div class="title2 bold">Total <span class="underline">(USD)</span></div>
-              <div class="title2 bold">${{this.calculatePrice+25}}.00</div>
+              <div class="title2 bold">
+                Total <span class="underline">(USD)</span>
+              </div>
+              <div class="title2 bold">${{ this.calculatePrice + 25 }}.00</div>
             </div>
           </div>
         </div>
@@ -183,44 +189,21 @@ export default {
         },
       ],
       value: "Google Pay",
-
-      order: {
-        _id: "b2OAw",
-        dates: {
-          start: "2022-01-17T16:39:21.549Z",
-          end: "2022-01-20T16:39:21.549Z",
-        },
-        guests: {
-          adults: "1",
-          children: "0",
-        },
-        createdAt: "1638981562292",
-        buyer: {
-          _id: "u103",
-          fullname: "Yami Kobin",
-        },
-        stay: {
-          _id: "907978798",
-          name: "Nice House",
-          price: "100",
-        },
-        hostId: "u101",
-        status: "pending",
-      },
+      order: null,
       currStay: null,
     };
   },
 
   created() {},
   computed: {
-        calculateTotalDays() {
-        const { start, end } = this.order.dates;
-        const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
-        return days
+    calculateTotalDays() {
+      const { start, end } = this.order.dates;
+      const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+      return days;
     },
-    calculatePrice(){
-      const days = this.calculateTotalDays
-      return parseInt(days * this.order.stay.price)
+    calculatePrice() {
+      const days = this.calculateTotalDays;
+      return parseInt(days * this.order.stay.price);
     },
     fees() {
       return 25;
@@ -229,12 +212,16 @@ export default {
   },
   watch: {
     "$route.params.orderId": {
-      handler() {
+      async handler() {
         let orderId = this.$route.params.orderId;
-        this.$store.dispatch({ type: "getOrderById", orderId });
-
-        const order = this.$store.getters.getCurrOrder;
+        let order = await this.$store.dispatch({
+          type: "getOrderById",
+          orderId,
+        });
         console.log(order);
+        this.order = order;
+        console.log(this.order);
+        // const order = this.$store.getters.getCurrOrder;
         this.currStay = this.$store.getters.getCurrStay;
       },
       immediate: true,
