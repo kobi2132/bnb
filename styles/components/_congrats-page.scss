@@ -1,4 +1,7 @@
 .confirm-page{
+    .main-layout2{
+        grid-template-columns: 25% 1fr 25%;
+    }
     .header{
         font-size: 75px;
         font-weight: bold;
@@ -38,6 +41,6 @@
             }
         }
     }
-    margin-top: 40px;
+    margin-top: 120px;
     margin-bottom:100px ;
 }

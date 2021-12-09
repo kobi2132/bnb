@@ -1,5 +1,5 @@
 <template>
-  <div class="main-layout confirm-page">
+  <div class="main-layout2 confirm-page">
     <div class="header">Congrats</div>
     <div class="title">Your order is pending confirmation from the host</div>
 
