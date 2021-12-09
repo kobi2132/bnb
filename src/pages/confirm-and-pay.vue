@@ -1,5 +1,5 @@
 <template>
-  <div class="confirm-and-pay main-layout">
+  <div class="confirm-and-pay main-layout2">
     <div class="header">
         <router-link to="">
           <div class="back-btn">
