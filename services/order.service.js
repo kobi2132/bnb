@@ -23,7 +23,7 @@ const gDemoOrders = [{
             "createdAt": 1638812943485,
             "buyer": {
                 "_id": "61b064aedcbbeca56bcf1738",
-                "fullname": "Baner Aiton"
+                "fullname": "yami kobin"
             },
             "stay": {
                 "_id": "61af1eed3d91ca3df5b407e7",
@@ -46,7 +46,7 @@ const gDemoOrders = [{
             "createdAt": 1638812943485,
             "buyer": {
                 "_id": "61b064aedcbbeca56bcf1738",
-                "fullname": "Baner Aiton"
+                "fullname": "Ali Adadof"
             },
             "stay": {
                 "_id": "61af1eed3d91ca3df5b407e5",
@@ -69,7 +69,7 @@ const gDemoOrders = [{
             "createdAt": 1638812943485,
             "buyer": {
                 "_id": "61b064aedcbbeca56bcf1738",
-                "fullname": "Baner Aiton"
+                "fullname": "Adi ababa"
             },
             "stay": {
                 "_id": "61af1eed3d91ca3df5b407e6",
