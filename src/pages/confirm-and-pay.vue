@@ -193,8 +193,10 @@ export default {
       currStay: null,
     };
   },
-
-  created() {},
+  created() {
+    const page = "confirm";
+    this.$store.commit({ type: "setCurrPage", page });
+  },
   computed: {
     calculateTotalDays() {
       const { start, end } = this.order.dates;

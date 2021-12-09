@@ -26,10 +26,19 @@
           class="user-menu-btn clickable flex align-center clickable"
           @click="shouldShow = !shouldShow"
         >
-          <span v-if="!currUser" class="material-icons-round">
+          <span class="material-icons-round" v-if="!currUser">
             account_circle
           </span>
-          <img v-if="currUser" class="avatar" :src="loggedinUser.imgUrl" />
+          <img
+            v-if="currUser && hasImg"
+            class="avatar"
+            :src="loggedinUser.imgUrl"
+          />
+          <img
+            v-if="currUser && !hasImg"
+            class="avatar"
+            :src="require('../assets/images/avatar.png')"
+          />
         </button>
       </div>
     </section>
@@ -92,6 +101,10 @@ export default {
     },
   },
   computed: {
+    hasImg() {
+      var user = this.$store.getters.loggedinUser;
+      return user && user.imgUrl ? true : false;
+    },
     currUser() {
       var user = this.$store.getters.loggedinUser;
       return user ? true : false;

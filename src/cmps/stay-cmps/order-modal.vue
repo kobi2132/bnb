@@ -117,6 +117,7 @@
 
 <script>
 import tripCalendar2 from "../trip-calendar2.vue";
+import { showMsg } from "../../../services/event-bus.service.js";
 export default {
   name: "order-modal",
   props: { stay: Object, conHeight: Number },
@@ -143,7 +144,6 @@ export default {
           adults: 0,
           children: 0,
         },
-        createdAt: null,
         buyer: {
           _id: null,
           fullname: null,
@@ -185,33 +185,37 @@ export default {
       this.modalHeight = this.$refs.modal.clientHeight;
     },
     async placeOrder() {
-      var size = Object.keys(this.trip.dates).length;
-      if (
-        (!this.trip.guests.children && !this.trip.guests.adults) ||
-        size < 1
-      ) {
-        console.log("Not enough data");
-        this.focusOnInput();
-        return;
-      } else {
-        var { dates, guests } = this.trip;
-        var { _id, name, price } = this.stay;
-        this.order = { dates, guests, stay: { _id, name, price } };
-        this.order.buyer = {
-          _id: this.loggedinUser._id,
-          fullname: this.loggedinUser.fullname,
-        };
-        this.order.hostId = this.stay.host._id;
-        let order = JSON.parse(JSON.stringify(this.order));
-        const savedOrder = await this.$store.dispatch({
-          type: "addOrder",
-          order,
-        });
-        console.log(savedOrder);
-        this.$router.push(`/order-confirm/${savedOrder._id}`);
+      const loggedinUser = this.$store.getters.loggedinUser;
+      if (!loggedinUser) showMsg("Please log in first", "danger");
+      else {
+        var size = Object.keys(this.trip.dates).length;
+        if (
+          (!this.trip.guests.children && !this.trip.guests.adults) ||
+          size < 1
+        ) {
+          console.log("Not enough data");
+          this.focusOnInput();
+          return;
+        } else {
+          var { dates, guests } = this.trip;
+          var { _id, name, price } = this.stay;
+          this.order = { dates, guests, stay: { _id, name, price } };
+          this.order.buyer = {
+            _id: this.loggedinUser._id,
+            fullname: this.loggedinUser.fullname,
+          };
+          this.order.hostId = this.stay.host._id;
+          this.order.status = "pending";
+          let order = JSON.parse(JSON.stringify(this.order));
+          console.log(order);
+          const savedOrder = await this.$store.dispatch({
+            type: "addOrder",
+            order,
+          });
+          console.log(savedOrder);
+          this.$router.push(`/order-confirm/${savedOrder._id}`);
+        }
       }
-
-      console.log("hey");
     },
     updateGuests(type, number) {
       // const min = type === "adults" ? 1 : 0;
@@ -283,6 +287,7 @@ export default {
   },
   components: {
     tripCalendar2,
+    showMsg,
   },
 };
 </script>

@@ -34,7 +34,7 @@
 
 <script>
 import stayPreviewSlideshow from "@/cmps/stay-cmps/stay-preview-slideshow.vue";
-import { userService } from "../../../services/user.service.js";
+import { showMsg } from "../../../services/event-bus.service.js";
 
 export default {
   name: "stayPreview",
@@ -46,6 +46,7 @@ export default {
   },
   components: {
     stayPreviewSlideshow,
+    showMsg,
   },
   data() {
     return {
@@ -77,10 +78,16 @@ export default {
       this.$router.push("/stay/" + this.stay._id);
     },
     toggleWishList() {
-      var stayId = this.stay._id;
-      console.log(stayId);
-      this.$store.dispatch({ type: "toggleWishList", stayId });
-      this.isLiked = !this.isLiked;
+      const loggedinUser = this.$store.getters.loggedinUser;
+      if (!loggedinUser) {
+        showMsg("Please log in first", "danger");
+        console.log("please login first");
+      } else {
+        var stayId = this.stay._id;
+        console.log(stayId);
+        this.$store.dispatch({ type: "toggleWishList", stayId });
+        this.isLiked = !this.isLiked;
+      }
     },
   },
 };

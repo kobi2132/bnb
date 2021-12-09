@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <app-header />
+    <user-msg />
     <router-view />
     <app-footer />
   </div>
@@ -9,6 +10,7 @@
 <script>
 import appHeader from "./cmps/app-header.vue";
 import appFooter from "./cmps/app-footer.vue";
+import userMsg from "./cmps/user-msg.vue";
 
 export default {
   head: {
@@ -27,6 +29,7 @@ export default {
   components: {
     appHeader,
     appFooter,
+    userMsg,
   },
 };
 </script>

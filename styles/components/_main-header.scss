@@ -62,12 +62,14 @@
     background-color: transparent;
     box-shadow: none;
     .nav a {
-        color: #fff;
+      
+        color: #FFFFFF;
+    //    text-shadow: 2px 2px 1px #7A7A7A;
     }
 }
 
 .user-menu-btn {
-    color: #222222;
+    color: #484848;
     padding: 5px 5px 5px 15px;
     border-radius: 200px;
     background-color: #fff;
@@ -81,15 +83,20 @@
         font-family: fas;
         content: '\f0c9';
     }
-    span,.avatar {
+    span{
+        margin-left: 12px;
+        font-size: 30px;
+        color: #484848;
+        &.loggedin {
+            filter: invert(100%);
+        }
+    }
+    .avatar {
         margin-left: 12px;
         width: 30px;
         height: 30px;
-    }
-    .avatar {
         border-radius: 50%; 
-    }
-    
+    }   
 }
 
 .main-header.details {
