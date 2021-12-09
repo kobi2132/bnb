@@ -56,11 +56,11 @@
             <h3>Total Rate</h3>
             <div class="flex space-between align-center">
               <span class="flex align center">
-                <i class="fa fa-star" aria-hidden="true"></i>4.5</span
+                <i class="fa fa-star" aria-hidden="true"></i>{{totalRateAvg}}</span
               >
-              <p>
+              <!-- <p>
                 4%<i class="fa fa-long-arrow-alt-up" aria-hidden="true"></i>
-              </p>
+              </p> -->
             </div>
           </div>
 
@@ -114,7 +114,7 @@
             <section class="host-stay-list" v-if="shouldShow === 'my stays'">
               <div class="host-stay-list-table">
                 <div class="thead">
-                  <div class="flex space-between">
+                  <div class="flex space-evenly align-center">
                     <span class="host-img"></span><span>Name</span
                     ><span>Address</span><span>Price</span
                     ><span class="stay-actions">Actions</span>
@@ -124,8 +124,8 @@
                 <!-- for in
                       v-for="stay in myStays" :key="stay._id" > -->
                 <div class="tbody" >
-                  <div class="host-stay-preview flex" v-for="stay in myStays" :key="stay.id" >>
-                    <span class="flex align-center"
+                  <div class="host-stay-preview flex align-center" v-for="stay in myStays" :key="stay.id" >
+                    <span class="flex align-center "
                       ><img
                         src="https://res.cloudinary.com/home-to-go/image/upload/v1622623125/hnh9ajbxx6kt13gm1fnx.webp"
                         alt="stay"
@@ -143,8 +143,8 @@
                       ></span
                     ><span
                       ><a href="#/stay/60b624e305f90634a567b2ac">$ {{stay.price}}</a></span
-                    ><span class="stay-actions clean-btn clickable"
-                      ><button>
+                    ><span class="stay-actions"
+                      ><button class="clean-btn clickable">
                         <i class="fa fa-edit" aria-hidden="true"></i>Edit
                       </button></span
                     >
@@ -157,15 +157,14 @@
                 <section class="host-order-list">
                   <div class="host-order-list-table">
                     <div class="thead">
-                      <div class="flex">
-                        <span class="flex align-center host-img"></span>
-                        <span class="flex align-center">Guest Name</span>
-                        <span class="flex align-center">Check in</span>
-                        <span class="flex align-center">Check out</span>
-                        <span class="flex align-center">Status</span>
-                        <span class="flex align-center">Price</span>
-                        <span class="stay-actions flex align-center"
-                          >Actions</span
+                      <div class="flex space-evenly align-center">
+                        <span class=" host-img"></span>
+                        <span>Guest Name</span>
+                        <span>Check in</span>
+                        <span>Check out</span>
+                        <span>Status</span>
+                        <span>Price</span>
+                        <span>Actions</span
                         >
                       </div>
                     </div>
@@ -173,21 +172,21 @@
                       <!-- for in
                       v-for="order in myOrders" :key="order._id" > -->
                           
-                      <div v-for="order in myOrders" :key="order._id" class="host-stay-preview flex">
+                      <div v-for="order in myOrders" :key="order._id" class="host-stay-preview flex space-evenly align-center">
                         <span>
                           <img
                             src="https://randomuser.me/api/portraits/women/16.jpg"
                             alt="user"
                             class="host-img"
                         /></span>
-                        <span class="flex align-center">{{order.buyer.fullname}}</span>
-                        <span class="flex align-center">{{order.dates.start}}</span>
-                        <span class="flex align-center">{{order.dates.end}}</span>
-                        <span class="flex align-center">{{order.status}}</span>
-                        <span class="flex align-center">$ {{order.stay.price}}</span>
+                        <span>{{order.buyer.fullname}}</span>
+                        <span>{{order.dates.start}}</span>
+                        <span>{{order.dates.end}}</span>
+                        <span>{{order.status}}</span>
+                        <span>$ {{order.stay.price}}</span>
                         <span class="stay-actions flex align-center">
-                          <button>
-                            <i class="fas fa-check" aria-hidden="true"></i
+                          <button class="clean-btn clickable">
+                            <i class="fa fa-check" aria-hidden="true"></i
                             >Re-Approve
                           </button>
                         </span>
@@ -226,18 +225,58 @@ export default {
   name: "host-dashboard",
   data() {
     return {
+      currUser:null,
       shouldShow: "my orders",
       myOrders: [],
-      myStays:[]
+      allStays:[],
+      myStays : []
     };
+  },
+  created() {
+    const page = "hostDashboard";
+    this.$store.commit({ type: "setCurrPage", page });
+    this.myOrders = this.demoOrders
+    this.allStays = this.getAllStays
+    this.currUser = this.getUser
+    this.userStays
   },
   computed: {
     demoOrders() {
       return this.$store.getters.getDemoOrders;
     },
-    stays() {
+    getUser(){
+      return this.$store.getters.loggedinUser ;
+    },
+    getAllStays() {
       return this.$store.getters.staysToShow;
     },
+    userStays(){
+      this.allStays.forEach(stay => {
+        const stayHost =  stay.host.fullname
+        // console.log('host', stayHost)
+        // console.log('user', this.currUser.fullname)
+        if(this.currUser.fullname === stayHost) {
+          // console.log('adding')
+          this.myStays.push(stay)
+        }
+      })
+    },
+    totalRateAvg(){
+      var count = 0
+      var sum = 0
+      this.myStays.forEach(stay => {
+        const sum = stay.reviews.reduce(
+        (sum, review) => sum + review.rate,
+        0
+      );
+      var avg = sum / this.stay.reviews.length || 0;
+      avg = (Math.round(avg * 100) / 100).toFixed(1);
+      count++
+      sum+=avg
+      })
+      return (sum/count).toFixed(1)
+    }
+    
   },
   methods: {
     showMyStays() {
@@ -253,12 +292,7 @@ export default {
       console.log(this.shouldShow);
     },
   },
-  created() {
-    const page = "hostDashboard";
-    this.$store.commit({ type: "setCurrPage", page });
-    this.myOrders = this.demoOrders
-    this.myStays = this.stays
-  },
+  
 };
 </script>
 
