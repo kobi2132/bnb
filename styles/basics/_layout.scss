@@ -7,19 +7,19 @@
     >*.full {
         grid-column: 1 / -1;
     }
-    margin-bottom: 74px;
+    // margin-bottom: 74px;
 }
 
 .main-layout2.home-page {
     margin-top: 0;
-    margin-bottom: 74px;
+    // margin-bottom: 74px;
 }
 
 .main-layout2 {
     margin-top: 175px;
     display: grid;
     grid-template-columns: 80px 1fr 80px;
-    margin-bottom: 74px;
+    // margin-bottom: 74px;
     >* {
         grid-column: 2;
     }
