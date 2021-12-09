@@ -56,7 +56,8 @@
             <h3>Total Rate</h3>
             <div class="flex space-between align-center">
               <span class="flex align center">
-                <i class="fa fa-star" aria-hidden="true"></i>{{totalRateAvg}}</span
+                <i class="fa fa-star" aria-hidden="true"></i
+                >{{ totalRateAvg }}</span
               >
               <!-- <p>
                 4%<i class="fa fa-long-arrow-alt-up" aria-hidden="true"></i>
@@ -65,25 +66,27 @@
           </div>
 
           <div>
-            <h3>monthly earning</h3>
-            <div><span>$ 10,410</span></div>
+            <h3>Earnings</h3>
+            <div>
+              <span>$ {{ monthlyEarningToShow }}</span>
+            </div>
           </div>
           <div class="orders-div">
             <h3>Orders</h3>
             <div class="flex">
-              <span>37</span>
+              <span>{{ totalOrders }}</span>
               <div class="circle-container flex align-center">
                 <div class="flex align-center">
                   <span title="pending" class="circle yellow-circle"></span>
-                  <p>16</p>
+                  <p>{{ pendingOrders }}</p>
                 </div>
                 <div class="flex align-center">
                   <span title="approved" class="circle green-circle"></span>
-                  <p>19</p>
+                  <p>{{ approvedOrders }}</p>
                 </div>
                 <div class="flex align-center">
                   <span title="decline" class="circle green-red"></span>
-                  <p>2</p>
+                  <p>{{ declinedOrders }}</p>
                 </div>
               </div>
             </div>
@@ -91,17 +94,13 @@
           <div>
             <div>
               <h3>Active Guests</h3>
-              <span>2</span>
+              <span>{{ activeGuests }}</span>
             </div>
 
             <div>
-              <img
+              <img v-for="(guest,id) in activeGuests"
+                    :key="id"
                 src="https://randomuser.me/api/portraits/women/68.jpg"
-                alt="guest"
-                class="host-img"
-              />
-              <img
-                src="https://randomuser.me/api/portraits/women/53.jpg"
                 alt="guest"
                 class="host-img"
               />
@@ -123,9 +122,13 @@
 
                 <!-- for in
                       v-for="stay in myStays" :key="stay._id" > -->
-                <div class="tbody" >
-                  <div class="host-stay-preview flex align-center" v-for="stay in myStays" :key="stay.id" >
-                    <span class="flex align-center "
+                <div class="tbody">
+                  <div
+                    class="host-stay-preview flex align-center"
+                    v-for="stay in myStays"
+                    :key="stay.id"
+                  >
+                    <span class="flex align-center"
                       ><img
                         src="https://res.cloudinary.com/home-to-go/image/upload/v1622623125/hnh9ajbxx6kt13gm1fnx.webp"
                         alt="stay"
@@ -134,15 +137,17 @@
                     </span>
                     <span>
                       <!-- fix hrefs -->
-                      <a href="#/stay/60b624e305f90634a567b2ac"
-                        >{{stay.name}}</a
-                      > </span
+                      <a href="#/stay/60b624e305f90634a567b2ac">{{
+                        stay.name
+                      }}</a> </span
                     ><span
                       ><a href="#/stay/60b624e305f90634a567b2ac"
-                        >{{stay.loc.country}} , {{stay.loc.city}}</a
+                        >{{ stay.loc.country }} , {{ stay.loc.city }}</a
                       ></span
                     ><span
-                      ><a href="#/stay/60b624e305f90634a567b2ac">$ {{stay.price}}</a></span
+                      ><a href="#/stay/60b624e305f90634a567b2ac"
+                        >$ {{ stay.price }}</a
+                      ></span
                     ><span class="stay-actions"
                       ><button class="clean-btn clickable">
                         <i class="fa fa-edit" aria-hidden="true"></i>Edit
@@ -158,32 +163,35 @@
                   <div class="host-order-list-table">
                     <div class="thead">
                       <div class="flex space-evenly align-center">
-                        <span class=" host-img"></span>
+                        <span class="host-img"></span>
                         <span>Guest Name</span>
                         <span>Check in</span>
                         <span>Check out</span>
                         <span>Status</span>
                         <span>Price</span>
-                        <span>Actions</span
-                        >
+                        <span>Actions</span>
                       </div>
                     </div>
                     <div class="tbody">
                       <!-- for in
                       v-for="order in myOrders" :key="order._id" > -->
-                          
-                      <div v-for="order in myOrders" :key="order._id" class="host-stay-preview flex space-evenly align-center">
+
+                      <div
+                        v-for="order in myOrders"
+                        :key="order._id"
+                        class="host-stay-preview flex space-evenly align-center"
+                      >
                         <span>
                           <img
                             src="https://randomuser.me/api/portraits/women/16.jpg"
                             alt="user"
                             class="host-img"
                         /></span>
-                        <span>{{order.buyer.fullname}}</span>
-                        <span>{{order.dates.start}}</span>
-                        <span>{{order.dates.end}}</span>
-                        <span>{{order.status}}</span>
-                        <span>$ {{order.stay.price}}</span>
+                        <span>{{ order.buyer.fullname }}</span>
+                        <span>{{ order.dates.start }}</span>
+                        <span>{{ order.dates.end }}</span>
+                        <span>{{ order.status }}</span>
+                        <span>$ {{ order.stay.price }}</span>
                         <span class="stay-actions flex align-center">
                           <button class="clean-btn clickable">
                             <i class="fa fa-check" aria-hidden="true"></i
@@ -212,7 +220,7 @@
               </section>
             </section>
             <!-- <section class="host-rates" v-if="shouldShow === 'my rates'"> -->
-              <!-- <h1>rates</h1>
+            <!-- <h1>rates</h1>
             </section> -->
           </section>
         </section>
@@ -225,59 +233,126 @@ export default {
   name: "host-dashboard",
   data() {
     return {
-      currUser:null,
+      currUser: null,
       shouldShow: "my orders",
       myOrders: [],
-      allStays:[],
-      myStays : []
+      allStays: [],
+      myStays: [],
     };
   },
   created() {
     const page = "hostDashboard";
     this.$store.commit({ type: "setCurrPage", page });
-    this.myOrders = this.demoOrders
-    this.allStays = this.getAllStays
-    this.currUser = this.getUser
-    this.userStays
+    this.myOrders = this.demoOrders;
+    this.allStays = this.getAllStays;
+    this.currUser = this.getUser;
+    this.userStays;
   },
   computed: {
     demoOrders() {
       return this.$store.getters.getDemoOrders;
     },
-    getUser(){
-      return this.$store.getters.loggedinUser ;
+    getUser() {
+      return this.$store.getters.loggedinUser;
     },
     getAllStays() {
       return this.$store.getters.staysToShow;
     },
-    userStays(){
-      this.allStays.forEach(stay => {
-        const stayHost =  stay.host.fullname
+    userStays() {
+      this.allStays.forEach((stay) => {
+        const stayHost = stay.host.fullname;
         // console.log('host', stayHost)
         // console.log('user', this.currUser.fullname)
-        if(this.currUser.fullname === stayHost) {
+        if (this.currUser.fullname === stayHost) {
           // console.log('adding')
-          this.myStays.push(stay)
+          this.myStays.push(stay);
         }
-      })
+      });
     },
-    totalRateAvg(){
-      var count = 0
-      var sum = 0
-      this.myStays.forEach(stay => {
-        console.log(count , stay.reviews)
-        stay.reviews.rate.forEach(rating => {
-            sum += rating.reduce(
-            (sum, rating) => sum + rating,0);})
-        
-        var avg = sum / this.stay.reviews.length || 0;
-        avg = (Math.round(avg * 100) / 100).toFixed(1);
-        count++
-        // sum+=avg
-      })
-      return (sum/count).toFixed(1)
-    }
-    
+    totalRateAvg() {
+      var count = 0;
+      var sum = 0;
+      this.myStays.forEach((stay) => {
+        // console.log(count , stay.reviews)
+        stay.reviews.forEach((review) => {
+          const reviewRatings = Object.values(review.rate);
+          count += reviewRatings.length;
+          // console.log('array ratings', reviewRatings)
+          var currSum = reviewRatings.reduce(
+            (sumRate, rating) => sumRate + rating,
+            0
+          );
+          sum += currSum;
+        });
+      });
+      // console.log('sum', sum , 'count', count)
+      return (sum / count).toFixed(1);
+      return sum;
+    },
+    totalOrders() {
+      return this.myOrders.length;
+    },
+    pendingOrders() {
+      var ordersToShowCount = 0;
+      this.myOrders.forEach((order) => {
+        if (order.status === "pending") {
+          ordersToShowCount++;
+        }
+      });
+      return ordersToShowCount;
+    },
+    approvedOrders() {
+      var ordersToShowCount = 0;
+      this.myOrders.forEach((order) => {
+        if (order.status === "approved") {
+          ordersToShowCount++;
+        }
+      });
+      return ordersToShowCount;
+    },
+    declinedOrders() {
+      var ordersToShowCount = 0;
+      this.myOrders.forEach((order) => {
+        if (order.status === "declined") {
+          ordersToShowCount++;
+        }
+      });
+      return ordersToShowCount;
+    },
+    monthlyEarningToShow() {
+      var ordersPrice = [];
+      // var ordersDates=[]
+      this.myOrders.forEach((order) => {
+        // console.log('toshow', order)
+        const { start, end } = order.dates;
+        const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+        const CURRORDERPRICE = parseInt(days * order.stay.price);
+        // console.log(CURRORDERPRICE)
+        ordersPrice.push(CURRORDERPRICE);
+      });
+      // console.log('prices', ordersPrice)
+      var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
+      return sum;
+    },
+    activeGuests() {
+      var activeGuestsCount = 0;
+      this.myOrders.forEach((order) => {
+        const { start, end } = order.dates;
+        // console.log(start , end)
+        var now = Date.now()
+        var orderStart = Date.parse(start)
+        var orderEnd = Date.parse(end)
+        // console.log(now, orderStart, orderEnd  )
+        if (now <= orderEnd && now >= orderStart) {
+          activeGuestsCount++;
+        } else {
+          // console.log("order not active");
+        }
+      });
+      // console.log("active", activeGuestsCount);
+      return activeGuestsCount;
+      // return 3;
+    },
   },
   methods: {
     showMyStays() {
@@ -293,7 +368,6 @@ export default {
       console.log(this.shouldShow);
     },
   },
-  
 };
 </script>
 

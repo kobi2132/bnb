@@ -28,7 +28,7 @@ const gDemoOrders = [{
             "stay": {
                 "_id": "61af1eed3d91ca3df5b407e7",
                 "name": "Dream House",
-                "price": 150
+                "price": 160
             },
             "hostId": "61b064d3dcbbeca56bcf1df1",
             "status": "pending"
@@ -36,8 +36,8 @@ const gDemoOrders = [{
         {
             "_id": "61b08a52dcbbeca56bd8c367",
             "dates": {
-                "start": "2022-01-06",
-                "end": "2022-01-07"
+                "start": "2022-01-08",
+                "end": "2022-01-09"
             },
             "guests": {
                 "children": null,
@@ -51,7 +51,7 @@ const gDemoOrders = [{
             "stay": {
                 "_id": "61af1eed3d91ca3df5b407e5",
                 "name": "Fly's House",
-                "price": 150
+                "price": 100
             },
             "hostId": "61b064d3dcbbeca56bcf1df1",
             "status": "pending"
@@ -59,8 +59,8 @@ const gDemoOrders = [{
         {
             "_id": "61b08a52dcbbeca56bd8c368",
             "dates": {
-                "start": "2022-01-06",
-                "end": "2022-01-07"
+                "start": "2021-10-10",
+                "end": "2021-12-12"
             },
             "guests": {
                 "children": null,
@@ -74,7 +74,7 @@ const gDemoOrders = [{
             "stay": {
                 "_id": "61af1eed3d91ca3df5b407e6",
                 "name": "Modern House",
-                "price": 150
+                "price": 160
             },
             "hostId": "61b064d3dcbbeca56bcf1df1",
             "status": "pending"

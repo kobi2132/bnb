@@ -33,9 +33,9 @@
             >
               New user
             </button>
-            <button type="button" class="forgot-password-btn actions-btn">
+            <!-- <button type="button" class="forgot-password-btn actions-btn">
               Forgot Password
-            </button>
+            </button> -->
           </div>
         </div>
       </form>
