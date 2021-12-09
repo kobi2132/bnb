@@ -179,7 +179,6 @@
                     border-bottom: 1px solid #dddddd;
                     margin-bottom: 24px;
                     margin-top: 24px;
-
                 }
                 .stay-details-container {
                     display: flex;
@@ -203,22 +202,38 @@
                             }
                         }
 
-                        .reviews-preview{
+                        .reviews-preview {
                             display: flex;
                             justify-content: flex-start;
                             align-items: center;
-                        .star-preview span{
-                            font-size: 10px;
-                            color: $redAirbnb
+                            .star-preview span {
+                                font-size: 10px;
+                                color: $redAirbnb;
+                            }
+                            .review-avg {
+                                font-size: 12px;
+                                color: #222222;
+                            }
+                            .reviews-total {
+                                font-size: 12px;
+                                color: #717171;
+                            }
                         }
-                        .review-avg{
-                            font-size: 12px;
-                            color: #222222;
+                    }
+                }
+                .price-details-container {
+                    .title1 {
+                        padding-bottom: 8px;
+                    }
+                    .price-detail {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 16px;
+                        .underline {
+                            text-decoration: underline;
                         }
-                        .reviews-total{
-                            font-size: 12px; 
-                            color: #717171; 
-                        }
+                        .green{
+                            color: #008a05!important;
                         }
                     }
                 }

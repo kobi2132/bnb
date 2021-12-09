@@ -1,5 +1,5 @@
 <template>
-  <div class="confirm-and-pay main-layout2">
+  <div class="confirm-and-pay main-layout">
     <div class="header">
       <router-link to="">
         <div class="back-btn">
@@ -118,7 +118,7 @@
         </div>
       </div>
 
-      <div class="details-modal">
+      <div class="details-modal sticky">
         <div class="modal-container">
           <div class="stay-details-container">
             <img :src="this.currStay.imgUrls[0]" alt="" />
@@ -141,20 +141,20 @@
           <div class="price-details-container">
             <div class="title1">Price details</div>
             <div class="price-detail">
-              <div class="title2">${{this.order.stay.price}}x{{this.calculateTotalDays}} nights</div>
-              <div class="title2"></div>
+              <div class="title2">${{this.order.stay.price}}.00 x {{this.calculateTotalDays}} nights</div>
+              <div class="title2">${{this.calculatePrice}}.00</div>
             </div>
             <div class="price-detail">
-              <div class="title2"></div>
-              <div class="title2"></div>
+              <div class="title2 underline">Cleaning fee</div>
+              <div class="title2">$25.00</div>
             </div>
             <div class="price-detail">
-              <div class="title2"></div>
-              <div class="title2"></div>
+              <div class="title2 underline">Service fee</div>
+              <div class="title2 green">$0.00</div>
             </div>
             <div class="price-detail">
-              <div class="title2"></div>
-              <div class="title2"></div>
+              <div class="title2 bold">Total <span class="underline">(USD)</span></div>
+              <div class="title2 bold">${{this.calculatePrice+25}}.00</div>
             </div>
           </div>
         </div>
@@ -217,6 +217,10 @@ export default {
         const { start, end } = this.order.dates;
         const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
         return days
+    },
+    calculatePrice(){
+      const days = this.calculateTotalDays
+      return parseInt(days * this.order.stay.price)
     },
     fees() {
       return 25;
