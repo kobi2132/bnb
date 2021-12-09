@@ -21,7 +21,7 @@
         >
           <div>
             <h2 class="stay-summery">
-              {{ stay.summary }} hosted by {{ stay.host.fullname }}
+              {{ stay.summary }} hosted by {{ hostName }}
             </h2>
             <h5 class="stay-capacity">
               {{ stay.capacity }} guests · 3 bedrooms · 3 beds · 2 baths
@@ -69,6 +69,10 @@ export default {
     };
   },
   computed: {
+    hostName() {
+      var strs = this.stay.host.fullname.split(" ");
+      return strs[0];
+    },
     stay() {
       return this.$store.getters.getCurrStay;
     },

@@ -14,7 +14,7 @@
           <h3>New York</h3>
         </router-link>
         <router-link to="/explore?destination=Santorini">
-          <img src="~@/assets/images/SAN1.png" />
+          <img src="~@/assets/images/SAN4.jpg" />
           <h3>Santorini</h3>
         </router-link>
         <router-link to="/explore?destination=Tel Aviv">
@@ -30,21 +30,21 @@
     <section class="toprated-container">
       <h1>Top Rated</h1>
       <section class="top-rated-gallery">
-        <router-link to="/explore">
-          <img src="~@/assets/images/TBA.jpg" />
-          <h3>To be Added</h3>
+        <router-link to="/stay/61b21619dcbbeca56b4e124e">
+          <img src="~@/assets/images/tr1.jpg" />
+          <h3>Neve Tsedek area - Cosy and sunny</h3>
         </router-link>
-        <router-link to="/explore">
-          <img src="~@/assets/images/TBA.jpg" />
-          <h3>To be Added</h3>
+        <router-link to="/stay/61b215f3dcbbeca56b4e0549">
+          <img src="~@/assets/images/tr2.jpeg" />
+          <h3>Magnifique Appart, Paris, France</h3>
         </router-link>
-        <router-link to="/explore">
-          <img src="~@/assets/images/TBA.jpg" />
-          <h3>To be Added</h3>
+        <router-link to="/stay/61b21585dcbbeca56b4dd121">
+          <img src="~@/assets/images/tr4.jpg" />
+          <h3>Lava Cave suite, Greece</h3>
         </router-link>
-        <router-link to="/explore">
-          <img src="~@/assets/images/TBA.jpg" />
-          <h3>To be Added</h3>
+        <router-link to="/stay/61b2155ddcbbeca56b4dbe47">
+          <img src="~@/assets/images/tr3.jpeg" />
+          <h3>Sky The Lodge, Santorini</h3>
         </router-link>
       </section>
     </section>
