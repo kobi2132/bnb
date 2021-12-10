@@ -202,6 +202,7 @@ export default {
     getModalHeight() {
       this.modalHeight = this.$refs.modal.clientHeight;
     },
+    // location
     async placeOrder() {
       const loggedinUser = this.$store.getters.loggedinUser;
       if (!loggedinUser) showMsg("Please log in first", "danger");
