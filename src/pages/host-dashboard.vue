@@ -1,11 +1,11 @@
 
 <template>
   <!--  -->
-  <section class="main-layout2">
-    <h1>host-dashboard</h1>
+  <section class="main-layout2 dashboard-page">
     <!-- <p>{{myOrders}}</p> -->
-    <section class="dashboard-container flex">
+    <section class="dashboard-container flex ">
       <section class="dash-nav-sticky-container">
+    <h1>host-dashboard</h1>
         <div class="dash-nav-container flex column">
           <!-- <button
             class="add-stay-btn flex align-center clean-btn clickable"
@@ -73,19 +73,19 @@
           </div>
           <div class="orders-div">
             <h3>Orders</h3>
-            <div class="flex">
+            <div class="flex column">
               <span>{{ totalOrders }}</span>
-              <div class="circle-container flex align-center">
-                <div class="flex align-center">
-                  <span title="pending" class="circle yellow-circle"></span>
-                  <p>{{ pendingOrders }}</p>
-                </div>
-                <div class="flex align-center">
+              <div class="circle-container flex column">
+                <div class="flex align-center space-around">
                   <span title="approved" class="circle green-circle"></span>
                   <p>{{ approvedOrders }}</p>
                 </div>
-                <div class="flex align-center">
-                  <span title="decline" class="circle green-red"></span>
+                 <div class="flex align-center space-around">
+                  <span title="pending" class="circle yellow-circle"></span>
+                  <p>{{ pendingOrders }}</p>
+                </div>
+                <div class="flex align-center space-around">
+                  <span title="decline" class="circle red-circle"></span>
                   <p>{{ declinedOrders }}</p>
                 </div>
               </div>
@@ -113,10 +113,13 @@
             <section class="host-stay-list" v-if="shouldShow === 'my stays'">
               <div class="host-stay-list-table">
                 <div class="thead">
-                  <div class="flex space-evenly align-center">
-                    <span class="host-img"></span><span>Name</span
-                    ><span>Address</span><span>Price</span
-                    ><span class="stay-actions">Actions</span>
+                  <div class="thead-container">
+                    <!-- flex space-evenly align-center -->
+                    <span class="host-img"></span>
+                    <span>Name</span>
+                    <span>Price</span>
+                    <span>Address</span>
+                    <span class="stay-actions">Actions</span>
                   </div>
                 </div>
 
@@ -124,35 +127,27 @@
                       v-for="stay in myStays" :key="stay._id" > -->
                 <div class="tbody">
                   <div
-                    class="host-stay-preview flex align-center"
+                    class="host-stay-preview "
                     v-for="stay in myStays"
-                    :key="stay.id"
-                  >
-                    <span class="flex align-center"
-                      ><img
-                        src="https://res.cloudinary.com/home-to-go/image/upload/v1622623125/hnh9ajbxx6kt13gm1fnx.webp"
-                        alt="stay"
-                        class="host-img"
-                      />
+                    :key="stay.id">
+                    <span class="flex align-center">
+                    <img :src="stay.imgUrls[0]" alt="" class="stay-icon">
                     </span>
                     <span>
                       <!-- fix hrefs -->
-                      <a href="#/stay/60b624e305f90634a567b2ac">{{
-                        stay.name
-                      }}</a> </span
-                    ><span
-                      ><a href="#/stay/60b624e305f90634a567b2ac"
-                        >{{ stay.loc.country }} , {{ stay.loc.city }}</a
-                      ></span
-                    ><span
-                      ><a href="#/stay/60b624e305f90634a567b2ac"
-                        >$ {{ stay.price }}</a
-                      ></span
-                    ><span class="stay-actions"
-                      ><button class="clean-btn clickable">
+                      <a href="#/stay/60b624e305f90634a567b2ac">{{stay.name}}</a>
+                        </span>
+                    <span>
+                      <a href="#/stay/60b624e305f90634a567b2ac">$ {{ stay.price }}</a>
+                      </span>
+                    <span>
+                      <a href="#/stay/60b624e305f90634a567b2ac">{{ stay.loc.country }} , {{ stay.loc.city }}</a>
+                      </span>
+                    <span class="stay-actions">
+                      <button class="clean-btn clickable">
                         <i class="fa fa-edit" aria-hidden="true"></i>Edit
-                      </button></span
-                    >
+                      </button>
+                      </span>
                   </div>
                 </div>
               </div>
@@ -162,7 +157,7 @@
                 <section class="host-order-list">
                   <div class="host-order-list-table">
                     <div class="thead">
-                      <div class="flex space-evenly align-center">
+                      <div class="thead-container">
                         <span class="host-img"></span>
                         <span>Guest Name</span>
                         <span>Check in</span>
@@ -179,14 +174,12 @@
                       <div
                         v-for="order in myOrders"
                         :key="order._id"
-                        class="host-stay-preview flex space-evenly align-center"
+                        class="host-stay-preview "
                       >
                         <span>
-                          <img
-                            src="https://randomuser.me/api/portraits/women/16.jpg"
-                            alt="user"
-                            class="host-img"
-                        /></span>
+                          <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"/>
+                        <!-- <img class="host-img" :src="stay.host.imgUrl" /> -->
+                        </span>
                         <span>{{ order.buyer.fullname }}</span>
                         <span>{{ order.dates.start }}</span>
                         <span>{{ order.dates.end }}</span>

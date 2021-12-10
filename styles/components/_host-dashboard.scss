@@ -1,8 +1,22 @@
+.dashboard-page {
+    margin-top: 120px !important;
+}
+
+.stay-icon {
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .dashboard-container {
     gap: 10px
 }
 
 .dash-nav-sticky-container {
+    h1 {
+        font-size: 24px;
+    }
     // position: fixed;
     width: 230px;
     // change to vw or somthing
@@ -49,7 +63,7 @@
 
 .dash-main-container {
     gap: 20px;
-    padding: 20px;
+    padding: 43px 20px 20px 60px;
     // margin-inline-start: 240px;
     //fix this layout
     border-radius: 13px;
@@ -60,7 +74,7 @@
             // min-width: 200px;
             // max-width: 200px;
             border-radius: 13px;
-            padding: 20px;
+            padding: 0 20px 0 20px;
             h3 {
                 font-size: 1rem;
                 line-height: 18px;
@@ -99,6 +113,7 @@
                             height: 15px;
                             width: 15px;
                             border-radius: 50%;
+                            // margin-left: 10px;
                         }
                         .yellow-circle {
                             background-color: #faf87b;
@@ -106,8 +121,12 @@
                         .green-circle {
                             background-color: #9df89d;
                         }
-                        .green-red {
+                        .red-circle {
                             background-color: #fa7b7b;
+                        }
+                        p {
+                            width: 15px;
+                            text-align: center;
                         }
                     }
                 }
@@ -127,15 +146,34 @@
                 border-spacing: 0 2px;
                 .thead {
                     width: 100%;
+                    align-items: center;
+                    .thead-container {
+                        display: grid;
+                        grid-template-columns: repeat(5, 1fr);
+                        gap: 10px;
+                        align-items: center;
+                        text-align: center;
+                        span {
+                            font-weight: 700;
+                        }
+                    }
                 }
                 .tbody {
                     width: 100%;
                     .host-stay-preview {
+                        display: grid;
+                        grid-template-columns: repeat(5, 1fr);
+                        gap: 10px;
+                        align-items: center;
+                        text-align: center;
                         span {
-                            text-align: start;
+                            text-align: center;
                             // width: 100%;
                             padding-block: 10px;
                             // border-top: 1px solid #dfdfdf;
+                            img {
+                                margin: auto;
+                            }
                         }
                     }
                 }
@@ -149,13 +187,30 @@
                         border-spacing: 0 2px;
                         .thead {
                             width: 100%;
+                            align-items: center;
+                            .thead-container {
+                                display: grid;
+                                grid-template-columns: repeat(7, 1fr);
+                                gap: 10px;
+                                align-items: center;
+                                text-align: center;
+                                span {
+                                    font-weight: 700;
+                                }
+                            }
                             div {
                                 width: 100%;
+                                text-align: center;
                             }
                         }
                         .host-stay-preview {
+                            display: grid;
+                            grid-template-columns: repeat(7, 1fr);
+                            gap: 10px;
+                            align-items: center;
+                            text-align: center;
                             span {
-                                text-align: start;
+                                text-align: center;
                                 // width: 100%;
                                 // padding: 10px 20px;
                                 // border-top: 1px solid #dfdfdf;
