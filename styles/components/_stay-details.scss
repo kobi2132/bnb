@@ -13,7 +13,12 @@
 .stay-display-order {
     margin-left: 80px;
     width: 339px;
+    flex-basis: 40%;
     // padding: 24px
+}
+
+.stay-display-info {
+    flex-basis: 60%;
 }
 
 .short-info-btn:hover {
@@ -267,6 +272,14 @@
         .blackbgc {
             background-color: black;
         }
+    }
+    .points {
+        margin-left: 10px;
+        font-size: 0.8rem;
+        line-height: 1.5rem;
+        vertical-align: middle;
+        text-align: center;
+        font-family: airbnb-medium;
     }
 }
 

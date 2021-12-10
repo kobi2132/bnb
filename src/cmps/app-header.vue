@@ -3,7 +3,7 @@
     class="main-header"
     :class="{
       details: stayDetails,
-      fullheader: !miniFilter,
+      fullheader: !miniFilter && (homePage || explore),
       'explore-page': explore,
       'home-page': homePage,
     }"

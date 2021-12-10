@@ -1,23 +1,11 @@
 <template>
   <section>
-    <!-- todos -->
-    <!-- fix the funcs it looks like crap -->
-    <!-- functionality done-->
-    <!-- color -->
 
     <div class="review-stats">
       <div class="review-ctg flex space-between">
         <label for="Cleanliness">Cleanliness</label>
-        <!-- <div>
-          <span
-            v-for="(num, idx) in 5"
-            :key="idx"
-            :class="{ checked: num <= Cleanliness }"
-            class="material-icons-outlined"
-            >star</span
-          >
-          <span class="material-icons-outlined"> star </span>
-        </div> -->
+       <div class="flex">
+
         <div class="gray-scale flex">
           <div
             v-for="(num, idx) in 5"
@@ -26,21 +14,14 @@
             class="scale"
           ></div>
         </div>
-        <!-- <span class="material-icons-outlined"> star </span> -->
+        <span class="points">{{Cleanliness}}</span>
       </div>
+       </div>
     
-    <!-- problem here!!!! -->
     <div class="review-ctg flex space-between">
       <label for="Communication">Communication</label>
-      <!-- <div>
-        <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= Communication }"
-          class="material-icons-outlined"
-          >star</span
-        >
-      </div> -->
+      <div class="flex">
+
       <div class="gray-scale flex">
         <div
           v-for="(num, idx) in 5"
@@ -49,18 +30,13 @@
           class="scale"
         ></div>
       </div>
+      <span class="points">{{Communication}}</span>
+      </div>
     </div>
     <div class="review-ctg flex space-between">
       <label for="CheckIn">Check-in</label>
-      <!-- <div>
-        <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= CheckIn }"
-          class="material-icons-outlined"
-          >star</span
-        >
-      </div> -->
+      <div class="flex">
+
       <div class="gray-scale flex">
         <div
           v-for="(num, idx) in 5"
@@ -69,18 +45,13 @@
           class="scale"
         ></div>
       </div>
+      <span class="points">{{CheckIn}}</span>
+      </div>
     </div>
     <div class="review-ctg flex space-between">
       <label for="Accuracy">Accuracy</label>
-      <!-- <div>
-        <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= Accuracy }"
-          class="material-icons-outlined"
-          >star</span
-        >
-      </div> -->
+      <div class="flex">
+
       <div class="gray-scale flex">
         <div
           v-for="(num, idx) in 5"
@@ -89,18 +60,13 @@
           class="scale"
         ></div>
       </div>
+        <span class="points">{{Accuracy}}</span>
+      </div>
     </div>
     <div class="review-ctg flex space-between">
       <label for="Location">Location</label>
-      <!-- <div>
-        <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= Location }"
-          class="material-icons-outlined"
-          >star</span
-        >
-      </div> -->
+      <div class="flex">
+
       <div class="gray-scale flex">
         <div
           v-for="(num, idx) in 5"
@@ -109,18 +75,14 @@
           class="scale"
         ></div>
       </div>
+        <span class="points">{{Location}}</span>
+      </div>
     </div>
+
     <div class="review-ctg flex space-between">
       <label for="Accessibility">Accessibility</label>
-      <!-- <div>
-        <span
-          v-for="(num, idx) in 5"
-          :key="idx"
-          :class="{ checked: num <= Accessibility }"
-          class="material-icons-outlined"
-          >star</span
-        >
-      </div> -->
+      
+      <div class="flex">
       <div class="gray-scale flex">
         <div
           v-for="(num, idx) in 5"
@@ -129,7 +91,9 @@
           class="scale"
         ></div>
       </div>
+        <span class="points">{{Accessibility}}</span>
     </div>
+      </div>
   </div>
   </section>
 </template>
@@ -186,22 +150,22 @@ export default {
 
       ratingsScores.cleanlinessScore = (
         ratingsScores.cleanlinessScore.reduce(this.add) / this.reviews.length
-      ).toFixed(0);
+      ).toFixed(1);
       ratingsScores.checkInScore = (
         ratingsScores.checkInScore.reduce(this.add) / this.reviews.length
-      ).toFixed(0);
+      ).toFixed(1);
       ratingsScores.locationScore = (
         ratingsScores.locationScore.reduce(this.add) / this.reviews.length
-      ).toFixed(0);
+      ).toFixed(1);
       ratingsScores.communicationScore = (
         ratingsScores.communicationScore.reduce(this.add) / this.reviews.length
-      ).toFixed(0);
+      ).toFixed(1);
       ratingsScores.accuracyScore = (
         ratingsScores.accuracyScore.reduce(this.add) / this.reviews.length
-      ).toFixed(0);
+      ).toFixed(1);
       ratingsScores.accessibilityScore = (
         ratingsScores.accessibilityScore.reduce(this.add) / this.reviews.length
-      ).toFixed(0);
+      ).toFixed(1);
 
       // console.log(ratingsScores)
 

@@ -62,9 +62,8 @@
     background-color: transparent;
     box-shadow: none;
     .nav a {
-      
         color: #FFFFFF;
-    //    text-shadow: 2px 2px 1px #7A7A7A;
+        text-shadow: 3px 2px 3px rgba(255,255,255,.2);
     }
 }
 
@@ -100,7 +99,10 @@
 }
 
 .main-header.details {
-    grid-template-columns: 115px 1fr 115px;
+    @include for-wide-layout {
+        @include layoutGTC($break-wide)
+    }
+    // grid-template-columns: 115px 1fr 115px;
     >* {
         grid-column: 2;
     }

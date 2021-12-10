@@ -4,12 +4,11 @@
     }
     margin-top: 48px;
     // margin-left: 80px;
-    width: 315px;
+    // width: 380px;
     padding: 24px;
     border-radius: 12px;
     border: 1px solid rgb(221, 221, 221);
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-    transition: all 0.1s;
     .guests-input {
         position: relative;
     }
@@ -184,7 +183,9 @@
 .order-modal.miniModal {
     transition: 0.01ms ease-out;
     display: grid;
-    grid-template-columns: 115px 1fr 115px;
+    @include for-wide-layout {
+        @include layoutGTC($break-wide)
+    }
     >* {
         grid-column: 2;
     }
@@ -240,3 +241,38 @@
         content: ' reviews'
     }
 }
+
+.trackable {
+  position: relative;
+//   background: var(--brand-gradient, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
+  background-color: $redAirbnb;
+  appearance: none;
+  width: 100%;
+  padding: 1em 2em;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 100px;
+  span {
+    position: relative;
+  }
+  &::before {
+    --size: 0;
+    content: '';
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: linear-gradient(circle at center center, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
+    transform: translate(-50%, -50%);
+    transition: width .2s ease, height .2s ease;
+  }
+  &:hover::before {
+    --size: 120px;
+  }
+}
+
