@@ -1,13 +1,13 @@
 <template>
   <div class="confirm-and-pay main-layout2">
     <div class="header">
-        <router-link to="">
-          <div class="back-btn">
-            <span class="material-icons-outlined"> chevron_left </span>
-          </div>
-        </router-link>
+      <router-link to="">
+        <div class="back-btn">
+          <span class="material-icons-outlined"> chevron_left </span>
+        </div>
+      </router-link>
 
-        <h2 class="left">Confirm and pay</h2>
+      <h2 class="left">Confirm and pay</h2>
     </div>
     <div class="details-and-pay">
       <div class="trip-info">
@@ -110,9 +110,9 @@
             <span>Airbnb's COVID-19 Safety Requirements</span> and the
             <span>Guest Refund Policy</span>.
           </p>
-          <router-link class="confirm-btn" to="/congrats">
-            <div class="confirm-btn">Confirm and pay</div>
-          </router-link>
+          <button class="confirm-btn" @click="setCongratsModal">
+            Confirm and pay
+          </button>
         </div>
       </div>
 
@@ -163,6 +163,24 @@
         </div>
       </div>
     </div>
+    <div class="congrats-modal-container" v-if="congratsModal">
+      <div class="congrats-modal">
+        <div class="title">Your order is complete!</div>
+        <div class="title-1">
+          Your order is pending confirmation from the host
+        </div>
+        <div class="title-2">
+          You won't be charged until the host approves your order
+        </div>
+        <div class="separator"></div>
+        <div class="links-container">
+          <router-link class="btn" to="/">Home page </router-link>
+          <router-link class="btn" to="/trips"
+            >Share your stay with your friends and family
+          </router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -171,6 +189,7 @@ export default {
   name: "confirm-and-pay",
   data() {
     return {
+      congratsModal: false,
       options: [
         {
           value: "googlePay",
@@ -209,6 +228,14 @@ export default {
     },
     getTotalGuests() {
       return this.totalGuests;
+    },
+  },
+  methods: {
+    setCongratsModal(){
+console.log(this.congratsModal);
+      this.congratsModal = true
+      console.log(this.congratsModal);
+
     },
   },
   watch: {
