@@ -178,7 +178,7 @@
                       >
                         <span>
                           <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"/>
-                        <!-- <img class="host-img" :src="stay.host.imgUrl" /> -->
+                        <!-- <img class="host-img" :src="order.buyer.imgUrl" /> -->
                         </span>
                         <span>{{ order.buyer.fullname }}</span>
                         <span>{{ order.dates.start }}</span>
@@ -228,6 +228,7 @@ export default {
     return {
       currUser: null,
       shouldShow: "my orders",
+      allOrders:[],
       myOrders: [],
       allStays: [],
       myStays: [],
@@ -236,14 +237,20 @@ export default {
   created() {
     const page = "hostDashboard";
     this.$store.commit({ type: "setCurrPage", page });
-    this.myOrders = this.demoOrders;
-    this.allStays = this.getAllStays;
-    this.currUser = this.getUser;
-    this.userStays;
+    this.$store.dispatch({ type: "loadOrders" });
+    // this.myOrders = this.getDemoOrders
+    this.currUser = this.getUser
+    this.allOrders = this.getOrders
+    this.myOrders = this.userOrders
+    this.allStays = this.getAllStays
+    this.userStays
   },
   computed: {
-    demoOrders() {
+    getDemoOrders() {
       return this.$store.getters.getDemoOrders;
+    },
+    getOrders() {
+      return this.$store.getters.getOrders;
     },
     getUser() {
       return this.$store.getters.loggedinUser;
@@ -261,6 +268,23 @@ export default {
           this.myStays.push(stay);
         }
       });
+    },
+    userOrders() {
+      // console.log(this.allOrders)
+      var currUserOrders = []
+      const allOrders = this.$store.getters.getOrders
+      allOrders.forEach((order) => {
+        const orderHostId = order.host._id;
+        // console.log('host', stayHost)
+        // console.log('user', this.currUser.fullname)
+        if (this.currUser.Id === orderHostId) {
+          // console.log('adding')
+          currUserOrders.push(order);
+        }
+      });
+      console.log(currUserOrders)
+      
+      return currUserOrders
     },
     totalRateAvg() {
       var count = 0;
@@ -350,15 +374,15 @@ export default {
   methods: {
     showMyStays() {
       this.shouldShow = "my stays";
-      console.log(this.shouldShow);
+      // console.log(this.shouldShow);
     },
     showMyOrders() {
       this.shouldShow = "my orders";
-      console.log(this.shouldShow);
+      // console.log(this.shouldShow);
     },
     showMyRates() {
       this.shouldShow = "my rates";
-      console.log(this.shouldShow);
+      // console.log(this.shouldShow);
     },
   },
 };
