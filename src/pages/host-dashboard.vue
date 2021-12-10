@@ -5,7 +5,7 @@
     <!-- <p>{{myOrders}}</p> -->
     <section class="dashboard-container flex ">
       <section class="dash-nav-sticky-container">
-    <h1>host-dashboard</h1>
+    <!-- <h1>host-dashboard</h1> -->
         <div class="dash-nav-container flex column">
           <!-- <button
             class="add-stay-btn flex align-center clean-btn clickable"
@@ -13,20 +13,16 @@
           >
             <i class="fa fa-plus" aria-hidden="true"> </i>Add Stay
           </button> -->
-          <button
-            value="my Stays"
-            @click="showMyStays()"
-            class="clean-btn clickable"
-          >
-            <i class="fa fa-house-user" aria-hidden="true"></i>My Stays
-          </button>
-          <button
-            value="orders"
-            @click="showMyOrders()"
-            class="clean-btn clickable"
-          >
-            <i class="fa fa-clipboard-list" aria-hidden="true"></i>Orders
-          </button>
+          <div>
+          <span class="material-icons"> home</span>
+          <button value="my Stays" @click="showMyStays()" class="clean-btn clickable">
+            My Stays</button>
+          </div>
+          <div>
+            <span class="material-icons">list_alt</span>
+          <button value="orders" @click="showMyOrders()" class="clean-btn clickable">
+            My Orders</button>
+          </div>
           <!-- <button
             value="rate stat"
             @click="showMyRates()"
@@ -177,8 +173,8 @@
                         class="host-stay-preview "
                       >
                         <span>
-                          <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"/>
-                        <!-- <img class="host-img" :src="order.buyer.imgUrl" /> -->
+                          <!-- <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"/> -->
+                        <img class="host-img" :src="order.buyer.imgUrl" />
                         </span>
                         <span>{{ order.buyer.fullname }}</span>
                         <span>{{ order.dates.start }}</span>
@@ -228,7 +224,7 @@ export default {
     return {
       currUser: null,
       shouldShow: "my orders",
-      allOrders:[],
+      allOrders: [],
       myOrders: [],
       allStays: [],
       myStays: [],
@@ -239,11 +235,12 @@ export default {
     this.$store.commit({ type: "setCurrPage", page });
     this.$store.dispatch({ type: "loadOrders" });
     // this.myOrders = this.getDemoOrders
-    this.currUser = this.getUser
-    this.allOrders = this.getOrders
-    this.myOrders = this.userOrders
-    this.allStays = this.getAllStays
-    this.userStays
+    this.currUser = this.$store.getters.loggedinUser;
+    this.allOrders = this.getOrders;
+    this.myOrders = this.userOrders;
+    this.allStays = this.getAllStays;
+    this.userStays;
+    // this.dateToShow
   },
   computed: {
     getDemoOrders() {
@@ -271,20 +268,22 @@ export default {
     },
     userOrders() {
       // console.log(this.allOrders)
-      var currUserOrders = []
-      const allOrders = this.$store.getters.getOrders
+      var currUserOrders = [];
+      const allOrders = this.$store.getters.getOrders;
       allOrders.forEach((order) => {
         const orderHostId = order.host._id;
+        console.log("userid", this.currUser._id, "hostid", orderHostId);
         // console.log('host', stayHost)
         // console.log('user', this.currUser.fullname)
-        if (this.currUser.Id === orderHostId) {
+        if (this.currUser._id === orderHostId) {
           // console.log('adding')
+          console.log(order.dates);
           currUserOrders.push(order);
         }
       });
-      console.log(currUserOrders)
-      
-      return currUserOrders
+      console.log(currUserOrders);
+
+      return currUserOrders;
     },
     totalRateAvg() {
       var count = 0;
@@ -356,9 +355,9 @@ export default {
       this.myOrders.forEach((order) => {
         const { start, end } = order.dates;
         // console.log(start , end)
-        var now = Date.now()
-        var orderStart = Date.parse(start)
-        var orderEnd = Date.parse(end)
+        var now = Date.now();
+        var orderStart = Date.parse(start);
+        var orderEnd = Date.parse(end);
         // console.log(now, orderStart, orderEnd  )
         if (now <= orderEnd && now >= orderStart) {
           activeGuestsCount++;
@@ -370,6 +369,10 @@ export default {
       return activeGuestsCount;
       // return 3;
     },
+    // dateToShow(){
+    //   console.log('dateToshow', this.myOrders[0].dates.start)
+    //   new Date().toGMTString()
+    // }
   },
   methods: {
     showMyStays() {

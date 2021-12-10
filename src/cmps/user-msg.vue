@@ -4,7 +4,9 @@
     <div class="msg-btns">
       <button @click="goToLogin" class="clean-btn clickable nice-btn">Login</button>
       <button class="clean-btn clickable nice-btn">Demo User</button>
-      <button @click="closeIt" class="clean-btn clickable close-modal">x</button>
+      <button @click="closeIt" class="clean-btn clickable close-modal"><span class="material-icons">
+close
+</span></button>
     </div>
   </div>
 </template>

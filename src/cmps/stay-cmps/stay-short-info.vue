@@ -31,7 +31,10 @@
     </section>
   
   <share-modal class="share-modal" v-if="shareModalShow">
-    <h1 @click="copyURL" class="clickable">copy link to clipboard</h1>
+    <button @click="closeIt" class="clean-btn clickable close-modal"><span class="material-icons">
+close
+</span></button>
+    <h1 @click="copyURL" class="clickable">Copy link to clipboard</h1>
   </share-modal>
   </section>
 
@@ -95,6 +98,9 @@ export default {
       navigator.clipboard.writeText(Url.innerHTML)
       shareModalShow=false
     },
+    closeIt(){
+      this.shareModalShow= false
+    }
     // copyUrl() {
     //     const el = document.createElement('textarea');  
     //     el.value = this.link_url;                                 

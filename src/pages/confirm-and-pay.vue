@@ -76,12 +76,12 @@
             Let the Host know why you're traveling and when you'll check in.
           </div>
           <div class="host-message">
-            <img :src="this.order.stay.host.imgUrl" alt="" />
+            <img :src="this.order.host.imgUrl" alt="" />
             <div class="host">
-              <div class="title2">{{ this.order.stay.host.fullname }}</div>
+              <div class="title2">{{ this.order.host.fullname }}</div>
               <p class="title3">
                 Hi<br />
-                My Name is {{ this.order.stay.host.fullname }} and i'm Happy
+                My Name is {{ this.order.host.fullname }} and i'm Happy
                 that you decided to book My apartment.<br />Please let me know
                 at what time you'll check in so i will wait for you with keys at
                 the apartment.<br />Thank you (:
@@ -165,18 +165,18 @@
     </div>
     <div class="congrats-modal-container" v-if="congratsModal">
       <div class="congrats-modal">
-        <div class="title">Your order is complete!</div>
+        <div class="title">Order sent to host!</div>
         <div class="title-1">
-          Your order is pending confirmation from the host
+          Your host will reply shortly
         </div>
         <div class="title-2">
           You won't be charged until the host approves your order
         </div>
         <div class="separator"></div>
-        <div class="links-container">
+        <div class="links-container ">
           <router-link class="btn" to="/">Home page </router-link>
           <router-link class="btn" to="/trips"
-            >Share your stay with your friends and family
+            >Share your stay
           </router-link>
         </div>
       </div>
