@@ -9,7 +9,7 @@
         <img src="~@/assets/images/review-avatar.png" alt="" class="host-img">
         <div class="review-preview-text-container">
             <h4>Demo name</h4>
-            <h5>Demo date</h5>
+            <h5>{{now}}</h5>
         </div>
     </div>
     <add-review-ctgs />
@@ -37,6 +37,16 @@ export default {
        addReview(){
            console.log('review added')
        }
+    },
+    computed:{
+        now(){
+            const dateObj = new Date()
+            const month = dateObj.getUTCMonth() + 1
+            const day = dateObj.getUTCDate()
+            const year = dateObj.getUTCFullYear()
+            const newdate = day+ "." + month + "." + year
+            return newdate
+        }
     }
 }
 </script>
