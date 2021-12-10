@@ -63,7 +63,9 @@
     box-shadow: none;
     .nav a {
         color: #FFFFFF;
-        text-shadow: 3px 2px 3px rgba(255,255,255,.2);
+        text-shadow: 3px 2px 3px rgba(255, 255, 255, .2);
+        font-family: airbnb-medium;
+        ////////////
     }
 }
 
@@ -82,7 +84,7 @@
         font-family: fas;
         content: '\f0c9';
     }
-    span{
+    span {
         margin-left: 12px;
         font-size: 30px;
         color: #484848;
@@ -94,8 +96,8 @@
         margin-left: 12px;
         width: 30px;
         height: 30px;
-        border-radius: 50%; 
-    }   
+        border-radius: 50%;
+    }
 }
 
 .main-header.details {
@@ -191,6 +193,7 @@
     padding: 0 7px 0 16px;
     width: 300px;
     font-size: 14px;
+    text-indent: 5px;
     // transition: -ms-transform 150ms ease 0s, -webkit-transform 150ms ease 0s, transform 150ms ease 0s, opacity 50ms ease 20ms, visibility 0ms ease 25ms !important;
     &:hover {
         box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
@@ -210,5 +213,5 @@
 }
 
 .hideFilter {
-    display:none;
+    display: none;
 }
