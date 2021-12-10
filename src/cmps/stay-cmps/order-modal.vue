@@ -92,11 +92,8 @@
             </div>
           </div>
         </div>
-        <button
-          class="reserve-btn clickable"
-          :style="{ '--mouse-x': this.mouse.x, '--mouse-y': this.mouse.y }"
-        >
-          {{ buttonText }}
+        <button class="reserve-btn clickable trackable" ref="button">
+          <span> {{ buttonText }}</span>
         </button>
       </form>
       <div class="pricing" v-if="readyToReserve">
@@ -169,6 +166,16 @@ export default {
     this.loggedinUser = this.$store.getters.loggedinUser;
     console.log(this.loggedinUser);
     window.addEventListener("scroll", this.handleScroll);
+
+    // this.$el.addEventListener("mousemove", (evt) => {
+    //   let x = evt.clientX / innerWidth;
+    //   this.mouse.x = x;
+    //   let y = evt.clientY / innerHeight;
+    //   this.mouse.y = y;
+    //   console.log(x, y);
+    //   this.$el.style.setProperty("--mouse-x", x);
+    //   this.$el.style.setProperty("--mouse-y", y);
+    // });
   },
   mounted() {
     this.getModalHeight();
@@ -177,6 +184,14 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
+    // set(e) {
+    //   const button = this.$refs.button;
+    //   let rect = e.target.getBoundingClientRect();
+    //   let x = e.clientX - rect.left;
+    //   let y = e.clientY - rect.top;
+    //   button.style.setProperty("--mouse-x", x + "px");
+    //   button.style.setProperty("--mouse-y", y + "px");
+    // },
     goToSection(sectionId) {
       console.log("goinng to section ", sectionId);
       this.$router.push(`/stay/${this.stay._id}/#${sectionId}`).catch(() => {});
@@ -289,7 +304,6 @@ export default {
     },
     fees() {
       return 25;
-      // return this.getRandomInt(15, 80);
     },
   },
   components: {
@@ -297,6 +311,10 @@ export default {
     showMsg,
   },
 };
+// style="
+//   background-position: calc((100 - var(--mouse-x, 0)) * 1%)
+//     calc((100 - var(--mouse-y, 0)) * 1%);
+// "
 </script>
 
 <style>
