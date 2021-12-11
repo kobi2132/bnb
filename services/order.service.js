@@ -86,7 +86,8 @@ export const orderService = {
     query,
     getById,
     demoQuery,
-    remove
+    remove,
+    save
 }
 
 
@@ -111,16 +112,17 @@ function getById(orderId) {
     return httpService.get(`order/${orderId}`)
 }
 
-function _update(order) {
-    const idx = gOrders.findIndex((currOrder) => currOrder._id === order._id)
-    gOrders.splice(idx, 1, order);
-    return order
+async function save(order) {
+    const savedOrder = await httpService.put(`order/${order._id}`, order)
+    console.log(savedOrder)
+    return savedOrder
 }
+
 
 function remove(id) {
     // return axios.delete(TOYS_URL + id).then((res) => res.data)
     return storageService.remove(KEY, id)
-        // const idx = gToys.findIndex((toy) => toy._id === id);
-        // gToys.splice(idx, 1);
-        // storageService.store(KEY, gToys);
+    // const idx = gToys.findIndex((toy) => toy._id === id);
+    // gToys.splice(idx, 1);
+    // storageService.store(KEY, gToys);
 }

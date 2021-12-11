@@ -93,7 +93,7 @@
                 <div class="flex align-center space-around">
                   <span title="decline" class="circle red-circle"></span>
                   <p>{{ declinedOrders }}</p> -->
-                <!-- </div> -->
+              <!-- </div> -->
               <!-- </div> -->
             </div>
           </div>
@@ -283,7 +283,7 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     getAllStays() {
-      const stays =this.$store.getters.staysToShow
+      const stays = this.$store.getters.staysToShow;
       return stays;
     },
     userStays() {
@@ -313,9 +313,9 @@ export default {
         }
       });
       console.log(currUserOrders);
-      currUserOrders.sort(function(a,b){
-  return new Date(b.dates.start) - new Date(a.dates.start);
-    });
+      currUserOrders.sort(function (a, b) {
+        return new Date(b.dates.start) - new Date(a.dates.start);
+      });
 
       return currUserOrders;
     },

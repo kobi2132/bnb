@@ -27,8 +27,8 @@
           class="user-menu-btn clickable flex align-center clickable"
           @click="shouldShow = !shouldShow"
         >
-          <p v-if="notifications > 0" class="notifications">
-            {{ notifications }}
+          <p v-if="notificationsCount > 0" class="notifications">
+            {{ notificationsCount }}
           </p>
           <span class="material-icons-round" v-if="!currUser">
             account_circle
@@ -108,13 +108,14 @@ export default {
     },
     closeModal() {
       this.shouldShow = !this.shouldShow;
-      // console.log('closemodal')
     },
   },
   computed: {
     notifications() {
-      const notes = this.$store.getters.notifications;
-      return notes > 0 ? notes : "";
+      return this.$store.getters.notifications;
+    },
+    notificationsCount() {
+      return this.$store.getters.notificationsCount;
     },
 
     hasImg() {

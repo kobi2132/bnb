@@ -5,7 +5,7 @@ import { userService } from '../../services/user.service.js'
 export const userStore = {
     state: {
         loggedinUser: null,
-        notifications: 1,
+        notifications: [],
         users: [],
         watchedUser: null
     },
@@ -13,11 +13,37 @@ export const userStore = {
         users({ users }) { return users },
         loggedinUser({ loggedinUser }) { return loggedinUser },
         watchedUser({ watchedUser }) { return watchedUser },
-        notifications({ notifications }) { return notifications }
+        notifications({ notifications }) { return notifications },
+        notificationsCount({ notifications }) { return notifications.length }
     },
     mutations: {
-        newNotification(state) {
-            state.notifications + 1
+        newOrder(state, { order }) {
+            const newNotification = {
+                from: {
+                    _id: order.buyer._id,
+                    fullname: order.buyer.fullname,
+                    imgUrl: order.buyer.imgUrl
+                },
+                txt: "New order from",
+                createdAt: Date.now(),
+            }
+            console.log('notification, yay!', newNotification)
+            state.notifications.push(newNotification)
+            console.log(state.notifications.length)
+        },
+        orderUpdated(state, { order }) {
+            const newNotification = {
+                from: {
+                    _id: order.host._id,
+                    fullname: order.host.fullname,
+                    imgUrl: order.host.imgUrl
+                },
+                txt: 'Your order has been approved by',
+                createdAt: Date.now(),
+            }
+            console.log('notification, yay!', newNotification)
+            state.notifications.push(newNotification)
+            console.log(state.notifications.length)
         },
         setUser(state, { user }) {
             state.loggedinUser = user

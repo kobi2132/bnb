@@ -7,7 +7,7 @@
     <span>{{ order.buyer.fullname }}</span>
     <span>{{ startDateToShow }}</span>
     <span>{{ endDateToShow }}</span>
-    <span>{{ order.status }}</span>
+    <span class="capitalize">{{ order.status }}</span>
     <span>$ {{ order.stay.price }}</span>
     <span class="stay-actions flex align-center space-evenly">
       <button class="clean-btn clickable" @click="approve">
@@ -30,7 +30,7 @@ export default {
     },
   },
   created() {
-    console.log(this.order);
+    // console.log(this.order);
   },
   computed: {
     startDateToShow() {
@@ -38,7 +38,8 @@ export default {
       const year = currDate.getFullYear();
       const month = currDate.getMonth() + 1;
       const day = currDate.getDate();
-      const dateToDisplay = day + "/" + month + 1 + "/" + currDate.getFullYear();
+      const dateToDisplay =
+        day + "/" + month + 1 + "/" + currDate.getFullYear();
       return dateToDisplay;
     },
     endDateToShow() {
@@ -53,6 +54,9 @@ export default {
   methods: {
     approve() {
       console.log("approved");
+      this.order.status = "approved";
+      const order = JSON.parse(JSON.stringify(this.order));
+      this.$store.dispatch({ type: "updateOrder", order });
     },
     decline() {
       console.log("declined");
