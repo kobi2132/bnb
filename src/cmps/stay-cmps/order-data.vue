@@ -35,24 +35,19 @@ export default {
   computed: {
     startDateToShow() {
       const currDate = new Date(this.order.dates.start);
+      const year = currDate.getFullYear();
+      const month = currDate.getMonth() + 1;
+      const day = currDate.getDate();
       const dateToDisplay =
-        currDate.getDate() +
-        "/" +
-        currDate.getMonth() +
-        1 +
-        "/" +
-        currDate.getFullYear();
+        day + "/" + month + 1 + "/" + currDate.getFullYear();
       return dateToDisplay;
     },
     endDateToShow() {
       const currDate = new Date(this.order.dates.end);
-      const dateToDisplay =
-        currDate.getDate() +
-        "/" +
-        currDate.getMonth() +
-        1 +
-        "/" +
-        currDate.getFullYear();
+      const year = currDate.getFullYear();
+      const month = currDate.getMonth() + 1;
+      const day = currDate.getDate();
+      const dateToDisplay = day + "/" + month + 1 + "/" + year;
       return dateToDisplay;
     },
   },
