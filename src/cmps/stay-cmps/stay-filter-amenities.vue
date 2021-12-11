@@ -250,6 +250,9 @@ export default {
         return "";
       }
     },
+    toLocalString(){
+      return Number(1000).toLocaleString();
+    }
   },
   methods: {
     setPriceShown() {

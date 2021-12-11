@@ -3,7 +3,7 @@
   <!--  -->
   <section class="main-layout2 dashboard-page">
     <!-- <p>{{myOrders}}</p> -->
-    <section class="dashboard-container flex">
+    <section class="dashboard-container flex space-between">
       <section class="dash-nav-sticky-container">
         <!-- <h1>host-dashboard</h1> -->
         <div class="dash-nav-container flex column">
@@ -185,13 +185,14 @@
                       <!-- for in
                       v-for="order in myOrders" :key="order._id" > -->
 
-                      <div
+                      <!-- <div
                         v-for="order in myOrders"
                         :key="order._id"
                         class="host-stay-preview"
-                      >
-                        <span>
-                          <!-- <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"/> -->
+                      > -->
+                      <order-data :order="order" class="host-stay-preview" v-for="order in myOrders"
+                        :key="order._id"/>
+                        <!-- <span >
                           <img class="host-img" :src="order.buyer.imgUrl" />
                         </span>
                         <span>{{ order.buyer.fullname }}</span>
@@ -204,8 +205,8 @@
                             <i class="fa fa-check" aria-hidden="true"></i
                             >Re-Approve
                           </button>
-                        </span>
-                      </div>
+                        </span> -->
+                      <!-- </div> -->
                       <!-- <div class="host-stay-preview">
                         <span>
                         <img src="https://randomuser.me/api/portraits/women/61.jpg" alt="user">
@@ -235,9 +236,15 @@
     </section>
   </section>
 </template>
+
 <script>
+import orderData from "@/cmps/stay-cmps/order-data.vue";
+
 export default {
   name: "host-dashboard",
+  components:{
+    orderData
+  },
   data() {
     return {
       currUser: null,
@@ -366,7 +373,9 @@ export default {
       });
       // console.log('prices', ordersPrice)
       var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
-      return sum;
+      // var sum = 100000
+      // Number(sum).toLocaleString()
+      return Number(sum).toLocaleString();
     },
     activeGuests() {
       var activeGuestsCount = 0;

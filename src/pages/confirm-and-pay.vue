@@ -157,7 +157,7 @@
               <div class="title2 bold">
                 Total <span class="underline">(USD)</span>
               </div>
-              <div class="title2 bold">${{ this.calculatePrice + 25 }}.00</div>
+              <div class="title2 bold">${{ this.calculatePriceWithFees}}.00</div>
             </div>
           </div>
         </div>
@@ -221,7 +221,13 @@ export default {
     },
     calculatePrice() {
       const days = this.calculateTotalDays;
-      return parseInt(days * this.order.stay.price);
+      return Number(parseInt(days * this.order.stay.price)).toLocaleString();
+      //  Number(parseInt(this.stay.price * timeDiff)).toLocaleString()
+    },
+    calculatePriceWithFees() {
+      const days = this.calculateTotalDays;
+      return Number(parseInt((days * this.order.stay.price)+25)).toLocaleString();
+      //  Number(parseInt(this.stay.price * timeDiff)).toLocaleString()
     },
     fees() {
       return 25;

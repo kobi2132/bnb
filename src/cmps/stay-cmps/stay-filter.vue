@@ -4,10 +4,10 @@
       @submit.prevent="updateTrip"
       class="max-filter flex space-between align-center"
     >
-      <div class="input-container" @click="shouldShow = false">
+      <div class="input-container first-container" @click="shouldShow = false">
         <label>
           Location
-          <input
+          <input 
             v-model="trip.destination"
             type="search"
             list="destination"
@@ -19,6 +19,8 @@
             <option value="Paris"></option>
             <option value="Santorini"></option>
             <option value="New York"></option>
+            <option value="Bali"></option>
+            <option value="Barcelona"></option>
           </datalist>
         </label>
       </div>
