@@ -10,14 +10,14 @@
         <span class="material-icons" v-if="this.isPriceShown">expand_less</span>
       </div>
       <div class="price-filter-container" v-if="this.isPriceShown">
-        <h3 class="avg">The average nightly price is $196</h3>
+        <h3 class="avg">The average nightly price is {{ getPricesAvg }}</h3>
         <div class="price-filter">
           <HistogramSlider
             :width="360"
             :bar-height="100"
             :data="filterBy.prices"
             :min="10"
-            :max="1000"
+            :max="500"
             :hideFromTo="true"
             :grid="false"
             :barGap="1"
@@ -70,7 +70,7 @@
               <input
                 type="checkbox"
                 id="entire place"
-                value="entire place"
+                value="Entire place"
                 v-model="filterBy.typeOfPlace"
               />
               <span class="checkmark"></span>
@@ -87,7 +87,7 @@
               <input
                 type="checkbox"
                 id="private room"
-                value="private room"
+                value="Private room"
                 v-model="filterBy.typeOfPlace"
               />
               <span class="checkmark"></span>
@@ -105,7 +105,7 @@
               <input
                 type="checkbox"
                 id="hotel room"
-                value="hotel room"
+                value="Hotel room"
                 v-model="filterBy.typeOfPlace"
               />
               <span class="checkmark"></span>
@@ -122,7 +122,7 @@
               <input
                 type="checkbox"
                 id="shared room"
-                value="shared room"
+                value="Shared room"
                 v-model="filterBy.typeOfPlace"
               />
               <span class="checkmark"></span>
@@ -206,15 +206,15 @@ export default {
     return {
       filterBy: {
         price: {
-          min: 0,
-          max: 1000,
+          min: 10,
+          max: 500,
         },
         typeOfPlace: [],
         labels: [],
+        prices: [],
       },
       histogramMainColor: "#b0b0b0",
       histogramSecondaryColor: "#dddddd",
-      prices: [],
       stays: null,
       activeBtn: "",
       isPriceShown: false,
@@ -231,24 +231,31 @@ export default {
   components: {},
   computed: {
     displayPriceRange() {
-      if (this.filterBy.price.min > 10 && this.filterBy.price.max < 1000) {
+      if (this.filterBy.price.min > 10 && this.filterBy.price.max < 500) {
         return "$" + this.filterBy.price.min + " - $" + this.filterBy.price.max;
       } else if (
         this.filterBy.price.min > 10 &&
-        this.filterBy.price.max >= 1000
+        this.filterBy.price.max >= 500
       ) {
         return "$" + this.filterBy.price.min + "+";
       } else if (
         this.filterBy.price.min <= 10 &&
-        this.filterBy.price.max < 1000
+        this.filterBy.price.max < 500
       ) {
         return "Up to $" + this.filterBy.price.max;
       } else if (
         this.filterBy.price.min <= 10 &&
-        this.filterBy.price.max === 1000
+        this.filterBy.price.max === 500
       ) {
-        return "";
+        return "Price";
       }
+    },
+    getPricesAvg() {
+      if (!this.filterBy.prices) return "0$";
+      var avgsSum = this.filterBy.prices.reduce((a, b) => a + b);
+      avgsSum = avgsSum / this.filterBy.prices.length;
+      avgsSum = avgsSum.toFixed(1);
+      return avgsSum + "$";
     },
   },
   methods: {
@@ -277,7 +284,6 @@ export default {
       const stays = this.$store.getters.staysToShow;
       const staysPrices = stays.map((stay) => stay.price);
       this.filterBy.prices = staysPrices;
-      // console.log(staysPrices);
     },
 
     sliderChanged(values) {
@@ -288,11 +294,11 @@ export default {
     },
     clearPriceRange() {
       this.filterBy.price.min = 0;
-      this.filterBy.price.max = 1000;
+      this.filterBy.price.max = 500;
     },
     setPriceRange() {
       this.isPriceShown = false;
-      if (this.filterBy.price.min <= 0 && this.filterBy.price.max === 1000) {
+      if (this.filterBy.price.min <= 0 && this.filterBy.price.max === 500) {
         this.isPriceRange = false;
       } else this.isPriceRange = true;
       this.setFilter();
@@ -307,37 +313,7 @@ export default {
     clearTypeFilter() {
       this.filterBy.typeOfPlace = [];
     },
-
-    // setVal(values) {
-    //   values.from = this.filterBy.price.min;
-    //   values.to = this.filterBy.price.max;
-    //   values["from_pretty"] = this.filterBy.price.min.toString();
-    // },
-
-    // setSlideValsFromIntputs() {
-    //   // var a = this.$refs.slide.ionRangeSlider.input;
-    //   var a = this.$refs.slide.ionRangeSlider.result;
-    //   console.log("a", a);
-    //   console.log(this.$refs.slide);
-    //   // this.setVal(Object.values(a)[0]);
-
-    //   this.setVal(a);
-    // },
   },
-  // mounted() {
-  //   this.setSlideValsFromIntputs();
-  // },
-  // updated() {
-  //   console.log("kobi");
-  //   if (this.$refs.slide) {
-  //     this.setSlideValsFromIntputs();
-  //   }
-  // },
-  // watch: {
-  //   "$refs"(slide) {
-  //     console.log("slode", slide);
-  //   },
-  // },
 };
 </script>
 

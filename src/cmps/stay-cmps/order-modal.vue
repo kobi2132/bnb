@@ -105,7 +105,7 @@
           <span>Service fee</span> <span>${{ fees }}</span>
         </p>
         <p>
-          <span>Total</span><span> ${{ calculateTotalPrice + fees }}</span>
+          <span>Total</span><span> ${{ calculateTotalPriceWithFees }}</span>
         </p>
       </div>
     </div>
@@ -301,7 +301,17 @@ export default {
       if (size > 1) {
         const { start, end } = this.trip.dates;
         const timeDiff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
-        return parseInt(this.stay.price * timeDiff);
+         return Number(parseInt(this.stay.price * timeDiff)).toLocaleString()
+        // return parseInt(this.stay.price * timeDiff);
+      }
+    },
+    calculateTotalPriceWithFees() {
+      var size = Object.keys(this.trip.dates).length;
+      if (size > 1) {
+        const { start, end } = this.trip.dates;
+        const timeDiff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
+         return Number(parseInt((this.stay.price * timeDiff)+25)).toLocaleString()
+        // return parseInt(this.stay.price * timeDiff);
       }
     },
     fees() {

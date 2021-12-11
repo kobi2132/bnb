@@ -24,6 +24,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        margin-inline-start: -20px;
         .back-btn {
             display: flex;
             align-items: center;
@@ -242,67 +243,68 @@
                 }
             }
         }
-        .details-modal.sticky {
-            top: 125px;
-        }
     }
-    .congrats-modal-container {
-        position: relative;
-        .congrats-modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 450px;
-            padding: 24px;
-            border: 1px solid rgb(221, 221, 221);
-            border-radius: 12px;
-            background-color: white;
-            .title {
-                font-size: 22px;
-                font-weight: bold;
-                color: $redAirbnb;
-                text-align: center;
-                margin-bottom: 24px;
-            }
-            .title-1 {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 24px;
-            }
-            .title-2 {
-                font-size: 14px;
-                margin-bottom: 24px;
-            }
-            .separator {
-                height: 2px;
-                width: 100%;
-                border-bottom: 1px solid #dddddd;
-                margin-bottom: 24px;
-            }
-            .links-container {
-                display: flex;
-                justify-content: space-around;
-            }
-            .btn {
-                // background-color: $redAirbnb;
-                // border: none;
-                // color: white;
-                // width: 173px;
-                // height: 48px;
-                // font-size: 16px;
-                // font-weight: 600;
-                // border-radius: 8px;
-                background-color: #ff385c;
-                background-image: linear-gradient( 90deg, #e61e4d 0, #e31c5f 50%, #d70466);
-                padding: 10px 30px;
-                border-radius: 5px;
-                color: #fff;
-                font-size: 0.875rem;
-                font-weight: 600;
-                letter-spacing: 1.2px;
-                margin-bottom: 10px;
-            }
+
+  .congrats-modal-container{
+      position: relative;
+
+     .congrats-modal{
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 550px;
+         padding: 50px;
+         border: 1px solid rgb(221, 221, 221);
+         border-radius: 12px;
+         background-color: white;
+
+
+         .title{
+             font-size: 22px;
+             font-weight: bold;
+             color: $redAirbnb;
+             margin-bottom: 24px;
+         }
+         .title-1{
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 4px;
+   
+         }
+         .title-2{
+            font-size: 14px;
+            margin-bottom: 24px;
+         }
+         .separator {
+            height: 2px;
+            width: 100%;
+            border-bottom: 1px solid #dddddd;
+            margin-bottom: 37px;
         }
-    }
+        .links-container{
+            display: flex;
+            justify-content: space-between;
+            text-decoration: underline;
+            font-weight: bold;
+
+        }
+
+     }
+  }  
+
+  .main-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .25);
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity .6s;
+    pointer-events: auto;
+
+}
 }

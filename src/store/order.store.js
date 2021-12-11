@@ -53,6 +53,22 @@ export const orderStore = {
             state.orders.push(order)
             console.log(state.orders);
         },
+        updateOrder(state, payload) {
+            const idx = state.orders.findIndex(order => order._id === payload.order._id)
+            state.orders.splice(idx, 1, payload.order)
+        },
+        removeOrder(state, payload) {
+            // state.todos = state.todos.filter(todo => todo._id !== payload.todoId)
+            const idx = state.orders.findIndex(order => order._id === payload.orderId)
+            state.orders.splice(idx, 1)
+            // const activity = {
+            //     updatedAt: Date.now(),
+            //     txt: 'Removed a todo: ' + payload.todo.txt,
+            // }
+            // state.user.activities.push(activity)
+            // console.log(state.user.activities)
+            // userService.save(state.user)
+        },
         setOrderById(state, { order }) {
             state.currOrder = order
             console.log(state.currOrder);
@@ -61,7 +77,6 @@ export const orderStore = {
     actions: {
         async loadOrders({ commit, state }) {
             try {
-                console.log('mashu')
                 const orders = await orderService.query()
                 commit({ type: 'setOrders', orders })
                 socketService.off(SOCKET_EVENT_ORDER_ADDED)
@@ -72,7 +87,6 @@ export const orderStore = {
                 socketService.off(SOCKET_EVENT_ORDER_ABOUT_YOU)
                 socketService.on(SOCKET_EVENT_ORDER_ABOUT_YOU, order => {
                     console.log('New order!', order);
-                    commit({ type: 'addOrder', order })
                 })
             } catch (err) {
                 console.log('orderStore: Error in loadOrders', err)
@@ -102,7 +116,20 @@ export const orderStore = {
             const order = await orderService.getById(orderId)
             // console.log(order)
             return order
-        }
+        },
+        updateOrder({ commit }, { order }) {
+            return orderService.save(order)
+                .then(savedOrder => {
+                    commit({ type: 'updateOrder', order: savedOrder })
+                    return savedOrder
+                })
+        },
+        removeOrder({ commit }, { orderId }) {
+            return orderService.remove(orderId)
+                .then(() => {
+                    commit({ type: 'removeOrder', orderId })
+                })
+        },
     }
 
 }

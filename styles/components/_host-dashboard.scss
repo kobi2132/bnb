@@ -17,9 +17,10 @@
     h1 {
         font-size: 24px;
     }
-    // position: fixed;
     width: 230px;
-    // change to vw or somthing
+    max-width: 230px;
+    min-width: 230px;
+    align-self: flex-start;
     .dash-nav-container {
         // position: sticky;
         justify-content: flex-start;
@@ -75,12 +76,14 @@
 .dash-main-container {
     gap: 20px;
     padding: 43px 20px 20px 60px;
+    margin: auto;
     // margin-inline-start: 240px;
     //fix this layout
     border-radius: 13px;
     .dash-header {
         gap: 20px;
-        flex: 1 1;
+        max-width: 586px;
+        align-self: center;
         div {
             // min-width: 200px;
             // max-width: 200px;
@@ -160,7 +163,8 @@
                     align-items: center;
                     .thead-container {
                         display: grid;
-                        grid-template-columns: repeat(5, 1fr);
+                        // grid-template-columns: repeat(5, 1fr);
+                        grid-template-columns: auto 1fr 1fr 1fr 1fr;
                         gap: 10px;
                         align-items: center;
                         text-align: center;
@@ -173,7 +177,8 @@
                     width: 100%;
                     .host-stay-preview {
                         display: grid;
-                        grid-template-columns: repeat(5, 1fr);
+                        // grid-template-columns: repeat(5, 1fr);
+                        grid-template-columns: auto 1fr 1fr 1fr 1fr;
                         gap: 10px;
                         align-items: center;
                         text-align: center;
@@ -201,7 +206,8 @@
                             align-items: center;
                             .thead-container {
                                 display: grid;
-                                grid-template-columns: repeat(7, 1fr);
+                                // grid-template-columns: repeat(7, 1fr);
+                                grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr 1fr;
                                 gap: 10px;
                                 align-items: center;
                                 text-align: center;
@@ -216,7 +222,8 @@
                         }
                         .host-stay-preview {
                             display: grid;
-                            grid-template-columns: repeat(7, 1fr);
+                            // grid-template-columns: repeat(7, 1fr);
+                            grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr 1fr;
                             gap: 10px;
                             align-items: center;
                             text-align: center;

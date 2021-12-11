@@ -4,7 +4,7 @@
       @submit.prevent="updateTrip"
       class="max-filter flex space-between align-center"
     >
-      <div class="input-container" @click="shouldShow = false">
+      <div class="input-container first-container" @click="shouldShow = false">
         <label>
           Location
           <input
