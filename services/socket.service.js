@@ -4,6 +4,7 @@ export const SOCKET_EMIT_USER_WATCH = 'user-watch';
 export const SOCKET_EVENT_USER_UPDATED = 'user-updated';
 export const SOCKET_EVENT_ORDER_ADDED = 'order-added';
 export const SOCKET_EVENT_ORDER_ABOUT_YOU = 'order-about-you';
+export const SOCKET_EVENT_ORDER_UPDATED = 'order-updated'
 
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'

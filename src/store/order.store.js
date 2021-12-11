@@ -1,5 +1,5 @@
 import { orderService } from '../../services/order.service.js'
-import { socketService, SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_ABOUT_YOU } from '../../services/socket.service'
+import { socketService, SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_ABOUT_YOU, SOCKET_EVENT_ORDER_UPDATED } from '../../services/socket.service'
 
 export const orderStore = {
     state: {
@@ -31,12 +31,10 @@ export const orderStore = {
         getDemoOrders(state) {
             return state.demoOrders
         },
-
         getCurrOrder(state) {
             console.log(state.currOrder);
             return state.currOrder
         },
-
     },
     mutations: {
         setTrip(state, { trip }) {
@@ -58,16 +56,8 @@ export const orderStore = {
             state.orders.splice(idx, 1, payload.order)
         },
         removeOrder(state, payload) {
-            // state.todos = state.todos.filter(todo => todo._id !== payload.todoId)
             const idx = state.orders.findIndex(order => order._id === payload.orderId)
             state.orders.splice(idx, 1)
-            // const activity = {
-            //     updatedAt: Date.now(),
-            //     txt: 'Removed a todo: ' + payload.todo.txt,
-            // }
-            // state.user.activities.push(activity)
-            // console.log(state.user.activities)
-            // userService.save(state.user)
         },
         setOrderById(state, { order }) {
             state.currOrder = order
@@ -80,15 +70,17 @@ export const orderStore = {
                 const orders = await orderService.query()
                 commit({ type: 'setOrders', orders })
                 console.log(orders)
-                // socketService.off(SOCKET_EVENT_ORDER_ADDED)
-                // socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
-                //     console.log('Got order from socket', order);
-                // })
                 socketService.off(SOCKET_EVENT_ORDER_ABOUT_YOU)
                 socketService.on(SOCKET_EVENT_ORDER_ABOUT_YOU, order => {
                     console.log('New order!', order);
                     commit({ type: 'addOrder', order })
-                    commit({ type: 'newNotification' })
+                    commit({ type: 'newOrder', order })
+                })
+                socketService.off(SOCKET_EVENT_ORDER_UPDATED)
+                socketService.on(SOCKET_EVENT_ORDER_UPDATED, order => {
+                    console.log('Order updated!', order);
+                    commit({ type: 'updateOrder', order })
+                    commit({ type: 'orderUpdated', order })
                 })
             } catch (err) {
                 console.log('orderStore: Error in loadOrders', err)
@@ -96,6 +88,15 @@ export const orderStore = {
             }
 
 
+        },
+        updateOrder({ commit }, { order }) {
+            console.log(order)
+            return orderService.save(order)
+                .then(savedOrder => {
+                    commit({ type: 'updateOrder', order: savedOrder })
+                    console.log(savedOrder)
+                    return savedOrder
+                })
         },
         loadDemoOrders({ commit, state }) {
             const demoOrders = orderService.demoQuery()
@@ -118,13 +119,6 @@ export const orderStore = {
             const order = await orderService.getById(orderId)
             // console.log(order)
             return order
-        },
-        updateOrder({ commit }, { order }) {
-            return orderService.save(order)
-                .then(savedOrder => {
-                    commit({ type: 'updateOrder', order: savedOrder })
-                    return savedOrder
-                })
         },
         removeOrder({ commit }, { orderId }) {
             return orderService.remove(orderId)
