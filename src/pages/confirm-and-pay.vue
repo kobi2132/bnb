@@ -23,8 +23,40 @@
         </div>
         <div class="separator"></div>
         <div class="pay-with">
-          <div class="title1">Pay with</div>
-          <el-select class="payment-select" v-model="value" placeholder="Select payment methods">
+          <div class="title-container">
+            <div class="title1">Pay with</div>
+            <div class="imgs">
+              <img
+                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg"
+                alt=""
+              />
+              <img
+                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_amex.84088b520ca1b3384cb71398095627da.svg"
+                alt=""
+              />
+              <img
+                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149.svg"
+                alt=""
+              />
+              <img
+                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_discover.7f05c82f07d62a0f8a69d54dbcd7c8be.svg"
+                alt=""
+              />
+              <img
+                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_paypal.faa3042fa2daf6b4a9822cc4b43e8609.svg"
+                alt=""
+              />
+              <img
+                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_googlepay.3f786bc031b59575d24f504dfb859da0.svg"
+                alt=""
+              />
+            </div>
+          </div>
+          <el-select
+            class="payment-select"
+            v-model="value"
+            placeholder="Select payment methods"
+          >
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -43,14 +75,18 @@
             Let the Host know why you're traveling and when you'll check in.
           </div>
           <div class="host-message">
-            <img src="https://www.anatshai.co.il/wp-content/uploads/%D7%A2%D7%A0%D7%A8-%D7%90%D7%92%D7%99%D7%91-1.jpg" alt="" />
+            <img
+              src="https://www.anatshai.co.il/wp-content/uploads/%D7%A2%D7%A0%D7%A8-%D7%90%D7%92%D7%99%D7%91-1.jpg"
+              alt=""
+            />
             <div class="host">
               <div class="title2">Yami Kobin</div>
               <p class="title3">
-                Hi<br>
+                Hi<br />
                 My Name is Hezi and i'm Happy that you decided to book My
-                apartment.<br>Please let me know at what time you'll check in so i
-                will wait for you with keys at the apartment.<br>Thank you (:
+                apartment.<br />Please let me know at what time you'll check in
+                so i will wait for you with keys at the apartment.<br />Thank
+                you (:
               </p>
             </div>
           </div>
@@ -71,17 +107,56 @@
         <div class="separator"></div>
         <div class="congrats">
           <p class="title4">
-            By selecting the button below, I agree to the <span>Host's House Rules</span>,
-            <span>Airbnb's COVID-19 Safety Requirements</span> and the <span>Guest Refund Policy</span>.
+            By selecting the button below, I agree to the
+            <span>Host's House Rules</span>,
+            <span>Airbnb's COVID-19 Safety Requirements</span> and the
+            <span>Guest Refund Policy</span>.
           </p>
           <router-link class="confirm-btn" to="/congrats">
             <div class="confirm-btn">Confirm and pay</div>
           </router-link>
         </div>
       </div>
+
       <div class="details-modal">
         <div class="modal-container">
-          I'M MODAL, HELLO
+          <div class="stay-details-container">
+            <img :src="this.currStay.imgUrls[0]" alt="" />
+            <div class="details-flex">
+              <div class="stay-details">
+                <div class="title4">{{ this.currStay.propertyType }}</div>
+                <div class="title3">{{ this.currStay.name }}</div>
+              </div>
+              <div class="reviews-preview">
+                <div class="star-preview">
+                  <span class="material-icons-outlined">star</span>
+                </div>
+                <span class="review-avg">4.6&nbsp;</span>
+                <span class="reviews-total">(4)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="separator"></div>
+          <div class="price-details-container">
+            <div class="title1">Price details</div>
+            <div class="price-detail">
+              <div class="title2">${{this.order.stay.price}}x{{this.calculateTotalDays}} nights</div>
+              <div class="title2"></div>
+            </div>
+            <div class="price-detail">
+              <div class="title2"></div>
+              <div class="title2"></div>
+            </div>
+            <div class="price-detail">
+              <div class="title2"></div>
+              <div class="title2"></div>
+            </div>
+            <div class="price-detail">
+              <div class="title2"></div>
+              <div class="title2"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -106,22 +181,59 @@ export default {
           value: "creditCard",
           label: "Credit or debit card",
         },
-        {
-          value: "Option4",
-          label: "Option4",
-        },
-        {
-          value: "Option5",
-          label: "Option5",
-        },
       ],
       value: "Google Pay",
+
+      order: {
+        _id: "b2OAw",
+        dates: {
+          start: "2022-01-17T16:39:21.549Z",
+          end: "2022-01-20T16:39:21.549Z",
+        },
+        guests: {
+          adults: "1",
+          children: "0",
+        },
+        createdAt: "1638981562292",
+        buyer: {
+          _id: "u103",
+          fullname: "Yami Kobin",
+        },
+        stay: {
+          _id: "907978798",
+          name: "Nice House",
+          price: "100",
+        },
+        hostId: "u101",
+        status: "pending",
+      },
+      currStay: null,
     };
   },
 
+  created() {},
   computed: {
-    stays() {
-      return this.$store.getters.staysToShow;
+        calculateTotalDays() {
+        const { start, end } = this.order.dates;
+        const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+        return days
+    },
+    fees() {
+      return 25;
+      // return this.getRandomInt(15, 80);
+    },
+  },
+  watch: {
+    "$route.params.orderId": {
+      handler() {
+        let orderId = this.$route.params.orderId;
+        this.$store.dispatch({ type: "getOrderById", orderId });
+
+        const order = this.$store.getters.getCurrOrder;
+        console.log(order);
+        this.currStay = this.$store.getters.getCurrStay;
+      },
+      immediate: true,
     },
   },
 };

@@ -7,6 +7,7 @@ export const storageService = {
     post,
     put,
     remove,
+
 }
 
 
