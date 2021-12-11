@@ -149,11 +149,11 @@
             </div>
             <div class="price-detail">
               <div class="title2 underline">Cleaning fee</div>
-              <div class="title2">$25.00</div>
+              <div class="title2">$0.00</div>
             </div>
             <div class="price-detail">
               <div class="title2 underline">Service fee</div>
-              <div class="title2 green">$0.00</div>
+              <div class="title2 green">$25.00</div>
             </div>
             <div class="price-detail">
               <div class="title2 bold">
@@ -255,7 +255,7 @@ export default {
       const year = currDate.getFullYear();
       const month = currDate.getMonth();
       const day = currDate.getDate();
-      const dateToDisplay = day + "/" + month + "/" + year;
+      const dateToDisplay = day + "/" + month + 1 + "/" + year;
       this.dateFrom = dateToDisplay;
     },
         setDateTo(date) {
