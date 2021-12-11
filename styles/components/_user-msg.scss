@@ -19,6 +19,7 @@
     height: 30%;
     background-color: white;
     z-index: 9000;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     .msg-btns {
         // margin-top: 10px;
         display: flex;
@@ -41,7 +42,8 @@
             // margin-bottom: 40px;
         }
         .close-modal {
-            position: fixed;
+            position: relative;
+            // position: fixed;
             top: 5px;
             right: 10px;
         }

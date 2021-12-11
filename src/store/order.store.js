@@ -59,8 +59,23 @@ export const orderStore = {
     },
     actions: {
         async loadOrders({ commit, state }) {
-            const orders = await orderService.query()
-            commit({ type: 'setOrders', orders })
+            try {
+                const orders = await orderService.query()
+                commit({ type: 'setOrders', orders })
+                socketService.off(SOCKET_EVENT_ORDER_ADDED)
+                socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
+                    console.log('Got order from socket', order);
+                    commit({ type: 'addOrder', order })
+                })
+                socketService.off(SOCKET_EVENT_ORDER_ABOUT_YOU)
+                socketService.on(SOCKET_EVENT_ORDER_ABOUT_YOU, order => {
+                    console.log('New order!', order);
+                })
+            } catch (err) {
+                console.log('orderStore: Error in loadOrders', err)
+                throw err
+            }
+
 
         },
         loadDemoOrders({ commit, state }) {

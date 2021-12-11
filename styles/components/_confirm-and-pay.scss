@@ -1,9 +1,7 @@
 .confirm-and-pay {
-.main-layout3{
-    grid-template-columns: 25% 1fr 25%;
-}
-
-
+    .main-layout3 {
+        grid-template-columns: 25% 1fr 25%;
+    }
     .title1 {
         color: #222222;
         font-size: 22px;
@@ -22,7 +20,6 @@
         color: #222222;
         font-size: 12px;
     }
-
     .header {
         display: flex;
         align-items: center;
@@ -50,7 +47,6 @@
     }
     .details-and-pay {
         display: flex;
-
         .trip-info {
             .your-trip {
                 .title2 {
@@ -80,7 +76,6 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-
                     .imgs {
                         display: flex;
                         justify-content: flex-end;
@@ -130,7 +125,7 @@
                 textarea {
                     color: rgb(63, 63, 63);
                     border-radius: 8px;
-                    resize:none;
+                    resize: none;
                     width: 100%;
                     height: 100px;
                     padding: 8px 10px;
@@ -169,7 +164,6 @@
                 }
                 margin-bottom: 100px;
             }
-
             .separator {
                 height: 2px;
                 width: 100%;
@@ -181,10 +175,10 @@
             height: 381px;
             width: 465px;
             padding: 24px;
+            // margin-top: 65px;
             border: 1px solid rgb(221, 221, 221);
             border-radius: 12px;
             margin-inline-start: 81px;
-
             .modal-container {
                 .separator {
                     height: 2px;
@@ -202,19 +196,16 @@
                         border-radius: 8px;
                         margin-inline-end: 12px;
                     }
-
                     .details-flex {
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
-
                         .stay-details {
                             .title4 {
                                 color: #717171;
                                 margin-bottom: 4px;
                             }
                         }
-
                         .reviews-preview {
                             display: flex;
                             justify-content: flex-start;

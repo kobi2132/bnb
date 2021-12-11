@@ -202,6 +202,7 @@ export default {
     getModalHeight() {
       this.modalHeight = this.$refs.modal.clientHeight;
     },
+    // location
     async placeOrder() {
       const loggedinUser = this.$store.getters.loggedinUser;
       if (!loggedinUser) showMsg("Please log in first", "danger");
@@ -220,13 +221,14 @@ export default {
           this.order = {
             dates,
             guests,
-            stay: { _id, name, price, imgUrls, propertyType, host },
+            stay: { _id, name, price, imgUrls, propertyType },
           };
           this.order.buyer = {
             _id: this.loggedinUser._id,
             fullname: this.loggedinUser.fullname,
+            imgUrl: this.loggedinUser.imgUrl,
           };
-          this.order.hostId = this.stay.host._id;
+          this.order.host = host;
           this.order.status = "pending";
           let order = JSON.parse(JSON.stringify(this.order));
           console.log(order);
