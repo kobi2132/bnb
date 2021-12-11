@@ -1,4 +1,5 @@
 import { orderService } from '../../services/order.service.js'
+import { socketService, SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_ABOUT_YOU } from '../../services/socket.service'
 
 export const orderStore = {
     state: {
@@ -60,6 +61,7 @@ export const orderStore = {
     actions: {
         async loadOrders({ commit, state }) {
             try {
+                console.log('mashu')
                 const orders = await orderService.query()
                 commit({ type: 'setOrders', orders })
                 socketService.off(SOCKET_EVENT_ORDER_ADDED)
@@ -70,6 +72,7 @@ export const orderStore = {
                 socketService.off(SOCKET_EVENT_ORDER_ABOUT_YOU)
                 socketService.on(SOCKET_EVENT_ORDER_ABOUT_YOU, order => {
                     console.log('New order!', order);
+                    commit({ type: 'addOrder', order })
                 })
             } catch (err) {
                 console.log('orderStore: Error in loadOrders', err)

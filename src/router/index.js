@@ -15,6 +15,7 @@ import hostDashboard from '../pages/host-dashboard.vue'
 import userAccount from '../pages/user-account.vue'
 import confirmAndPay from '../pages/confirm-and-pay.vue'
 import congratsPage from '../pages/congrats-page.vue'
+import chat from '../pages/chat.vue'
 
 
 
@@ -94,6 +95,11 @@ const routes = [{
     path: '/congrats/',
     name: 'congratsPage',
     component: congratsPage
+},
+{
+    path: '/chat',
+    name: 'chat',
+    component: chat
 },
 
 

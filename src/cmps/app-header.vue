@@ -4,6 +4,7 @@
     :class="{
       details: stayDetails,
       fullheader: !miniFilter && (homePage || explore),
+      top: topOfPage,
       'explore-page': explore,
       'home-page': homePage,
     }"
@@ -29,16 +30,16 @@
           <span class="material-icons-round" v-if="!currUser">
             account_circle
           </span>
-          <img
-            v-if="currUser && hasImg"
-            class="avatar"
-            :src="loggedinUser.imgUrl"
-          />
-          <img
-            v-if="currUser && !hasImg"
-            class="avatar"
-            :src="require('../assets/images/avatar.png')"
-          />
+          <span v-else>
+            <img
+              v-if="currUser && !hasImg"
+              class="avatar"
+              :src="require('../assets/images/avatar.png')" />
+            <img
+              v-if="currUser && hasImg"
+              class="avatar"
+              :src="loggedinUser.imgUrl"
+          /></span>
         </button>
       </div>
     </section>
@@ -67,6 +68,7 @@
 
 <script>
 import stayFilter from "../cmps/stay-cmps/stay-filter.vue";
+import { socketService } from "../../services/socket.service.js";
 export default {
   data() {
     return {
@@ -75,13 +77,14 @@ export default {
       currPage: null,
       loggedinUser: null,
       hideFilter: false,
+      topOfPage: true,
     };
   },
 
   methods: {
     logout() {
-      this.$store.dispatch({ type: "logout" });
       this.loggedinUser = null;
+      this.$store.dispatch({ type: "logout" });
       this.goHome();
       this.shouldShow = false;
     },
@@ -91,7 +94,12 @@ export default {
     handleScroll(event) {
       // console.log(window.scrollY);
       // console.log("scrolling...");
-      if (window.scrollY === 0) this.miniFilter = false;
+      if (window.scrollY === 0) {
+        this.miniFilter = false;
+        this.topOfPage = true;
+      } else {
+        this.topOfPage = false;
+      }
       if (window.scrollY > 50) this.miniFilter = true;
       if (this.currPage === "stayDetails") this.miniFilter = true;
     },
@@ -103,7 +111,7 @@ export default {
   computed: {
     hasImg() {
       var user = this.$store.getters.loggedinUser;
-      return user && user.imgUrl ? true : false;
+      return user && user.imgUrl !== null ? true : false;
     },
     currUser() {
       var user = this.$store.getters.loggedinUser;

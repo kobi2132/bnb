@@ -7,7 +7,8 @@
           class="material-icons"
           :class="{ active: isLiked }"
           @click.stop="toggleWishList"
-          >favorite</span>
+          >favorite</span
+        >
       </div>
     </div>
     <div class="stay-preview-info">
@@ -21,7 +22,7 @@
         >
       </div>
       <div class="property-type">
-        {{ this.stay.propertyType }} • {{ this.stay.loc.country }}
+        {{ this.stay.propertyType }} • {{ this.stay.loc.city }}
       </div>
       <div class="stayname">{{ this.stay.name }}</div>
       <div class="stay-price">

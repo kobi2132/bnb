@@ -251,6 +251,7 @@ export default {
   created() {
     const page = "hostDashboard";
     this.$store.commit({ type: "setCurrPage", page });
+    this.$store.dispatch({ type: "loadOrders" });
     // this.$store.dispatch({ type: "loadOrders" });
     // this.myOrders = this.getDemoOrders
     this.currUser = this.$store.getters.loggedinUser;

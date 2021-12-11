@@ -269,6 +269,7 @@ export default {
     },
     setFilter() {
       const filterBy = this.filterBy;
+      console.log(filterBy);
       this.$store.commit({ type: "setFilter", filterBy });
       this.getStaysPrices();
     },
@@ -299,7 +300,7 @@ export default {
 
     setTypeFilter() {
       this.isTypeShown = false;
-
+      console.log(this.filterBy.typeOfPlace);
       this.setFilter();
     },
 

@@ -33,7 +33,7 @@
         <stay-features />
 
         <stay-description :stay="stay" />
-        <div id="reviews"></div>
+        <a id="reviews"></a>
       </div>
       <div class="stay-display-order">
         <order-modal class="sticky" :conHeight="conHeight" :stay="stay" />

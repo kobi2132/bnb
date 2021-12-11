@@ -15,12 +15,13 @@ window.socketService = socketService
 // var socketIsReady = false;
 socketService.setup()
 
-
 function createSocketService() {
   var socket = null;
   const socketService = {
     async setup() {
+      console.log('here')
       socket = io(baseUrl)
+      console.log('here1')
     },
     on(eventName, cb) {
       socket.on(eventName, cb)
@@ -31,6 +32,7 @@ function createSocketService() {
       else socket.off(eventName, cb)
     },
     emit(eventName, data) {
+      console.log('eventName', eventName);
       socket.emit(eventName, data)
     },
     terminate() {
@@ -47,12 +49,13 @@ function createDummySocketService() {
     listenersMap,
     setup() {
       listenersMap = {}
+      // window.mapmap = listenersMap
     },
     terminate() {
       this.setup()
     },
     on(eventName, cb) {
-      listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
+      listenersMap[eventName] = [...(listenersMap[eventName] || []), cb]
     },
     off(eventName, cb) {
       if (!listenersMap[eventName]) return

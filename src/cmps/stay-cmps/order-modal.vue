@@ -28,7 +28,7 @@
         <button
           @click="placeOrder"
           v-if="miniModal"
-          class="reserve-btn clickable"
+          class="reserve-btn clickable pretty-btn"
           :style="{ '--mouse-x': this.mouse.x, '--mouse-y': this.mouse.y }"
         >
           {{ buttonText }}
@@ -92,7 +92,7 @@
             </div>
           </div>
         </div>
-        <button class="reserve-btn clickable trackable" ref="button">
+        <button class="reserve-btn clickable trackable pretty-btn" ref="button">
           <span> {{ buttonText }}</span>
         </button>
       </form>

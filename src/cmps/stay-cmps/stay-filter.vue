@@ -16,9 +16,11 @@
           />
           <datalist id="destination">
             <option value="Tel Aviv"></option>
+            <option value="Barcelona"></option>
             <option value="Paris"></option>
             <option value="Santorini"></option>
             <option value="New York"></option>
+            <option value="Bali"></option>
           </datalist>
         </label>
       </div>

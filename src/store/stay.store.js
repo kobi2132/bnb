@@ -16,7 +16,7 @@ export const stayStore = {
     },
     getters: {
         staysToShow(state, getters) {
-            // console.log(getters.getCurrTrip)
+            console.log(state.filterBy)
             const { destination, guests, dates } = getters.getCurrTrip
             var filteredStays = state.stays
             if (destination) {
@@ -39,7 +39,7 @@ export const stayStore = {
 
             if (state.filterBy.typeOfPlace.length > 0) {
                 const typeOfPlace = state.filterBy.typeOfPlace
-                filteredStays = filteredStays.filter(stay => typeOfPlace.includes(stay.propertyType))
+                filteredStays = filteredStays.filter(stay => stay.propertyType.includes(typeOfPlace))
                 console.log(filteredStays);
             }
 
