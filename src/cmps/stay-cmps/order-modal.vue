@@ -54,7 +54,12 @@
                 expand_more
               </span>
             </div>
-            <input class="guests" :placeholder="numOfGuests" disabled />
+            <input
+              class="guests"
+              :placeholder="numOfGuests"
+              disabled
+              @click="shouldShow = !shouldShow"
+            />
           </label>
           <div class="guests-modal flex column" v-if="shouldShow">
             <div class="guest-type-label flex space-between align-center">
@@ -301,7 +306,7 @@ export default {
       if (size > 1) {
         const { start, end } = this.trip.dates;
         const timeDiff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
-         return Number(parseInt(this.stay.price * timeDiff)).toLocaleString()
+        return Number(parseInt(this.stay.price * timeDiff)).toLocaleString();
         // return parseInt(this.stay.price * timeDiff);
       }
     },
@@ -310,7 +315,9 @@ export default {
       if (size > 1) {
         const { start, end } = this.trip.dates;
         const timeDiff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
-         return Number(parseInt((this.stay.price * timeDiff)+25)).toLocaleString()
+        return Number(
+          parseInt(this.stay.price * timeDiff + 25)
+        ).toLocaleString();
         // return parseInt(this.stay.price * timeDiff);
       }
     },
