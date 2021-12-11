@@ -26,6 +26,7 @@ export const orderStore = {
             return state.currTrip
         },
         getOrders(state) {
+            console.log('storegetter', state.orders)
             return state.orders
         },
         getDemoOrders(state) {
@@ -79,15 +80,16 @@ export const orderStore = {
             try {
                 const orders = await orderService.query()
                 commit({ type: 'setOrders', orders })
-                socketService.off(SOCKET_EVENT_ORDER_ADDED)
-                socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
-                    console.log('Got order from socket', order);
-                    commit({ type: 'addOrder', order })
-                })
-                socketService.off(SOCKET_EVENT_ORDER_ABOUT_YOU)
-                socketService.on(SOCKET_EVENT_ORDER_ABOUT_YOU, order => {
-                    console.log('New order!', order);
-                })
+                console.log(orders)
+                // socketService.off(SOCKET_EVENT_ORDER_ADDED)
+                // socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
+                //     console.log('Got order from socket', order);
+                // })
+                // socketService.off(SOCKET_EVENT_ORDER_ABOUT_YOU)
+                // socketService.on(SOCKET_EVENT_ORDER_ABOUT_YOU, order => {
+                //     console.log('New order!', order);
+                //     commit({ type: 'addOrder', order })
+                // })
             } catch (err) {
                 console.log('orderStore: Error in loadOrders', err)
                 throw err
