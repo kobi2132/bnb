@@ -27,6 +27,9 @@
           class="user-menu-btn clickable flex align-center clickable"
           @click="shouldShow = !shouldShow"
         >
+          <p v-if="notifications > 0" class="notifications">
+            {{ notifications }}
+          </p>
           <span class="material-icons-round" v-if="!currUser">
             account_circle
           </span>
@@ -109,6 +112,11 @@ export default {
     },
   },
   computed: {
+    notifications() {
+      const notes = this.$store.getters.notifications;
+      return notes > 0 ? notes : "";
+    },
+
     hasImg() {
       var user = this.$store.getters.loggedinUser;
       return user && user.imgUrl !== null ? true : false;

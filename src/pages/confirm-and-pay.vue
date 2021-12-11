@@ -1,23 +1,22 @@
 <template>
   <div class="confirm-and-pay main-layout2">
-    <div class="header">
+
+    <div class="details-and-pay">
+      
+      <div class="trip-info">
+            <div class="header">
       <router-link to="">
         <div class="back-btn" @click="goBack">
           <span class="material-icons-outlined"> chevron_left </span>
         </div>
       </router-link>
-
-      <h2 class="left">Confirm and pay</h2>
+      <h2>Confirm and pay</h2>
     </div>
-    <div class="details-and-pay">
-      <div class="trip-info">
         <div class="your-trip">
           <div class="title1">Your trip</div>
           <div class="dates-section">
             <div class="title2">Dates</div>
-            <div class="dates">
-             {{ this.dateFrom }} - {{ this.dateTo }}
-            </div>
+            <div class="dates">{{ this.dateFrom }} - {{ this.dateTo }}</div>
           </div>
           <div class="guests-section">
             <div class="title2">Guests</div>
@@ -83,10 +82,10 @@
               <div class="title2">{{ this.order.host.fullname }}</div>
               <p class="title3">
                 Hi<br />
-                My Name is {{ this.order.host.fullname }} and i'm Happy
-                that you decided to book My apartment.<br />Please let me know
-                at what time you'll check in so i will wait for you with keys at
-                the apartment.<br />Thank you (:
+                My Name is {{ this.order.host.fullname }} and i'm Happy that you
+                decided to book My apartment.<br />Please let me know at what
+                time you'll check in so i will wait for you with keys at the
+                apartment.<br />Thank you (:
               </p>
             </div>
           </div>
@@ -149,17 +148,19 @@
             </div>
             <div class="price-detail">
               <div class="title2 underline">Cleaning fee</div>
-              <div class="title2">$25.00</div>
+              <div class="title2">$0.00</div>
             </div>
             <div class="price-detail">
               <div class="title2 underline">Service fee</div>
-              <div class="title2 green">$0.00</div>
+              <div class="title2 green">$25.00</div>
             </div>
             <div class="price-detail">
               <div class="title2 bold">
                 Total <span class="underline">(USD)</span>
               </div>
-              <div class="title2 bold">${{ this.calculatePriceWithFees}}.00</div>
+              <div class="title2 bold">
+                ${{ this.calculatePriceWithFees }}.00
+              </div>
             </div>
           </div>
         </div>
@@ -170,14 +171,12 @@
     <div class="congrats-modal-container" v-if="congratsModal">
       <div class="congrats-modal">
         <div class="title">Order sent to host!</div>
-        <div class="title-1">
-          Your host will reply shortly
-        </div>
+        <div class="title-1">Your host will reply shortly</div>
         <div class="title-2">
           You won't be charged until the host approves your order
         </div>
         <div class="separator"></div>
-        <div class="links-container ">
+        <div class="links-container">
           <router-link class="btn" to="/">Home page </router-link>
           <router-link class="btn" to="/trips">Share your stay </router-link>
         </div>
@@ -230,7 +229,9 @@ export default {
     },
     calculatePriceWithFees() {
       const days = this.calculateTotalDays;
-      return Number(parseInt((days * this.order.stay.price)+25)).toLocaleString();
+      return Number(
+        parseInt(days * this.order.stay.price + 25)
+      ).toLocaleString();
       //  Number(parseInt(this.stay.price * timeDiff)).toLocaleString()
     },
     fees() {
@@ -253,15 +254,15 @@ export default {
     setDateFrom(date) {
       const currDate = new Date(date);
       const year = currDate.getFullYear();
-      const month = currDate.getMonth();
+      const month = currDate.getMonth() + 1;
       const day = currDate.getDate();
       const dateToDisplay = day + "/" + month + "/" + year;
       this.dateFrom = dateToDisplay;
     },
-        setDateTo(date) {
+    setDateTo(date) {
       const currDate = new Date(date);
       const year = currDate.getFullYear();
-      const month = currDate.getMonth();
+      const month = currDate.getMonth() + 1;
       const day = currDate.getDate();
       const dateToDisplay = day + "/" + month + "/" + year;
       this.dateTo = dateToDisplay;

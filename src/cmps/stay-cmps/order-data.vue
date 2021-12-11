@@ -32,24 +32,32 @@ export default {
   created() {
     console.log(this.order);
   },
-  computed:{
-      startDateToShow(){
-        //   new Date().toGMTString()
-          return new Date(this.order.dates.start).toGMTString()
-      },
-      endDateToShow(){
-          return new Date(this.order.dates.end).toGMTString()
-      },
+  computed: {
+    startDateToShow() {
+      const currDate = new Date(this.order.dates.start);
+      const year = currDate.getFullYear();
+      const month = currDate.getMonth() + 1;
+      const day = currDate.getDate();
+      const dateToDisplay = day + "/" + month + 1 + "/" + currDate.getFullYear();
+      return dateToDisplay;
+    },
+    endDateToShow() {
+      const currDate = new Date(this.order.dates.end);
+      const year = currDate.getFullYear();
+      const month = currDate.getMonth() + 1;
+      const day = currDate.getDate();
+      const dateToDisplay = day + "/" + month + 1 + "/" + year;
+      return dateToDisplay;
+    },
   },
-  methods:{
-approve(){
-          console.log('approved')
-      }
-      ,
-      decline(){
-          console.log('declined')
-      }
-  }
+  methods: {
+    approve() {
+      console.log("approved");
+    },
+    decline() {
+      console.log("declined");
+    },
+  },
 };
 </script>
 
