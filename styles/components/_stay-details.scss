@@ -419,14 +419,16 @@
     // width: 30vw;
     // height: 30vh;
     position: fixed;
-    top: 16%;
-    left: 50.5%;
-    padding: 24px;
+    top: 19%;
+    left: 61.5%;
+    // padding: 24px;
     border-radius: 12px;
     background-color: #ffffff;
     border: 1px solid #dddddd;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     z-index: 9000;
+    // transition: width 2s;
+    // width: 0px;
     h1 {
         margin: 0;
         background-color: #ff385c;
@@ -437,6 +439,7 @@
         font-size: 0.875rem;
         font-weight: 600;
         letter-spacing: 1.2px;
+        margin: 12px;
         // margin-bottom: 10px;
     }
     .close-modal {

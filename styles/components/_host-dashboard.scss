@@ -84,6 +84,12 @@
         gap: 20px;
         max-width: 586px;
         align-self: center;
+        .dash-div {
+            padding: 23px;
+            border-radius: 12px;
+            border: 1px solid #dddddd;
+            box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+        }
         div {
             // min-width: 200px;
             // max-width: 200px;

@@ -58,7 +58,7 @@
 
       <section class="dash-main-container flex column">
         <section class="dash-header flex space-evenly">
-          <div class="total-rate">
+          <div class="total-rate dash-div">
             <h3>Total Rate</h3>
             <div class="flex space-between align-center">
               <span class="flex align center">
@@ -71,17 +71,17 @@
             </div>
           </div>
 
-          <div>
+          <div class="dash-div">
             <h3>Earnings</h3>
             <div>
               <span>$ {{ monthlyEarningToShow }}</span>
             </div>
           </div>
-          <div class="orders-div">
+          <div class="orders-div dash-div">
             <h3>Orders</h3>
             <div class="flex column">
               <span>{{ totalOrders }}</span>
-              <div class="circle-container flex column">
+              <!-- <div class="circle-container flex column">
                 <div class="flex align-center space-around">
                   <span title="approved" class="circle green-circle"></span>
                   <p>{{ approvedOrders }}</p>
@@ -92,18 +92,18 @@
                 </div>
                 <div class="flex align-center space-around">
                   <span title="decline" class="circle red-circle"></span>
-                  <p>{{ declinedOrders }}</p>
-                </div>
-              </div>
+                  <p>{{ declinedOrders }}</p> -->
+                <!-- </div> -->
+              <!-- </div> -->
             </div>
           </div>
-          <div>
+          <div class="dash-div">
             <div>
               <h3>Active Guests</h3>
               <span>{{ activeGuests }}</span>
             </div>
 
-            <div>
+            <!-- <div>
               <img
                 v-for="(guest, id) in activeGuests"
                 :key="id"
@@ -111,7 +111,7 @@
                 alt="guest"
                 class="host-img"
               />
-            </div>
+            </div> -->
           </div>
         </section>
 
@@ -313,6 +313,9 @@ export default {
         }
       });
       console.log(currUserOrders);
+      currUserOrders.sort(function(a,b){
+  return new Date(b.dates.start) - new Date(a.dates.start);
+    });
 
       return currUserOrders;
     },
@@ -353,7 +356,7 @@ export default {
       var ordersToShowCount = 0;
       if (this.myOrders.length > 0) {
         this.myOrders.forEach((order) => {
-          if (order.status === "approved") {
+          if (order.status === "Approved") {
             ordersToShowCount++;
           }
         });

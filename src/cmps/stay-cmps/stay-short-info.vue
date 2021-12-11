@@ -30,10 +30,10 @@
       </button>
     </section>
   
-  <share-modal class="share-modal" v-if="shareModalShow">
-    <button @click="closeIt" class="clean-btn clickable close-modal"><span class="material-icons">
+  <share-modal class="share-modal flex" v-if="shareModalShow">
+    <!-- <button @click="closeIt" class="clean-btn clickable close-modal"><span class="material-icons">
 close
-</span></button>
+</span></button> -->
     <h1 @click="copyURL" class="clickable">Copy link to clipboard</h1>
   </share-modal>
   </section>
