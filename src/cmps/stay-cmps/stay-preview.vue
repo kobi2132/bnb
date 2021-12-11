@@ -21,7 +21,7 @@
         >
       </div>
       <div class="property-type">
-        {{ this.stay.propertyType }} • {{ this.stay.loc.country }}
+        {{ this.stay.propertyType }} • {{ this.stay.loc.city }}
       </div>
       <div class="stayname">{{ this.stay.name }}</div>
       <div class="stay-price">
