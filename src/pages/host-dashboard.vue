@@ -190,9 +190,13 @@
                         :key="order._id"
                         class="host-stay-preview"
                       > -->
-                      <order-data :order="order" class="host-stay-preview" v-for="order in myOrders"
-                        :key="order._id"/>
-                        <!-- <span >
+                      <order-data
+                        :order="order"
+                        class="host-stay-preview"
+                        v-for="order in myOrders"
+                        :key="order._id"
+                      />
+                      <!-- <span >
                           <img class="host-img" :src="order.buyer.imgUrl" />
                         </span>
                         <span>{{ order.buyer.fullname }}</span>
@@ -242,8 +246,8 @@ import orderData from "@/cmps/stay-cmps/order-data.vue";
 
 export default {
   name: "host-dashboard",
-  components:{
-    orderData
+  components: {
+    orderData,
   },
   data() {
     return {
@@ -258,11 +262,11 @@ export default {
   created() {
     const page = "hostDashboard";
     this.$store.commit({ type: "setCurrPage", page });
-    this.$store.dispatch({ type: "loadOrders" });
     // this.$store.dispatch({ type: "loadOrders" });
     // this.myOrders = this.getDemoOrders
     this.currUser = this.$store.getters.loggedinUser;
-    this.allOrders = this.getOrders;
+    this.allOrders = this.$store.getters.getOrders;
+    console.log(this.allOrders);
     this.myOrders = this.userOrders;
     this.allStays = this.getAllStays;
     this.userStays;
@@ -272,9 +276,9 @@ export default {
     getDemoOrders() {
       return this.$store.getters.getDemoOrders;
     },
-    getOrders() {
-      return this.$store.getters.getOrders;
-    },
+    // getOrders() {
+    //   return this.$store.getters.getOrders;
+    // },
     getUser() {
       return this.$store.getters.loggedinUser;
     },
@@ -292,11 +296,11 @@ export default {
         }
       });
     },
-    userOrders() {
+    async userOrders() {
       // console.log(this.allOrders)
       var currUserOrders = [];
-      const allOrders = this.$store.getters.getOrders;
-      allOrders.forEach((order) => {
+      console.log(this.allOrders);
+      this.allOrders.forEach((order) => {
         const orderHostId = order.host._id;
         console.log("userid", this.currUser._id, "hostid", orderHostId);
         // console.log('host', stayHost)
@@ -329,49 +333,57 @@ export default {
       });
       // console.log('sum', sum , 'count', count)
       return (sum / count).toFixed(1);
-      return sum;
     },
     totalOrders() {
       return this.myOrders.length;
     },
     pendingOrders() {
       var ordersToShowCount = 0;
-      this.myOrders.forEach((order) => {
-        if (order.status === "pending") {
-          ordersToShowCount++;
-        }
-      });
-      return ordersToShowCount;
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          if (order.status === "pending") {
+            ordersToShowCount++;
+          }
+        });
+        return ordersToShowCount;
+      }
     },
     approvedOrders() {
       var ordersToShowCount = 0;
-      this.myOrders.forEach((order) => {
-        if (order.status === "approved") {
-          ordersToShowCount++;
-        }
-      });
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          if (order.status === "approved") {
+            ordersToShowCount++;
+          }
+        });
+      }
       return ordersToShowCount;
     },
     declinedOrders() {
       var ordersToShowCount = 0;
-      this.myOrders.forEach((order) => {
-        if (order.status === "declined") {
-          ordersToShowCount++;
-        }
-      });
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          if (order.status === "declined") {
+            ordersToShowCount++;
+          }
+        });
+      }
       return ordersToShowCount;
     },
     monthlyEarningToShow() {
       var ordersPrice = [];
       // var ordersDates=[]
-      this.myOrders.forEach((order) => {
-        // console.log('toshow', order)
-        const { start, end } = order.dates;
-        const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
-        const CURRORDERPRICE = parseInt(days * order.stay.price);
-        // console.log(CURRORDERPRICE)
-        ordersPrice.push(CURRORDERPRICE);
-      });
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          // console.log('toshow', order)
+          const { start, end } = order.dates;
+          const days =
+            (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+          const CURRORDERPRICE = parseInt(days * order.stay.price);
+          // console.log(CURRORDERPRICE)
+          ordersPrice.push(CURRORDERPRICE);
+        });
+      }
       // console.log('prices', ordersPrice)
       var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
       // var sum = 100000
@@ -380,19 +392,21 @@ export default {
     },
     activeGuests() {
       var activeGuestsCount = 0;
-      this.myOrders.forEach((order) => {
-        const { start, end } = order.dates;
-        // console.log(start , end)
-        var now = Date.now();
-        var orderStart = Date.parse(start);
-        var orderEnd = Date.parse(end);
-        // console.log(now, orderStart, orderEnd  )
-        if (now <= orderEnd && now >= orderStart) {
-          activeGuestsCount++;
-        } else {
-          // console.log("order not active");
-        }
-      });
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const { start, end } = order.dates;
+          // console.log(start , end)
+          var now = Date.now();
+          var orderStart = Date.parse(start);
+          var orderEnd = Date.parse(end);
+          // console.log(now, orderStart, orderEnd  )
+          if (now <= orderEnd && now >= orderStart) {
+            activeGuestsCount++;
+          } else {
+            // console.log("order not active");
+          }
+        });
+      }
       // console.log("active", activeGuestsCount);
       return activeGuestsCount;
       // return 3;
