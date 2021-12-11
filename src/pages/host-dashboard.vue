@@ -283,7 +283,8 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     getAllStays() {
-      return this.$store.getters.staysToShow;
+      const stays =this.$store.getters.staysToShow
+      return stays;
     },
     userStays() {
       this.allStays.forEach((stay) => {
@@ -296,7 +297,7 @@ export default {
         }
       });
     },
-    async userOrders() {
+    userOrders() {
       // console.log(this.allOrders)
       var currUserOrders = [];
       console.log(this.allOrders);
