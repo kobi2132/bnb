@@ -38,6 +38,7 @@
 .short-info-txt {
     font-size: 0.875rem;
     line-height: 1.25rem;
+    margin-left: 5px;
 }
 
 .red-star {
@@ -60,6 +61,7 @@
     height: 56px;
     width: 56px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .stay-summery-container {
