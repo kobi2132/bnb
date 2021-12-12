@@ -8,15 +8,27 @@
     <span>{{ startDateToShow }}</span>
     <span>{{ endDateToShow }}</span>
     <span class="capitalize">{{ order.status }}</span>
-    <span>$ {{ order.stay.price }}</span>
-    <span class="stay-actions flex align-center space-evenly">
+    <span>$ {{ this.totalPrice}}</span>
+
+
+    <section class="pre-approved">
+
+
+      <button class="approve-btn" @click="approve" v-if="this.order.status === 'pending'">Approve</button>
+      <button class="decline-btn" @click="decline" v-if="this.order.status === 'pending'">Decline</button>
+      <button class="approve-btn" @click="approve" v-if="this.order.status === 'declined'">Approve</button>
+      <button class="decline-btn" @click="decline" v-if="this.order.status === 'approved'">Decline</button>
+    </section>
+
+
+    <!-- <span class="stay-actions flex align-center space-evenly">
       <button class="clean-btn clickable" @click="approve">
         <i class="fa fa-check" aria-hidden="true"></i>
       </button>
       <button class="clean-btn clickable" @click="decline">
         <i class="fa fa-times" aria-hidden="true"></i>
       </button>
-    </span>
+    </span> -->
   </div>
 </template>
 
@@ -29,17 +41,24 @@ export default {
       default: {},
     },
   },
-  created() {
-    // console.log(this.order);
+  data(){
+    return{
+      totalPrice: null,
+    }
   },
+  created() {
+      const { start, end } = this.order.dates;
+      const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+      this.totalPrice = Number(parseInt(days * this.order.stay.price)).toLocaleString() + ".00"
+      
+        },
   computed: {
     startDateToShow() {
       const currDate = new Date(this.order.dates.start);
       const year = currDate.getFullYear();
       const month = currDate.getMonth() + 1;
       const day = currDate.getDate();
-      const dateToDisplay =
-        day + "/" + month + 1 + "/" + currDate.getFullYear();
+      const dateToDisplay = day + "/" + month + "/" + currDate.getFullYear();
       return dateToDisplay;
     },
     endDateToShow() {

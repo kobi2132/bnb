@@ -23,6 +23,8 @@
       <div class="nav flex align-center justify-center">
         <router-link to="/explore">Explore</router-link>
         <router-link to="/host">Become a Host</router-link>
+        <span class="material-icons"> notifications </span>
+
         <button
           class="user-menu-btn clickable flex align-center clickable"
           @click="shouldShow = !shouldShow"

@@ -10,7 +10,7 @@
 }
 
 .dashboard-container {
-    gap: 10px
+    gap: 10px;
 }
 
 .dash-nav-sticky-container {
@@ -73,6 +73,66 @@
     }
 }
 
+.pre-approved {
+    
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    .approve-btn {
+        background:none ;
+        border: none;
+        color: green;
+        text-decoration: underline;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        min-height: 40px;
+        outline: 0;
+        text-align: center;
+        text-rendering: geometricprecision;
+
+        &:hover {
+            background-color: initial;
+            background-position: 0 0;
+            color: #1d7c007a;
+        }
+    }
+
+    .decline-btn {
+        background:none ;
+        border: none;
+        color: red;
+        text-decoration: underline;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 400;
+        min-height: 40px;
+        outline: 0;
+        padding: 0px 10px;
+        text-align: center;
+        text-rendering: geometricprecision;
+
+        &:hover {
+            background-color: initial;
+            background-position: 0 0;
+            color: #c000007a;
+        }
+    }
+}
+
+.post-approved {
+    display: flex;
+    .msg-btn, .price-change-btn, .post-approved-btn, .post-declined-btn{
+        background: #ffffff00;
+        border: none;
+        color: rgba(0, 0, 0, 0.664);
+        cursor: pointer;
+
+    }
+}
+
 .dash-main-container {
     gap: 20px;
     padding: 20px 20px 20px 60px;
@@ -81,8 +141,12 @@
     //fix this layout
     border-radius: 13px;
     .dash-header {
-        gap: 20px;
-        max-width: 586px;
+        display: flex;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        // gap: 20px;
+        // max-width: 586px;
         align-self: center;
         .dash-div {
             padding: 23px;
@@ -185,6 +249,7 @@
                         display: grid;
                         margin-top: 7px;
                         padding-bottom: 7px;
+                        border-bottom: 0.1px solid rgba(168, 168, 168, 0.767);
                         // grid-template-columns: repeat(5, 1fr);
                         grid-template-columns: auto 1fr 1fr 1fr 1fr;
                         gap: 10px;
@@ -237,6 +302,7 @@
                             text-align: center;
                             margin-top: 7px;
                             padding-bottom: 7px;
+                            border-bottom: 0.1px solid rgba(168, 168, 168, 0.767);
                             span {
                                 text-align: center;
                                 // width: 100%;

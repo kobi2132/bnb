@@ -177,7 +177,7 @@
                         <span>Check in</span>
                         <span>Check out</span>
                         <span>Status</span>
-                        <span>Price</span>
+                        <span>Total price</span>
                         <span>Actions</span>
                       </div>
                     </div>
