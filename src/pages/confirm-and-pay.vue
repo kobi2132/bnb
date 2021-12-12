@@ -1,17 +1,15 @@
 <template>
   <div class="confirm-and-pay main-layout2">
-
     <div class="details-and-pay">
-      
       <div class="trip-info">
-            <div class="header">
-      <router-link to="">
-        <div class="back-btn" @click="goBack">
-          <span class="material-icons-outlined"> chevron_left </span>
+        <div class="header">
+          <router-link to="">
+            <div class="back-btn" @click="goBack">
+              <span class="material-icons-outlined"> chevron_left </span>
+            </div>
+          </router-link>
+          <h2>Confirm and pay</h2>
         </div>
-      </router-link>
-      <h2>Confirm and pay</h2>
-    </div>
         <div class="your-trip">
           <div class="title1">Your trip</div>
           <div class="dates-section">
@@ -95,7 +93,8 @@
         <div class="cancell-policy">
           <div class="title1">Cancellation policy</div>
           <p class="title2">
-            Refundable: Free cancellation up to 24 hours before check-in. <span>Learn more</span>
+            Refundable: Free cancellation up to 24 hours before check-in.
+            <span>Learn more</span>
           </p>
           <p>
             Our Extenuating Circumstances policy does not cover travel
@@ -129,8 +128,8 @@
                 <div class="star-preview">
                   <span class="material-icons-outlined">star</span>
                 </div>
-                <span class="review-avg">4.6&nbsp;</span>
-                <span class="reviews-total">(4)</span>
+                <span class="review-avg">{{ this.reviews }} &nbsp;</span>
+                <span class="reviews-total">({{ this.reviewsCount }})</span>
               </div>
             </div>
           </div>
@@ -209,6 +208,8 @@ export default {
       totalGuests: null,
       dateFrom: null,
       dateTo: null,
+      reviews: 4.9,
+      reviewsCount: 34,
     };
   },
   created() {
@@ -266,6 +267,17 @@ export default {
       const dateToDisplay = day + "/" + month + "/" + year;
       this.dateTo = dateToDisplay;
     },
+    setReviews() {
+      var avgsSum = 0;
+      this.order.stay.reviews.forEach((review) => {
+        const sumRates = (obj) => Object.values(obj).reduce((a, b) => a + b);
+        const currSum = sumRates(review.rate);
+        const currSumAvg = currSum / 6;
+        avgsSum += currSumAvg;
+      });
+      avgsSum = avgsSum / this.stay.reviews.length;
+      return avgsSum.toFixed(1);
+    },
   },
   watch: {
     "$route.params.orderId": {
@@ -281,6 +293,7 @@ export default {
           this.order.guests.adults + this.order.guests.children;
         this.setDateFrom(this.order.dates.start);
         this.setDateTo(this.order.dates.end);
+        this.setReviews();
       },
       immediate: true,
     },
