@@ -167,7 +167,7 @@
               </div>
             </section>
             <section class="host-order-list" v-if="shouldShow === 'my orders'">
-              <section class="host-order-container">
+              <section class="host-order-container" v-loading="loading">
                 <section class="host-order-list">
                   <div class="host-order-list-table">
                     <div class="thead">
@@ -273,6 +273,9 @@ export default {
     // this.dateToShow
   },
   computed: {
+    loading() {
+      this.$store.getters.isLoading;
+    },
     getDemoOrders() {
       return this.$store.getters.getDemoOrders;
     },

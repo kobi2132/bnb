@@ -51,6 +51,9 @@ export const stayStore = {
         isLoading({ isLoading }) {
             return isLoading
         },
+        isLoading({ isLoading }) {
+            return isLoading
+        }
     },
     mutations: {
         setStays(state, { stays }) {

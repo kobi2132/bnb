@@ -66,6 +66,7 @@ export const orderStore = {
     },
     actions: {
         async loadOrders({ commit, state }) {
+            commit({ type: 'setLoading', isLoading: true })
             try {
                 const orders = await orderService.query()
                 commit({ type: 'setOrders', orders })
@@ -85,6 +86,8 @@ export const orderStore = {
             } catch (err) {
                 console.log('orderStore: Error in loadOrders', err)
                 throw err
+            } finally {
+                commit({ type: 'setLoading', isLoading: false })
             }
 
 
