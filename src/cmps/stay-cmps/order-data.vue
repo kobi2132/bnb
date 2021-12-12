@@ -38,8 +38,7 @@ export default {
       const year = currDate.getFullYear();
       const month = currDate.getMonth() + 1;
       const day = currDate.getDate();
-      const dateToDisplay =
-        day + "/" + month + 1 + "/" + currDate.getFullYear();
+      const dateToDisplay = day + "/" + month + "/" + currDate.getFullYear();
       return dateToDisplay;
     },
     endDateToShow() {
