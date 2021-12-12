@@ -37,6 +37,8 @@ export default {
   data() {
     return {
       notifications,
+
+
     };
   },
   computed: {

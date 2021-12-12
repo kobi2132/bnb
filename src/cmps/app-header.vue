@@ -23,7 +23,47 @@
       <div class="nav flex align-center justify-center">
         <router-link to="/explore">Explore</router-link>
         <router-link to="/host">Become a Host</router-link>
-        <span class="material-icons"> notifications </span>
+        <span
+          class="material-icons notification-btn"
+          @click="this.openNotifications"
+        >
+          notifications
+        </span>
+        <section
+          class="notifications-modal-container"
+          v-if="this.isNotificationsModal"
+        >
+          <div class="notifications-modal">
+            <div class="header-notifi">Notifications</div>
+
+            <div
+              class="
+                notifications-cards
+                flex
+                space-between
+                gray-box-shadow
+                align-center
+              "
+              v-for="(notification, idx) in notifications"
+              :key="idx"
+            >
+              <img :src="notification.from.imgUrl" alt="" class="host-img" />
+              <span class="flex column">
+                <h3>{{ notification.from.fullname }}</h3>
+              </span>
+              <div class="notif-card">
+              <h4 class="notifications-card-txt">
+                {{ notification.txt }}
+              </h4>
+              <h5>{{ getCreatedTime(idx) }}</h5>
+
+
+              </div>
+              <!-- <pre>{{ notifications }}</pre> -->
+              <!-- <a class="trips-link" href="#/orders">Read More</a> -->
+            </div>
+          </div>
+        </section>
 
         <button
           class="user-menu-btn clickable flex align-center clickable"
@@ -83,6 +123,39 @@ export default {
       loggedinUser: null,
       hideFilter: false,
       topOfPage: true,
+      isNotificationsModal: false,
+      notifications: [
+        {
+          from: {
+            _id: "61b064d3dcbbeca56bcf1df1",
+            fullname: "Adi Adadouf",
+            imgUrl:
+              "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
+          },
+          txt: "Your order has been approved!",
+          createdAt: 1639266368862,
+        },
+        {
+          from: {
+            _id: "61b064d3dcbbeca56bcf1df1",
+            fullname: "Adi Adadouf",
+            imgUrl:
+              "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
+          },
+          txt: "Your order has been approved!",
+          createdAt: 1639266368862,
+        },
+        {
+          from: {
+            _id: "61b064d3dcbbeca56bcf1df1",
+            fullname: "Adi Adadouf",
+            imgUrl:
+              "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
+          },
+          txt: "Your order has been approved!",
+          createdAt: 1639266368862,
+        },
+      ],
     };
   },
 
@@ -111,11 +184,27 @@ export default {
     closeModal() {
       this.shouldShow = !this.shouldShow;
     },
+    openNotifications() {
+      this.isNotificationsModal = !this.isNotificationsModal;
+      console.log(this.notifications);
+    },
+    getCreatedTime(idx) {
+      const currDate = new Date(this.notifications[idx].createdAt);
+      const year = currDate.getFullYear();
+      const month = currDate.getMonth() + 1;
+      const day = currDate.getDate();
+      const hours = currDate.getHours();
+      const minutes = currDate.getMinutes();
+
+      console.log(currDate);
+
+      return "sent at: "+day + "/" + month + "/" + year + " , " +  hours + ":"+ minutes;
+    },
   },
   computed: {
-    notifications() {
-      return this.$store.getters.notifications;
-    },
+    // notifications() {
+    //   return this.$store.getters.notifications;
+    // },
     notificationsCount() {
       return this.$store.getters.notificationsCount;
     },
