@@ -57,14 +57,18 @@
       </section>
 
       <section class="dash-main-container flex column">
-        <section class="dash-header flex space-evenly">
+        <section class="dash-header flex space-between">
           <div class="total-rate dash-div">
             <h3>Total Rate</h3>
-            <div class="flex space-between align-center">
-              <span class="flex align center">
+            <div class="flex space-between column rates-data">
+                <div>
+              <span class="flex space-between">
                 <i class="fa fa-star" aria-hidden="true"></i
-                >{{ totalRateAvg }}</span
-              >
+                >{{ totalRateAvg }} <small> avg</small></span>
+                </div>
+                <div class="flex space-between">
+                <span>{{totalRateCount}} <small>reviews</small></span>
+                </div>
               <!-- <p>
                 4%<i class="fa fa-long-arrow-alt-up" aria-hidden="true"></i>
               </p> -->
@@ -72,15 +76,37 @@
           </div>
 
           <div class="dash-div">
-            <h3>Earnings</h3>
+            <h3>Total revenues</h3>
             <div>
               <span>$ {{ monthlyEarningToShow }}</span>
+            </div>
+            <div>
+              <span>{{totalOrders}} hosts</span>
             </div>
           </div>
           <div class="orders-div dash-div">
             <h3>Orders</h3>
             <div class="flex column">
-              <span>{{ totalOrders }}</span>
+              <!-- <span>{{ totalOrders }}</span> -->
+              <table>
+                <tr>
+                  <td>Total</td>
+                  <td>Pending</td>
+                  <td>Approved</td>
+                  <td>Declined</td>
+                </tr>
+                <tr>
+                  <td class="nums-td">{{ totalOrders }}</td>
+                  <td class="nums-td">{{ pendingOrders }}</td>
+                  <td class="nums-td">{{ approvedOrders }}</td>
+                  <td class="nums-td">{{ declinedOrders }}</td>
+                 </tr>
+                <!--<tr>
+                </tr>
+                <tr>
+                </tr> -->
+
+              </table>
               <!-- <div class="circle-container flex column">
                 <div class="flex align-center space-around">
                   <span title="approved" class="circle green-circle"></span>
@@ -99,8 +125,23 @@
           </div>
           <div class="dash-div">
             <div>
-              <h3>Active Guests</h3>
-              <span>{{ activeGuests }}</span>
+              <h3>Guests</h3>
+              <span></span>
+               <table>
+                <tr>
+                  <td></td>
+                  <td>Active</td>
+                  <td>Past</td>
+                  <td>Planned</td>
+                </tr>
+                <tr>
+                  <td class="nums-td">{{ activeGuests }}</td>
+                  <td class="nums-td">{{ pastGuests }}</td>
+                  <td class="nums-td">{{ plannedGuests }}</td>
+                 </tr>
+                
+
+              </table>
             </div>
 
             <!-- <div>
@@ -177,7 +218,7 @@
                         <span>Check in</span>
                         <span>Check out</span>
                         <span>Status</span>
-                        <span>Total price</span>
+                        <span>Revenue</span>
                         <span>Actions</span>
                       </div>
                     </div>
@@ -342,6 +383,25 @@ export default {
       // console.log('sum', sum , 'count', count)
       return (sum / count).toFixed(1);
     },
+    totalRateCount() {
+      var count = 0;
+      // var sum = 0;
+      this.myStays.forEach((stay) => {
+        // console.log(count , stay.reviews)
+        stay.reviews.forEach((review) => {
+          const reviewRatings = Object.values(review.rate);
+          count ++ 
+          // console.log('array ratings', reviewRatings)
+          // var currSum = reviewRatings.reduce(
+          //   (sumRate, rating) => sumRate + rating,
+          //   0
+          // );
+          // sum += currSum;
+        });
+      });
+      // console.log('sum', sum , 'count', count)
+      return count
+    },
     totalOrders() {
       return this.myOrders.length;
     },
@@ -417,12 +477,48 @@ export default {
       }
       // console.log("active", activeGuestsCount);
       return activeGuestsCount;
-      // return 3;
     },
-    // dateToShow(){
-    //   console.log('dateToshow', this.myOrders[0].dates.start)
-    //   new Date().toGMTString()
-    // }
+    plannedGuests() {
+      var plannedGuestsCount = 0;
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const { start, end } = order.dates;
+          // console.log(start , end)
+          var now = Date.now();
+          var orderStart = Date.parse(start);
+          var orderEnd = Date.parse(end);
+          // console.log(now, orderStart, orderEnd  )
+          if (now < orderStart) {
+            plannedGuestsCount++;
+          } else {
+            // console.log("order not active");
+          }
+        });
+      }
+      // console.log("active", activeGuestsCount);
+      return plannedGuestsCount;
+    },
+    pastGuests() {
+      var pastGuestsCount = 0;
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const { start, end } = order.dates;
+          // console.log(start , end)
+          var now = Date.now();
+          var orderStart = Date.parse(start);
+          var orderEnd = Date.parse(end);
+          // console.log(now, orderStart, orderEnd  )
+          if (now > orderEnd ) {
+            pastGuestsCount++;
+          } else {
+            // console.log("order not active");
+          }
+        });
+      }
+      // console.log("active", activeGuestsCount);
+      return pastGuestsCount;
+    },
+    
   },
   methods: {
     showMyStays() {

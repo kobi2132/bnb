@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>
+    <span class="flex align-center">
       <!-- <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"/> -->
       <img class="host-img" :src="order.buyer.imgUrl" />
     </span>
