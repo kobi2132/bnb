@@ -95,8 +95,7 @@
         <div class="cancell-policy">
           <div class="title1">Cancellation policy</div>
           <p class="title2">
-            Non-refundable: Cancel before check-in and get back only the
-            cleaning fee, if you paid one. <span>Learn more</span>
+            Refundable: Free cancellation up to 24 hours before check-in. <span>Learn more</span>
           </p>
           <p>
             Our Extenuating Circumstances policy does not cover travel
@@ -108,7 +107,7 @@
           <p class="title4">
             By selecting the button below, I agree to the
             <span>Host's House Rules</span>,
-            <span>Airbnb's COVID-19 Safety Requirements</span> and the
+            <span>Kumba's COVID-19 Safety Requirements</span> and the
             <span>Guest Refund Policy</span>.
           </p>
           <button class="confirm-btn" @click="setCongratsModal">
