@@ -2,6 +2,8 @@
   <section class="notifications-page main-layout2">
     <h1 class="notifications-header">My notifications</h1>
     <section class="notifications-list flex column">
+      <div class="notifications-container">
+
       <div
         class="
           notifications-card
@@ -23,8 +25,9 @@
         <!-- <pre>{{ notifications }}</pre> -->
         <a class="trips-link" href="#/orders">Read More</a>
       </div>
-    </section>
+      </div>
     <button class="clear-all-btn clickable">Clear all</button>
+    </section>
   </section>
 </template>
 

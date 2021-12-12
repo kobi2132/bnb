@@ -1,6 +1,8 @@
 .notifications-page {
     height: 69vh;
     margin-top: 120px !important;
+    grid-template-columns: 160px 1fr 160px !important;
+    grid-template-rows: 80px 1fr 80px !important;
 }
 
 .notifications-header {
@@ -22,55 +24,62 @@
     border-radius: 50px;
     border: 1px solid rgb(221, 221, 221);
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-    .notifications-card {
-        gap: 50px;
-        padding-bottom: 15px;
-        padding-top: 15px;
-        font-size: 1.125rem;
-        line-height: 1.75rem;
-        img {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-        }
-        span {
-            align-items: flex-start;
-            margin: 0;
-            padding: 0;
+    button {
+        align-self: flex-end;
+        // vertical-align: bottom;
+    }
+    .notifications-container {
+        height: 190px;
+        .notifications-card {
+            gap: 50px;
+            padding-bottom: 15px;
+            padding-top: 15px;
             font-size: 1.125rem;
             line-height: 1.75rem;
-            font-weight: 400;
-            h3 {
-                font-size: 0.875rem;
-                line-height: 1.125rem;
+            img {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+            }
+            span {
+                align-items: flex-start;
                 margin: 0;
                 padding: 0;
+                font-size: 1.125rem;
+                line-height: 1.75rem;
+                font-weight: 400;
+                h3 {
+                    font-size: 0.875rem;
+                    line-height: 1.125rem;
+                    margin: 0;
+                    padding: 0;
+                }
+                h4 {
+                    display: block;
+                    flex: 3 1;
+                    font-size: .75rem;
+                    line-height: 1.125rem;
+                    text-decoration: none;
+                    margin: 0;
+                    padding: 0;
+                    font-weight: unset;
+                }
             }
-            h4 {
+            .notifications-card-txt {
                 display: block;
-                flex: 3 1;
-                font-size: .75rem;
+                flex: 2 1;
+                font-size: 1rem;
                 line-height: 1.125rem;
-                text-decoration: none;
                 margin: 0;
                 padding: 0;
                 font-weight: unset;
             }
-        }
-        .notifications-card-txt {
-            display: block;
-            flex: 2 1;
-            font-size: 1rem;
-            line-height: 1.125rem;
-            margin: 0;
-            padding: 0;
-            font-weight: unset;
-        }
-        .trips-link {
-            font-size: .75rem;
-            line-height: 1.125rem;
-            margin: 0;
-            padding: 0;
+            .trips-link {
+                font-size: .75rem;
+                line-height: 1.125rem;
+                margin: 0;
+                padding: 0;
+            }
         }
     }
 }
