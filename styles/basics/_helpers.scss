@@ -70,3 +70,7 @@
 .capitalize {
     text-transform:capitalize;
 }
+
+.el-loading-spinner .path {
+    stroke: $redAirbnb !important;
+}
