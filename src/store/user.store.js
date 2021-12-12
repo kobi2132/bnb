@@ -38,7 +38,7 @@ export const userStore = {
                     fullname: order.host.fullname,
                     imgUrl: order.host.imgUrl
                 },
-                txt: 'Your order has been approved by',
+                txt: 'Your order has been approved!',
                 createdAt: Date.now(),
             }
             console.log('notification, yay!', newNotification)

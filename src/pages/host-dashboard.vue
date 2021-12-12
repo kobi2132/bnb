@@ -120,7 +120,7 @@
             <section class="host-stay-list" v-if="shouldShow === 'my stays'">
               <div class="host-stay-list-table">
                 <div class="thead">
-                  <div class="thead-container gray-box-shadow">
+                  <div class="thead-container">
                     <!-- flex space-evenly align-center -->
                     <span class="host-img"></span>
                     <span>Name</span>
@@ -171,7 +171,7 @@
                 <section class="host-order-list">
                   <div class="host-order-list-table">
                     <div class="thead">
-                      <div class="thead-container gray-box-shadow">
+                      <div class="thead-container">
                         <span class="host-img"></span>
                         <span>Guest Name</span>
                         <span>Check in</span>
@@ -192,7 +192,7 @@
                       > -->
                       <order-data
                         :order="order"
-                        class="host-stay-preview gray-box-shadow"
+                        class="host-stay-preview"
                         v-for="order in myOrders"
                         :key="order._id"
                       />
@@ -265,6 +265,7 @@ export default {
     // this.$store.dispatch({ type: "loadOrders" });
     // this.myOrders = this.getDemoOrders
     this.currUser = this.$store.getters.loggedinUser;
+    console.log(this.currUser);
     this.allOrders = this.$store.getters.getOrders;
     console.log(this.allOrders);
     this.myOrders = this.userOrders;
