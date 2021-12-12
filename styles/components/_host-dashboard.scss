@@ -17,17 +17,10 @@
     h1 {
         font-size: 24px;
     }
-    width: 230px;
-    max-width: 230px;
-    min-width: 230px;
-    align-self: flex-start;
     .dash-nav-container {
-        // position: sticky;
-        justify-content: flex-start;
-        align-items: flex-start;
         text-align: start;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        width: 100%;
+        justify-content: space-evenly;
         span {
             // background-color: brown;
             line-height: 1rem;
@@ -133,8 +126,8 @@
 }
 
 .dash-main-container {
-    gap: 20px;
-    padding: 20px 20px 20px 60px;
+    gap: 30px;
+    padding: 0 20px 20px 60px;
     margin: auto;
     // margin-inline-start: 240px;
     //fix this layout
@@ -150,15 +143,15 @@
         td {
             font-size: 0.85rem;
             line-height: 0.85rem;
-            padding: 2px;
+            padding: 5px;
             font-family: 'airbnb-medium';
             text-align: center;
         }
         .nums-td {
             font-size: 1.5rem;
             line-height: 1.5rem;
-            padding: 0;
-            margin: 0;
+            font-family: 'airbnb-regular';
+            padding-top: 10px;
         }
         small {
             font-size: 0.85rem;
@@ -167,8 +160,11 @@
             vertical-align: bottom;
             align-self: end;
         }
+        .avg {
+            text-indent: 3px;
+        }
         .dash-div {
-            padding: 23px;
+            padding: 15px;
             border-radius: 12px;
             border: 1px solid #dddddd;
             box-shadow: rgb(0 0 0 / 10%) 0px 3px 10px;
@@ -273,7 +269,7 @@
                         display: grid;
                         margin-top: 7px;
                         padding-bottom: 7px;
-                        border-bottom: 0.1px solid rgba(168, 168, 168, 0.767);
+                        // border-bottom: 0.1px solid rgba(168, 168, 168, 0.767);
                         // grid-template-columns: repeat(5, 1fr);
                         grid-template-columns: auto 1fr 1fr 1fr 1fr;
                         gap: 10px;
@@ -327,7 +323,7 @@
                             text-align: center;
                             margin-top: 7px;
                             padding-bottom: 7px;
-                            border-bottom: 0.1px solid rgba(168, 168, 168, 0.767);
+                            // border-bottom: 0.1px solid rgba(168, 168, 168, 0.767);
                             span {
                                 text-align: center;
                                 // width: 100%;

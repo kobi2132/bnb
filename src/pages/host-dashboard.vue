@@ -3,10 +3,10 @@
   <!--  -->
   <section class="main-layout2 dashboard-page">
     <!-- <p>{{myOrders}}</p> -->
-    <section class="dashboard-container flex space-between">
-      <section class="dash-nav-sticky-container">
+    <section class="dashboard-container flex space-between column">
+      <section class="dash-nav-sticky-container flex">
         <!-- <h1>host-dashboard</h1> -->
-        <div class="dash-nav-container flex column">
+        <div class="dash-nav-container flex ">
           <!-- <button
             class="add-stay-btn flex align-center clean-btn clickable"
             value="add stay"
@@ -14,7 +14,7 @@
             <i class="fa fa-plus" aria-hidden="true"> </i>Add Stay
           </button> -->
           <div>
-            <span class="material-icons"> home</span>
+            <span class="material-icons"> cottage</span>
             <button
               value="my Stays"
               @click="showMyStays()"
@@ -42,8 +42,7 @@
           </button> -->
         </div>
 
-        <div class="host-info-container">
-          <!-- <img src="/static/media/user-cash.e1f91298.PNG" alt="cash" /> -->
+        <!-- <div class="host-info-container">
           <h2>
             Make all payments through
             <span class="logo-txt logo-small">Kumb</span>
@@ -53,7 +52,7 @@
             under our Terms of Service, Payments Terms of Service, cancellation,
             and other safeguards.
           </p>
-        </div>
+        </div>  -->
       </section>
 
       <section class="dash-main-container flex column">
@@ -62,9 +61,9 @@
             <h3>Total Rate</h3>
             <div class="flex space-between column rates-data">
                 <div>
-              <span class="flex space-between">
+              <span class="flex">
                 <i class="fa fa-star" aria-hidden="true"></i
-                >{{ totalRateAvg }} <small> avg</small></span>
+                >{{ totalRateAvg }} <small class="avg"> avg</small></span>
                 </div>
                 <div class="flex space-between">
                 <span>{{totalRateCount}} <small>reviews</small></span>
@@ -78,11 +77,23 @@
           <div class="dash-div">
             <h3>Total revenues</h3>
             <div>
-              <span>$ {{ monthlyEarningToShow }}</span>
+              <!-- <span>$ {{ totalEarningToShow }}</span> -->
+              <table>
+                <tr>
+                  <td title="Past month">Month</td>
+                  <td title="Past year">Year</td>
+                  <td title="All revenues">Total</td>
+                </tr>
+                <tr>
+                  <td class="nums-td">${{ monthEarningToShow }}</td>
+                  <td class="nums-td">${{ yearEarningToShow }}</td>
+                  <td class="nums-td">${{ totalEarningToShow }}</td>
+                 </tr>
+              </table>
             </div>
-            <div>
+            <!-- <div>
               <span>{{totalOrders}} hosts</span>
-            </div>
+            </div> -->
           </div>
           <div class="orders-div dash-div">
             <h3>Orders</h3>
@@ -129,7 +140,6 @@
               <span></span>
                <table>
                 <tr>
-                  <td></td>
                   <td>Active</td>
                   <td>Past</td>
                   <td>Planned</td>
@@ -161,7 +171,7 @@
             <section class="host-stay-list" v-if="shouldShow === 'my stays'">
               <div class="host-stay-list-table">
                 <div class="thead">
-                  <div class="thead-container">
+                  <div class="thead-container gray-box-shadow">
                     <!-- flex space-evenly align-center -->
                     <span class="host-img"></span>
                     <span>Name</span>
@@ -175,7 +185,7 @@
                       v-for="stay in myStays" :key="stay._id" > -->
                 <div class="tbody">
                   <div
-                    class="host-stay-preview"
+                    class="host-stay-preview gray-box-shadow"
                     v-for="stay in myStays"
                     :key="stay.id"
                   >
@@ -212,7 +222,7 @@
                 <section class="host-order-list">
                   <div class="host-order-list-table">
                     <div class="thead">
-                      <div class="thead-container">
+                      <div class="thead-container gray-box-shadow">
                         <span class="host-img"></span>
                         <span>Guest Name</span>
                         <span>Check in</span>
@@ -233,7 +243,7 @@
                       > -->
                       <order-data
                         :order="order"
-                        class="host-stay-preview"
+                        class="host-stay-preview gray-box-shadow"
                         v-for="order in myOrders"
                         :key="order._id"
                       />
@@ -438,7 +448,7 @@ export default {
       }
       return ordersToShowCount;
     },
-    monthlyEarningToShow() {
+    totalEarningToShow() {
       var ordersPrice = [];
       // var ordersDates=[]
       if (this.myOrders.length > 0) {
@@ -456,6 +466,46 @@ export default {
       var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
       // var sum = 100000
       // Number(sum).toLocaleString()
+      return Number(sum).toLocaleString();
+    },
+    yearEarningToShow() {
+      var ordersPrice = [];
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const currYear = new Date().getFullYear()+''
+          const orderYear = order.dates.start.slice(0,order.dates.start.indexOf("-"))
+          if(orderYear === currYear){
+
+            const { start, end } = order.dates;
+          const days =
+            (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+          const CURRORDERPRICE = parseInt(days * order.stay.price);
+          ordersPrice.push(CURRORDERPRICE);
+          }
+        });
+      }
+      var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
+     
+      return Number(sum).toLocaleString();
+    },
+    monthEarningToShow() {
+      var ordersPrice = [];
+      const months = ["01","02","03","04","05","06","07","08","09","10","11","12"];
+      const d = new Date();
+      const currMonth = months[d.getMonth()];
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const orderMonth = order.dates.start.split('-')[1]
+          if(orderMonth === currMonth){
+
+            const { start, end } = order.dates;
+          const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+          const CURRORDERPRICE = parseInt(days * order.stay.price);
+          ordersPrice.push(CURRORDERPRICE);
+          }
+        });
+      }
+      var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
       return Number(sum).toLocaleString();
     },
     activeGuests() {
