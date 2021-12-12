@@ -20,7 +20,7 @@
           <!-- <h4>{{notification.createdAt}}</h4> -->
           </span>
         <h4 class="notifications-card-txt">
-          {{notification.txt}} {{notification.from.fullname}}
+          {{notification.txt}} 
         </h4>
         <!-- <pre>{{ notifications }}</pre> -->
         <a class="trips-link" href="#/orders">Read More</a>

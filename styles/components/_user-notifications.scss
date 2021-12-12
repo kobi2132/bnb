@@ -1,5 +1,5 @@
 .notifications-page {
-    height: 69vh;
+    min-height: 69vh;
     margin-top: 120px !important;
     grid-template-columns: 160px 1fr 160px !important;
     grid-template-rows: 80px 1fr 80px !important;
@@ -18,10 +18,10 @@
 .notifications-list {
     // width: 60vw;
     // margin: 0 auto;
-    width: 55vw;
+    width: 100%;
     margin: 0 auto;
     padding: 25px;
-    border-radius: 50px;
+    border-radius: 25px;
     border: 1px solid rgb(221, 221, 221);
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     button {
@@ -29,7 +29,7 @@
         // vertical-align: bottom;
     }
     .notifications-container {
-        height: 190px;
+        min-height: 190px;
         .notifications-card {
             gap: 50px;
             padding-bottom: 15px;
