@@ -1,6 +1,6 @@
 <template class="main-layout2">
   <div class="main-layout2">
-    <stay-list :stays="stays" />
+    <stay-list :stays="stays" v-loading="loading" />
   </div>
 </template>
 
@@ -22,6 +22,9 @@ export default {
   computed: {
     stays() {
       return this.$store.getters.staysToShow;
+    },
+    loading() {
+      return this.$store.getters.isLoading;
     },
   },
   created() {
