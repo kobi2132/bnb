@@ -1,3 +1,8 @@
+.notifications-page {
+    height: 69vh;
+    margin-top: 120px !important;
+}
+
 .notifications-header {
     font-family: airbnb-regular, sans-serif;
     font-size: 2rem;
@@ -9,11 +14,18 @@
 }
 
 .notifications-list {
-    width: 60vw;
+    // width: 60vw;
+    // margin: 0 auto;
+    width: 55vw;
     margin: 0 auto;
+    padding: 25px;
+    border-radius: 50px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     .notifications-card {
         gap: 50px;
         padding-bottom: 15px;
+        padding-top: 15px;
         font-size: 1.125rem;
         line-height: 1.75rem;
         img {
@@ -47,7 +59,7 @@
         }
         .notifications-card-txt {
             display: block;
-            flex: 3 1;
+            flex: 2 1;
             font-size: 1rem;
             line-height: 1.125rem;
             margin: 0;

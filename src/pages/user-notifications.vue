@@ -10,19 +10,17 @@
           gray-box-shadow
           align-center
         "
-      >
-        <img
-          src="https://randomuser.me/api/portraits/women/68.jpg"
-          alt="avatar"
-        />
+       v-for="(notification, idx) in notifications"
+          :key="idx">
+         <img :src="notification.from.imgUrl" alt="" class="host-img"  />
         <span class="flex column">
-          <h3>Mor Levi</h3>
-          <h4>03 / 12 / 2021</h4></span
-        >
+          <h3>{{notification.from.fullname}}</h3>
+          <!-- <h4>{{notification.createdAt}}</h4> -->
+          </span>
         <h4 class="notifications-card-txt">
-          Your order has been sent to Mor Levi
+          {{notification.txt}} {{notification.from.fullname}}
         </h4>
-        <pre>{{ notifications }}</pre>
+        <!-- <pre>{{ notifications }}</pre> -->
         <a class="trips-link" href="#/orders">Read More</a>
       </div>
     </section>
@@ -42,6 +40,15 @@ export default {
     notifications() {
       return this.$store.getters.notifications;
     },
+    dateToShow(notification){
+
+      const currDate = new Date(notification.createdAt);
+      const year = currDate.getFullYear();
+      const month = currDate.getMonth() + 1;
+      const day = currDate.getDate();
+      const dateToDisplay = day + "/" + month + "/" + year;
+      return dateToDisplay;
+    }
   },
   created() {
     const page = "notifications";
