@@ -79,6 +79,9 @@ export default {
     },
     decline() {
       console.log("declined");
+      this.order.status = "declined";
+      const order = JSON.parse(JSON.stringify(this.order));
+      this.$store.dispatch({ type: "updateOrder", order });
     },
   },
 };
