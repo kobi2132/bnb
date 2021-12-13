@@ -34,6 +34,9 @@
             {{ notificationsCount }}
           </p>
         </div>
+        <!-- <div v-if="notify" class="notify-modal alert">
+          <p>You have a new message!</p>
+        </div> -->
         <section
           class="notifications-modal-container"
           v-if="this.isNotificationsModal"
@@ -62,8 +65,6 @@
                 </h4>
                 <h5>{{ getCreatedTime(idx) }}</h5>
               </div>
-              <!-- <pre>{{ notifications }}</pre> -->
-              <!-- <a class="trips-link" href="#/orders">Read More</a> -->
             </div>
           </div>
         </section>
@@ -108,12 +109,38 @@
       </div>
     </div>
     <stay-filter :class="{ hide: miniFilter, hideFilter }" />
+    <section class="mobile-nav">
+      <a class="active">
+        <span class="material-icons-outlined"> search </span>
+        <p>Explore</p>
+      </a>
+      <a>
+        <span class="material-icons-outlined"> favorite_border </span>
+        <p>Wishlist</p>
+      </a>
+      <a>
+        <span class="trips"></span>
+        <p>Trips</p>
+      </a>
+      <a>
+        <span class="material-icons-outlined"> chat_bubble_outline </span>
+        <p>Inbox</p>
+        <p v-if="notificationsCount > 0" class="notifications">
+          {{ notificationsCount }}
+        </p>
+      </a>
+      <a @click="openMsg">
+        <span class="material-icons-outlined"> account_circle </span>
+        <p>Profile</p>
+      </a>
+    </section>
   </section>
 </template>
 
 <script>
 import stayFilter from "../cmps/stay-cmps/stay-filter.vue";
 import { socketService } from "../../services/socket.service.js";
+import { showMsg } from "../../services/event-bus.service.js";
 export default {
   data() {
     return {
@@ -124,42 +151,19 @@ export default {
       hideFilter: false,
       topOfPage: true,
       isNotificationsModal: false,
-      // notifications: [
-      //   {
-      //     from: {
-      //       _id: "61b064d3dcbbeca56bcf1df1",
-      //       fullname: "Adi Adadouf",
-      //       imgUrl:
-      //         "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
-      //     },
-      //     txt: "Your order has been approved!",
-      //     createdAt: 1639266368862,
-      //   },
-      //   {
-      //     from: {
-      //       _id: "61b064d3dcbbeca56bcf1df1",
-      //       fullname: "Adi Adadouf",
-      //       imgUrl:
-      //         "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
-      //     },
-      //     txt: "Your order has been approved!",
-      //     createdAt: 1639266368862,
-      //   },
-      //   {
-      //     from: {
-      //       _id: "61b064d3dcbbeca56bcf1df1",
-      //       fullname: "Adi Adadouf",
-      //       imgUrl:
-      //         "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
-      //     },
-      //     txt: "Your order has been approved!",
-      //     createdAt: 1639266368862,
-      //   },
-      // ],
+      notify: false,
     };
   },
 
   methods: {
+    openMsg() {
+      const h = this.$createElement;
+      this.$notify({
+        title: "New order at Adadouf's house",
+        message: "You have a new order from Baner Aiton",
+        offset: 100,
+      });
+    },
     logout() {
       this.loggedinUser = null;
       this.$store.dispatch({ type: "logout" });
@@ -170,8 +174,6 @@ export default {
       this.$router.push("/").catch(() => {});
     },
     handleScroll(event) {
-      // console.log(window.scrollY);
-      // console.log("scrolling...");
       if (window.scrollY === 0) {
         this.miniFilter = false;
         this.topOfPage = true;
@@ -213,6 +215,9 @@ export default {
     },
   },
   computed: {
+    newNotification() {
+      return this.$store.getters.notifications > 0;
+    },
     notifications() {
       return this.$store.getters.notifications;
     },
@@ -253,10 +258,6 @@ export default {
     window.addEventListener("scroll", this.handleScroll);
     this.loggedinUser = this.$store.getters.loggedinUser;
   },
-  mounted() {
-    // this.currPage = this.$store.getters.currPage;
-    // console.log("header created", this.currPage);
-  },
   updated() {
     this.loggedinUser = this.$store.getters.loggedinUser;
   },
@@ -265,6 +266,7 @@ export default {
   },
   components: {
     stayFilter,
+    showMsg,
   },
   watch: {
     "$store.state.currPage": {
