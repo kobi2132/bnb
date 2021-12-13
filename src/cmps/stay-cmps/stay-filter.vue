@@ -79,7 +79,6 @@
 <script>
 import tripCalendar from "../trip-calendar.vue";
 import tripCalendar2 from "../trip-calendar2.vue";
-import tripCalendar3 from "../trip-calendar3.vue";
 import Calendar from "v-calendar/lib/components/calendar.umd";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 export default {
@@ -104,7 +103,6 @@ export default {
   components: {
     tripCalendar,
     tripCalendar2,
-    tripCalendar3,
     Calendar,
     DatePicker,
   },

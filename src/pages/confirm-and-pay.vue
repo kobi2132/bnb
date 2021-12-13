@@ -165,21 +165,27 @@
       </div>
     </div>
     <div class="main-screen" v-if="congratsModal"></div>
-
-    <div class="congrats-modal-container" v-if="congratsModal">
-      <div class="congrats-modal">
-        <div class="title">Order sent to host!</div>
-        <div class="title-1">Your host will reply shortly</div>
-        <div class="title-2">
-          You won't be charged until the host approves your order
-        </div>
-        <div class="separator"></div>
-        <div class="links-container">
-          <router-link class="btn" to="/">Home page </router-link>
-          <router-link class="btn" to="/trips">Share your stay </router-link>
+      <div class="congrats-modal-container" v-if="congratsModal">
+        <div class="congrats-modal">
+          <div class="closeModal">
+            <div>
+              <router-link class="btn" to="/"
+                ><span class="material-icons"> close </span></router-link
+              >
+            </div>
+          </div>
+          <div class="title">Order sent to host!</div>
+          <div class="title-1">Your host will reply shortly</div>
+          <div class="title-2">
+            You won't be charged until the host approves your order
+          </div>
+          <div class="separator"></div>
+          <div class="links-container">
+            <router-link class="btn" to="/">Home page </router-link>
+            <router-link class="btn" to="/trips">Share your stay </router-link>
+          </div>
         </div>
       </div>
-    </div>
   </div>
 </template>
 

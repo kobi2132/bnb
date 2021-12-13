@@ -23,44 +23,51 @@
       <div class="nav flex align-center justify-center">
         <router-link to="/explore">Explore</router-link>
         <router-link to="/host">Become a Host</router-link>
-        <span
-          class="material-icons notification-btn"
-          @click="this.openNotifications"
-        >
-          notifications
-        </span>
+        <div class="notifications-container">
+          <span
+            class="material-icons notification-btn"
+            @click="this.openNotifications"
+          >
+            notifications
+          </span>
+          <p v-if="notificationsCount > 0" class="notifications">
+            {{ notificationsCount }}
+          </p>
+        </div>
+        <!-- <div v-if="notify" class="notify-modal alert">
+          <p>You have a new message!</p>
+        </div> -->
         <section
           class="notifications-modal-container"
           v-if="this.isNotificationsModal"
         >
           <div class="notifications-modal">
             <div class="header-notifi">Notifications</div>
-
             <div
-              class="
-                notifications-cards
-                flex
-                space-between
-                gray-box-shadow
-                align-center
-              "
+              class="notifications-cards flex gray-box-shadow align-center"
               v-for="(notification, idx) in notifications"
               :key="idx"
             >
               <img :src="notification.from.imgUrl" alt="" class="host-img" />
-              <span class="flex column">
-                <h3>{{ notification.from.fullname }}</h3>
-              </span>
-              <div class="notif-card">
-              <h4 class="notifications-card-txt">
-                {{ notification.txt }}
-              </h4>
-              <h5>{{ getCreatedTime(idx) }}</h5>
+              <div class="card-details">
+                <div class="host-details">
+                  {{ notification.from.stayName }}
+                </div>
 
-
+                <div class="notif-card">
+                  <h4 class="notifications-card-txt">
+                    {{ notification.txt }}
+                  </h4>
+                  <h5 class="notifications-timer">{{ getCreatedTime(idx) }}</h5>
+                </div>
+                <!-- <pre>{{ notifications }}</pre> -->
+                <!-- <a class="trips-link" href="#/orders">Read More</a> -->
               </div>
-              <!-- <pre>{{ notifications }}</pre> -->
-              <!-- <a class="trips-link" href="#/orders">Read More</a> -->
+            </div>
+            <div class="no-notifications" v-if="notifications.length === 0">
+              <div class="separator"></div>
+
+              <div>You have no new notifications</div>
             </div>
           </div>
         </section>
@@ -69,9 +76,6 @@
           class="user-menu-btn clickable flex align-center clickable"
           @click="shouldShow = !shouldShow"
         >
-          <p v-if="notificationsCount > 0" class="notifications">
-            {{ notificationsCount }}
-          </p>
           <span class="material-icons-round" v-if="!currUser">
             account_circle
           </span>
@@ -108,12 +112,38 @@
       </div>
     </div>
     <stay-filter :class="{ hide: miniFilter, hideFilter }" />
+    <section class="mobile-nav">
+      <a class="active">
+        <span class="material-icons-outlined"> search </span>
+        <p>Explore</p>
+      </a>
+      <a>
+        <span class="material-icons-outlined"> favorite_border </span>
+        <p>Wishlist</p>
+      </a>
+      <a>
+        <span class="trips"></span>
+        <p>Trips</p>
+      </a>
+      <a>
+        <span class="material-icons-outlined"> chat_bubble_outline </span>
+        <p>Inbox</p>
+        <p v-if="notificationsCount > 0" class="notifications">
+          {{ notificationsCount }}
+        </p>
+      </a>
+      <a @click="openMsg">
+        <span class="material-icons-outlined"> account_circle </span>
+        <p>Profile</p>
+      </a>
+    </section>
   </section>
 </template>
 
 <script>
 import stayFilter from "../cmps/stay-cmps/stay-filter.vue";
 import { socketService } from "../../services/socket.service.js";
+import { showMsg } from "../../services/event-bus.service.js";
 export default {
   data() {
     return {
@@ -124,42 +154,19 @@ export default {
       hideFilter: false,
       topOfPage: true,
       isNotificationsModal: false,
-      // notifications: [
-      //   {
-      //     from: {
-      //       _id: "61b064d3dcbbeca56bcf1df1",
-      //       fullname: "Adi Adadouf",
-      //       imgUrl:
-      //         "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
-      //     },
-      //     txt: "Your order has been approved!",
-      //     createdAt: 1639266368862,
-      //   },
-      //   {
-      //     from: {
-      //       _id: "61b064d3dcbbeca56bcf1df1",
-      //       fullname: "Adi Adadouf",
-      //       imgUrl:
-      //         "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
-      //     },
-      //     txt: "Your order has been approved!",
-      //     createdAt: 1639266368862,
-      //   },
-      //   {
-      //     from: {
-      //       _id: "61b064d3dcbbeca56bcf1df1",
-      //       fullname: "Adi Adadouf",
-      //       imgUrl:
-      //         "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
-      //     },
-      //     txt: "Your order has been approved!",
-      //     createdAt: 1639266368862,
-      //   },
-      // ],
+      notify: false,
     };
   },
 
   methods: {
+    openMsg() {
+      const h = this.$createElement;
+      this.$notify({
+        title: "New order at Adadouf's house",
+        message: "You have a new order from Baner Aiton",
+        offset: 100,
+      });
+    },
     logout() {
       this.loggedinUser = null;
       this.$store.dispatch({ type: "logout" });
@@ -170,8 +177,6 @@ export default {
       this.$router.push("/").catch(() => {});
     },
     handleScroll(event) {
-      // console.log(window.scrollY);
-      // console.log("scrolling...");
       if (window.scrollY === 0) {
         this.miniFilter = false;
         this.topOfPage = true;
@@ -198,10 +203,13 @@ export default {
 
       console.log(currDate);
 
-      return "sent at: "+day + "/" + month + "/" + year + " , " +  hours + ":"+ minutes;
+      return day + "/" + month + "/" + year + " , " + hours + ":" + minutes;
     },
   },
   computed: {
+    newNotification() {
+      return this.$store.getters.notifications > 0;
+    },
     notifications() {
       return this.$store.getters.notifications;
     },
@@ -241,21 +249,16 @@ export default {
   created() {
     window.addEventListener("scroll", this.handleScroll);
     this.loggedinUser = this.$store.getters.loggedinUser;
-    // console.log(this.loggedinUser);
-  },
-  mounted() {
-    // this.currPage = this.$store.getters.currPage;
-    // console.log("header created", this.currPage);
   },
   updated() {
     this.loggedinUser = this.$store.getters.loggedinUser;
-    // console.log(this.loggedinUser);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
   },
   components: {
     stayFilter,
+    showMsg,
   },
   watch: {
     "$store.state.currPage": {
