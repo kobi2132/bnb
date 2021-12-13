@@ -11,8 +11,9 @@
   >
     <div class="notify-modal alert" :class="{ showNotes: notify }">
       <p>You have a new message!</p>
-      <p v-if="lastNote">{{ lastNote.txt }} {{ lastNote.from.fullname }}</p>
-      <a href="#/dashboard">Dashboard</a>
+      <!-- <p v-if="lastNote">{{ lastNote.txt }}</p> -->
+      <p>You order to Adadouf's house has been approved by Adi Adadouf.</p>
+      <a href="#/dashboard">Show more</a>
     </div>
     <section class="main-header-container flex space-between">
       <div class="logo clickable flex align-center" @click.stop="goHome">
@@ -35,9 +36,9 @@
           >
             notifications
           </span>
-          <p v-if="notificationsCount > 0" class="notifications">
+          <!-- <p v-if="notificationsCount > 0" class="notifications">
             {{ notificationsCount }}
-          </p>
+          </p> -->
         </div>
         <section
           class="notifications-modal-container"
@@ -70,7 +71,10 @@
               <div class="separator"></div>
 
               <div>You have no new notifications</div>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ios-home-outline.svg/512px-Ios-home-outline.svg.png" alt="">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ios-home-outline.svg/512px-Ios-home-outline.svg.png"
+                alt=""
+              />
             </div>
           </div>
         </section>

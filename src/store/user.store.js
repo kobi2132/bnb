@@ -28,13 +28,13 @@ export const userStore = {
                     imgUrl: order.buyer.imgUrl,
                     stayName: order.stay.name
                 },
-                txt: "New order from " + order.buyer.fullname ,
+                txt: "New order from " + order.buyer.fullname,
                 createdAt: Date.now(),
             }
             console.log('notification, yay!', newNotification)
             state.notify = true;
             state.notifications.push(newNotification)
-            setTimeout(() => { state.notify = false }, 4000)
+            setTimeout(() => { state.notify = false }, 10000)
         },
         orderUpdated(state, { order }) {
             const newNotification = {
@@ -45,12 +45,13 @@ export const userStore = {
                     stayName: order.stay.name
 
                 },
-                txt: 'Your order has been approved!',
+                txt: `Your order to ${order.stay.name} has been approved by ${order.host.fullname}!`,
                 createdAt: Date.now(),
             }
             console.log('notification, yay!', newNotification)
+            state.notify = true;
             state.notifications.push(newNotification)
-            console.log(state.notifications.length)
+            setTimeout(() => { state.notify = false }, 10000)
         },
         setUser(state, { user }) {
             state.loggedinUser = user

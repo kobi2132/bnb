@@ -216,22 +216,25 @@
 }
 
 .notify-modal.alert {
-    position: absolute;
+    position: fixed;
     top:160px;
-    right: 0;
+    left: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
     transform: translateX(1000%);   
     padding: 10px;
-    height: fit-content;
-    width: fit-content;
-    font-size: 18px;
+    height: fit-content;    
+    font-size: 16px;
     transition: transform .6s, box-shadow .6s;
-        p {
+        p,a {
             margin: 0;
             font-size: 14px;
+            padding: 5px 0 ;
+        }
+        a {
+            text-decoration: underline;
         }
     &.showNotes {
         transform: translate(93%);
@@ -239,7 +242,8 @@
 }
 @media(max-width: $break-narrow) {
     .notify-modal.alert.showNotes {
-        transform: translate(-72%);
+        transform: translate(-40%);
+        width: 100%;
     }
 }
 

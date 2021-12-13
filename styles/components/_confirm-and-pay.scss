@@ -250,69 +250,7 @@
             }
         }
     }
-    .congrats-modal-container {
-        position: relative;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-        opacity: 1;
-        .congrats-modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 1;
-            transition: opacity 0.6s;
-            width: 550px;
-            padding: 50px;
-            // border: 1px solid rgb(221, 221, 221);
-            border-radius: 12px;
-            background-color: #222222;
-            color: whitesmoke;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;            color: w;
-            .closeModal {
-                position: absolute;
-                cursor: pointer;
-                div {
-                    position: relative ;
-                    top: -37px;
-                    right: -457px;
-                                        a{
-                        color: whitesmoke;
-                    }
-                }
-            }
-            .title {
-                font-size: 22px;
-                font-weight: bold;
-                color: $redAirbnb;
-                margin-bottom: 24px;
-            }
-            .title-1 {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 4px;
-            }
-            .title-2 {
-                font-size: 14px;
-                margin-bottom: 24px;
-            }
-            .separator {
-                height: 2px;
-                width: 100%;
-                border-bottom: 1px solid #dddddd;
-                margin-bottom: 37px;
-            }
-            .links-container {
-                display: flex;
-                justify-content: space-between;
-                text-decoration: underline;
-                font-weight: 500;
-                a {
-                    color: whitesmoke;
-                }
-            }
-        }
-    }
+
     .main-screen {
         position: fixed;
         top: 0;
@@ -325,5 +263,69 @@
         opacity: 0;
         transition: opacity 0.9s;
         pointer-events: auto;
+    }
+}
+
+.congrats-modal-container {
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    .congrats-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        transition: opacity 0.6s;
+        width: 550px;
+        padding: 50px;
+        // border: 1px solid rgb(221, 221, 221);
+        border-radius: 12px;
+        background-color: whitesmoke;
+        color: #292929;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        .closeModal {
+            position: absolute;
+            cursor: pointer;
+            div {
+                position: relative ;
+                top: -37px;
+                right: -457px;
+                a{
+                    color: #292929;
+                }
+            }
+        }
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: $redAirbnb;
+            margin-bottom: 24px;
+        }
+        .title-1 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .title-2 {
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        .separator {
+            height: 2px;
+            width: 100%;
+            border-bottom: 1px solid #dddddd;
+            margin-bottom: 37px;
+        }
+        .links-container {
+            display: flex;
+            justify-content: space-between;
+            text-decoration: underline;
+            font-weight: 500;
+            a {
+                color: #292929;
+            }
+        }
     }
 }
