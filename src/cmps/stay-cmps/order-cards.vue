@@ -1,6 +1,6 @@
 <template>
   <div class="order-card">
-        <div class="order-card-header flex space-evenly">
+        <div class="order-card-header flex ">
           <img class="guest-img" :src="order.buyer.imgUrl" />
           <span class="card-key">{{ order.buyer.fullname }}</span>
         </div>

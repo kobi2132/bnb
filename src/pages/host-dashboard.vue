@@ -148,7 +148,7 @@
                     <!-- flex space-evenly align-center -->
                     <span class="guest-img"></span>
                     <span>Name</span>
-                    <span>Price</span>
+                    <span>Price per night</span>
                     <span>Address</span>
                     <span class="stay-actions">Actions</span>
                   </div>
@@ -263,7 +263,8 @@
         </section>
       </section>
       <!-- /////////// -->
-      <section class="cards-container flex column space-between">
+      <section class="cards-container flex column space-between align-center">
+       <div v-if="shouldShow === 'my orders'">
         <h1>My orders</h1>
       <order-cards
                         :order="order"
@@ -271,6 +272,16 @@
                         v-for="order in myOrders"
                         :key="order._id"
                       />
+       </div>
+       <div v-if="shouldShow === 'my stays'">
+        <h1>My stays</h1>
+      <stay-cards
+                        :stay="stay"
+                        
+                        v-for="stay in myStays"
+                        :key="stay._id"
+                      />
+       </div>
       </section>
       <!-- <div class="order-card">
         <div class="order-card-header flex space-evenly">
@@ -328,12 +339,14 @@
 <script>
 import orderData from "@/cmps/stay-cmps/order-data.vue";
 import orderCards from "@/cmps/stay-cmps/order-cards.vue";
+import stayCards from "@/cmps/stay-cmps/stay-cards.vue";
 
 export default {
   name: "host-dashboard",
   components: {
     orderData,
-    orderCards
+    orderCards,
+    stayCards
   },
   data() {
     return {
