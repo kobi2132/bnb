@@ -12,7 +12,10 @@
           ><span>{{ startDateToShow }} - {{ endDateToShow }} </span>
         </div>
         <div>
-          <span class="card-key">Revenue:</span> <span>$ {{ this.totalPrice }}</span>
+          <span class="card-key">Expected revenue:</span> <span>$ {{ this.totalPrice }}</span>
+        </div>
+        <div>
+          <span class="card-key">Stay:</span> <span>{{order.stay.name}}</span>
         </div>
         <div class="card-actions">
           <section class="pre-approved">

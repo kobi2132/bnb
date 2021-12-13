@@ -25,7 +25,7 @@
 
 .dash-nav {
     @media(max-width: 460px) {
-        flex-direction: row !important;
+        // flex-direction: row !important;
         // justify-content: start !important;
         // align-items: center !important;
     }
@@ -146,6 +146,9 @@
 .dash-main-container {
     gap: 30px;
     padding: 0 20px 20px 20px;
+    @media(max-width: 460px) {
+        padding: 0 0 20px 0;
+    }
     // margin: auto;
     // margin-inline-start: 240px;
     //fix this layout
@@ -153,8 +156,15 @@
     .dash-header {
         @media(max-width: 460px) {
             flex-direction: column;
-            padding: 0;
-            padding-bottom: 20px;
+            // padding: 0;
+            // padding-bottom: 20px;
+            .dash-nav {
+                @media(max-width: 460px) {
+                    flex-direction: row !important;
+                    padding: 0 0 20px 0px;
+                    max-width: 414px;
+                }
+            }
         }
         // position: fixed;
         // z-index: 9000;
@@ -169,14 +179,15 @@
             @media(max-width: 460px) {
                 // flex-direction: column !important;
                 // width: fit-content;
-                width: 360px;
+                width: 400px;
                 overflow-x: scroll;
-                position: relative;
-                padding-block: 10px;
+                padding: 0 0 10px 0;
+                // position: relative;
+                // padding-block: 10px;
                 // align-items: center;
                 .dash-div {
                     // margin-left: 0 !important;
-                    margin-bottom: 20px;
+                    // margin-bottom: 20px;
                 }
             }
             padding: 0;
@@ -219,6 +230,9 @@
             border-radius: 13px;
             padding: 0 20px 0 20px;
             .rates-data {
+                @media(max-width: 460px) {
+                    width: 95px
+                }
                 span:first-child {
                     padding-bottom: 10px;
                 }
@@ -293,8 +307,8 @@
             // width: 100%;
             // justify-content: space-evenly;
             @media(max-width: 460px) {
-                padding: 15px;
-                width: 100px;
+                // padding: 15px;
+                // width: 100px;
             }
              :hover {
                 color: $redAirbnb;
@@ -313,9 +327,9 @@
                     position: relative;
                     top: 3px;
                     @media(max-width: 460px) {
-                        display: block;
-                        width: 100px;
-                        line-height: 50px;
+                        // display: block;
+                        // width: 100px;
+                        // line-height: 50px;
                     }
                     // font-size: 1rem !important;
                 }
@@ -462,17 +476,17 @@
     flex-wrap: wrap;
     display: none;
     @media(max-width: 460px) {
-        // .dashboard-page .main-layout2 {
-        // 460width
-        // background-color: blue;
         display: flex;
+        max-width: 400px;
+        padding: 0;
+        margin: 0;
         h1 {
             color: rgb(34, 34, 34);
             display: block;
             font-family: airbnb-regular, sans-serif;
             font-size: 2rem;
             font-weight: 700;
-            margin-left: 30px;
+            margin: 0 0 0 30px;
         }
         // grid-template-columns: 10px 1fr 10px;
     }
@@ -488,16 +502,28 @@
     // gap: 10px;
     // align-items: center;
     // text-align: center;
-    height: 200px;
+    // height: 200px;
     width: 350px;
     max-width: 350px;
     padding: 15px;
-    margin: 20px 30px 20px 30px;
+    margin: 20px 10px 20px 10px;
     border-radius: 12px;
     border: 1px solid #dddddd;
     box-shadow: rgb(0 0 0 / 10%) 0px 3px 10px;
+    align-self: center;
+    .card-header {
+        img {
+            margin-inline: 5px;
+        }
+        .card-key {
+            font-family: airbnb-medium;
+            font-size: 1.25rem;
+            margin-right: 5px;
+        }
+    }
     .card-key {
         font-family: airbnb-medium;
+        font-size: 1.25rem;
         margin-right: 5px;
     }
     .guest-img {
