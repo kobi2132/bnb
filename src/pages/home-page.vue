@@ -6,29 +6,31 @@
         <h3>I'm flexible</h3>
       </button>
     </section>
+    <h1 class="dest-header">Popular Destinations</h1>
     <section class="dest-container">
-      <h1>Popular Destinations</h1>
-      <section class="dest-gallery">
-        <router-link to="/explore?destination=New York">
-          <img src="~@/assets/images/NY2.jpg" />
-          <h3>New York</h3>
-        </router-link>
-        <router-link to="/explore?destination=Santorini">
-          <img src="~@/assets/images/SAN4.jpg" />
-          <h3>Santorini</h3>
-        </router-link>
-        <router-link to="/explore?destination=Tel Aviv">
-          <img src="~@/assets/images/TA1.jpg" />
-          <h3>Tel Aviv</h3>
-        </router-link>
-        <router-link to="/explore?destination=Paris">
-          <img src="~@/assets/images/paris.jpg" />
-          <h3>Paris</h3>
-        </router-link>
-      </section>
+      <div class="gallery-container">
+        <section class="dest-gallery">
+          <router-link to="/explore?destination=New York">
+            <img src="~@/assets/images/NY2.jpg" />
+            <h3>New York</h3>
+          </router-link>
+          <router-link to="/explore?destination=Santorini">
+            <img src="~@/assets/images/SAN4.jpg" />
+            <h3>Santorini</h3>
+          </router-link>
+          <router-link to="/explore?destination=Tel Aviv">
+            <img src="~@/assets/images/TA1.jpg" />
+            <h3>Tel Aviv</h3>
+          </router-link>
+          <router-link to="/explore?destination=Paris">
+            <img src="~@/assets/images/paris.jpg" />
+            <h3>Paris</h3>
+          </router-link>
+        </section>
+      </div>
     </section>
+    <h1 class="tr-header">Top Rated</h1>
     <section class="toprated-container">
-      <h1>Top Rated</h1>
       <section class="top-rated-gallery">
         <router-link to="/stay/61b21619dcbbeca56b4e124e">
           <img src="~@/assets/images/tr1.jpg" />
@@ -51,7 +53,7 @@
     <section class="host-container full">
       <section class="host">
         <h1>Become a host!</h1>
-        
+
         <button class="clickable" @click="goHost">
           <h3>Learn more</h3>
         </button>

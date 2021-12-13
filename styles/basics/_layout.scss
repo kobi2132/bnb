@@ -36,12 +36,17 @@
     // @include for-normal-layout {
     //     @include layoutGTC($break-normal)
     // }
-    @mixin for-mobile-layout {
-        @media (max-width: $padded-break-narrow) {
-            @include content;
-            grid-template-columns: minmax(200px, $break-narrow);
+}
 
-
+@media (max-width: $break-narrow) {
+    .main-layout2 {
+        max-width: $padded-break-narrow;
+        display:grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        >* {
+            grid-column: 1;
         }
-      }
+    }
+
 }
