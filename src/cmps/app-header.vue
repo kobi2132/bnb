@@ -11,8 +11,9 @@
   >
     <div class="notify-modal alert" :class="{ showNotes: notify }">
       <p>You have a new message!</p>
-      <p v-if="lastNote">{{ lastNote.txt }} </p>
-      <a href="#/dashboard">Dashboard</a>
+      <!-- <p v-if="lastNote">{{ lastNote.txt }}</p> -->
+      <p>You order to Adadouf's house has been approved by Adi Adadouf.</p>
+      <a href="#/dashboard">Show more</a>
     </div>
     <section class="main-header-container flex space-between">
       <div class="logo clickable flex align-center" @click.stop="goHome">
@@ -35,14 +36,18 @@
           >
             notifications
           </span>
-          <p v-if="notificationsCount > 0" class="notifications">
+          <!-- <p v-if="notificationsCount > 0" class="notifications">
             {{ notificationsCount }}
-          </p>
+          </p> -->
         </div>
         <!-- <div v-if="notify" class="notify-modal alert">
           <p>You have a new message!</p>
         </div> -->
-        <div class="main-screen" v-if="this.isNotificationsModal" @click="this.openNotifications"></div>
+        <div
+          class="main-screen"
+          v-if="this.isNotificationsModal"
+          @click="this.openNotifications"
+        ></div>
 
         <section
           class="notifications-modal-container"
