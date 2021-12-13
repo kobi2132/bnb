@@ -10,24 +10,17 @@
 }
 
 .dashboard-container {
-    gap: 10px
+    gap: 10px;
 }
 
 .dash-nav-sticky-container {
     h1 {
         font-size: 24px;
     }
-    width: 230px;
-    max-width: 230px;
-    min-width: 230px;
-    align-self: flex-start;
     .dash-nav-container {
-        // position: sticky;
-        justify-content: flex-start;
-        align-items: flex-start;
         text-align: start;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        width: 100%;
+        justify-content: space-evenly;
         span {
             // background-color: brown;
             line-height: 1rem;
@@ -56,6 +49,7 @@
         img {
             height: 40px;
             width: 40px;
+            vertical-align: middle;
         }
         h2 {
             font-size: 1.125rem;
@@ -73,35 +67,125 @@
     }
 }
 
+.pre-approved {
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    .approve-btn {
+        background: none;
+        border: none;
+        color: green;
+        text-decoration: underline;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        min-height: 40px;
+        outline: 0;
+        text-align: center;
+        text-rendering: geometricprecision;
+        &:hover {
+            background-color: initial;
+            background-position: 0 0;
+            color: #1d7c007a;
+        }
+    }
+    .decline-btn {
+        background: none;
+        border: none;
+        color: red;
+        text-decoration: underline;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 400;
+        min-height: 40px;
+        outline: 0;
+        padding: 0px 10px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        &:hover {
+            background-color: initial;
+            background-position: 0 0;
+            color: #c000007a;
+        }
+    }
+}
+
+.post-approved {
+    display: flex;
+    .msg-btn,
+    .price-change-btn,
+    .post-approved-btn,
+    .post-declined-btn {
+        background: #ffffff00;
+        border: none;
+        color: rgba(0, 0, 0, 0.664);
+        cursor: pointer;
+    }
+}
+
 .dash-main-container {
-    gap: 20px;
-    padding: 20px 20px 20px 60px;
+    gap: 30px;
+    padding: 0 20px 20px 60px;
     margin: auto;
     // margin-inline-start: 240px;
     //fix this layout
     border-radius: 13px;
     .dash-header {
-        gap: 20px;
-        max-width: 586px;
+        display: flex;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        // gap: 20px;
+        // max-width: 586px;
         align-self: center;
+        td {
+            font-size: 0.85rem;
+            line-height: 0.85rem;
+            padding: 5px;
+            font-family: 'airbnb-medium';
+            text-align: center;
+        }
+        .nums-td {
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            font-family: 'airbnb-regular';
+            padding-top: 10px;
+        }
+        small {
+            font-size: 0.85rem;
+            line-height: 0.85rem;
+            font-family: "airbnb-medium";
+            vertical-align: bottom;
+            align-self: end;
+        }
+        .avg {
+            text-indent: 3px;
+        }
         .dash-div {
-            padding: 23px;
+            padding: 15px;
             border-radius: 12px;
             border: 1px solid #dddddd;
-            box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+            box-shadow: rgb(0 0 0 / 10%) 0px 3px 10px;
         }
         div {
             // min-width: 200px;
             // max-width: 200px;
             border-radius: 13px;
             padding: 0 20px 0 20px;
+            .rates-data {
+                span:first-child {
+                    padding-bottom: 10px;
+                }
+            }
             h3 {
                 font-size: 1rem;
                 line-height: 18px;
                 color: #222;
                 padding: 0;
                 margin: 0;
-                padding-bottom: 20px;
+                padding-bottom: 15px;
             }
             div {
                 padding: 0;
@@ -185,6 +269,7 @@
                         display: grid;
                         margin-top: 7px;
                         padding-bottom: 7px;
+                        // border-bottom: 0.1px solid rgba(168, 168, 168, 0.767);
                         // grid-template-columns: repeat(5, 1fr);
                         grid-template-columns: auto 1fr 1fr 1fr 1fr;
                         gap: 10px;
@@ -197,6 +282,7 @@
                             // border-top: 1px solid #dfdfdf;
                             img {
                                 margin: auto;
+                                vertical-align: middle;
                             }
                         }
                     }
@@ -237,6 +323,7 @@
                             text-align: center;
                             margin-top: 7px;
                             padding-bottom: 7px;
+                            // border-bottom: 0.1px solid rgba(168, 168, 168, 0.767);
                             span {
                                 text-align: center;
                                 // width: 100%;
