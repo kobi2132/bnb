@@ -20,7 +20,7 @@
     .dash-nav-container {
         text-align: start;
         width: 100%;
-        justify-content: space-evenly;
+        // justify-content: space-evenly;
         span {
             // background-color: brown;
             line-height: 1rem;
@@ -127,8 +127,8 @@
 
 .dash-main-container {
     gap: 30px;
-    padding: 0 20px 20px 60px;
-    margin: auto;
+    padding: 0 20px 20px 20px;
+    // margin: auto;
     // margin-inline-start: 240px;
     //fix this layout
     border-radius: 13px;
