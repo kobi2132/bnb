@@ -1,9 +1,7 @@
-
 .confirm-and-pay {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     .title1 {
         color: #222222;
         font-size: 22px;
@@ -78,10 +76,6 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-<<<<<<< HEAD
-
-=======
->>>>>>> a0f09b5c6087c00d6fecd4c23554af430c6249ee
                     .imgs {
                         display: flex;
                         justify-content: flex-end;
@@ -252,69 +246,61 @@
             }
         }
     }
-
-  .congrats-modal-container{
-      position: relative;
-
-     .congrats-modal{
-         position: fixed;
-         top: 50%;
-         left: 50%;
-         transform: translate(-50%, -50%);
-         opacity: 1;
-         transition: opacity 0.6s;
-         width: 550px;
-         padding: 50px;
-         border: 1px solid rgb(221, 221, 221);
-         border-radius: 12px;
-         background-color: white;
-         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
-         .title{
-             font-size: 22px;
-             font-weight: bold;
-             color: $redAirbnb;
-             margin-bottom: 24px;
-         }
-         .title-1{
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 4px;
-   
-         }
-         .title-2{
-            font-size: 14px;
-            margin-bottom: 24px;
-         }
-         .separator {
-            height: 2px;
-            width: 100%;
-            border-bottom: 1px solid #dddddd;
-            margin-bottom: 37px;
+    .congrats-modal-container {
+        position: relative;
+        .congrats-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 1;
+            transition: opacity 0.6s;
+            width: 550px;
+            padding: 50px;
+            border: 1px solid rgb(221, 221, 221);
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            .title {
+                font-size: 22px;
+                font-weight: bold;
+                color: $redAirbnb;
+                margin-bottom: 24px;
+            }
+            .title-1 {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 4px;
+            }
+            .title-2 {
+                font-size: 14px;
+                margin-bottom: 24px;
+            }
+            .separator {
+                height: 2px;
+                width: 100%;
+                border-bottom: 1px solid #dddddd;
+                margin-bottom: 37px;
+            }
+            .links-container {
+                display: flex;
+                justify-content: space-between;
+                text-decoration: underline;
+                font-weight: bold;
+            }
         }
-        .links-container{
-            display: flex;
-            justify-content: space-between;
-            text-decoration: underline;
-            font-weight: bold;
-
-        }
-
-     }
-  }  
-
-  .main-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .25);
-    // cursor: pointer;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity .9s;
-    pointer-events: auto;
-
-}
+    }
+    .main-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .25);
+        // cursor: pointer;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .9s;
+        pointer-events: auto;
+    }
 }
