@@ -8,7 +8,7 @@ export const userStore = {
         notifications: [],
         users: [],
         watchedUser: null,
-        notify: true
+        notify: false
     },
     getters: {
         users({ users }) { return users },
