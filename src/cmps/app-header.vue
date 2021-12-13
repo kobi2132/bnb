@@ -68,6 +68,7 @@
               <div class="separator"></div>
 
               <div>You have no new notifications</div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ios-home-outline.svg/512px-Ios-home-outline.svg.png" alt="">
             </div>
           </div>
         </section>
