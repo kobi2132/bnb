@@ -1,41 +1,57 @@
 <template>
-  <div>
-    <span class="flex align-center">
-      <!-- <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"/> -->
-      <img class="guest-img" :src="order.buyer.imgUrl" />
-    </span>
-    <span>{{ order.buyer.fullname }}</span>
-    <span>{{order.stay.name}}</span>
-    <span>{{ startDateToShow }} - {{ endDateToShow }} </span>
-    <!-- <span>{{ endDateToShow }}</span> -->
-    <span class="capitalize">{{ order.status }}</span>
-    <span>$ {{ this.totalPrice}}</span>
-
-
-    <section class="pre-approved">
-
-
-      <button class="approve-btn" @click="approve" v-if="this.order.status === 'pending'">Approve</button>
-      <button class="decline-btn" @click="decline" v-if="this.order.status === 'pending'">Decline</button>
-      <button class="approve-btn" @click="approve" v-if="this.order.status === 'declined'">Approve</button>
-      <button class="decline-btn" @click="decline" v-if="this.order.status === 'approved'">Decline</button>
-    </section>
-
-
-    <!-- <span class="stay-actions flex align-center space-evenly">
-      <button class="clean-btn clickable" @click="approve">
-        <i class="fa fa-check" aria-hidden="true"></i>
-      </button>
-      <button class="clean-btn clickable" @click="decline">
-        <i class="fa fa-times" aria-hidden="true"></i>
-      </button>
-    </span> -->
-  </div>
+  <div class="order-card">
+        <div class="order-card-header flex space-evenly">
+          <img class="guest-img" :src="order.buyer.imgUrl" />
+          <span class="card-key">{{ order.buyer.fullname }}</span>
+        </div>
+        <div>
+          <span class="card-key">Status:</span><span>{{ order.status }}</span>
+        </div>
+        <div>
+          <span class="card-key">Dates:</span
+          ><span>{{ startDateToShow }} - {{ endDateToShow }} </span>
+        </div>
+        <div>
+          <span class="card-key">Revenue:</span> <span>$ {{ this.totalPrice }}</span>
+        </div>
+        <div class="card-actions">
+          <section class="pre-approved">
+            <button
+              class="approve-btn"
+              @click="approve"
+              v-if="this.order.status === 'pending'"
+            >
+              Approve
+            </button>
+            <button
+              class="decline-btn"
+              @click="decline"
+              v-if="this.order.status === 'pending'"
+            >
+              Decline
+            </button>
+            <button
+              class="approve-btn"
+              @click="approve"
+              v-if="this.order.status === 'declined'"
+            >
+              Approve
+            </button>
+            <button
+              class="decline-btn"
+              @click="decline"
+              v-if="this.order.status === 'approved'"
+            >
+              Decline
+            </button>
+          </section>
+        </div>
+      </div>
 </template>
 
 <script>
 export default {
-  name: "order-data",
+  name: "order-cards",
   props: {
     order: {
       type: Object,
