@@ -7,14 +7,17 @@ export const userStore = {
         loggedinUser: null,
         notifications: [],
         users: [],
-        watchedUser: null
+        watchedUser: null,
+        notify: true
     },
     getters: {
         users({ users }) { return users },
         loggedinUser({ loggedinUser }) { return loggedinUser },
         watchedUser({ watchedUser }) { return watchedUser },
         notifications({ notifications }) { return notifications },
-        notificationsCount({ notifications }) { return notifications.length }
+        notificationsCount({ notifications }) { return notifications.length },
+        notify({ notify }) { return notify },
+        lastNotification({ notifications }) { return notifications[notifications.length - 1] }
     },
     mutations: {
         newOrder(state, { order }) {
@@ -28,8 +31,9 @@ export const userStore = {
                 createdAt: Date.now(),
             }
             console.log('notification, yay!', newNotification)
+            state.notify = true;
             state.notifications.push(newNotification)
-            console.log(state.notifications.length)
+            setTimeout(() => { state.notify = false }, 4000)
         },
         orderUpdated(state, { order }) {
             const newNotification = {
