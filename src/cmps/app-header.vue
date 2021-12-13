@@ -13,7 +13,7 @@
       <p>You have a new message!</p>
       <!-- <p v-if="lastNote">{{ lastNote.txt }}</p> -->
       <p>You order to Adadouf's house has been approved by Adi Adadouf.</p>
-      <a href="#/dashboard">Show more</a>
+      <a href @click="killModal">Show more</a>
     </div>
     <section class="main-header-container flex space-between">
       <div class="logo clickable flex align-center" @click.stop="goHome">
@@ -170,6 +170,10 @@ export default {
   },
 
   methods: {
+    killModal() {
+      this.$store.commit({ type: "killModal" });
+      this.$router.push("/dashboard");
+    },
     logout() {
       this.loggedinUser = null;
       this.$store.dispatch({ type: "logout" });
