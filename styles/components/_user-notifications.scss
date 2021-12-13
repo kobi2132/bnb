@@ -1,4 +1,3 @@
-
 .notifications {
     position: absolute;
     top: 22px;
@@ -12,7 +11,6 @@
     border-radius: 50%;
     text-align: center;
 }
-
 
 .notification-btn {
     cursor: pointer;
@@ -40,53 +38,53 @@
         .header-notifi {
             font-size: 20px;
             line-height: 2rem;
-            font-weight: 800;
+            font-weight: 600;
         }
 
         .notifications-cards {
             padding: 5px;
             img {
+                margin-inline-end: 8px;
                 height: 40px;
                 width: 40px;
                 border-radius: 50%;
             }
-            span {
-                align-items: flex-start;
-                font-size: 1.125rem;
-                line-height: 1.75rem;
-                font-weight: 400;
-                h3 {
-                    font-size: 0.875rem;
-                    line-height: 1.125rem;
-                    margin: 0;
-                    padding: 0;
+            .card-details {
+                .host-details {
+                    font-size: 14px;
+                    text-decoration: underline;
+                    text-decoration-color: #2222;
+                    font-weight: 600;
                 }
-            }
-            h4 {
-                display: block;
-                flex: 3 1;
-                font-size: 0.75rem;
-                line-height: 1.125rem;
-                text-decoration: none;
-                margin: 0;
-                padding: 0;
-                font-weight: unset;
-            }
-            .trips-link {
-                font-size: 0.75rem;
-                line-height: 1.125rem;
-                margin: 0;
-                padding: 0;
-            }
-            .notif-card{
-                h5{
-                    margin: 0;
-                    font-weight: lighter;
-                    font-size: 10px;
+                .notif-card {
+                    .notifications-card-txt {
+                        display: block;
+                        flex: 3 1;
+                        font-size: 0.75rem;
+                        line-height: 1.125rem;
+                        text-decoration: none;
+                        margin: 0;
+                        padding: 0;
+                        font-weight: unset;
+                    }
+                    .notifications-timer {
+                        margin: 0;
+                        font-weight: lighter;
+                        font-size: 10px;
+                    }
                 }
             }
         }
+        .no-notifications{
+        }
+        .separator {
+            height: 2px;
+            width: 100%;
+            border-bottom: 1px solid #dddddd;
+            margin:10px 0;
+        }
     }
+
 }
 
 // .notifications-page {

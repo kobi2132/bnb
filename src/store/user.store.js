@@ -25,9 +25,10 @@ export const userStore = {
                 from: {
                     _id: order.buyer._id,
                     fullname: order.buyer.fullname,
-                    imgUrl: order.buyer.imgUrl
+                    imgUrl: order.buyer.imgUrl,
+                    stayName: order.stay.name
                 },
-                txt: "New order from",
+                txt: "New order from " + order.buyer.fullname ,
                 createdAt: Date.now(),
             }
             console.log('notification, yay!', newNotification)
@@ -40,7 +41,9 @@ export const userStore = {
                 from: {
                     _id: order.host._id,
                     fullname: order.host.fullname,
-                    imgUrl: order.host.imgUrl
+                    imgUrl: order.host.imgUrl,
+                    stayName: order.stay.name
+
                 },
                 txt: 'Your order has been approved!',
                 createdAt: Date.now(),

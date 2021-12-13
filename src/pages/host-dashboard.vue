@@ -5,14 +5,7 @@
     <!-- <p>{{myOrders}}</p> -->
     <section class="dashboard-container flex space-between column">
       <section class="dash-nav-sticky-container flex">
-        <!-- <h1>host-dashboard</h1> -->
-        <div class="dash-nav-container flex space-evenly ">
-          <!-- <button
-            class="add-stay-btn flex align-center clean-btn clickable"
-            value="add stay"
-          >
-            <i class="fa fa-plus" aria-hidden="true"> </i>Add Stay
-          </button> -->
+        <!-- <div class="dash-nav-container flex space-evenly ">
           <div>
             <span class="material-icons"> cottage</span>
             <button
@@ -33,14 +26,8 @@
               My Orders
             </button>
           </div>
-          <!-- <button
-            value="rate stat"
-            @click="showMyRates()"
-            class="clean-btn clickable"
-          >
-            <i class="fa fa-star" aria-hidden="true"></i>Rates
-          </button> -->
-        </div>
+          
+        </div> -->
 
         <!-- <div class="host-info-container">
           <h2>
@@ -56,69 +43,92 @@
       </section>
 
       <section class="dash-main-container flex column">
-        <section class="dash-header flex space-around">
-          <div class="total-rate dash-div">
-            <h3>Total Rate</h3>
-            <div class="flex space-between column rates-data">
+        <section class="dash-header flex space-between">
+          <div class="dash-nav flex column space-evenly">
+            <div class="header-menu">
+              <button
+                value="my Stays"
+                @click="showMyStays()"
+                class="clean-btn clickable"
+              >
+                <span class="material-icons"> cottage</span>
+                My Stays
+              </button>
+            </div>
+            <div class="header-menu">
+              <button
+                value="orders"
+                @click="showMyOrders()"
+                class="clean-btn clickable"
+              >
+                <span class="material-icons">list_alt</span>
+                My Orders
+              </button>
+            </div>
+          </div>
+          <div class="stats-container flex space-between">
+            <div class="total-rate dash-div">
+              <h3>Total Rate</h3>
+              <div class="flex space-between column rates-data">
                 <div>
-              <span class="flex">
-                <i class="fa fa-star" aria-hidden="true"></i
-                >{{ totalRateAvg }} <small class="avg"> avg</small></span>
+                  <span class="flex">
+                    <i class="fa fa-star" aria-hidden="true"></i
+                    >{{ totalRateAvg }} <small class="avg"> avg</small></span
+                  >
                 </div>
                 <div class="flex space-between">
-                <span>{{totalRateCount}} <small>reviews</small></span>
+                  <span>{{ totalRateCount }} <small>reviews</small></span>
                 </div>
-              <!-- <p>
+                <!-- <p>
                 4%<i class="fa fa-long-arrow-alt-up" aria-hidden="true"></i>
               </p> -->
+              </div>
             </div>
-          </div>
 
-          <div class="dash-div">
-            <h3>Total revenues</h3>
-            <div>
-              <!-- <span>$ {{ totalEarningToShow }}</span> -->
-              <table>
-                <tr>
-                  <td title="Past month">Month</td>
-                  <td title="Past year">Year</td>
-                  <td title="All revenues">Total</td>
-                </tr>
-                <tr>
-                  <td class="nums-td">${{ monthEarningToShow }}</td>
-                  <td class="nums-td">${{ yearEarningToShow }}</td>
-                  <td class="nums-td">${{ totalEarningToShow }}</td>
-                 </tr>
-              </table>
-            </div>
-            <!-- <div>
+            <div class="dash-div">
+              <h3>Total revenues</h3>
+              <div>
+                <!-- <span>$ {{ totalEarningToShow }}</span> -->
+                <table>
+                  <tr>
+                    <td title="Past month">Month</td>
+                    <td title="Past year">Year</td>
+                    <td title="All revenues">Total</td>
+                  </tr>
+                  <tr>
+                    <td class="nums-td">${{ monthEarningToShow }}</td>
+                    <td class="nums-td">${{ yearEarningToShow }}</td>
+                    <td class="nums-td">${{ totalEarningToShow }}</td>
+                  </tr>
+                </table>
+              </div>
+              <!-- <div>
               <span>{{totalOrders}} hosts</span>
             </div> -->
-          </div>
-          <div class="orders-div dash-div">
-            <h3>Orders</h3>
-            <div class="flex column">
-              <!-- <span>{{ totalOrders }}</span> -->
-              <table>
-                <tr>
-                  <td>Total</td>
-                  <td>Pending</td>
-                  <td>Approved</td>
-                  <td>Declined</td>
-                </tr>
-                <tr>
-                  <td class="nums-td">{{ totalOrders }}</td>
-                  <td class="nums-td">{{ pendingOrders }}</td>
-                  <td class="nums-td">{{ approvedOrders }}</td>
-                  <td class="nums-td">{{ declinedOrders }}</td>
-                 </tr>
-                <!--<tr>
+            </div>
+            <div class="orders-div dash-div">
+              <h3>Orders</h3>
+              <div class="flex column">
+                <!-- <span>{{ totalOrders }}</span> -->
+                <table>
+                  <tr>
+                    <td>Total</td>
+                    <td>Pending</td>
+                    <td>Approved</td>
+                    <td>Declined</td>
+                  </tr>
+                  <tr>
+                    <td class="nums-td">{{ totalOrders }}</td>
+                    <td class="nums-td">{{ pendingOrders }}</td>
+                    <td class="nums-td">{{ approvedOrders }}</td>
+                    <td class="nums-td">{{ declinedOrders }}</td>
+                  </tr>
+                  <!--<tr>
                 </tr>
                 <tr>
                 </tr> -->
-
-              </table>
-              <!-- <div class="circle-container flex column">
+                </table>
+                <!-- <div class="circle-container flex column">
                 <div class="flex align-center space-around">
                   <span title="approved" class="circle green-circle"></span>
                   <p>{{ approvedOrders }}</p>
@@ -130,31 +140,29 @@
                 <div class="flex align-center space-around">
                   <span title="decline" class="circle red-circle"></span>
                   <p>{{ declinedOrders }}</p> -->
-              <!-- </div> -->
-              <!-- </div> -->
+                <!-- </div> -->
+                <!-- </div> -->
+              </div>
             </div>
-          </div>
-          <div class="dash-div">
-            <div>
-              <h3>Guests</h3>
-              <span></span>
-               <table>
-                <tr>
-                  <td>Active</td>
-                  <td>Past</td>
-                  <td>Planned</td>
-                </tr>
-                <tr>
-                  <td class="nums-td">{{ activeGuests }}</td>
-                  <td class="nums-td">{{ pastGuests }}</td>
-                  <td class="nums-td">{{ plannedGuests }}</td>
-                 </tr>
-                
+            <div class="dash-div">
+              <div>
+                <h3>Guests</h3>
+                <span></span>
+                <table>
+                  <tr>
+                    <td>Active</td>
+                    <td>Past</td>
+                    <td>Planned</td>
+                  </tr>
+                  <tr>
+                    <td class="nums-td">{{ activeGuests }}</td>
+                    <td class="nums-td">{{ pastGuests }}</td>
+                    <td class="nums-td">{{ plannedGuests }}</td>
+                  </tr>
+                </table>
+              </div>
 
-              </table>
-            </div>
-
-            <!-- <div>
+              <!-- <div>
               <img
                 v-for="(guest, id) in activeGuests"
                 :key="id"
@@ -163,6 +171,7 @@
                 class="host-img"
               />
             </div> -->
+            </div>
           </div>
         </section>
 
@@ -173,7 +182,7 @@
                 <div class="thead">
                   <div class="thead-container gray-box-shadow">
                     <!-- flex space-evenly align-center -->
-                    <span class="host-img"></span>
+                    <span class="guest-img"></span>
                     <span>Name</span>
                     <span>Price</span>
                     <span>Address</span>
@@ -223,10 +232,11 @@
                   <div class="host-order-list-table">
                     <div class="thead">
                       <div class="thead-container gray-box-shadow">
-                        <span class="host-img"></span>
-                        <span>Guest Name</span>
-                        <span>Check in</span>
-                        <span>Check out</span>
+                        <span class="guest-img"></span>
+                        <span>Guest name</span>
+                        <span>Stay name</span>
+                        <span>Check in - check out</span>
+                        <!-- <span>Check out</span> -->
                         <span>Status</span>
                         <span>Revenue</span>
                         <span>Actions</span>
@@ -288,17 +298,78 @@
           </section>
         </section>
       </section>
+      <!-- /////////// -->
+      <section class="cards-container space-between">
+        <h1>My orders</h1>
+      <order-cards
+                        :order="order"
+                        class="host-stay-preview"
+                        v-for="order in myOrders"
+                        :key="order._id"
+                      />
+      </section>
+      <!-- <div class="order-card">
+        <div class="order-card-header flex space-evenly">
+          <img class="guest-img" :src="order.buyer.imgUrl" />
+          <span>{{ order.buyer.fullname }}</span>
+        </div>
+        <div>
+          <span>Status:</span><span>{{ order.status }}</span>
+        </div>
+        <div>
+          <span>Dates:</span
+          ><span>{{ startDateToShow }} - {{ endDateToShow }} </span>
+        </div>
+        <div>
+          <span>Revenue:</span> <span>$ {{ this.totalPrice }}</span>
+        </div>
+        <div class="card-actions">
+          <section class="pre-approved">
+            <button
+              class="approve-btn"
+              @click="approve"
+              v-if="this.order.status === 'pending'"
+            >
+              Approve
+            </button>
+            <button
+              class="decline-btn"
+              @click="decline"
+              v-if="this.order.status === 'pending'"
+            >
+              Decline
+            </button>
+            <button
+              class="approve-btn"
+              @click="approve"
+              v-if="this.order.status === 'declined'"
+            >
+              Approve
+            </button>
+            <button
+              class="decline-btn"
+              @click="decline"
+              v-if="this.order.status === 'approved'"
+            >
+              Decline
+            </button>
+          </section>
+        </div>
+      </div> -->
+      <!-- ////////////////// -->
     </section>
   </section>
 </template>
 
 <script>
 import orderData from "@/cmps/stay-cmps/order-data.vue";
+import orderCards from "@/cmps/stay-cmps/order-cards.vue";
 
 export default {
   name: "host-dashboard",
   components: {
     orderData,
+    orderCards
   },
   data() {
     return {
@@ -400,7 +471,7 @@ export default {
         // console.log(count , stay.reviews)
         stay.reviews.forEach((review) => {
           const reviewRatings = Object.values(review.rate);
-          count ++ 
+          count++;
           // console.log('array ratings', reviewRatings)
           // var currSum = reviewRatings.reduce(
           //   (sumRate, rating) => sumRate + rating,
@@ -410,7 +481,7 @@ export default {
         });
       });
       // console.log('sum', sum , 'count', count)
-      return count
+      return count;
     },
     totalOrders() {
       return this.myOrders.length;
@@ -472,36 +543,51 @@ export default {
       var ordersPrice = [];
       if (this.myOrders.length > 0) {
         this.myOrders.forEach((order) => {
-          const currYear = new Date().getFullYear()+''
-          const orderYear = order.dates.start.slice(0,order.dates.start.indexOf("-"))
-          if(orderYear === currYear){
-
+          const currYear = new Date().getFullYear() + "";
+          const orderYear = order.dates.start.slice(
+            0,
+            order.dates.start.indexOf("-")
+          );
+          if (orderYear === currYear) {
             const { start, end } = order.dates;
-          const days =
-            (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
-          const CURRORDERPRICE = parseInt(days * order.stay.price);
-          ordersPrice.push(CURRORDERPRICE);
+            const days =
+              (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+            const CURRORDERPRICE = parseInt(days * order.stay.price);
+            ordersPrice.push(CURRORDERPRICE);
           }
         });
       }
       var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
-     
+
       return Number(sum).toLocaleString();
     },
     monthEarningToShow() {
       var ordersPrice = [];
-      const months = ["01","02","03","04","05","06","07","08","09","10","11","12"];
+      const months = [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+      ];
       const d = new Date();
       const currMonth = months[d.getMonth()];
       if (this.myOrders.length > 0) {
         this.myOrders.forEach((order) => {
-          const orderMonth = order.dates.start.split('-')[1]
-          if(orderMonth === currMonth){
-
+          const orderMonth = order.dates.start.split("-")[1];
+          if (orderMonth === currMonth) {
             const { start, end } = order.dates;
-          const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
-          const CURRORDERPRICE = parseInt(days * order.stay.price);
-          ordersPrice.push(CURRORDERPRICE);
+            const days =
+              (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+            const CURRORDERPRICE = parseInt(days * order.stay.price);
+            ordersPrice.push(CURRORDERPRICE);
           }
         });
       }
@@ -558,7 +644,7 @@ export default {
           var orderStart = Date.parse(start);
           var orderEnd = Date.parse(end);
           // console.log(now, orderStart, orderEnd  )
-          if (now > orderEnd ) {
+          if (now > orderEnd) {
             pastGuestsCount++;
           } else {
             // console.log("order not active");
@@ -568,7 +654,6 @@ export default {
       // console.log("active", activeGuestsCount);
       return pastGuestsCount;
     },
-    
   },
   methods: {
     showMyStays() {

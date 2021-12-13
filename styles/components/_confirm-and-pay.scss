@@ -172,6 +172,10 @@
                 margin-bottom: 24px;
             }
         }
+        .details-modal.sticky{
+            top: 160px
+        }
+
         .details-modal {
             margin-top: 27px;
             height: 381px;
@@ -248,6 +252,9 @@
     }
     .congrats-modal-container {
         position: relative;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 1;
         .congrats-modal {
             position: fixed;
             top: 50%;
@@ -257,10 +264,23 @@
             transition: opacity 0.6s;
             width: 550px;
             padding: 50px;
-            border: 1px solid rgb(221, 221, 221);
+            // border: 1px solid rgb(221, 221, 221);
             border-radius: 12px;
-            background-color: white;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            background-color: #222222;
+            color: whitesmoke;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;            color: w;
+            .closeModal {
+                position: absolute;
+                cursor: pointer;
+                div {
+                    position: relative ;
+                    top: -37px;
+                    right: -457px;
+                                        a{
+                        color: whitesmoke;
+                    }
+                }
+            }
             .title {
                 font-size: 22px;
                 font-weight: bold;
@@ -286,7 +306,10 @@
                 display: flex;
                 justify-content: space-between;
                 text-decoration: underline;
-                font-weight: bold;
+                font-weight: 500;
+                a {
+                    color: whitesmoke;
+                }
             }
         }
     }
@@ -296,11 +319,11 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, .25);
+        background-color: rgba(0, 0, 0, 0.25);
         // cursor: pointer;
         pointer-events: none;
         opacity: 0;
-        transition: opacity .9s;
+        transition: opacity 0.9s;
         pointer-events: auto;
     }
 }

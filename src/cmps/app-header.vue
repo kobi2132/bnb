@@ -45,28 +45,32 @@
         >
           <div class="notifications-modal">
             <div class="header-notifi">Notifications</div>
-
             <div
-              class="
-                notifications-cards
-                flex
-                space-between
-                gray-box-shadow
-                align-center
-              "
+              class="notifications-cards flex gray-box-shadow align-center"
               v-for="(notification, idx) in notifications"
               :key="idx"
             >
               <img :src="notification.from.imgUrl" alt="" class="host-img" />
-              <span class="flex column">
-                <h3>{{ notification.from.fullname }}</h3>
-              </span>
-              <div class="notif-card">
-                <h4 class="notifications-card-txt">
-                  {{ notification.txt }}
-                </h4>
-                <h5>{{ getCreatedTime(idx) }}</h5>
+              <div class="card-details">
+                <div class="host-details">
+                  {{ notification.from.stayName }}
+                </div>
+
+                <div class="notif-card">
+                  <h4 class="notifications-card-txt">
+                    {{ notification.txt }}
+                  </h4>
+                  <h5 class="notifications-timer">{{ getCreatedTime(idx) }}</h5>
+                </div>
+                <!-- <pre>{{ notifications }}</pre> -->
+                <!-- <a class="trips-link" href="#/orders">Read More</a> -->
               </div>
+            </div>
+            <div class="no-notifications" v-if="notifications.length === 0">
+              <div class="separator"></div>
+
+              <div>You have no new notifications</div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ios-home-outline.svg/512px-Ios-home-outline.svg.png" alt="">
             </div>
           </div>
         </section>
@@ -193,18 +197,7 @@ export default {
 
       console.log(currDate);
 
-      return (
-        "sent at: " +
-        day +
-        "/" +
-        month +
-        "/" +
-        year +
-        " , " +
-        hours +
-        ":" +
-        minutes
-      );
+      return day + "/" + month + "/" + year + " , " + hours + ":" + minutes;
     },
   },
   computed: {
