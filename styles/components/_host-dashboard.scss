@@ -19,8 +19,8 @@
 }
 
 .dashboard-container {
-    gap: 10px;
-    grid-column-start: 2;
+    // gap: 10px;
+    // grid-column-start: 2;
 }
 
 .dash-nav {
@@ -477,7 +477,7 @@
     display: none;
     @media(max-width: 460px) {
         display: flex;
-        max-width: 400px;
+        // max-width: 400px;
         padding: 0;
         margin: 0;
         h1 {
@@ -492,7 +492,8 @@
     }
 }
 
-.order-card {
+.order-card,
+.stay-card {
     // display: grid;
     // margin-top: 7px;
     // padding-bottom: 7px;
@@ -511,7 +512,8 @@
     border: 1px solid #dddddd;
     box-shadow: rgb(0 0 0 / 10%) 0px 3px 10px;
     align-self: center;
-    .order-card-header {
+    .order-card-header,
+    .stay-card-header {
         img {
             margin-inline: 5px;
         }
@@ -519,6 +521,7 @@
             font-family: airbnb-medium;
             font-size: 1.25rem;
             margin-right: 5px;
+            text-align: start;
         }
     }
     .card-key {
