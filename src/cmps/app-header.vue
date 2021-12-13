@@ -11,8 +11,9 @@
   >
     <div class="notify-modal alert" :class="{ showNotes: notify }">
       <p>You have a new message!</p>
-      <p v-if="lastNote">{{ lastNote.txt }} {{ lastNote.from.fullname }}</p>
-      <a href="#/dashboard">Dashboard</a>
+      <!-- <p v-if="lastNote">{{ lastNote.txt }}</p> -->
+      <p>You order to Adadouf's house has been approved by Adi Adadouf.</p>
+      <a href="#/dashboard">Show more</a>
     </div>
     <section class="main-header-container flex space-between">
       <div class="logo clickable flex align-center" @click.stop="goHome">
@@ -35,14 +36,18 @@
           >
             notifications
           </span>
-          <p v-if="notificationsCount > 0" class="notifications">
+          <!-- <p v-if="notificationsCount > 0" class="notifications">
             {{ notificationsCount }}
-          </p>
+          </p> -->
         </div>
         <!-- <div v-if="notify" class="notify-modal alert">
           <p>You have a new message!</p>
         </div> -->
-        <div class="main-screen" v-if="this.isNotificationsModal" @click="this.openNotifications"></div>
+        <div
+          class="main-screen"
+          v-if="this.isNotificationsModal"
+          @click="this.openNotifications"
+        ></div>
 
         <section
           class="notifications-modal-container"
@@ -120,15 +125,15 @@
     </div>
     <stay-filter :class="{ hide: miniFilter, hideFilter }" />
     <section class="mobile-nav">
-      <a class="active">
+      <router-link class="active" to="/explore">
         <span class="material-icons-outlined"> search </span>
         <p>Explore</p>
-      </a>
-      <a>
+      </router-link>
+      <a href="#/wishList">
         <span class="material-icons-outlined"> favorite_border </span>
         <p>Wishlist</p>
       </a>
-      <a>
+      <a href="#/trips">
         <span class="trips"></span>
         <p>Trips</p>
       </a>
@@ -139,7 +144,7 @@
           {{ notificationsCount }}
         </p>
       </a>
-      <a>
+      <a href="#/account">
         <span class="material-icons-outlined"> account_circle </span>
         <p>Profile</p>
       </a>

@@ -118,6 +118,32 @@
         </p>
       </div>
     </div>
+    <div class="congrats-modal-container" v-if="congratsModal">
+      <div class="congrats-modal">
+        <div class="closeModal">
+          <div>
+            <a class="btn"
+              ><span
+                class="material-icons"
+                @click.stop="congratsModal = !congratsModal"
+              >
+                close
+              </span></a
+            >
+          </div>
+        </div>
+        <div class="title">Order sent to host!</div>
+        <div class="title-1">Your host will reply shortly</div>
+        <div class="title-2">
+          You won't be charged until the host approves your order
+        </div>
+        <div class="separator"></div>
+        <div class="links-container">
+          <router-link class="btn" to="/">Home page </router-link>
+          <router-link class="btn" to="/trips">Share your stay </router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -130,6 +156,7 @@ export default {
   props: { stay: Object, conHeight: Number },
   data() {
     return {
+      congratsModal: false,
       shouldShow: false,
       trip: {
         guests: {
@@ -229,7 +256,11 @@ export default {
             order,
           });
           console.log(savedOrder);
-          this.$router.push(`/order-confirm/${savedOrder._id}`);
+          this.congratsModal = true;
+          setTimeout(() => {
+            this.congratsModal = false;
+            this.$router.push(`/`);
+          }, 6000);
         }
       }
     },
@@ -250,7 +281,6 @@ export default {
     },
     set(e) {
       let btn = this.$refs.button;
-      console.log(btn);
       const x = e.offsetX;
       const y = e.offsetY;
       btn.style.setProperty("--mouse-x", x);
@@ -322,20 +352,6 @@ export default {
     showMsg,
   },
 };
-
-// this.$el.addEventListener("mousemove", (evt) => {
-//   let x = evt.clientX / innerWidth;
-//   this.mouse.x = x;
-//   let y = evt.clientY / innerHeight;
-//   this.mouse.y = y;
-//   console.log(x, y);
-//   this.$el.style.setProperty("--mouse-x", x);
-//   this.$el.style.setProperty("--mouse-y", y);
-// });
-// style="
-//   background-position: calc((100 - var(--mouse-x, 0)) * 1%)
-//     calc((100 - var(--mouse-y, 0)) * 1%);
-// "
 </script>
 
 <style>
