@@ -9,8 +9,7 @@ export const orderStore = {
             dates: {}
         },
         currOrder: {},
-        orders: [],
-        demoOrders: []
+        orders: []
     },
     getters: {
         getDest(state) {
