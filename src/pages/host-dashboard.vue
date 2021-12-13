@@ -6,7 +6,7 @@
     <section class="dashboard-container flex space-between column">
       <section class="dash-nav-sticky-container flex">
         <!-- <h1>host-dashboard</h1> -->
-        <div class="dash-nav-container flex ">
+        <div class="dash-nav-container flex space-evenly ">
           <!-- <button
             class="add-stay-btn flex align-center clean-btn clickable"
             value="add stay"
@@ -56,7 +56,7 @@
       </section>
 
       <section class="dash-main-container flex column">
-        <section class="dash-header flex space-between">
+        <section class="dash-header flex space-around">
           <div class="total-rate dash-div">
             <h3>Total Rate</h3>
             <div class="flex space-between column rates-data">
@@ -430,7 +430,7 @@ export default {
       var ordersToShowCount = 0;
       if (this.myOrders.length > 0) {
         this.myOrders.forEach((order) => {
-          if (order.status === "Approved") {
+          if (order.status === "approved") {
             ordersToShowCount++;
           }
         });
