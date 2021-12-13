@@ -1,5 +1,5 @@
-<template class="main-layout2">
-  <div class="main-layout2">
+<template>
+  <div class="main-layout2 explore-page">
     <stay-list :stays="stays" v-loading="loading" />
   </div>
 </template>

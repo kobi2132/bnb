@@ -125,15 +125,15 @@
     </div>
     <stay-filter :class="{ hide: miniFilter, hideFilter }" />
     <section class="mobile-nav">
-      <a class="active">
+      <router-link class="active" to="/explore">
         <span class="material-icons-outlined"> search </span>
         <p>Explore</p>
-      </a>
-      <a>
+      </router-link>
+      <a href="#/wishList">
         <span class="material-icons-outlined"> favorite_border </span>
         <p>Wishlist</p>
       </a>
-      <a>
+      <a href="#/trips">
         <span class="trips"></span>
         <p>Trips</p>
       </a>
@@ -144,7 +144,7 @@
           {{ notificationsCount }}
         </p>
       </a>
-      <a>
+      <a href="#/account">
         <span class="material-icons-outlined"> account_circle </span>
         <p>Profile</p>
       </a>

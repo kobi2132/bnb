@@ -257,7 +257,10 @@ export default {
           });
           console.log(savedOrder);
           this.congratsModal = true;
-          // this.$router.push(`/order-confirm/${savedOrder._id}`);
+          setTimeout(() => {
+            this.congratsModal = false;
+            this.$router.push(`/`);
+          }, 6000);
         }
       }
     },
