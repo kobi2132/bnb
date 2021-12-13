@@ -11,7 +11,7 @@
   >
     <div class="notify-modal alert" :class="{ showNotes: notify }">
       <p>You have a new message!</p>
-      <p v-if="lastNote">{{ lastNote.txt }} {{ lastNote.from.fullname }}</p>
+      <p v-if="lastNote">{{ lastNote.txt }} </p>
       <a href="#/dashboard">Dashboard</a>
     </div>
     <section class="main-header-container flex space-between">

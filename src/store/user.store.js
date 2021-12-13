@@ -8,7 +8,7 @@ export const userStore = {
         notifications: [],
         users: [],
         watchedUser: null,
-        notify: true
+        notify: false
     },
     getters: {
         users({ users }) { return users },
@@ -28,13 +28,13 @@ export const userStore = {
                     imgUrl: order.buyer.imgUrl,
                     stayName: order.stay.name
                 },
-                txt: "New order from " + order.buyer.fullname ,
+                txt: "New order from " + order.buyer.fullname,
                 createdAt: Date.now(),
             }
             console.log('notification, yay!', newNotification)
             state.notify = true;
             state.notifications.push(newNotification)
-            setTimeout(() => { state.notify = false }, 4000)
+            setTimeout(() => { state.notify = false }, 10000)
         },
         orderUpdated(state, { order }) {
             const newNotification = {
@@ -54,11 +54,11 @@ export const userStore = {
         },
         setUser(state, { user }) {
             state.loggedinUser = user
-            // console.log(state.loggedinUser)
+                // console.log(state.loggedinUser)
         },
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
-            state.loggedinUser = (user) ? { ...user } : null;
+            state.loggedinUser = (user) ? {...user } : null;
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user;
@@ -70,7 +70,7 @@ export const userStore = {
     actions: {
         setUser({ commit }) {
             const user = userService.getLoggedinUser()
-            // console.log(user)
+                // console.log(user)
             commit({ type: 'setUser', user })
         },
         async toggleWishList({ commit }, { stayId }) {
@@ -84,7 +84,7 @@ export const userStore = {
                 const idx = user.wishList.findIndex(wish => wish === stayId)
                 if (idx === -1) user.wishList.push(stayId)
                 else user.wishList.splice(idx, 1)
-                // console.log(user)
+                    // console.log(user)
                 userService.update(user)
                 commit({ type: 'setUser', user })
 

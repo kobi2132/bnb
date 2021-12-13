@@ -4,43 +4,7 @@
   <section class="main-layout2 dashboard-page">
     <!-- <p>{{myOrders}}</p> -->
     <section class="dashboard-container flex space-between column">
-      <section class="dash-nav-sticky-container flex">
-        <!-- <div class="dash-nav-container flex space-evenly ">
-          <div>
-            <span class="material-icons"> cottage</span>
-            <button
-              value="my Stays"
-              @click="showMyStays()"
-              class="clean-btn clickable"
-            >
-              My Stays
-            </button>
-          </div>
-          <div>
-            <span class="material-icons">list_alt</span>
-            <button
-              value="orders"
-              @click="showMyOrders()"
-              class="clean-btn clickable"
-            >
-              My Orders
-            </button>
-          </div>
-          
-        </div> -->
-
-        <!-- <div class="host-info-container">
-          <h2>
-            Make all payments through
-            <span class="logo-txt logo-small">Kumb</span>
-          </h2>
-          <p>
-            Always pay and communicate through Kumba to ensure you're protected
-            under our Terms of Service, Payments Terms of Service, cancellation,
-            and other safeguards.
-          </p>
-        </div>  -->
-      </section>
+      
 
       <section class="dash-main-container flex column">
         <section class="dash-header flex space-between">
@@ -299,7 +263,7 @@
         </section>
       </section>
       <!-- /////////// -->
-      <section class="cards-container space-between">
+      <section class="cards-container flex column space-between">
         <h1>My orders</h1>
       <order-cards
                         :order="order"
