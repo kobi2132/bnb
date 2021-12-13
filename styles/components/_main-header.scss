@@ -228,12 +228,31 @@
 }
 
 .notify-modal.alert {
+    position: absolute;
+    top:160px;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    right: 10px;
-    top: 250px;
-
+    margin: 0;
+    transform: translateX(1000%);   
+    padding: 10px;
+    height: fit-content;
+    width: fit-content;
+    font-size: 18px;
+    transition: transform .6s, box-shadow .6s;
+        p {
+            margin: 0;
+            font-size: 14px;
+        }
+    &.showNotes {
+        transform: translate(93%);
+    }
+}
+@media(max-width: $break-narrow) {
+    .notify-modal.alert.showNotes {
+        transform: translate(-72%);
+    }
 }
 
 @media (max-width: $break-narrow) {

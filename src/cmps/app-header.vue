@@ -9,6 +9,11 @@
       'home-page': homePage,
     }"
   >
+    <div class="notify-modal alert" :class="{ showNotes: notify }">
+      <p>You have a new message!</p>
+      <p v-if="lastNote">{{ lastNote.txt }} {{ lastNote.from.fullname }}</p>
+      <a href="#/dashboard">Dashboard</a>
+    </div>
     <section class="main-header-container flex space-between">
       <div class="logo clickable flex align-center" @click.stop="goHome">
         <h1 class="logo-txt">Kumb</h1>
@@ -134,7 +139,7 @@
           {{ notificationsCount }}
         </p>
       </a>
-      <a @click="openMsg">
+      <a>
         <span class="material-icons-outlined"> account_circle </span>
         <p>Profile</p>
       </a>
@@ -156,19 +161,10 @@ export default {
       hideFilter: false,
       topOfPage: true,
       isNotificationsModal: false,
-      notify: false,
     };
   },
 
   methods: {
-    openMsg() {
-      const h = this.$createElement;
-      this.$notify({
-        title: "New order at Adadouf's house",
-        message: "You have a new order from Baner Aiton",
-        offset: 100,
-      });
-    },
     logout() {
       this.loggedinUser = null;
       this.$store.dispatch({ type: "logout" });
@@ -209,8 +205,13 @@ export default {
     },
   },
   computed: {
-    newNotification() {
-      return this.$store.getters.notifications > 0;
+    lastNote() {
+      if (this.$store.getters.lastNotification) {
+        return this.$store.getters.lastNotification;
+      } else return "";
+    },
+    notify() {
+      return this.$store.getters.notify;
     },
     notifications() {
       return this.$store.getters.notifications;
