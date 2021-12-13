@@ -39,6 +39,11 @@
             {{ notificationsCount }}
           </p>
         </div>
+        <!-- <div v-if="notify" class="notify-modal alert">
+          <p>You have a new message!</p>
+        </div> -->
+        <div class="main-screen" v-if="this.isNotificationsModal" @click="this.openNotifications"></div>
+
         <section
           class="notifications-modal-container"
           v-if="this.isNotificationsModal"
@@ -70,7 +75,6 @@
               <div class="separator"></div>
 
               <div>You have no new notifications</div>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ios-home-outline.svg/512px-Ios-home-outline.svg.png" alt="">
             </div>
           </div>
         </section>
@@ -103,7 +107,7 @@
         <a href="#/wishList" class="a1 gray-box-shadow" v-if="currUser"
           >Wish List</a
         >
-        <a href="#/notifications" v-if="currUser">Notifications</a>
+        <!-- <a href="#/notifications" v-if="currUser">Notifications</a> -->
         <a href="#/host" v-if="!currUser || !loggedinUser.isHost"
           >Host your home</a
         >
