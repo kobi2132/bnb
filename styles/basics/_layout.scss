@@ -40,7 +40,7 @@
 
 @media (max-width: $break-narrow) {
     .main-layout2 {
-        max-width: $padded-break-narrow;
+        // max-width: $padded-break-narrow;
         display:grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
