@@ -5,6 +5,13 @@
     row-gap: 40px;
     padding-top: 16px;
     padding-bottom: 250px;
+
+    @media (max-width: $break-narrow) {
+        display: flex;
+        flex-direction: column;
+        padding-right: 50px;
+        padding-left: 50px;
+    }
 }
 
 // ---------------------------------FILTER BTNS------------------------------
@@ -167,9 +174,9 @@
         }
     }
 
-//     svg rect {
-//         fill: red;
-    }
+    //     svg rect {
+    //         fill: red;
+}
 // }
 
 .vue-histogram-slider-wrapper {
@@ -184,10 +191,9 @@
     --handle-size: 26px;
 }
 
-.irs-handle{
+.irs-handle {
     top: 22px !important;
 }
-
 
 // ----------------------type-filter----------------------------------------
 .type-filter-container {
@@ -242,7 +248,7 @@
     }
     .type-of-place {
         .container {
-            padding-top: 12px!important;
+            padding-top: 12px !important;
             display: block;
             position: relative;
             padding-left: 19px;
@@ -254,17 +260,17 @@
             -ms-user-select: none;
             user-select: none;
         }
-        .type{
+        .type {
             padding-left: 19px;
-            .type-header{
+            .type-header {
                 font-size: 16px;
                 line-height: 20px;
-                color: #222222
+                color: #222222;
             }
-            .type-title{
+            .type-title {
                 font-size: 14px;
                 line-height: 20px;
-                color: #717171
+                color: #717171;
             }
         }
 
@@ -289,7 +295,6 @@
             border-style: solid;
             border-color: rgb(176, 176, 176);
             border-radius: 4px;
-
         }
         .container:hover input ~ .checkmark {
             border-color: rgb(0, 0, 0);
@@ -347,7 +352,6 @@
         }
     }
     .stay-preview-info {
-
         .reviews-preview {
             display: flex;
             align-items: center;
@@ -368,15 +372,14 @@
                 color: #717171;
             }
         }
-        .property-type{
+        .property-type {
             padding-top: 6px;
         }
-        .stayname{
+        .stayname {
             padding-top: 2px;
         }
-        .stay-price{
+        .stay-price {
             padding-top: 4px;
-
         }
     }
 }

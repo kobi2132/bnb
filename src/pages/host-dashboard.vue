@@ -303,7 +303,7 @@
         <h1>My orders</h1>
       <order-cards
                         :order="order"
-                        class="host-stay-preview"
+                        
                         v-for="order in myOrders"
                         :key="order._id"
                       />

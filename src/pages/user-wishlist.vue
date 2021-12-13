@@ -1,5 +1,5 @@
 <template>
-  <section class="main-layout">
+  <section class="main-layout2 wish-list">
     <h1 class="user-wishlist-h1">My wishlist</h1>
     <stay-list :stays="wishStays" />
   </section>
