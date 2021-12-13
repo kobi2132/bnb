@@ -2,7 +2,7 @@
   <div class="order-modal-container" ref="modal">
     <div
       class="order-modal flex column align-center justify-center"
-      :class="{ miniModal: miniModal }"
+      :class="{ miniModal }"
     >
       <div class="mini-modal-container">
         <div class="details-mini-nav" v-if="miniModal">
@@ -92,11 +92,8 @@
             </div>
           </div>
         </div>
-        <button
-          class="reserve-btn clickable"
-          :style="{ '--mouse-x': this.mouse.x, '--mouse-y': this.mouse.y }"
-        >
-          {{ buttonText }}
+        <button class="reserve-btn clickable trackable" ref="button">
+          <span> {{ buttonText }}</span>
         </button>
       </form>
       <div class="pricing" v-if="readyToReserve">
@@ -116,16 +113,18 @@
 </template>
 
 <script>
+import logInVue from "../../pages/log-in.vue";
 import tripCalendar2 from "../trip-calendar2.vue";
+import { showMsg } from "../../../services/event-bus.service.js";
 export default {
   name: "order-modal",
-  props: ["stay", "divHeight"],
+  props: { stay: Object, conHeight: Number },
   data() {
     return {
       shouldShow: false,
       trip: {
         guests: {
-          adults: 1,
+          adults: 0,
           children: 0,
         },
         destination: null,
@@ -136,15 +135,13 @@ export default {
         x: null,
         y: null,
       },
-
       order: {
         _id: null,
         dates: {},
         guests: {
-          adults: 1,
+          adults: 0,
           children: 0,
         },
-        createdAt: null,
         buyer: {
           _id: null,
           fullname: null,
@@ -153,6 +150,8 @@ export default {
           _id: null,
           name: null,
           price: null,
+          imgUrls: null,
+          propertyType: null,
         },
         hostId: null,
         status: "pending",
@@ -163,13 +162,11 @@ export default {
     };
   },
   created() {
-    console.log("order form created", this.trip);
     this.trip = this.$store.getters.getCurrTrip;
-    this.loggedinUser = this.$store.getters.getUser;
+    this.loggedinUser = this.$store.getters.loggedinUser;
+    console.log(this.loggedinUser);
     window.addEventListener("scroll", this.handleScroll);
-  },
-  mounted() {
-    this.getModalHeight();
+
     // this.$el.addEventListener("mousemove", (evt) => {
     //   let x = evt.clientX / innerWidth;
     //   this.mouse.x = x;
@@ -180,11 +177,21 @@ export default {
     //   this.$el.style.setProperty("--mouse-y", y);
     // });
   },
+  mounted() {
+    this.getModalHeight();
+  },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
-    // this.$el.removeEventListener("mousemove", this.handleScroll);
   },
   methods: {
+    // set(e) {
+    //   const button = this.$refs.button;
+    //   let rect = e.target.getBoundingClientRect();
+    //   let x = e.clientX - rect.left;
+    //   let y = e.clientY - rect.top;
+    //   button.style.setProperty("--mouse-x", x + "px");
+    //   button.style.setProperty("--mouse-y", y + "px");
+    // },
     goToSection(sectionId) {
       console.log("goinng to section ", sectionId);
       this.$router.push(`/stay/${this.stay._id}/#${sectionId}`).catch(() => {});
@@ -194,45 +201,49 @@ export default {
     },
     getModalHeight() {
       this.modalHeight = this.$refs.modal.clientHeight;
-      console.log(this.modalHeight);
     },
-    placeOrder() {
-      var size = Object.keys(this.trip.dates).length;
-      if (
-        (!this.trip.guests.children && !this.trip.guests.adults) ||
-        size < 1
-      ) {
-        console.log("Not enough data");
-        this.focusOnInput();
-        return;
-      } else {
-        // var { dates, guests } = this.trip;
-        // var { _id, name, price } = this.stay;
-        // this.order = { dates, guests, stay: { _id, name, price } };
-        this.order.dates = this.trip.dates;
-        this.order.guests = this.trip.guests;
-        this.order.stay._id = this.stay._id;
-        this.order.stay.name = this.stay.name;
-        this.order.stay.price = this.stay.price;
-
-        this.order.buyer._id = this.loggedinUser._id;
-        this.order.hostId = this.stay.host._id;
-        this.order.buyer.fullname = this.loggedinUser.fullname;
-        this.order.createdAt = Date.now();
-        console.log(this.trip);
-        console.log(this.loggedinUser);
-        let order = JSON.parse(JSON.stringify(this.order));
-        console.log("placing order!", order);
-        this.$store.dispatch({ type: "addOrder", order });
+    // location
+    async placeOrder() {
+      const loggedinUser = this.$store.getters.loggedinUser;
+      if (!loggedinUser) showMsg("Please log in first", "danger");
+      else {
+        var size = Object.keys(this.trip.dates).length;
+        if (
+          (!this.trip.guests.children && !this.trip.guests.adults) ||
+          size < 1
+        ) {
+          console.log("Not enough data");
+          this.focusOnInput();
+          return;
+        } else {
+          var { dates, guests } = this.trip;
+          var { _id, name, price, imgUrls, propertyType, host } = this.stay;
+          this.order = {
+            dates,
+            guests,
+            stay: { _id, name, price, imgUrls, propertyType },
+          };
+          this.order.buyer = {
+            _id: this.loggedinUser._id,
+            fullname: this.loggedinUser.fullname,
+            imgUrl: this.loggedinUser.imgUrl,
+          };
+          this.order.host = host;
+          this.order.status = "pending";
+          let order = JSON.parse(JSON.stringify(this.order));
+          console.log(order);
+          const savedOrder = await this.$store.dispatch({
+            type: "addOrder",
+            order,
+          });
+          console.log(savedOrder);
+          this.$router.push(`/order-confirm/${savedOrder._id}`);
+        }
       }
-
-      console.log("hey");
-      this.$router.push("/order-confirm/b2OAw");
-
     },
     updateGuests(type, number) {
-      const min = type === "adults" ? 1 : 0;
-      if (this.trip.guests[type] === min && number === -1) return;
+      // const min = type === "adults" ? 1 : 0;
+      if (this.trip.guests[type] === 0 && number === -1) return;
       this.trip.guests[type] += number;
       this.updateTrip();
     },
@@ -245,20 +256,10 @@ export default {
       this.trip.dates = dates;
       this.updateTrip();
     },
-    getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-    },
-    handleScroll(event) {
-      // console.log("scrolling...", window.scrollY);
-      // console.log(this.divHeight, this.modalHeight);
-      if (window.scrollY > this.divHeight + this.modalHeight)
-        this.miniModal = true;
-      else this.miniModal = false;
+    handleScroll() {
+      this.miniModal = window.scrollY >= this.conHeight + this.modalHeight;
     },
   },
-
   computed: {
     children() {
       if (this.trip.guests.children === null) return 0;
@@ -305,13 +306,17 @@ export default {
     },
     fees() {
       return 25;
-      // return this.getRandomInt(15, 80);
     },
   },
   components: {
     tripCalendar2,
+    showMsg,
   },
 };
+// style="
+//   background-position: calc((100 - var(--mouse-x, 0)) * 1%)
+//     calc((100 - var(--mouse-y, 0)) * 1%);
+// "
 </script>
 
 <style>

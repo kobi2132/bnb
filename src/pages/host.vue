@@ -19,6 +19,10 @@ export default {
       this.$router.push("/dashboard").catch(() => {});
     },
   },
+  created() {
+    const page = "host";
+    this.$store.commit({ type: "setCurrPage", page });
+  },
 };
 </script>
 

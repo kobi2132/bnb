@@ -25,15 +25,5 @@ export default {
       default: {},
     },
   },
-  components: {},
-
-  data() {
-    return {};
-  },
-  methods: {},
-  computed: {},
 };
 </script>
-
-<style>
-</style>

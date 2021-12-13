@@ -1,31 +1,33 @@
 .become-host {
+    margin:0;
     display: flex;
     background-color: #222222;
     justify-content: space-between;
     color: #fff;
-    height: 70vh;
+    height: 90vh;
     img {
-        width: 50vw;
-        height: 70vh;
+        width: 50%;
+        height: 90vh;
         object-fit: cover;
     }
     .become-host-info {
-        width: 47.5vw;
+        flex-basis: 50%;
+        display: flex;
         flex-direction: column;
-        align-content: stretch;
-        justify-content: center;
+        align-content:center;
+        justify-content: space-around;
     }
     h1 {
         color: #e7e7e7;
         padding-left: 20px;
     }
     button {
-        position: absolute;
+        // position: absolute;
         width: 150px;
         background-color: #ff385c;
-        right: 5vw;
-        bottom: 10vh;
+        margin-right: 100px;     
         font-weight: 500;
+        align-self: flex-end;
         border: none;
         font-size: 1rem;
         background-color: #e7e7e7;

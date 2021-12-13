@@ -6,7 +6,8 @@
         <span
           class="material-icons"
           :class="{ active: isLiked }"
-          @click.stop="toggleWishList">favorite</span>
+          @click.stop="toggleWishList"
+          >favorite</span>
       </div>
     </div>
     <div class="stay-preview-info">
@@ -15,9 +16,13 @@
           <span class="material-icons-outlined">star</span>
         </div>
         <span class="review-avg">{{ this.reviewsRateAvg }}&nbsp;</span
-        ><span class="reviews-total">({{ this.stay.reviews.length }} reviews)</span>
+        ><span class="reviews-total"
+          >({{ this.stay.reviews.length }} reviews)</span
+        >
       </div>
-      <div class="property-type">{{ this.stay.propertyType }} • {{ this.stay.loc.country }}</div>
+      <div class="property-type">
+        {{ this.stay.propertyType }} • {{ this.stay.loc.city }}
+      </div>
       <div class="stayname">{{ this.stay.name }}</div>
       <div class="stay-price">
         <span class="bold">${{ this.stay.price }}</span> / night
@@ -28,7 +33,7 @@
 
 <script>
 import stayPreviewSlideshow from "@/cmps/stay-cmps/stay-preview-slideshow.vue";
-import { userService } from "../../../services/user.service.js";
+import { showMsg } from "../../../services/event-bus.service.js";
 
 export default {
   name: "stayPreview",
@@ -40,6 +45,7 @@ export default {
   },
   components: {
     stayPreviewSlideshow,
+    showMsg,
   },
   data() {
     return {
@@ -47,9 +53,11 @@ export default {
     };
   },
   created() {
-    const user = userService.getLoggedinUser();
-    var isWish = user.wishList.filter((wish) => wish === this.stay._id);
-    if (isWish.length > 0) this.isLiked = true
+    const user = this.$store.getters.loggedinUser;
+    if (user && user.wishList && user.wishList.length > 0) {
+      var isWish = user.wishList.filter((wish) => wish === this.stay._id);
+      if (isWish.length > 0) this.isLiked = true;
+    }
   },
   computed: {
     reviewsRateAvg() {
@@ -69,10 +77,16 @@ export default {
       this.$router.push("/stay/" + this.stay._id);
     },
     toggleWishList() {
-      var stayId = this.stay._id;
-      console.log(stayId);
-      this.$store.dispatch({ type: "toggleWishList", stayId });
-      this.isLiked = !this.isLiked;
+      const loggedinUser = this.$store.getters.loggedinUser;
+      if (!loggedinUser) {
+        showMsg("Please log in first", "danger");
+        console.log("please login first");
+      } else {
+        var stayId = this.stay._id;
+        console.log(stayId);
+        this.$store.dispatch({ type: "toggleWishList", stayId });
+        this.isLiked = !this.isLiked;
+      }
     },
   },
 };

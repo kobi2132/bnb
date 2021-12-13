@@ -1,4 +1,7 @@
 .confirm-and-pay {
+    .main-layout3 {
+        grid-template-columns: 25% 1fr 25%;
+    }
     .title1 {
         color: #222222;
         font-size: 22px;
@@ -20,6 +23,8 @@
     .header {
         display: flex;
         align-items: center;
+        justify-content: flex-start;
+        margin-inline-start: -20px;
         .back-btn {
             display: flex;
             align-items: center;
@@ -42,7 +47,6 @@
     }
     .details-and-pay {
         display: flex;
-
         .trip-info {
             .your-trip {
                 .title2 {
@@ -72,7 +76,10 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a0f09b5c6087c00d6fecd4c23554af430c6249ee
                     .imgs {
                         display: flex;
                         justify-content: flex-end;
@@ -122,6 +129,11 @@
                 textarea {
                     color: rgb(63, 63, 63);
                     border-radius: 8px;
+                    resize: none;
+                    width: 100%;
+                    height: 100px;
+                    padding: 8px 10px;
+                    font-family: airbnb-regular;
                 }
                 margin-bottom: 24px;
             }
@@ -156,7 +168,6 @@
                 }
                 margin-bottom: 100px;
             }
-
             .separator {
                 height: 2px;
                 width: 100%;
@@ -168,10 +179,10 @@
             height: 381px;
             width: 465px;
             padding: 24px;
+            // margin-top: 65px;
             border: 1px solid rgb(221, 221, 221);
             border-radius: 12px;
             margin-inline-start: 81px;
-
             .modal-container {
                 .separator {
                     height: 2px;
@@ -179,7 +190,6 @@
                     border-bottom: 1px solid #dddddd;
                     margin-bottom: 24px;
                     margin-top: 24px;
-
                 }
                 .stay-details-container {
                     display: flex;
@@ -190,39 +200,115 @@
                         border-radius: 8px;
                         margin-inline-end: 12px;
                     }
-
                     .details-flex {
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
-
                         .stay-details {
                             .title4 {
                                 color: #717171;
                                 margin-bottom: 4px;
                             }
                         }
-
-                        .reviews-preview{
+                        .reviews-preview {
                             display: flex;
                             justify-content: flex-start;
                             align-items: center;
-                        .star-preview span{
-                            font-size: 10px;
-                            color: $redAirbnb
+                            .star-preview span {
+                                font-size: 10px;
+                                color: $redAirbnb;
+                            }
+                            .review-avg {
+                                font-size: 12px;
+                                color: #222222;
+                            }
+                            .reviews-total {
+                                font-size: 12px;
+                                color: #717171;
+                            }
                         }
-                        .review-avg{
-                            font-size: 12px;
-                            color: #222222;
+                    }
+                }
+                .price-details-container {
+                    .title1 {
+                        padding-bottom: 8px;
+                    }
+                    .price-detail {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 16px;
+                        .underline {
+                            text-decoration: underline;
                         }
-                        .reviews-total{
-                            font-size: 12px; 
-                            color: #717171; 
-                        }
+                        .green {
+                            color: #008a05 !important;
                         }
                     }
                 }
             }
         }
     }
+
+  .congrats-modal-container{
+      position: relative;
+
+     .congrats-modal{
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 550px;
+         padding: 50px;
+         border: 1px solid rgb(221, 221, 221);
+         border-radius: 12px;
+         background-color: white;
+
+
+         .title{
+             font-size: 22px;
+             font-weight: bold;
+             color: $redAirbnb;
+             margin-bottom: 24px;
+         }
+         .title-1{
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 4px;
+   
+         }
+         .title-2{
+            font-size: 14px;
+            margin-bottom: 24px;
+         }
+         .separator {
+            height: 2px;
+            width: 100%;
+            border-bottom: 1px solid #dddddd;
+            margin-bottom: 37px;
+        }
+        .links-container{
+            display: flex;
+            justify-content: space-between;
+            text-decoration: underline;
+            font-weight: bold;
+
+        }
+
+     }
+  }  
+
+  .main-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .25);
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity .6s;
+    pointer-events: auto;
+
+}
 }

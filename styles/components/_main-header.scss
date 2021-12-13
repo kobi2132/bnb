@@ -14,8 +14,8 @@
     }
 }
 
-.avatar {
-    width: 30px;
+.logo-small {
+    font-size: 18px;
 }
 
 .nav {
@@ -29,7 +29,7 @@
 
 .main-header:not(.fullheader) {
     grid-template-rows: 1fr;
-    box-shadow:  rgb(0 0 0 / 8%) 0px 1px 12px !important;
+    box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px !important;
 }
 
 .main-header {
@@ -52,22 +52,25 @@
 }
 
 .main-header.fullheader {
-    height: 160px; 
+    height: 160px;
 }
 
 .main-header.fullheader.home-page {
     .logo-txt {
-        color:white;
+        color: white;
     }
     background-color: transparent;
     box-shadow: none;
-    .nav a{
-        color: #fff;
+    .nav a {
+        color: #FFFFFF;
+        text-shadow: 3px 2px 3px rgba(255, 255, 255, .2);
+        font-family: airbnb-medium;
+        ////////////
     }
 }
 
 .user-menu-btn {
-    color: #222222;
+    color: #484848;
     padding: 5px 5px 5px 15px;
     border-radius: 200px;
     background-color: #fff;
@@ -83,11 +86,25 @@
     }
     span {
         margin-left: 12px;
+        font-size: 30px;
+        color: #484848;
+        &.loggedin {
+            filter: invert(100%);
+        }
+    }
+    .avatar {
+        margin-left: 12px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
     }
 }
 
 .main-header.details {
-    grid-template-columns: 115px 1fr 115px;
+    @include for-wide-layout {
+        @include layoutGTC($break-wide)
+    }
+    // grid-template-columns: 115px 1fr 115px;
     >* {
         grid-column: 2;
     }
@@ -117,7 +134,8 @@
     background-color: #fff;
     border-radius: 12px 12px;
     width: 240px;
-    box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+    // box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+    box-shadow: rgb(0 0 0 / 18%) 0px 0px 3px 0px;
     a {
         font-size: 14px;
         color: #222222;
@@ -142,7 +160,8 @@
     // right: 80px;
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+    // box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+    box-shadow: rgb(0 0 0 / 18%) 0px 0px 3px 0px;
     .a1 {
         font-family: airbnb-medium;
     }
@@ -174,6 +193,7 @@
     padding: 0 7px 0 16px;
     width: 300px;
     font-size: 14px;
+    text-indent: 5px;
     // transition: -ms-transform 150ms ease 0s, -webkit-transform 150ms ease 0s, transform 150ms ease 0s, opacity 50ms ease 20ms, visibility 0ms ease 25ms !important;
     &:hover {
         box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
@@ -190,4 +210,8 @@
             padding: 10px;
         }
     }
+}
+
+.hideFilter {
+    display: none;
 }

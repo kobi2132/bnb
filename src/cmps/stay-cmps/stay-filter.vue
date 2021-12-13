@@ -86,7 +86,7 @@ export default {
       range: null,
       trip: {
         guests: {
-          adults: 1,
+          adults: 0,
           children: 0,
         },
         destination: null,

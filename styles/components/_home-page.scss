@@ -1,7 +1,7 @@
 .home-page {
    
     .main-hero {
-        background-image: url(~@/assets/images/hero/wp5.jpg);
+        background-image: url(~@/assets/images/hero/wp2.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         height: 750px;
@@ -17,6 +17,7 @@
         h1 {
             color: #FFF;
             font-size: 32px;
+        
         
         }
 
@@ -42,7 +43,7 @@
     .host-container {
         background-image: url(~@/assets/images/host/10.png);
         // background-repeat: no-repeat;
-        background-position: center top;
+        background-position: center center;
         background-size: cover;
         height: 90vh;
         width: 100%;
@@ -102,7 +103,8 @@
         
         img {
             border-radius: 13px;
-            object-fit: scale-down;
+            object-fit: cover;
+            aspect-ratio: 1/1;
         }
     }
 }

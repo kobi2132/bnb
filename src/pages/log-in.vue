@@ -14,7 +14,7 @@
             name="username"
             autocomplete="off"
             placeholder="Username"
-            value=""
+            v-model="loginCred.username"
           />
           <input
             type="password"
@@ -22,7 +22,7 @@
             name="password"
             autocomplete="off"
             placeholder="Password"
-            value=""
+            v-model="loginCred.password"
           />
           <button type="submit" class="login-btn clickable">Submit</button>
           <div class="login-actions-btns flex space-between">
@@ -33,15 +33,15 @@
             >
               New user
             </button>
-            <button type="button" class="forgot-password-btn actions-btn">
+            <!-- <button type="button" class="forgot-password-btn actions-btn">
               Forgot Password
-            </button>
+            </button> -->
           </div>
         </div>
       </form>
     </section>
     <section v-else class="login-form-container flex column">
-      <form class="login-form" @submit.prevent="login">
+      <form class="login-form" @submit.prevent="doSignup">
         <div class="login-form-header">
           <h2>Sign up</h2>
         </div>
@@ -52,8 +52,7 @@
             class="login-input"
             name="fullname"
             placeholder="Full name"
-            autocomplete="fullname"
-            value=""
+            v-model="signupCred.fullname"
           />
           <input
             name="password"
@@ -61,7 +60,7 @@
             type="password"
             placeholder="Password"
             autocomplete="current-password"
-            value=""
+            v-model="signupCred.password"
           />
           <input
             type="text"
@@ -69,7 +68,7 @@
             name="username"
             placeholder="Username"
             autocomplete="username"
-            value=""
+            v-model="signupCred.username"
           />
           <input
             type="text"
@@ -77,7 +76,7 @@
             name="email"
             placeholder="Email"
             autocomplete="Email"
-            value=""
+            v-model="signupCred.email"
           />
           <button class="login-btn clickable" type="submit">Sign up</button>
           <div class="login-actions-btn flex space-between">
@@ -105,21 +104,49 @@ export default {
       loggedinUser: {
         nickname: null,
       },
+      loginCred: { username: "", password: "" },
+      signupCred: { username: "", password: "", fullname: "", email: "" },
     };
+  },
+  created() {
+    const page = "login";
+    this.$store.commit({ type: "setCurrPage", page });
   },
   methods: {
     toggleForm() {
       this.newUser = !this.newUser;
       console.log(this.newUser);
     },
-    login() {
-      userService.loginUser(this.loggedinUser);
-      this.loggedin = !this.loggedin;
+    async login() {
+      if (!this.loginCred.username || !this.loginCred.password) {
+        console.log("Please fill name/password");
+        return;
+      }
+      try {
+        await this.$store.dispatch({ type: "login", userCred: this.loginCred });
+        this.$router.push("/");
+      } catch (err) {
+        console.log(err);
+        this.msg = "Failed to login";
+      }
     },
     logout() {
       userService.logoutUser();
       this.loggedinUser.nickname = null;
       this.loggedin = !this.loggedin;
+    },
+    async doSignup() {
+      if (
+        !this.signupCred.fullname ||
+        !this.signupCred.password ||
+        !this.signupCred.username ||
+        !this.signupCred.email
+      ) {
+        console.log("Please fill up the form");
+        return;
+      }
+      await this.$store.dispatch({ type: "signup", userCred: this.signupCred });
+      this.$router.push("/");
     },
   },
 };

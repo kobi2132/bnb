@@ -1,7 +1,7 @@
 <template>
   <section class="main-layout">
-      <h1 class="user-wishlist-h1">My wishlist</h1>
-      <stay-list :stays="wishStays" />
+    <h1 class="user-wishlist-h1">My wishlist</h1>
+    <stay-list :stays="wishStays" />
   </section>
 </template>
 
@@ -10,35 +10,36 @@ import stayList from "@/cmps/stay-cmps/stay-list.vue";
 import { userService } from "../../services/user.service.js";
 
 export default {
-name:"user-wishlist",
+  name: "user-wishlist",
 
-components: {
+  components: {
     stayList,
   },
 
   data() {
     return {
-      
       currUser: null,
-      stays:null
+      stays: null,
     };
   },
   created() {
-    this.currUser = userService.getLoggedinUser();  
-    this.stays = this.$store.getters.staysToShow
+    this.currUser = userService.getLoggedinUser();
+    this.stays = this.$store.getters.staysToShow;
+    const page = "wishlist";
+    this.$store.commit({ type: "setCurrPage", page });
   },
   computed: {
     wishStays() {
-      var currWishStays = []
-      this.stays.forEach(stay => {
-        const stayID =  stay._id
-        console.log(stayID)
-        if(this.currUser.wishList.includes(stayID)){
-          console.log('adding', stayID)
-          currWishStays.push(stay)
+      var currWishStays = [];
+      this.stays.forEach((stay) => {
+        const stayID = stay._id;
+        console.log(stayID);
+        if (this.currUser.wishList.includes(stayID)) {
+          console.log("adding", stayID);
+          currWishStays.push(stay);
         }
-      })
-      return currWishStays 
+      });
+      return currWishStays;
     },
   },
   watch: {
@@ -51,9 +52,8 @@ components: {
       immediate: true,
     },
   },
-}
+};
 </script>
 
 <style>
-
 </style>

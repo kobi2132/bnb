@@ -2,11 +2,12 @@
   <div class="confirm-and-pay main-layout2">
     <div class="header">
       <router-link to="">
-        <div class="back-btn">
+        <div class="back-btn" @click="goBack">
           <span class="material-icons-outlined"> chevron_left </span>
         </div>
       </router-link>
-      <h2>Confirm and pay</h2>
+
+      <h2 class="left">Confirm and pay</h2>
     </div>
     <div class="details-and-pay">
       <div class="trip-info">
@@ -14,11 +15,13 @@
           <div class="title1">Your trip</div>
           <div class="dates-section">
             <div class="title2">Dates</div>
-            <div class="dates">Dec 11-13</div>
+            <div class="dates">
+             {{ this.dateFrom }} - {{ this.dateTo }}
+            </div>
           </div>
           <div class="guests-section">
             <div class="title2">Guests</div>
-            <div class="guests">1 guest</div>
+            <div class="guests">{{ this.getTotalGuests }} guests</div>
           </div>
         </div>
         <div class="separator"></div>
@@ -27,27 +30,27 @@
             <div class="title1">Pay with</div>
             <div class="imgs">
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_visa.0adea522bb26bd90821a8fade4911913_vuvn32.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_amex.84088b520ca1b3384cb71398095627da.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_amex.84088b520ca1b3384cb71398095627da_ed7luy.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149_nkxu5w.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_discover.7f05c82f07d62a0f8a69d54dbcd7c8be.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_discover.7f05c82f07d62a0f8a69d54dbcd7c8be_p2axcq.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_paypal.faa3042fa2daf6b4a9822cc4b43e8609.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_paypal.faa3042fa2daf6b4a9822cc4b43e8609_l0ie4i.svg"
                 alt=""
               />
               <img
-                src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_googlepay.3f786bc031b59575d24f504dfb859da0.svg"
+                src="https://res.cloudinary.com/djdkizcaq/image/upload/v1639056057/bnb-proj/Money%20Money%20Money/logo_googlepay.3f786bc031b59575d24f504dfb859da0_nfccnv.svg"
                 alt=""
               />
             </div>
@@ -75,22 +78,19 @@
             Let the Host know why you're traveling and when you'll check in.
           </div>
           <div class="host-message">
-            <img
-              src="https://www.anatshai.co.il/wp-content/uploads/%D7%A2%D7%A0%D7%A8-%D7%90%D7%92%D7%99%D7%91-1.jpg"
-              alt=""
-            />
+            <img :src="this.order.host.imgUrl" alt="" />
             <div class="host">
-              <div class="title2">Yami Kobin</div>
+              <div class="title2">{{ this.order.host.fullname }}</div>
               <p class="title3">
                 Hi<br />
-                My Name is Hezi and i'm Happy that you decided to book My
-                apartment.<br />Please let me know at what time you'll check in
-                so i will wait for you with keys at the apartment.<br />Thank
-                you (:
+                My Name is {{ this.order.host.fullname }} and i'm Happy
+                that you decided to book My apartment.<br />Please let me know
+                at what time you'll check in so i will wait for you with keys at
+                the apartment.<br />Thank you (:
               </p>
             </div>
           </div>
-          <textarea name="user-message" rows="4" cols="50"></textarea>
+          <textarea name="user-message"></textarea>
         </div>
         <div class="separator"></div>
         <div class="cancell-policy">
@@ -112,20 +112,20 @@
             <span>Airbnb's COVID-19 Safety Requirements</span> and the
             <span>Guest Refund Policy</span>.
           </p>
-          <router-link class="confirm-btn" to="/congrats">
-            <div class="confirm-btn">Confirm and pay</div>
-          </router-link>
+          <button class="confirm-btn" @click="setCongratsModal">
+            Confirm and pay
+          </button>
         </div>
       </div>
 
-      <div class="details-modal">
+      <div class="details-modal sticky">
         <div class="modal-container">
           <div class="stay-details-container">
-            <img :src="this.currStay.imgUrls[0]" alt="" />
+            <img :src="this.order.stay.imgUrls[0]" alt="" />
             <div class="details-flex">
               <div class="stay-details">
-                <div class="title4">{{ this.currStay.propertyType }}</div>
-                <div class="title3">{{ this.currStay.name }}</div>
+                <div class="title4">{{ this.order.stay.propertyType }}</div>
+                <div class="title3">{{ this.order.stay.name }}</div>
               </div>
               <div class="reviews-preview">
                 <div class="star-preview">
@@ -141,22 +141,45 @@
           <div class="price-details-container">
             <div class="title1">Price details</div>
             <div class="price-detail">
-              <div class="title2">${{this.order.stay.price}}x{{this.calculateTotalDays}} nights</div>
-              <div class="title2"></div>
+              <div class="title2">
+                ${{ this.order.stay.price }}.00 x
+                {{ this.calculateTotalDays }} nights
+              </div>
+              <div class="title2">${{ this.calculatePrice }}.00</div>
             </div>
             <div class="price-detail">
-              <div class="title2"></div>
-              <div class="title2"></div>
+              <div class="title2 underline">Cleaning fee</div>
+              <div class="title2">$25.00</div>
             </div>
             <div class="price-detail">
-              <div class="title2"></div>
-              <div class="title2"></div>
+              <div class="title2 underline">Service fee</div>
+              <div class="title2 green">$0.00</div>
             </div>
             <div class="price-detail">
-              <div class="title2"></div>
-              <div class="title2"></div>
+              <div class="title2 bold">
+                Total <span class="underline">(USD)</span>
+              </div>
+              <div class="title2 bold">${{ this.calculatePrice + 25 }}.00</div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-screen" v-if="congratsModal"></div>
+
+    <div class="congrats-modal-container" v-if="congratsModal">
+      <div class="congrats-modal">
+        <div class="title">Order sent to host!</div>
+        <div class="title-1">
+          Your host will reply shortly
+        </div>
+        <div class="title-2">
+          You won't be charged until the host approves your order
+        </div>
+        <div class="separator"></div>
+        <div class="links-container ">
+          <router-link class="btn" to="/">Home page </router-link>
+          <router-link class="btn" to="/trips">Share your stay </router-link>
         </div>
       </div>
     </div>
@@ -168,6 +191,7 @@ export default {
   name: "confirm-and-pay",
   data() {
     return {
+      congratsModal: false,
       options: [
         {
           value: "googlePay",
@@ -183,55 +207,74 @@ export default {
         },
       ],
       value: "Google Pay",
-
-      order: {
-        _id: "b2OAw",
-        dates: {
-          start: "2022-01-17T16:39:21.549Z",
-          end: "2022-01-20T16:39:21.549Z",
-        },
-        guests: {
-          adults: "1",
-          children: "0",
-        },
-        createdAt: "1638981562292",
-        buyer: {
-          _id: "u103",
-          fullname: "Yami Kobin",
-        },
-        stay: {
-          _id: "907978798",
-          name: "Nice House",
-          price: "100",
-        },
-        hostId: "u101",
-        status: "pending",
-      },
-      currStay: null,
+      order: null,
+      totalGuests: null,
+      dateFrom: null,
+      dateTo: null,
     };
   },
-
-  created() {},
+  created() {
+    const page = "confirm";
+    this.$store.commit({ type: "setCurrPage", page });
+  },
   computed: {
-        calculateTotalDays() {
-        const { start, end } = this.order.dates;
-        const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
-        return days
+    calculateTotalDays() {
+      const { start, end } = this.order.dates;
+      const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+      return days;
+    },
+    calculatePrice() {
+      const days = this.calculateTotalDays;
+      return parseInt(days * this.order.stay.price);
     },
     fees() {
       return 25;
-      // return this.getRandomInt(15, 80);
+    },
+    getTotalGuests() {
+      return this.totalGuests;
+    },
+  },
+  methods: {
+    setCongratsModal() {
+      console.log(this.congratsModal);
+      this.congratsModal = true;
+      console.log(this.congratsModal);
+    },
+    goBack() {
+      console.log(this.order.stay._id);
+      this.$router.push("/stay/" + this.order.stay._id);
+    },
+    setDateFrom(date) {
+      const currDate = new Date(date);
+      const year = currDate.getFullYear();
+      const month = currDate.getMonth();
+      const day = currDate.getDate();
+      const dateToDisplay = day + "/" + month + "/" + year;
+      this.dateFrom = dateToDisplay;
+    },
+        setDateTo(date) {
+      const currDate = new Date(date);
+      const year = currDate.getFullYear();
+      const month = currDate.getMonth();
+      const day = currDate.getDate();
+      const dateToDisplay = day + "/" + month + "/" + year;
+      this.dateTo = dateToDisplay;
     },
   },
   watch: {
     "$route.params.orderId": {
-      handler() {
+      async handler() {
         let orderId = this.$route.params.orderId;
-        this.$store.dispatch({ type: "getOrderById", orderId });
-
-        const order = this.$store.getters.getCurrOrder;
-        console.log(order);
-        this.currStay = this.$store.getters.getCurrStay;
+        let order = await this.$store.dispatch({
+          type: "getOrderById",
+          orderId,
+        });
+        this.order = order;
+        console.log(this.order);
+        this.totalGuests =
+          this.order.guests.adults + this.order.guests.children;
+        this.setDateFrom(this.order.dates.start);
+        this.setDateTo(this.order.dates.end);
       },
       immediate: true,
     },

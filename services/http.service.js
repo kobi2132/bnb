@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { router } from '@/router'
+import { router } from '../src/router/index.js'
 
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'

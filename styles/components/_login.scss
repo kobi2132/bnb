@@ -1,6 +1,11 @@
+.login-container {
+    margin-top: 100px;
+    height: 80vh;
+}
+
 .login-form-container {
     align-items: center;
-    margin-top: 30vh;
+    
 }
 
 .login-form {
@@ -25,11 +30,13 @@
 
 .login-input {
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     border: 1px solid #b6b6b6;
     border-radius: 13px;
-    margin: 5px;
-    font-family: airbnb-regular, sans-serif
+    margin: 5px 5px 5px 0;
+    font-family: airbnb-regular, sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
 }
 
 .login-btn {
@@ -41,7 +48,9 @@
     border-radius: 13px;
     color: #fff;
     font-weight: 600;
-    font-family: airbnb-regular, sans-serif
+    font-family: airbnb-regular, sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
 }
 
 .login-actions-btn {

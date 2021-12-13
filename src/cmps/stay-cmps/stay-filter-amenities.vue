@@ -70,7 +70,7 @@
               <input
                 type="checkbox"
                 id="entire place"
-                value="entire place"
+                value="Entire place"
                 v-model="filterBy.typeOfPlace"
               />
               <span class="checkmark"></span>
@@ -269,6 +269,7 @@ export default {
     },
     setFilter() {
       const filterBy = this.filterBy;
+      console.log(filterBy);
       this.$store.commit({ type: "setFilter", filterBy });
       this.getStaysPrices();
     },
