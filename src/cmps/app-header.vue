@@ -23,12 +23,17 @@
       <div class="nav flex align-center justify-center">
         <router-link to="/explore">Explore</router-link>
         <router-link to="/host">Become a Host</router-link>
-        <span
-          class="material-icons notification-btn"
-          @click="this.openNotifications"
-        >
-          notifications
-        </span>
+        <div class="notifications-container">
+          <span
+            class="material-icons notification-btn"
+            @click="this.openNotifications"
+          >
+            notifications
+          </span>
+          <p v-if="notificationsCount > 0" class="notifications">
+            {{ notificationsCount }}
+          </p>
+        </div>
         <section
           class="notifications-modal-container"
           v-if="this.isNotificationsModal"
@@ -52,12 +57,10 @@
                 <h3>{{ notification.from.fullname }}</h3>
               </span>
               <div class="notif-card">
-              <h4 class="notifications-card-txt">
-                {{ notification.txt }}
-              </h4>
-              <h5>{{ getCreatedTime(idx) }}</h5>
-
-
+                <h4 class="notifications-card-txt">
+                  {{ notification.txt }}
+                </h4>
+                <h5>{{ getCreatedTime(idx) }}</h5>
               </div>
               <!-- <pre>{{ notifications }}</pre> -->
               <!-- <a class="trips-link" href="#/orders">Read More</a> -->
@@ -69,9 +72,6 @@
           class="user-menu-btn clickable flex align-center clickable"
           @click="shouldShow = !shouldShow"
         >
-          <p v-if="notificationsCount > 0" class="notifications">
-            {{ notificationsCount }}
-          </p>
           <span class="material-icons-round" v-if="!currUser">
             account_circle
           </span>
@@ -198,7 +198,18 @@ export default {
 
       console.log(currDate);
 
-      return "sent at: "+day + "/" + month + "/" + year + " , " +  hours + ":"+ minutes;
+      return (
+        "sent at: " +
+        day +
+        "/" +
+        month +
+        "/" +
+        year +
+        " , " +
+        hours +
+        ":" +
+        minutes
+      );
     },
   },
   computed: {

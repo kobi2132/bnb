@@ -1,7 +1,23 @@
+
+.notifications {
+    position: absolute;
+    top: 22px;
+    right: 178px;
+    font-size: 10px;
+    line-height: 1rem;
+    padding: 0 5px;
+    background-color: $redAirbnb;
+    color: white;
+    box-shadow: rgb(255 255 255) 0px 0px 0px 1.5px !important;
+    border-radius: 50%;
+    text-align: center;
+}
+
+
 .notification-btn {
     cursor: pointer;
     font-size: 21px;
-    padding: 0 15px;
+    padding-right: 15px;
     color: #222222;
 }
 

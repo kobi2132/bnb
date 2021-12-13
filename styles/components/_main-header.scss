@@ -46,10 +46,6 @@
     width: 100%;
     z-index: 8000;
     background-color: white;
-    // transition: background-color .5s ease-out,
-    // height .4s ease-out,
-    // box-shadow .3s ease-out;
-    // transition: -ms-transform 150ms ease 0s, -webkit-transform background-color .5s ease-out, 150ms ease 0s, transform 150ms ease 0s, opacity 50ms ease 20ms, visibility 0ms ease 25ms !important;
 }
 
 .main-header.fullheader {
@@ -69,14 +65,11 @@
         color: #FFFFFF;
         text-shadow: 1px 1px 2px #000000;
         font-family: airbnb-medium;
-        ////////////
+    }
+    .notification-btn {
+        color: #FFFFFF
     }
 }
-
-
-
-
-
 
 .user-menu-btn {
     color: #484848;
@@ -113,7 +106,6 @@
     @include for-wide-layout {
         @include layoutGTC($break-wide)
     }
-    // grid-template-columns: 115px 1fr 115px;
     >* {
         grid-column: 2;
     }
@@ -143,7 +135,6 @@
     background-color: #fff;
     border-radius: 12px 12px;
     width: 240px;
-    // box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
     box-shadow: rgb(0 0 0 / 18%) 0px 0px 3px 0px;
     a {
         font-size: 14px;
@@ -164,12 +155,8 @@
 .user-nav2 {
     display: flex;
     flex-direction: column;
-    // position: absolute;
-    // top: 75px;
-    // right: 80px;
     background-color: #fff;
     border-radius: 12px;
-    // box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
     box-shadow: rgb(0 0 0 / 18%) 0px 0px 3px 0px;
     .a1 {
         font-family: airbnb-medium;
@@ -203,7 +190,6 @@
     width: 300px;
     font-size: 14px;
     text-indent: 5px;
-    // transition: -ms-transform 150ms ease 0s, -webkit-transform 150ms ease 0s, transform 150ms ease 0s, opacity 50ms ease 20ms, visibility 0ms ease 25ms !important;
     &:hover {
         box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
         transition: box-shadow 0.2s ease 0s;
@@ -225,16 +211,3 @@
     display: none;
 }
 
-.notifications {
-    position: absolute;
-    top: 18px;
-    right: 77px;
-    font-size: 10px;
-    line-height: 1rem;
-    padding: 0 5px;
-    background-color: $redAirbnb;
-    color: white;
-    box-shadow: rgb(255 255 255) 0px 0px 0px 1.5px !important;
-    border-radius: 50%;
-    text-align: center;
-}
