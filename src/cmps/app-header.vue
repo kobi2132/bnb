@@ -124,38 +124,38 @@ export default {
       hideFilter: false,
       topOfPage: true,
       isNotificationsModal: false,
-      notifications: [
-        {
-          from: {
-            _id: "61b064d3dcbbeca56bcf1df1",
-            fullname: "Adi Adadouf",
-            imgUrl:
-              "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
-          },
-          txt: "Your order has been approved!",
-          createdAt: 1639266368862,
-        },
-        {
-          from: {
-            _id: "61b064d3dcbbeca56bcf1df1",
-            fullname: "Adi Adadouf",
-            imgUrl:
-              "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
-          },
-          txt: "Your order has been approved!",
-          createdAt: 1639266368862,
-        },
-        {
-          from: {
-            _id: "61b064d3dcbbeca56bcf1df1",
-            fullname: "Adi Adadouf",
-            imgUrl:
-              "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
-          },
-          txt: "Your order has been approved!",
-          createdAt: 1639266368862,
-        },
-      ],
+      // notifications: [
+      //   {
+      //     from: {
+      //       _id: "61b064d3dcbbeca56bcf1df1",
+      //       fullname: "Adi Adadouf",
+      //       imgUrl:
+      //         "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
+      //     },
+      //     txt: "Your order has been approved!",
+      //     createdAt: 1639266368862,
+      //   },
+      //   {
+      //     from: {
+      //       _id: "61b064d3dcbbeca56bcf1df1",
+      //       fullname: "Adi Adadouf",
+      //       imgUrl:
+      //         "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
+      //     },
+      //     txt: "Your order has been approved!",
+      //     createdAt: 1639266368862,
+      //   },
+      //   {
+      //     from: {
+      //       _id: "61b064d3dcbbeca56bcf1df1",
+      //       fullname: "Adi Adadouf",
+      //       imgUrl:
+      //         "https://res.cloudinary.com/djdkizcaq/image/upload/v1638949621/bnb-proj/avatars/1_hulzi4.jpg",
+      //     },
+      //     txt: "Your order has been approved!",
+      //     createdAt: 1639266368862,
+      //   },
+      // ],
     };
   },
 
@@ -202,9 +202,9 @@ export default {
     },
   },
   computed: {
-    // notifications() {
-    //   return this.$store.getters.notifications;
-    // },
+    notifications() {
+      return this.$store.getters.notifications;
+    },
     notificationsCount() {
       return this.$store.getters.notificationsCount;
     },
