@@ -4,7 +4,7 @@
 
     <stay-short-info :stay="stay" />
 
-    <stay-gallery :stay="stay" id="pictures" />
+    <stay-gallery :stay="stay" />
     <section
       class="stay-display-divider flex gray-box-shadow"
       ref="displayContainer"
@@ -33,7 +33,7 @@
         <stay-features />
 
         <stay-description :stay="stay" />
-        <div id="reviews"></div>
+        <a id="reviews"></a>
       </div>
       <div class="stay-display-order">
         <order-modal class="sticky" :conHeight="conHeight" :stay="stay" />

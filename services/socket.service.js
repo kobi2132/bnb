@@ -4,6 +4,7 @@ export const SOCKET_EMIT_USER_WATCH = 'user-watch';
 export const SOCKET_EVENT_USER_UPDATED = 'user-updated';
 export const SOCKET_EVENT_ORDER_ADDED = 'order-added';
 export const SOCKET_EVENT_ORDER_ABOUT_YOU = 'order-about-you';
+export const SOCKET_EVENT_ORDER_UPDATED = 'order-updated'
 
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
@@ -15,12 +16,13 @@ window.socketService = socketService
 // var socketIsReady = false;
 socketService.setup()
 
-
 function createSocketService() {
   var socket = null;
   const socketService = {
     async setup() {
+      console.log('here')
       socket = io(baseUrl)
+      console.log('here1')
     },
     on(eventName, cb) {
       socket.on(eventName, cb)
@@ -31,6 +33,7 @@ function createSocketService() {
       else socket.off(eventName, cb)
     },
     emit(eventName, data) {
+      console.log('eventName', eventName);
       socket.emit(eventName, data)
     },
     terminate() {
@@ -47,12 +50,13 @@ function createDummySocketService() {
     listenersMap,
     setup() {
       listenersMap = {}
+      // window.mapmap = listenersMap
     },
     terminate() {
       this.setup()
     },
     on(eventName, cb) {
-      listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
+      listenersMap[eventName] = [...(listenersMap[eventName] || []), cb]
     },
     off(eventName, cb) {
       if (!listenersMap[eventName]) return

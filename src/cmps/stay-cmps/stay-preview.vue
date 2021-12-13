@@ -7,7 +7,8 @@
           class="material-icons"
           :class="{ active: isLiked }"
           @click.stop="toggleWishList"
-          >favorite</span>
+          >favorite</span
+        >
       </div>
     </div>
     <div class="stay-preview-info">

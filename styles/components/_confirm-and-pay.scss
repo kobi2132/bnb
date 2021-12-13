@@ -1,7 +1,9 @@
+
 .confirm-and-pay {
-    .main-layout3 {
-        grid-template-columns: 25% 1fr 25%;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .title1 {
         color: #222222;
         font-size: 22px;
@@ -165,6 +167,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    cursor: pointer;
                 }
                 margin-bottom: 100px;
             }
@@ -176,6 +179,7 @@
             }
         }
         .details-modal {
+            margin-top: 27px;
             height: 381px;
             width: 465px;
             padding: 24px;
@@ -257,12 +261,14 @@
          top: 50%;
          left: 50%;
          transform: translate(-50%, -50%);
+         opacity: 1;
+         transition: opacity 0.6s;
          width: 550px;
          padding: 50px;
          border: 1px solid rgb(221, 221, 221);
          border-radius: 12px;
          background-color: white;
-
+         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
          .title{
              font-size: 22px;
@@ -304,10 +310,10 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, .25);
-    cursor: pointer;
+    // cursor: pointer;
     pointer-events: none;
-    opacity: 1;
-    transition: opacity .6s;
+    opacity: 0;
+    transition: opacity .9s;
     pointer-events: auto;
 
 }

@@ -4,7 +4,7 @@
       @submit.prevent="updateTrip"
       class="max-filter flex space-between align-center"
     >
-      <div class="input-container" @click="shouldShow = false">
+      <div class="input-container first-container" @click="shouldShow = false">
         <label>
           Location
           <input
@@ -16,9 +16,11 @@
           />
           <datalist id="destination">
             <option value="Tel Aviv"></option>
+            <option value="Barcelona"></option>
             <option value="Paris"></option>
             <option value="Santorini"></option>
             <option value="New York"></option>
+            <option value="Bali"></option>
           </datalist>
         </label>
       </div>

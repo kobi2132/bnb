@@ -24,6 +24,7 @@
             placeholder="Password"
             v-model="loginCred.password"
           />
+          <p>{{ msg }}</p>
           <button type="submit" class="login-btn clickable">Submit</button>
           <div class="login-actions-btns flex space-between">
             <button
@@ -78,6 +79,7 @@
             autocomplete="Email"
             v-model="signupCred.email"
           />
+          <p>{{ msg }}</p>
           <button class="login-btn clickable" type="submit">Sign up</button>
           <div class="login-actions-btn flex space-between">
             <button
@@ -100,6 +102,7 @@ export default {
 
   data() {
     return {
+      msg: "",
       newUser: false,
       loggedinUser: {
         nickname: null,
@@ -115,11 +118,11 @@ export default {
   methods: {
     toggleForm() {
       this.newUser = !this.newUser;
-      console.log(this.newUser);
+      this.msg = "";
     },
     async login() {
       if (!this.loginCred.username || !this.loginCred.password) {
-        console.log("Please fill name/password");
+        this.msg = "Please enter name and password";
         return;
       }
       try {
@@ -142,7 +145,7 @@ export default {
         !this.signupCred.username ||
         !this.signupCred.email
       ) {
-        console.log("Please fill up the form");
+        this.msg = "Please fill up the form";
         return;
       }
       await this.$store.dispatch({ type: "signup", userCred: this.signupCred });

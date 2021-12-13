@@ -28,7 +28,7 @@
         <button
           @click="placeOrder"
           v-if="miniModal"
-          class="reserve-btn clickable"
+          class="reserve-btn clickable pretty-btn"
           :style="{ '--mouse-x': this.mouse.x, '--mouse-y': this.mouse.y }"
         >
           {{ buttonText }}
@@ -54,7 +54,12 @@
                 expand_more
               </span>
             </div>
-            <input class="guests" :placeholder="numOfGuests" disabled />
+            <input
+              class="guests"
+              :placeholder="numOfGuests"
+              disabled
+              @click="shouldShow = !shouldShow"
+            />
           </label>
           <div class="guests-modal flex column" v-if="shouldShow">
             <div class="guest-type-label flex space-between align-center">
@@ -92,7 +97,11 @@
             </div>
           </div>
         </div>
-        <button class="reserve-btn clickable trackable" ref="button">
+        <button
+          class="reserve-btn clickable trackable pretty-btn"
+          ref="button"
+          @mousemove="set($event)"
+        >
           <span> {{ buttonText }}</span>
         </button>
       </form>
@@ -105,7 +114,7 @@
           <span>Service fee</span> <span>${{ fees }}</span>
         </p>
         <p>
-          <span>Total</span><span> ${{ calculateTotalPrice + fees }}</span>
+          <span>Total</span><span> ${{ calculateTotalPriceWithFees }}</span>
         </p>
       </div>
     </div>
@@ -164,18 +173,7 @@ export default {
   created() {
     this.trip = this.$store.getters.getCurrTrip;
     this.loggedinUser = this.$store.getters.loggedinUser;
-    console.log(this.loggedinUser);
     window.addEventListener("scroll", this.handleScroll);
-
-    // this.$el.addEventListener("mousemove", (evt) => {
-    //   let x = evt.clientX / innerWidth;
-    //   this.mouse.x = x;
-    //   let y = evt.clientY / innerHeight;
-    //   this.mouse.y = y;
-    //   console.log(x, y);
-    //   this.$el.style.setProperty("--mouse-x", x);
-    //   this.$el.style.setProperty("--mouse-y", y);
-    // });
   },
   mounted() {
     this.getModalHeight();
@@ -184,14 +182,6 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
-    // set(e) {
-    //   const button = this.$refs.button;
-    //   let rect = e.target.getBoundingClientRect();
-    //   let x = e.clientX - rect.left;
-    //   let y = e.clientY - rect.top;
-    //   button.style.setProperty("--mouse-x", x + "px");
-    //   button.style.setProperty("--mouse-y", y + "px");
-    // },
     goToSection(sectionId) {
       console.log("goinng to section ", sectionId);
       this.$router.push(`/stay/${this.stay._id}/#${sectionId}`).catch(() => {});
@@ -202,7 +192,9 @@ export default {
     getModalHeight() {
       this.modalHeight = this.$refs.modal.clientHeight;
     },
-    // location
+    handleScroll() {
+      this.miniModal = window.scrollY >= this.conHeight + this.modalHeight;
+    },
     async placeOrder() {
       const loggedinUser = this.$store.getters.loggedinUser;
       if (!loggedinUser) showMsg("Please log in first", "danger");
@@ -256,8 +248,13 @@ export default {
       this.trip.dates = dates;
       this.updateTrip();
     },
-    handleScroll() {
-      this.miniModal = window.scrollY >= this.conHeight + this.modalHeight;
+    set(e) {
+      let btn = this.$refs.button;
+      console.log(btn);
+      const x = e.offsetX;
+      const y = e.offsetY;
+      btn.style.setProperty("--mouse-x", x);
+      btn.style.setProperty("--mouse-y", y);
     },
   },
   computed: {
@@ -301,7 +298,19 @@ export default {
       if (size > 1) {
         const { start, end } = this.trip.dates;
         const timeDiff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
-        return parseInt(this.stay.price * timeDiff);
+        return Number(parseInt(this.stay.price * timeDiff)).toLocaleString();
+        // return parseInt(this.stay.price * timeDiff);
+      }
+    },
+    calculateTotalPriceWithFees() {
+      var size = Object.keys(this.trip.dates).length;
+      if (size > 1) {
+        const { start, end } = this.trip.dates;
+        const timeDiff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
+        return Number(
+          parseInt(this.stay.price * timeDiff + 25)
+        ).toLocaleString();
+        // return parseInt(this.stay.price * timeDiff);
       }
     },
     fees() {
@@ -313,6 +322,16 @@ export default {
     showMsg,
   },
 };
+
+// this.$el.addEventListener("mousemove", (evt) => {
+//   let x = evt.clientX / innerWidth;
+//   this.mouse.x = x;
+//   let y = evt.clientY / innerHeight;
+//   this.mouse.y = y;
+//   console.log(x, y);
+//   this.$el.style.setProperty("--mouse-x", x);
+//   this.$el.style.setProperty("--mouse-y", y);
+// });
 // style="
 //   background-position: calc((100 - var(--mouse-x, 0)) * 1%)
 //     calc((100 - var(--mouse-y, 0)) * 1%);

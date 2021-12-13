@@ -1,23 +1,20 @@
 <template>
   <div class="confirm-and-pay main-layout2">
-    <div class="header">
-      <router-link to="">
-        <div class="back-btn" @click="goBack">
-          <span class="material-icons-outlined"> chevron_left </span>
-        </div>
-      </router-link>
-
-      <h2 class="left">Confirm and pay</h2>
-    </div>
     <div class="details-and-pay">
       <div class="trip-info">
+        <div class="header">
+          <router-link to="">
+            <div class="back-btn" @click="goBack">
+              <span class="material-icons-outlined"> chevron_left </span>
+            </div>
+          </router-link>
+          <h2>Confirm and pay</h2>
+        </div>
         <div class="your-trip">
           <div class="title1">Your trip</div>
           <div class="dates-section">
             <div class="title2">Dates</div>
-            <div class="dates">
-             {{ this.dateFrom }} - {{ this.dateTo }}
-            </div>
+            <div class="dates">{{ this.dateFrom }} - {{ this.dateTo }}</div>
           </div>
           <div class="guests-section">
             <div class="title2">Guests</div>
@@ -83,10 +80,10 @@
               <div class="title2">{{ this.order.host.fullname }}</div>
               <p class="title3">
                 Hi<br />
-                My Name is {{ this.order.host.fullname }} and i'm Happy
-                that you decided to book My apartment.<br />Please let me know
-                at what time you'll check in so i will wait for you with keys at
-                the apartment.<br />Thank you (:
+                My Name is {{ this.order.host.fullname }} and i'm Happy that you
+                decided to book My apartment.<br />Please let me know at what
+                time you'll check in so i will wait for you with keys at the
+                apartment.<br />Thank you (:
               </p>
             </div>
           </div>
@@ -96,8 +93,8 @@
         <div class="cancell-policy">
           <div class="title1">Cancellation policy</div>
           <p class="title2">
-            Non-refundable: Cancel before check-in and get back only the
-            cleaning fee, if you paid one. <span>Learn more</span>
+            Refundable: Free cancellation up to 24 hours before check-in.
+            <span>Learn more</span>
           </p>
           <p>
             Our Extenuating Circumstances policy does not cover travel
@@ -109,7 +106,7 @@
           <p class="title4">
             By selecting the button below, I agree to the
             <span>Host's House Rules</span>,
-            <span>Airbnb's COVID-19 Safety Requirements</span> and the
+            <span>Kumba's COVID-19 Safety Requirements</span> and the
             <span>Guest Refund Policy</span>.
           </p>
           <button class="confirm-btn" @click="setCongratsModal">
@@ -131,8 +128,8 @@
                 <div class="star-preview">
                   <span class="material-icons-outlined">star</span>
                 </div>
-                <span class="review-avg">4.6&nbsp;</span>
-                <span class="reviews-total">(4)</span>
+                <span class="review-avg">{{ this.reviews }} &nbsp;</span>
+                <span class="reviews-total">({{ this.reviewsCount }})</span>
               </div>
             </div>
           </div>
@@ -149,17 +146,19 @@
             </div>
             <div class="price-detail">
               <div class="title2 underline">Cleaning fee</div>
-              <div class="title2">$25.00</div>
+              <div class="title2">$0.00</div>
             </div>
             <div class="price-detail">
               <div class="title2 underline">Service fee</div>
-              <div class="title2 green">$0.00</div>
+              <div class="title2 green">$25.00</div>
             </div>
             <div class="price-detail">
               <div class="title2 bold">
                 Total <span class="underline">(USD)</span>
               </div>
-              <div class="title2 bold">${{ this.calculatePrice + 25 }}.00</div>
+              <div class="title2 bold">
+                ${{ this.calculatePriceWithFees }}.00
+              </div>
             </div>
           </div>
         </div>
@@ -170,14 +169,12 @@
     <div class="congrats-modal-container" v-if="congratsModal">
       <div class="congrats-modal">
         <div class="title">Order sent to host!</div>
-        <div class="title-1">
-          Your host will reply shortly
-        </div>
+        <div class="title-1">Your host will reply shortly</div>
         <div class="title-2">
           You won't be charged until the host approves your order
         </div>
         <div class="separator"></div>
-        <div class="links-container ">
+        <div class="links-container">
           <router-link class="btn" to="/">Home page </router-link>
           <router-link class="btn" to="/trips">Share your stay </router-link>
         </div>
@@ -211,6 +208,8 @@ export default {
       totalGuests: null,
       dateFrom: null,
       dateTo: null,
+      reviews: 4.9,
+      reviewsCount: 34,
     };
   },
   created() {
@@ -225,7 +224,15 @@ export default {
     },
     calculatePrice() {
       const days = this.calculateTotalDays;
-      return parseInt(days * this.order.stay.price);
+      return Number(parseInt(days * this.order.stay.price)).toLocaleString();
+      //  Number(parseInt(this.stay.price * timeDiff)).toLocaleString()
+    },
+    calculatePriceWithFees() {
+      const days = this.calculateTotalDays;
+      return Number(
+        parseInt(days * this.order.stay.price + 25)
+      ).toLocaleString();
+      //  Number(parseInt(this.stay.price * timeDiff)).toLocaleString()
     },
     fees() {
       return 25;
@@ -247,18 +254,29 @@ export default {
     setDateFrom(date) {
       const currDate = new Date(date);
       const year = currDate.getFullYear();
-      const month = currDate.getMonth();
+      const month = currDate.getMonth() + 1;
       const day = currDate.getDate();
       const dateToDisplay = day + "/" + month + "/" + year;
       this.dateFrom = dateToDisplay;
     },
-        setDateTo(date) {
+    setDateTo(date) {
       const currDate = new Date(date);
       const year = currDate.getFullYear();
-      const month = currDate.getMonth();
+      const month = currDate.getMonth() + 1;
       const day = currDate.getDate();
       const dateToDisplay = day + "/" + month + "/" + year;
       this.dateTo = dateToDisplay;
+    },
+    setReviews() {
+      var avgsSum = 0;
+      this.order.stay.reviews.forEach((review) => {
+        const sumRates = (obj) => Object.values(obj).reduce((a, b) => a + b);
+        const currSum = sumRates(review.rate);
+        const currSumAvg = currSum / 6;
+        avgsSum += currSumAvg;
+      });
+      avgsSum = avgsSum / this.stay.reviews.length;
+      return avgsSum.toFixed(1);
     },
   },
   watch: {
@@ -275,6 +293,7 @@ export default {
           this.order.guests.adults + this.order.guests.children;
         this.setDateFrom(this.order.dates.start);
         this.setDateTo(this.order.dates.end);
+        this.setReviews();
       },
       immediate: true,
     },

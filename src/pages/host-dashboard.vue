@@ -3,10 +3,10 @@
   <!--  -->
   <section class="main-layout2 dashboard-page">
     <!-- <p>{{myOrders}}</p> -->
-    <section class="dashboard-container flex">
-      <section class="dash-nav-sticky-container">
+    <section class="dashboard-container flex space-between column">
+      <section class="dash-nav-sticky-container flex">
         <!-- <h1>host-dashboard</h1> -->
-        <div class="dash-nav-container flex column">
+        <div class="dash-nav-container flex ">
           <!-- <button
             class="add-stay-btn flex align-center clean-btn clickable"
             value="add stay"
@@ -14,7 +14,7 @@
             <i class="fa fa-plus" aria-hidden="true"> </i>Add Stay
           </button> -->
           <div>
-            <span class="material-icons"> home</span>
+            <span class="material-icons"> cottage</span>
             <button
               value="my Stays"
               @click="showMyStays()"
@@ -42,8 +42,7 @@
           </button> -->
         </div>
 
-        <div class="host-info-container">
-          <!-- <img src="/static/media/user-cash.e1f91298.PNG" alt="cash" /> -->
+        <!-- <div class="host-info-container">
           <h2>
             Make all payments through
             <span class="logo-txt logo-small">Kumb</span>
@@ -53,35 +52,73 @@
             under our Terms of Service, Payments Terms of Service, cancellation,
             and other safeguards.
           </p>
-        </div>
+        </div>  -->
       </section>
 
       <section class="dash-main-container flex column">
-        <section class="dash-header flex space-evenly">
-          <div class="total-rate">
+        <section class="dash-header flex space-between">
+          <div class="total-rate dash-div">
             <h3>Total Rate</h3>
-            <div class="flex space-between align-center">
-              <span class="flex align center">
+            <div class="flex space-between column rates-data">
+                <div>
+              <span class="flex">
                 <i class="fa fa-star" aria-hidden="true"></i
-                >{{ totalRateAvg }}</span
-              >
+                >{{ totalRateAvg }} <small class="avg"> avg</small></span>
+                </div>
+                <div class="flex space-between">
+                <span>{{totalRateCount}} <small>reviews</small></span>
+                </div>
               <!-- <p>
                 4%<i class="fa fa-long-arrow-alt-up" aria-hidden="true"></i>
               </p> -->
             </div>
           </div>
 
-          <div>
-            <h3>Earnings</h3>
+          <div class="dash-div">
+            <h3>Total revenues</h3>
             <div>
-              <span>$ {{ monthlyEarningToShow }}</span>
+              <!-- <span>$ {{ totalEarningToShow }}</span> -->
+              <table>
+                <tr>
+                  <td title="Past month">Month</td>
+                  <td title="Past year">Year</td>
+                  <td title="All revenues">Total</td>
+                </tr>
+                <tr>
+                  <td class="nums-td">${{ monthEarningToShow }}</td>
+                  <td class="nums-td">${{ yearEarningToShow }}</td>
+                  <td class="nums-td">${{ totalEarningToShow }}</td>
+                 </tr>
+              </table>
             </div>
+            <!-- <div>
+              <span>{{totalOrders}} hosts</span>
+            </div> -->
           </div>
-          <div class="orders-div">
+          <div class="orders-div dash-div">
             <h3>Orders</h3>
             <div class="flex column">
-              <span>{{ totalOrders }}</span>
-              <div class="circle-container flex column">
+              <!-- <span>{{ totalOrders }}</span> -->
+              <table>
+                <tr>
+                  <td>Total</td>
+                  <td>Pending</td>
+                  <td>Approved</td>
+                  <td>Declined</td>
+                </tr>
+                <tr>
+                  <td class="nums-td">{{ totalOrders }}</td>
+                  <td class="nums-td">{{ pendingOrders }}</td>
+                  <td class="nums-td">{{ approvedOrders }}</td>
+                  <td class="nums-td">{{ declinedOrders }}</td>
+                 </tr>
+                <!--<tr>
+                </tr>
+                <tr>
+                </tr> -->
+
+              </table>
+              <!-- <div class="circle-container flex column">
                 <div class="flex align-center space-around">
                   <span title="approved" class="circle green-circle"></span>
                   <p>{{ approvedOrders }}</p>
@@ -92,18 +129,32 @@
                 </div>
                 <div class="flex align-center space-around">
                   <span title="decline" class="circle red-circle"></span>
-                  <p>{{ declinedOrders }}</p>
-                </div>
-              </div>
+                  <p>{{ declinedOrders }}</p> -->
+              <!-- </div> -->
+              <!-- </div> -->
             </div>
           </div>
-          <div>
+          <div class="dash-div">
             <div>
-              <h3>Active Guests</h3>
-              <span>{{ activeGuests }}</span>
+              <h3>Guests</h3>
+              <span></span>
+               <table>
+                <tr>
+                  <td>Active</td>
+                  <td>Past</td>
+                  <td>Planned</td>
+                </tr>
+                <tr>
+                  <td class="nums-td">{{ activeGuests }}</td>
+                  <td class="nums-td">{{ pastGuests }}</td>
+                  <td class="nums-td">{{ plannedGuests }}</td>
+                 </tr>
+                
+
+              </table>
             </div>
 
-            <div>
+            <!-- <div>
               <img
                 v-for="(guest, id) in activeGuests"
                 :key="id"
@@ -111,7 +162,7 @@
                 alt="guest"
                 class="host-img"
               />
-            </div>
+            </div> -->
           </div>
         </section>
 
@@ -120,7 +171,7 @@
             <section class="host-stay-list" v-if="shouldShow === 'my stays'">
               <div class="host-stay-list-table">
                 <div class="thead">
-                  <div class="thead-container">
+                  <div class="thead-container gray-box-shadow">
                     <!-- flex space-evenly align-center -->
                     <span class="host-img"></span>
                     <span>Name</span>
@@ -134,7 +185,7 @@
                       v-for="stay in myStays" :key="stay._id" > -->
                 <div class="tbody">
                   <div
-                    class="host-stay-preview"
+                    class="host-stay-preview gray-box-shadow"
                     v-for="stay in myStays"
                     :key="stay.id"
                   >
@@ -167,17 +218,17 @@
               </div>
             </section>
             <section class="host-order-list" v-if="shouldShow === 'my orders'">
-              <section class="host-order-container">
+              <section class="host-order-container" v-loading="loading">
                 <section class="host-order-list">
                   <div class="host-order-list-table">
                     <div class="thead">
-                      <div class="thead-container">
+                      <div class="thead-container gray-box-shadow">
                         <span class="host-img"></span>
                         <span>Guest Name</span>
                         <span>Check in</span>
                         <span>Check out</span>
                         <span>Status</span>
-                        <span>Price</span>
+                        <span>Revenue</span>
                         <span>Actions</span>
                       </div>
                     </div>
@@ -185,13 +236,18 @@
                       <!-- for in
                       v-for="order in myOrders" :key="order._id" > -->
 
-                      <div
+                      <!-- <div
                         v-for="order in myOrders"
                         :key="order._id"
                         class="host-stay-preview"
-                      >
-                        <span>
-                          <!-- <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="user" class="host-img"/> -->
+                      > -->
+                      <order-data
+                        :order="order"
+                        class="host-stay-preview gray-box-shadow"
+                        v-for="order in myOrders"
+                        :key="order._id"
+                      />
+                      <!-- <span >
                           <img class="host-img" :src="order.buyer.imgUrl" />
                         </span>
                         <span>{{ order.buyer.fullname }}</span>
@@ -204,8 +260,8 @@
                             <i class="fa fa-check" aria-hidden="true"></i
                             >Re-Approve
                           </button>
-                        </span>
-                      </div>
+                        </span> -->
+                      <!-- </div> -->
                       <!-- <div class="host-stay-preview">
                         <span>
                         <img src="https://randomuser.me/api/portraits/women/61.jpg" alt="user">
@@ -235,9 +291,15 @@
     </section>
   </section>
 </template>
+
 <script>
+import orderData from "@/cmps/stay-cmps/order-data.vue";
+
 export default {
   name: "host-dashboard",
+  components: {
+    orderData,
+  },
   data() {
     return {
       currUser: null,
@@ -254,24 +316,30 @@ export default {
     // this.$store.dispatch({ type: "loadOrders" });
     // this.myOrders = this.getDemoOrders
     this.currUser = this.$store.getters.loggedinUser;
-    this.allOrders = this.getOrders;
+    console.log(this.currUser);
+    this.allOrders = this.$store.getters.getOrders;
+    console.log(this.allOrders);
     this.myOrders = this.userOrders;
     this.allStays = this.getAllStays;
     this.userStays;
     // this.dateToShow
   },
   computed: {
+    loading() {
+      this.$store.getters.isLoading;
+    },
     getDemoOrders() {
       return this.$store.getters.getDemoOrders;
     },
-    getOrders() {
-      return this.$store.getters.getOrders;
-    },
+    // getOrders() {
+    //   return this.$store.getters.getOrders;
+    // },
     getUser() {
       return this.$store.getters.loggedinUser;
     },
     getAllStays() {
-      return this.$store.getters.staysToShow;
+      const stays = this.$store.getters.staysToShow;
+      return stays;
     },
     userStays() {
       this.allStays.forEach((stay) => {
@@ -287,8 +355,8 @@ export default {
     userOrders() {
       // console.log(this.allOrders)
       var currUserOrders = [];
-      const allOrders = this.$store.getters.getOrders;
-      allOrders.forEach((order) => {
+      console.log(this.allOrders);
+      this.allOrders.forEach((order) => {
         const orderHostId = order.host._id;
         console.log("userid", this.currUser._id, "hostid", orderHostId);
         // console.log('host', stayHost)
@@ -300,6 +368,9 @@ export default {
         }
       });
       console.log(currUserOrders);
+      currUserOrders.sort(function (a, b) {
+        return new Date(b.dates.start) - new Date(a.dates.start);
+      });
 
       return currUserOrders;
     },
@@ -321,76 +392,183 @@ export default {
       });
       // console.log('sum', sum , 'count', count)
       return (sum / count).toFixed(1);
-      return sum;
+    },
+    totalRateCount() {
+      var count = 0;
+      // var sum = 0;
+      this.myStays.forEach((stay) => {
+        // console.log(count , stay.reviews)
+        stay.reviews.forEach((review) => {
+          const reviewRatings = Object.values(review.rate);
+          count ++ 
+          // console.log('array ratings', reviewRatings)
+          // var currSum = reviewRatings.reduce(
+          //   (sumRate, rating) => sumRate + rating,
+          //   0
+          // );
+          // sum += currSum;
+        });
+      });
+      // console.log('sum', sum , 'count', count)
+      return count
     },
     totalOrders() {
       return this.myOrders.length;
     },
     pendingOrders() {
       var ordersToShowCount = 0;
-      this.myOrders.forEach((order) => {
-        if (order.status === "pending") {
-          ordersToShowCount++;
-        }
-      });
-      return ordersToShowCount;
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          if (order.status === "pending") {
+            ordersToShowCount++;
+          }
+        });
+        return ordersToShowCount;
+      }
     },
     approvedOrders() {
       var ordersToShowCount = 0;
-      this.myOrders.forEach((order) => {
-        if (order.status === "approved") {
-          ordersToShowCount++;
-        }
-      });
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          if (order.status === "Approved") {
+            ordersToShowCount++;
+          }
+        });
+      }
       return ordersToShowCount;
     },
     declinedOrders() {
       var ordersToShowCount = 0;
-      this.myOrders.forEach((order) => {
-        if (order.status === "declined") {
-          ordersToShowCount++;
-        }
-      });
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          if (order.status === "declined") {
+            ordersToShowCount++;
+          }
+        });
+      }
       return ordersToShowCount;
     },
-    monthlyEarningToShow() {
+    totalEarningToShow() {
       var ordersPrice = [];
       // var ordersDates=[]
-      this.myOrders.forEach((order) => {
-        // console.log('toshow', order)
-        const { start, end } = order.dates;
-        const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
-        const CURRORDERPRICE = parseInt(days * order.stay.price);
-        // console.log(CURRORDERPRICE)
-        ordersPrice.push(CURRORDERPRICE);
-      });
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          // console.log('toshow', order)
+          const { start, end } = order.dates;
+          const days =
+            (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+          const CURRORDERPRICE = parseInt(days * order.stay.price);
+          // console.log(CURRORDERPRICE)
+          ordersPrice.push(CURRORDERPRICE);
+        });
+      }
       // console.log('prices', ordersPrice)
       var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
-      return sum;
+      // var sum = 100000
+      // Number(sum).toLocaleString()
+      return Number(sum).toLocaleString();
+    },
+    yearEarningToShow() {
+      var ordersPrice = [];
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const currYear = new Date().getFullYear()+''
+          const orderYear = order.dates.start.slice(0,order.dates.start.indexOf("-"))
+          if(orderYear === currYear){
+
+            const { start, end } = order.dates;
+          const days =
+            (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+          const CURRORDERPRICE = parseInt(days * order.stay.price);
+          ordersPrice.push(CURRORDERPRICE);
+          }
+        });
+      }
+      var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
+     
+      return Number(sum).toLocaleString();
+    },
+    monthEarningToShow() {
+      var ordersPrice = [];
+      const months = ["01","02","03","04","05","06","07","08","09","10","11","12"];
+      const d = new Date();
+      const currMonth = months[d.getMonth()];
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const orderMonth = order.dates.start.split('-')[1]
+          if(orderMonth === currMonth){
+
+            const { start, end } = order.dates;
+          const days = (Date.parse(end) - Date.parse(start)) / (1000 * 3600 * 24);
+          const CURRORDERPRICE = parseInt(days * order.stay.price);
+          ordersPrice.push(CURRORDERPRICE);
+          }
+        });
+      }
+      var sum = ordersPrice.reduce((sum, price) => sum + price, 0);
+      return Number(sum).toLocaleString();
     },
     activeGuests() {
       var activeGuestsCount = 0;
-      this.myOrders.forEach((order) => {
-        const { start, end } = order.dates;
-        // console.log(start , end)
-        var now = Date.now();
-        var orderStart = Date.parse(start);
-        var orderEnd = Date.parse(end);
-        // console.log(now, orderStart, orderEnd  )
-        if (now <= orderEnd && now >= orderStart) {
-          activeGuestsCount++;
-        } else {
-          // console.log("order not active");
-        }
-      });
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const { start, end } = order.dates;
+          // console.log(start , end)
+          var now = Date.now();
+          var orderStart = Date.parse(start);
+          var orderEnd = Date.parse(end);
+          // console.log(now, orderStart, orderEnd  )
+          if (now <= orderEnd && now >= orderStart) {
+            activeGuestsCount++;
+          } else {
+            // console.log("order not active");
+          }
+        });
+      }
       // console.log("active", activeGuestsCount);
       return activeGuestsCount;
-      // return 3;
     },
-    // dateToShow(){
-    //   console.log('dateToshow', this.myOrders[0].dates.start)
-    //   new Date().toGMTString()
-    // }
+    plannedGuests() {
+      var plannedGuestsCount = 0;
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const { start, end } = order.dates;
+          // console.log(start , end)
+          var now = Date.now();
+          var orderStart = Date.parse(start);
+          var orderEnd = Date.parse(end);
+          // console.log(now, orderStart, orderEnd  )
+          if (now < orderStart) {
+            plannedGuestsCount++;
+          } else {
+            // console.log("order not active");
+          }
+        });
+      }
+      // console.log("active", activeGuestsCount);
+      return plannedGuestsCount;
+    },
+    pastGuests() {
+      var pastGuestsCount = 0;
+      if (this.myOrders.length > 0) {
+        this.myOrders.forEach((order) => {
+          const { start, end } = order.dates;
+          // console.log(start , end)
+          var now = Date.now();
+          var orderStart = Date.parse(start);
+          var orderEnd = Date.parse(end);
+          // console.log(now, orderStart, orderEnd  )
+          if (now > orderEnd ) {
+            pastGuestsCount++;
+          } else {
+            // console.log("order not active");
+          }
+        });
+      }
+      // console.log("active", activeGuestsCount);
+      return pastGuestsCount;
+    },
+    
   },
   methods: {
     showMyStays() {
