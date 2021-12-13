@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --dest ../backend/public",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
@@ -19,7 +19,6 @@
     "vue-awesome-swiper": "^4.1.1",
     "vue-histogram-slider": "^0.3.8",
     "vue-router": "^3.2.0",
-    "vue2-datepicker": "^3.10.4",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
