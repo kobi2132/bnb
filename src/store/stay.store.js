@@ -37,8 +37,8 @@ export const stayStore = {
             filteredStays = filteredStays.filter(stay =>
                 stay.price >= minPrice && stay.price <= maxPrice)
 
-            if (state.filterBy.typeOfPlace.length > 0) {
-                const typeOfPlace = state.filterBy.typeOfPlace
+            const {typeOfPlace} = state.filterBy
+            if (typeOfPlace.length > 0) {
                 filteredStays = filteredStays.filter(stay => stay.propertyType.includes(typeOfPlace))
                 console.log(filteredStays);
             }
