@@ -156,6 +156,7 @@ export default {
   props: { stay: Object, conHeight: Number },
   data() {
     return {
+      modalHeight: null,
       congratsModal: false,
       shouldShow: false,
       trip: {
@@ -194,7 +195,6 @@ export default {
       },
       loggedinUser: null,
       miniModal: false,
-      modalHeight: null,
     };
   },
   created() {
@@ -209,18 +209,18 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
+    getModalHeight() {
+      this.modalHeight = this.$refs.modal.clientHeight;
+    },
+    handleScroll() {
+      this.miniModal = window.scrollY >= this.conHeight + this.modalHeight;
+    },
     goToSection(sectionId) {
       console.log("goinng to section ", sectionId);
       this.$router.push(`/stay/${this.stay._id}/#${sectionId}`).catch(() => {});
     },
     focusOnInput() {
       this.$refs.calendar.focusInput();
-    },
-    getModalHeight() {
-      this.modalHeight = this.$refs.modal.clientHeight;
-    },
-    handleScroll() {
-      this.miniModal = window.scrollY >= this.conHeight + this.modalHeight;
     },
     async placeOrder() {
       const loggedinUser = this.$store.getters.loggedinUser;
